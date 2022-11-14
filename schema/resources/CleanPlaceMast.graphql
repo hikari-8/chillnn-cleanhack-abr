@@ -1,0 +1,19 @@
+type CleanPlaceMast {
+	cleanPlaceID: ID!
+	name: String!
+	peopleNumber: Number
+	AdminID: ID!
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+}
+
+type CleanPlaceMastInput {
+	cleanPlaceID: ID!
+	name: String!
+	peopleNumber: Number
+	AdminID: ID!
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+}
