@@ -1,0 +1,19 @@
+type UserMast {
+	userID: ID!
+	name: String!
+	praceRecord: String
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+}
+
+input UserMastInput {
+	userID: ID!
+	name: String!
+	praceRecord: String
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+}
+
+# googleの認証データをどうするか...
