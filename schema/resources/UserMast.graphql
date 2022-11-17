@@ -1,7 +1,7 @@
 type UserMast {
 	userID: ID!
 	name: String!
-	praceRecord: String
+	role: String!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -10,7 +10,7 @@ type UserMast {
 input UserMastInput {
 	userID: ID!
 	name: String!
-	praceRecord: String
+	role: String!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
