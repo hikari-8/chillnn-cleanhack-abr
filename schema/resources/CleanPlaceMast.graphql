@@ -1,17 +1,19 @@
 type CleanPlaceMast {
 	cleanPlaceID: ID!
-	name: String!
-	headCount: Number
+	placeName: String!
+	groupName: String!
+	headCount: Int
 	# status
 	createdAt: AWSTimestamp!
-	updatedAt: AWSTimestamp!
+	updatedAt: AWSTimestamp
 }
 
 type CleanPlaceMastInput {
 	cleanPlaceID: ID!
-	name: String!
-	headCount: Number
+	placeName: String!
+	groupName: String!
+	headCount: Int
 	# status
 	createdAt: AWSTimestamp!
-	updatedAt: AWSTimestamp!
+	updatedAt: AWSTimestamp
 }

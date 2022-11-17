@@ -1,0 +1,21 @@
+type WeeklyRecordMast {
+	cleanPlaceID: String
+	placeName: String
+	groupName: String
+	headCount: Int
+	LimitTime: AWSDateTime
+	#status
+	createdAt: AWSTimestamp
+	deletedAt: AWSTimestamp
+}
+
+input WeeklyRecordMastInput {
+	cleanPlaceID: String
+	placeName: String
+	groupName: String
+	headCount: Int
+	LimitTime: AWSDateTime
+	#status
+	createdAt: AWSTimestamp
+	deletedAt: AWSTimestamp
+}
