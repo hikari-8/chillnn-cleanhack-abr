@@ -1,0 +1,81 @@
+scalar AWSDate
+
+scalar AWSDateTime
+
+scalar AWSEmail
+
+scalar AWSIPAddress
+
+scalar AWSJSON
+
+scalar AWSPhone
+
+scalar AWSTime
+
+scalar AWSTimestamp
+
+scalar AWSURL
+
+type CleanPlaceMast {
+  cleanPlaceID: ID!
+  placeName: String!
+  groupName: String!
+  headCount: Int
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp
+}
+
+type CleanPlaceMastInput {
+  cleanPlaceID: ID!
+  placeName: String!
+  groupName: String!
+  headCount: Int
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp
+}
+
+enum ErrorCode {
+  chillnnTraining_401_notSignIn
+  chillnnTraining_404_resourceNotFound
+  chillnnTraining_500_systemError
+}
+
+type UserMast {
+  userID: ID!
+  name: String!
+  role: String!
+  status: String!
+  records: [String]
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+}
+
+input UserMastInput {
+  userID: ID!
+  name: String!
+  role: String!
+  status: String!
+  records: [String]
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+}
+
+type WeeklyRecordMast {
+  cleanPlaceID: String
+  placeName: String
+  groupName: String
+  headCount: Int
+  LimitTime: AWSDateTime
+  createdAt: AWSTimestamp
+  deletedAt: AWSTimestamp
+}
+
+input WeeklyRecordMastInput {
+  cleanPlaceID: String
+  placeName: String
+  groupName: String
+  headCount: Int
+  LimitTime: AWSDateTime
+  createdAt: AWSTimestamp
+  deletedAt: AWSTimestamp
+}
