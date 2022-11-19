@@ -21,6 +21,7 @@ type CleanPlaceMast {
   placeName: String!
   groupID: String!
   headCount: Int
+  limitTime: AWSTimestamp
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
   deletedAt: AWSTimestamp
@@ -31,6 +32,7 @@ type CleanPlaceMastInput {
   placeName: String!
   groupID: String!
   headCount: Int
+  limitTime: AWSTimestamp
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
   deletedAt: AWSTimestamp
@@ -81,21 +83,23 @@ input UserMastInput {
 }
 
 type WeeklyRecordMast {
+  weeklyRecordID: String!
   cleanPlaceID: String
   placeName: String
-  groupName: String
+  roomID: String!
   headCount: Int
   LimitTime: AWSDateTime
-  createdAt: AWSTimestamp
-  deletedAt: AWSTimestamp
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp
 }
 
 input WeeklyRecordMastInput {
+  weeklyRecordID: String!
   cleanPlaceID: String
   placeName: String
-  groupName: String
+  roomID: String!
   headCount: Int
   LimitTime: AWSDateTime
-  createdAt: AWSTimestamp
-  deletedAt: AWSTimestamp
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp
 }

@@ -35,6 +35,7 @@ export type CleanPlaceMast = {
   placeName: Scalars['String'];
   groupID: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
+  limitTime?: Maybe<Scalars['AWSTimestamp']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
@@ -45,6 +46,7 @@ export type CleanPlaceMastInput = {
   placeName: Scalars['String'];
   groupID: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
+  limitTime?: Maybe<Scalars['AWSTimestamp']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
@@ -95,21 +97,23 @@ export type UserMastInput = {
 };
 
 export type WeeklyRecordMast = {
+  weeklyRecordID: Scalars['String'];
   cleanPlaceID?: Maybe<Scalars['String']>;
   placeName?: Maybe<Scalars['String']>;
-  groupName?: Maybe<Scalars['String']>;
+  roomID: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   LimitTime?: Maybe<Scalars['AWSDateTime']>;
-  createdAt?: Maybe<Scalars['AWSTimestamp']>;
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type WeeklyRecordMastInput = {
+  weeklyRecordID: Scalars['String'];
   cleanPlaceID?: Maybe<Scalars['String']>;
   placeName?: Maybe<Scalars['String']>;
-  groupName?: Maybe<Scalars['String']>;
+  roomID: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   LimitTime?: Maybe<Scalars['AWSDateTime']>;
-  createdAt?: Maybe<Scalars['AWSTimestamp']>;
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
 };

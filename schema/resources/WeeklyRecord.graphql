@@ -1,21 +1,23 @@
 type WeeklyRecordMast {
+	weeklyRecordID: String!
 	cleanPlaceID: String
 	placeName: String
-	groupName: String
+	roomID: String!
 	headCount: Int
 	LimitTime: AWSDateTime
 	#status
-	createdAt: AWSTimestamp
-	deletedAt: AWSTimestamp
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp
 }
 
 input WeeklyRecordMastInput {
+	weeklyRecordID: String!
 	cleanPlaceID: String
 	placeName: String
-	groupName: String
+	roomID: String!
 	headCount: Int
 	LimitTime: AWSDateTime
 	#status
-	createdAt: AWSTimestamp
-	deletedAt: AWSTimestamp
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp
 }
