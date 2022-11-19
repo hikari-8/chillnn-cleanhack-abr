@@ -37,6 +37,7 @@ export type CleanPlaceMast = {
   headCount?: Maybe<Scalars['Int']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type CleanPlaceMastInput = {
@@ -46,6 +47,7 @@ export type CleanPlaceMastInput = {
   headCount?: Maybe<Scalars['Int']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export enum ErrorCode {
@@ -53,6 +55,22 @@ export enum ErrorCode {
   chillnnTraining_404_resourceNotFound = 'chillnnTraining_404_resourceNotFound',
   chillnnTraining_500_systemError = 'chillnnTraining_500_systemError'
 }
+
+export type RoomMast = {
+  roomID: Scalars['String'];
+  roomName: Scalars['String'];
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type RoomMastInput = {
+  roomID: Scalars['String'];
+  roomName: Scalars['String'];
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
 
 export type UserMast = {
   userID: Scalars['ID'];
@@ -73,6 +91,7 @@ export type UserMastInput = {
   records?: Maybe<Array<Maybe<Scalars['String']>>>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type WeeklyRecordMast = {

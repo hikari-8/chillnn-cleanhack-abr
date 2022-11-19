@@ -23,6 +23,7 @@ type CleanPlaceMast {
   headCount: Int
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
+  deletedAt: AWSTimestamp
 }
 
 type CleanPlaceMastInput {
@@ -32,12 +33,29 @@ type CleanPlaceMastInput {
   headCount: Int
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
+  deletedAt: AWSTimestamp
 }
 
 enum ErrorCode {
   chillnnTraining_401_notSignIn
   chillnnTraining_404_resourceNotFound
   chillnnTraining_500_systemError
+}
+
+type RoomMast {
+  roomID: String!
+  roomName: String!
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp
+  deletedAt: AWSTimestamp
+}
+
+type RoomMastInput {
+  roomID: String!
+  roomName: String!
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp
+  deletedAt: AWSTimestamp
 }
 
 type UserMast {
@@ -59,6 +77,7 @@ input UserMastInput {
   records: [String]
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
+  deletedAt: AWSTimestamp
 }
 
 type WeeklyRecordMast {

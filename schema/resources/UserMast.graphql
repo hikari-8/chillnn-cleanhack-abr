@@ -19,4 +19,5 @@ input UserMastInput {
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp
+	deletedAt: AWSTimestamp
 }

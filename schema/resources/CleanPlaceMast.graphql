@@ -6,6 +6,7 @@ type CleanPlaceMast {
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp
+	deletedAt: AWSTimestamp
 }
 
 type CleanPlaceMastInput {
@@ -16,4 +17,5 @@ type CleanPlaceMastInput {
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp
+	deletedAt: AWSTimestamp
 }

@@ -1,0 +1,15 @@
+type RoomMast {
+	roomID: String!
+	roomName: String!
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp
+	deletedAt: AWSTimestamp
+}
+
+type RoomMastInput {
+	roomID: String!
+	roomName: String!
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp
+	deletedAt: AWSTimestamp
+}
