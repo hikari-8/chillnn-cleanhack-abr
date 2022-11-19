@@ -47,7 +47,8 @@ type UserMast {
   status: String!
   records: [String]
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
+  updatedAt: AWSTimestamp
+  deletedAt: AWSTimestamp
 }
 
 input UserMastInput {
@@ -57,7 +58,7 @@ input UserMastInput {
   status: String!
   records: [String]
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
+  updatedAt: AWSTimestamp
 }
 
 type WeeklyRecordMast {

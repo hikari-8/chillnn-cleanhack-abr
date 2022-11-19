@@ -61,7 +61,8 @@ export type UserMast = {
   status: Scalars['String'];
   records?: Maybe<Array<Maybe<Scalars['String']>>>;
   createdAt: Scalars['AWSTimestamp'];
-  updatedAt: Scalars['AWSTimestamp'];
+  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type UserMastInput = {
@@ -71,7 +72,7 @@ export type UserMastInput = {
   status: Scalars['String'];
   records?: Maybe<Array<Maybe<Scalars['String']>>>;
   createdAt: Scalars['AWSTimestamp'];
-  updatedAt: Scalars['AWSTimestamp'];
+  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type WeeklyRecordMast = {

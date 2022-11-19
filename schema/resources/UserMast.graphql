@@ -6,7 +6,8 @@ type UserMast {
 	records: [String]
 	# status
 	createdAt: AWSTimestamp!
-	updatedAt: AWSTimestamp!
+	updatedAt: AWSTimestamp
+	deletedAt: AWSTimestamp
 }
 
 input UserMastInput {
@@ -17,5 +18,5 @@ input UserMastInput {
 	records: [String]
 	# status
 	createdAt: AWSTimestamp!
-	updatedAt: AWSTimestamp!
+	updatedAt: AWSTimestamp
 }

@@ -21,6 +21,13 @@ export class UserMastRepositoryCacheAdaptor implements IUserMastRepository {
 		return res;
 	}
 
+	async deleteUserMast(userID: string): Promise<UserMast> {
+		const res = await this.repository.deleteUserMast(userID);
+		res.deletedAt = new Date().getTime();
+		this.updateCacheEach(res.userID, res);
+		return res;
+	}
+
 	async updateUserMast(input: UserMast): Promise<UserMast> {
 		const res = await this.repository.updateUserMast(input);
 		this.updateCacheEach(res.userID, res);
@@ -28,10 +35,10 @@ export class UserMastRepositoryCacheAdaptor implements IUserMastRepository {
 		return res;
 	}
 
-	async fetchMyUserMast(): Promise<UserMast | null> {
+	async fetchUserMast(): Promise<UserMast | null> {
 		if (this.myUserID)
 			return this.fetchCacheUserMast(this.myUserID) as UserMast;
-		const res = await this.repository.fetchMyUserMast();
+		const res = await this.repository.fetchUserMast();
 		if (!res) {
 			throw new ChillnnTrainingError(
 				ErrorCode.chillnnTraining_401_notSignIn
