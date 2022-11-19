@@ -1,9 +1,8 @@
 import { Scalars, RoomMast } from "../../type";
 
 export interface IRoomMastRepository {
-	addRoomMast(input: RoomMast): Promise<RoomMast>;
-	deleteRoomMast(roomID: Scalars["ID"]): Promise<RoomMast>;
-	updateRoomMast(input: RoomMast): Promise<RoomMast>;
-	fetchRoomMastByRoomID(roomID: Scalars["ID"]): Promise<RoomMast>;
-	fetchAllRooms(): Promise<RoomMast[]>;
+	addRoom(input: RoomMast): Promise<RoomMast>;
+	deleteRoom(roomID: Scalars["ID"]): Promise<RoomMast>;
+	updateRoom(input: RoomMast): Promise<RoomMast>;
+	fetchRoomByRoomID(roomID: Scalars["ID"]): Promise<RoomMast | null>;
 }
