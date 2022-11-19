@@ -33,7 +33,7 @@ export type Scalars = {
 export type CleanPlaceMast = {
   cleanPlaceID: Scalars['ID'];
   placeName: Scalars['String'];
-  groupName: Scalars['String'];
+  groupID: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
@@ -43,7 +43,7 @@ export type CleanPlaceMast = {
 export type CleanPlaceMastInput = {
   cleanPlaceID: Scalars['ID'];
   placeName: Scalars['String'];
-  groupName: Scalars['String'];
+  groupID: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
