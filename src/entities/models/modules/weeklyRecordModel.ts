@@ -1,48 +1,41 @@
-import { CleanPlaceMast } from "../../type";
+import { WeeklyRecordMast } from "../../type";
 import { BaseModel } from "./_baseModel";
-import { UserMast } from "../../type";
-import { UserModel } from "./userModel";
 import { Scalars } from "../..";
 import { generateUUID } from "../../..";
 
-export class CleanPlaceModel extends BaseModel<CleanPlaceMast> {
-	static getBlanc(
-		groupID: Scalars["String"],
-		placeName: Scalars["String"]
-	): CleanPlaceMast {
+export class WeeklyRecordModel extends BaseModel<WeeklyRecordMast> {
+	static getBlanc(roomID: Scalars["String"]): WeeklyRecordMast {
 		return {
-			cleanPlaceID: generateUUID(),
-			placeName,
-			groupID,
+			weeklyRecordID: generateUUID(),
+			roomID,
 			createdAt: new Date().getTime(),
 		};
 	}
+
 	// ============================================
 	// getters
 	// ============================================
+	get weeklyRecordID() {
+		return this.mast.cleanPlaceID;
+	}
 	get cleanPlaceID() {
 		return this.mast.cleanPlaceID;
 	}
-
-	get groupID() {
-		return this.mast.groupID;
+	get roomID() {
+		return this.mast.roomID;
 	}
-
 	get createdAt() {
 		return this.mast.createdAt;
 	}
 	get updatedAt() {
 		return this.mast.updatedAt;
 	}
-	get deletedAt() {
-		return this.mast.deletedAt;
-	}
 
 	// ============================================
 	// getter / setter
 	// ============================================
 	get placeName() {
-		return this.mast.placeName;
+		return this.mast.placeName || "";
 	}
 	set placeName(input: string) {
 		this.mast.placeName = input;
@@ -59,10 +52,10 @@ export class CleanPlaceModel extends BaseModel<CleanPlaceMast> {
 	}
 
 	get limitTime() {
-		return this.mast.limitTime || 0;
+		return this.mast.limitTime || "";
 	}
 
-	set limitTime(input: number) {
+	set limitTime(input: string) {
 		if (input) {
 			this.mast.limitTime = input;
 		} else {
@@ -80,13 +73,9 @@ export class CleanPlaceModel extends BaseModel<CleanPlaceMast> {
 	get isAdmin() {
 		return true;
 	}
-	// ============================================
-	// functions
-	// ============================================
 
 	/**
-	 * roleがAdminなら、掃除場所情報を新規登録、または更新できる
-	 *
+	 * ルームのそれぞれのくじのデータを一括で登録・編集する
 	 */
 	async register() {
 		if (this.isRegisterable && this.isAdmin) {
@@ -94,12 +83,12 @@ export class CleanPlaceModel extends BaseModel<CleanPlaceMast> {
 			if (this.isNew) {
 				this.mast.createdAt = now;
 				this.mast.updatedAt = now;
-				await this.repositoryContainer.cleanPlaceMastRepository.addCleanPlace(
+				await this.repositoryContainer.weeklyRecordMastRepository.addWeeklyRecord(
 					this.mast
 				);
 			} else {
 				this.mast.updatedAt = now;
-				await this.repositoryContainer.cleanPlaceMastRepository.updateCleanPlace(
+				await this.repositoryContainer.weeklyRecordMastRepository.updateWeeklyRecord(
 					this.mast
 				);
 			}
@@ -108,30 +97,26 @@ export class CleanPlaceModel extends BaseModel<CleanPlaceMast> {
 	}
 
 	// /**
-	//  * ルームの全てのデータを取得する
+	//  * 今週のくじのデータを取得する
 	//  * @returns
 	//  */
-	async fetchAllCleanPlacesDataBygroupID(
-		input: string
-	): Promise<CleanPlaceModel[]> {
+	async fetchEachWeeklyRecordDataBygroupID(): Promise<WeeklyRecordModel[]> {
 		const res =
-			await this.repositoryContainer.cleanPlaceMastRepository.fetchCleanPlacesByRoomID(
-				this.groupID
+			await this.repositoryContainer.weeklyRecordMastRepository.fetchWeeklyRecordsByWeeklyRecordID(
+				this.weeklyRecordID
 			);
-		return res.map((item) => this.modelFactory.CleanPlaceModel(item));
+		return res.map((item) => this.modelFactory.WeeklyRecordModel(item));
 	}
 
 	// /**
-	//  * ルームの個々のデータを取得する
+	//  * 隔週のくじのデータを全て取得する
 	//  * @returns
 	//  */
-	async fetchCleanPlaceDataBycleanPlaceID(
-		input: string
-	): Promise<CleanPlaceModel> {
+	async fetchAllWeeklyRecordByRoomID(): Promise<WeeklyRecordModel> {
 		const res =
-			await this.repositoryContainer.cleanPlaceMastRepository.fetchCleanPlaceByCleanPlaceID(
-				this.cleanPlaceID
+			await this.repositoryContainer.weeklyRecordMastRepository.fetchWeeklyRecordsByRoomID(
+				this.roomID
 			);
-		return this.modelFactory.CleanPlaceModel(res);
+		return res.map((item) => this.modelFactory.WeeklyRecordModel(item));
 	}
 }

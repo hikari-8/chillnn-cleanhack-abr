@@ -44,17 +44,17 @@ enum ErrorCode {
   chillnnTraining_500_systemError
 }
 
-type RoomMast {
-  roomID: String!
-  roomName: String!
+type GroupMast {
+  groupID: String!
+  groupName: String!
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
   deletedAt: AWSTimestamp
 }
 
-type RoomMastInput {
-  roomID: String!
-  roomName: String!
+type GroupMastInput {
+  groupID: String!
+  groupName: String!
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
   deletedAt: AWSTimestamp
@@ -88,7 +88,7 @@ type WeeklyRecordMast {
   placeName: String
   roomID: String!
   headCount: Int
-  LimitTime: AWSDateTime
+  limitTime: AWSDateTime
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
 }
@@ -99,7 +99,7 @@ input WeeklyRecordMastInput {
   placeName: String
   roomID: String!
   headCount: Int
-  LimitTime: AWSDateTime
+  limitTime: AWSDateTime
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp
 }

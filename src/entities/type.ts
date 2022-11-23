@@ -58,17 +58,17 @@ export enum ErrorCode {
   chillnnTraining_500_systemError = 'chillnnTraining_500_systemError'
 }
 
-export type RoomMast = {
-  roomID: Scalars['String'];
-  roomName: Scalars['String'];
+export type GroupMast = {
+  groupID: Scalars['String'];
+  groupName: Scalars['String'];
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
-export type RoomMastInput = {
-  roomID: Scalars['String'];
-  roomName: Scalars['String'];
+export type GroupMastInput = {
+  groupID: Scalars['String'];
+  groupName: Scalars['String'];
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
@@ -102,7 +102,7 @@ export type WeeklyRecordMast = {
   placeName?: Maybe<Scalars['String']>;
   roomID: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
-  LimitTime?: Maybe<Scalars['AWSDateTime']>;
+  limitTime?: Maybe<Scalars['AWSDateTime']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
@@ -113,7 +113,7 @@ export type WeeklyRecordMastInput = {
   placeName?: Maybe<Scalars['String']>;
   roomID: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
-  LimitTime?: Maybe<Scalars['AWSDateTime']>;
+  limitTime?: Maybe<Scalars['AWSDateTime']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt?: Maybe<Scalars['AWSTimestamp']>;
 };

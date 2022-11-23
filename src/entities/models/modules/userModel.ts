@@ -1,6 +1,7 @@
 import { throws } from "assert";
 import { UserMast } from "../../type";
 import { CleanPlaceModel } from "./cleanPlaceModel";
+import { Scalars } from "../..";
 import { BaseModel } from "./_baseModel";
 
 export class UserModel extends BaseModel<UserMast> {
@@ -15,6 +16,9 @@ export class UserModel extends BaseModel<UserMast> {
 	}
 	get updatedAt() {
 		return this.mast.updatedAt;
+	}
+	get deletedAt() {
+		return this.mast.deletedAt;
 	}
 
 	// ============================================
@@ -32,31 +36,42 @@ export class UserModel extends BaseModel<UserMast> {
 	set role(input: string) {
 		this.mast.role = input;
 	}
+	get status() {
+		return this.mast.status;
+	}
+	set status(input: string) {
+		this.mast.status = input;
+	}
+	// ============================================
+	// getter / setter -not mandatory
+	// ============================================
+	//配列データを取ってくるだけ(ポインタを取得するだけ)
+	get records() {
+		return (this.mast.records = []);
+	}
+
+	set records(input: string[]) {
+		this.mast.records = input;
+	}
 
 	// ============================================
 	// validation
 	// ============================================
-	get isRegisterble() {
+	get isRegisterable() {
+		return true;
+	}
+	get isAdmin() {
 		return true;
 	}
 	// ============================================
 	// functions
 	// ============================================
-	/**
-	 * アイコン画像をセットする
-	//  * @param file
-	 */
-	// async setIcon(file: File) {
-	// 	const path = `user/${this.userID}/iconImage/${new Date().getTime()}`;
-	// 	this.mast.userIcon =
-	// 		await this.repositoryContainer.s3Repository.addFile(path, file);
-	// }
 
 	/**
 	 * ユーザー情報を新規登録、または更新する
 	 */
 	async register() {
-		if (this.isRegisterble) {
+		if (this.isRegisterable) {
 			const now = new Date().getTime();
 			if (this.isNew) {
 				this.mast.createdAt = now;
@@ -73,41 +88,4 @@ export class UserModel extends BaseModel<UserMast> {
 			this.isNew = false;
 		}
 	}
-
-	/**
-	 * 掃除場所をAdminが新規登録・変更できる
-	 */
-	setUpCleanPlace(): CleanPlaceModel {
-		if (this.role === "admin") {
-			return this.modelFactory.CleanPlaceModel(
-				CleanPlaceModel.getBlanc(this.cleanPlaceID)
-			);
-		} else {
-			console.error("Admin権限がありません");
-		}
-	}
-
-	// /**
-	//  * このユーザーの投稿を取得する
-	//  * @returns
-	//  */
-	// async fetchMyPosts(input: string): Promise<PostModel[]> {
-	// 	const res =
-	// 		await this.repositoryContainer.postMastRepository.fetchPostsByOwnerUserID(
-	// 			this.userID
-	// 		);
-	// 	return res.map((item) => this.modelFactory.PostModel(item));
-	// }
-
-	// createNewPost(): PostModel {
-	// 	return this.modelFactory.PostModel(
-	// 		PostModel.getBlanc(
-	// 			this.userID,
-	// 			this.repositoryContainer.s3Repository.getSampleImage()
-	// 		),
-	// 		{
-	// 			isNew: true,
-	// 		}
-	// 	);
-	// }
 }

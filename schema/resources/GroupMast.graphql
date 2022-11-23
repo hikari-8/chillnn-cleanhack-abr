@@ -1,14 +1,14 @@
-type RoomMast {
-	roomID: String!
-	roomName: String!
+type GroupMast {
+	groupID: String!
+	groupName: String!
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp
 	deletedAt: AWSTimestamp
 }
 
-type RoomMastInput {
-	roomID: String!
-	roomName: String!
+type GroupMastInput {
+	groupID: String!
+	groupName: String!
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp
 	deletedAt: AWSTimestamp

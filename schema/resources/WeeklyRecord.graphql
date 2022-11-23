@@ -4,7 +4,7 @@ type WeeklyRecordMast {
 	placeName: String
 	roomID: String!
 	headCount: Int
-	LimitTime: AWSDateTime
+	limitTime: AWSDateTime
 	#status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp
@@ -16,7 +16,7 @@ input WeeklyRecordMastInput {
 	placeName: String
 	roomID: String!
 	headCount: Int
-	LimitTime: AWSDateTime
+	limitTime: AWSDateTime
 	#status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp
