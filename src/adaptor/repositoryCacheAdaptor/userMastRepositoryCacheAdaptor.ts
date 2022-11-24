@@ -35,10 +35,10 @@ export class UserMastRepositoryCacheAdaptor implements IUserMastRepository {
 		return res;
 	}
 
-	async fetchUserMast(): Promise<UserMast | null> {
+	async fetchMyUserMast(): Promise<UserMast | null> {
 		if (this.myUserID)
 			return this.fetchCacheUserMast(this.myUserID) as UserMast;
-		const res = await this.repository.fetchUserMast();
+		const res = await this.repository.fetchMyUserMast();
 		if (!res) {
 			throw new ChillnnTrainingError(
 				ErrorCode.chillnnTraining_401_notSignIn
