@@ -1,14 +1,8 @@
-enum Status {
-	ACTIVE
-	INACTIVE
-}
-
 type UserMast {
 	userID: ID!
 	name: String!
 	groupID: String!
 	role: String!
-	status: Status!
 	records: [String!]
 	# status
 	createdAt: AWSTimestamp!
@@ -21,7 +15,6 @@ input UserMastInput {
 	name: String!
 	groupID: String!
 	role: String!
-	status: Status!
 	records: [String!]
 	# status
 	createdAt: AWSTimestamp!

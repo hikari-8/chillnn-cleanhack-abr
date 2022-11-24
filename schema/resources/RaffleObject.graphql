@@ -1,4 +1,9 @@
 ###くじ、Userのオブジェクトそれぞれのマッピングテーブルを一つのスキーマに最適化しています。
+enum RaffleStatus {
+	EFFECTIVE
+	EFFECTIVE_AND_FIXED
+	DONE
+}
 
 type RaffleObject {
 	raffleID: ID!
@@ -6,6 +11,7 @@ type RaffleObject {
 	groupID: ID!
 	activeMembers: [RaffleJoinUser!]
 	limitTime: AWSTimestamp!
+	raffleStatus: RaffleStatus!
 	remindSlackWeek: String!
 	remindSlackTime: AWSTimestamp!
 	# status
@@ -42,6 +48,7 @@ type RaffleObjectInput {
 	groupID: ID!
 	activeMembers: [RaffleJoinUser!]
 	limitTime: AWSTimestamp!
+	raffleStatus: RaffleStatus!
 	remindSlackWeek: String!
 	remindSlackTime: AWSTimestamp!
 	# status
