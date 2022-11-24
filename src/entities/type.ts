@@ -55,6 +55,7 @@ export type GroupMastInput = {
 export type RaffleJoinUser = {
   userID: Scalars['ID'];
   joinAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type RaffleJoinUserInput = {
@@ -69,6 +70,7 @@ export type RaffleObject = {
   groupID: Scalars['ID'];
   activeMembers?: Maybe<Array<RaffleJoinUser>>;
   limitTime: Scalars['AWSTimestamp'];
+  raffleStatus: RaffleStatus;
   remindSlackWeek: Scalars['String'];
   remindSlackTime: Scalars['AWSTimestamp'];
   createdAt: Scalars['AWSTimestamp'];
@@ -82,6 +84,7 @@ export type RaffleObjectInput = {
   groupID: Scalars['ID'];
   activeMembers?: Maybe<Array<RaffleJoinUser>>;
   limitTime: Scalars['AWSTimestamp'];
+  raffleStatus: RaffleStatus;
   remindSlackWeek: Scalars['String'];
   remindSlackTime: Scalars['AWSTimestamp'];
   createdAt: Scalars['AWSTimestamp'];
@@ -89,11 +92,17 @@ export type RaffleObjectInput = {
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
+export enum RaffleStatus {
+  EFFECTIVE = 'EFFECTIVE',
+  EFFECTIVE_AND_FIXED = 'EFFECTIVE_AND_FIXED',
+  DONE = 'DONE'
+}
+
 export type RaffleTaskMast = {
   taskID: Scalars['ID'];
   taskName: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
-  userID?: Maybe<Scalars['ID']>;
+  userID?: Maybe<Array<Scalars['ID']>>;
   updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
@@ -101,17 +110,11 @@ export type RaffleTaskMast = {
 export type RaffleTaskMastInput = {
   taskID: Scalars['ID'];
   taskName: Scalars['String'];
-  headCount?: Maybe<Scalars['Int']>;
-  userID?: Maybe<Scalars['ID']>;
+  userID?: Maybe<Array<Scalars['ID']>>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
-
-export enum Status {
-  ACTIVE = 'ACTIVE',
-  INACTIVE = 'INACTIVE'
-}
 
 export type TaskMast = {
   taskID: Scalars['ID'];
@@ -158,7 +161,6 @@ export type UserMast = {
   name: Scalars['String'];
   groupID: Scalars['String'];
   role: Scalars['String'];
-  status: Status;
   records?: Maybe<Array<Scalars['String']>>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];
@@ -170,7 +172,6 @@ export type UserMastInput = {
   name: Scalars['String'];
   groupID: Scalars['String'];
   role: Scalars['String'];
-  status: Status;
   records?: Maybe<Array<Scalars['String']>>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];

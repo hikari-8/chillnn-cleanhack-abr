@@ -34,7 +34,7 @@ type RaffleTaskMast {
 type RaffleJoinUser {
 	userID: ID!
 	joinAt: AWSTimestamp!
-	deletedAt: AWSTimestamps
+	deletedAt: AWSTimestamp
 }
 
 ##################################################################################

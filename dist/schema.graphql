@@ -41,6 +41,7 @@ type GroupMastInput {
 type RaffleJoinUser {
   userID: ID!
   joinAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
 }
 
 type RaffleJoinUserInput {
@@ -55,6 +56,7 @@ type RaffleObject {
   groupID: ID!
   activeMembers: [RaffleJoinUser!]
   limitTime: AWSTimestamp!
+  raffleStatus: RaffleStatus!
   remindSlackWeek: String!
   remindSlackTime: AWSTimestamp!
   createdAt: AWSTimestamp!
@@ -68,6 +70,7 @@ type RaffleObjectInput {
   groupID: ID!
   activeMembers: [RaffleJoinUser!]
   limitTime: AWSTimestamp!
+  raffleStatus: RaffleStatus!
   remindSlackWeek: String!
   remindSlackTime: AWSTimestamp!
   createdAt: AWSTimestamp!
@@ -75,11 +78,17 @@ type RaffleObjectInput {
   deletedAt: AWSTimestamp
 }
 
+enum RaffleStatus {
+  EFFECTIVE
+  EFFECTIVE_AND_FIXED
+  DONE
+}
+
 type RaffleTaskMast {
   taskID: ID!
   taskName: String!
   headCount: Int
-  userID: ID
+  userID: [ID!]
   updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
 }
@@ -87,16 +96,10 @@ type RaffleTaskMast {
 type RaffleTaskMastInput {
   taskID: ID!
   taskName: String!
-  headCount: Int
-  userID: ID
+  userID: [ID!]
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
-}
-
-enum Status {
-  ACTIVE
-  INACTIVE
 }
 
 type TaskMast {
@@ -144,7 +147,6 @@ type UserMast {
   name: String!
   groupID: String!
   role: String!
-  status: Status!
   records: [String!]
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
@@ -156,7 +158,6 @@ input UserMastInput {
   name: String!
   groupID: String!
   role: String!
-  status: Status!
   records: [String!]
   createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
