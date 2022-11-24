@@ -60,6 +60,7 @@ export type RaffleJoinUser = {
 export type RaffleJoinUserInput = {
   userID: Scalars['ID'];
   joinAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type RaffleObject = {
@@ -93,7 +94,6 @@ export type RaffleTaskMast = {
   taskName: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   userID?: Maybe<Scalars['ID']>;
-  createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };

@@ -46,6 +46,7 @@ type RaffleJoinUser {
 type RaffleJoinUserInput {
   userID: ID!
   joinAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
 }
 
 type RaffleObject {
@@ -79,7 +80,6 @@ type RaffleTaskMast {
   taskName: String!
   headCount: Int
   userID: ID
-  createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
 }

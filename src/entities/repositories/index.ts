@@ -1,19 +1,19 @@
 import { IUserMastRepository } from "./modules/userMastRepository";
-import { ICleanPlaceMastRepository } from "./modules/cleanPlaceMastRepository";
-import { IWeeklyRecordMastRepository } from "./modules/weeklyRecordMastRepository";
-import { IRoomMastRepository } from "./modules/roomMastRepository";
+import { ITaskMasterObjectRepository } from "./modules/taskMasterObjectRepository";
+import { IRaffleObjectRepository } from "./modules/raffleobjectRepository";
+import { IGroupMastRepository } from "./modules/groupMastRepository";
 
 export * from "./modules/userMastRepository";
-export * from "./modules/cleanPlaceMastRepository";
-export * from "./modules/weeklyRecordMastRepository";
-export * from "./modules/roomMastRepository";
+export * from "./modules/taskMasterObjectRepository";
+export * from "./modules/raffleobjectRepository";
+export * from "./modules/groupMastRepository";
 
 export class RepositoryContainer {
 	constructor(
 		// entity
 		public userMastRepository: IUserMastRepository,
-		public cleanPlaceMastRepository: ICleanPlaceMastRepository,
-		public weeklyRecordMastRepository: IWeeklyRecordMastRepository,
-		public roomMastRepository: IRoomMastRepository
+		public taskMasterObjectRepository: ITaskMasterObjectRepository,
+		public raffleObjectRepository: IRaffleObjectRepository,
+		public groupMastRepository: IGroupMastRepository
 	) {}
 }
