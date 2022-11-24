@@ -1,15 +1,17 @@
 type GroupMast {
 	groupID: String!
 	groupName: String!
+	# status
 	createdAt: AWSTimestamp!
-	updatedAt: AWSTimestamp
+	updatedAt: AWSTimestamp!
 	deletedAt: AWSTimestamp
 }
 
 type GroupMastInput {
 	groupID: String!
 	groupName: String!
+	# status
 	createdAt: AWSTimestamp!
-	updatedAt: AWSTimestamp
+	updatedAt: AWSTimestamp!
 	deletedAt: AWSTimestamp
 }

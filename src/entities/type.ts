@@ -30,28 +30,6 @@ export type Scalars = {
 
 
 
-export type CleanPlaceMast = {
-  cleanPlaceID: Scalars['ID'];
-  placeName: Scalars['String'];
-  groupID: Scalars['String'];
-  headCount?: Maybe<Scalars['Int']>;
-  limitTime?: Maybe<Scalars['AWSTimestamp']>;
-  createdAt: Scalars['AWSTimestamp'];
-  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
-};
-
-export type CleanPlaceMastInput = {
-  cleanPlaceID: Scalars['ID'];
-  placeName: Scalars['String'];
-  groupID: Scalars['String'];
-  headCount?: Maybe<Scalars['Int']>;
-  limitTime?: Maybe<Scalars['AWSTimestamp']>;
-  createdAt: Scalars['AWSTimestamp'];
-  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
-};
-
 export enum ErrorCode {
   chillnnTraining_401_notSignIn = 'chillnnTraining_401_notSignIn',
   chillnnTraining_404_resourceNotFound = 'chillnnTraining_404_resourceNotFound',
@@ -62,7 +40,7 @@ export type GroupMast = {
   groupID: Scalars['String'];
   groupName: Scalars['String'];
   createdAt: Scalars['AWSTimestamp'];
-  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
@@ -70,50 +48,131 @@ export type GroupMastInput = {
   groupID: Scalars['String'];
   groupName: Scalars['String'];
   createdAt: Scalars['AWSTimestamp'];
-  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type RaffleJoinUser = {
+  userID: Scalars['ID'];
+  joinAt: Scalars['AWSTimestamp'];
+};
+
+export type RaffleJoinUserInput = {
+  userID: Scalars['ID'];
+  joinAt: Scalars['AWSTimestamp'];
+};
+
+export type RaffleObject = {
+  raffleID: Scalars['ID'];
+  tasks: Array<RaffleTaskMast>;
+  groupID: Scalars['ID'];
+  activeMembers?: Maybe<Array<RaffleJoinUser>>;
+  limitTime: Scalars['AWSTimestamp'];
+  remindSlackWeek: Scalars['String'];
+  remindSlackTime: Scalars['AWSTimestamp'];
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type RaffleObjectInput = {
+  raffleID: Scalars['ID'];
+  tasks: Array<RaffleTaskMast>;
+  groupID: Scalars['ID'];
+  activeMembers?: Maybe<Array<RaffleJoinUser>>;
+  limitTime: Scalars['AWSTimestamp'];
+  remindSlackWeek: Scalars['String'];
+  remindSlackTime: Scalars['AWSTimestamp'];
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type RaffleTaskMast = {
+  taskID: Scalars['ID'];
+  taskName: Scalars['String'];
+  headCount?: Maybe<Scalars['Int']>;
+  userID?: Maybe<Scalars['ID']>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type RaffleTaskMastInput = {
+  taskID: Scalars['ID'];
+  taskName: Scalars['String'];
+  headCount?: Maybe<Scalars['Int']>;
+  userID?: Maybe<Scalars['ID']>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export enum Status {
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE'
+}
+
+export type TaskMast = {
+  taskID: Scalars['ID'];
+  placeName: Scalars['String'];
+  headCount?: Maybe<Scalars['Int']>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type TaskMastInput = {
+  taskID: Scalars['ID'];
+  placeName: Scalars['String'];
+  headCount?: Maybe<Scalars['Int']>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type TaskMasterObject = {
+  tasks: Array<TaskMast>;
+  groupID: Scalars['ID'];
+  limitTime?: Maybe<Scalars['AWSTimestamp']>;
+  remindSlackWeek?: Maybe<Scalars['String']>;
+  remindSlackTime?: Maybe<Scalars['AWSTimestamp']>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type TaskMasterObjectInput = {
+  tasks: Array<TaskMast>;
+  groupID: Scalars['ID'];
+  limitTime?: Maybe<Scalars['AWSTimestamp']>;
+  remindSlackWeek?: Maybe<Scalars['String']>;
+  remindSlackTime?: Maybe<Scalars['AWSTimestamp']>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type UserMast = {
   userID: Scalars['ID'];
   name: Scalars['String'];
+  groupID: Scalars['String'];
   role: Scalars['String'];
-  status: Scalars['String'];
-  records?: Maybe<Array<Maybe<Scalars['String']>>>;
+  status: Status;
+  records?: Maybe<Array<Scalars['String']>>;
   createdAt: Scalars['AWSTimestamp'];
-  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type UserMastInput = {
   userID: Scalars['ID'];
   name: Scalars['String'];
+  groupID: Scalars['String'];
   role: Scalars['String'];
-  status: Scalars['String'];
-  records?: Maybe<Array<Maybe<Scalars['String']>>>;
+  status: Status;
+  records?: Maybe<Array<Scalars['String']>>;
   createdAt: Scalars['AWSTimestamp'];
-  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
+  updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
-};
-
-export type WeeklyRecordMast = {
-  weeklyRecordID: Scalars['String'];
-  cleanPlaceID?: Maybe<Scalars['String']>;
-  placeName?: Maybe<Scalars['String']>;
-  roomID: Scalars['String'];
-  headCount?: Maybe<Scalars['Int']>;
-  limitTime?: Maybe<Scalars['AWSDateTime']>;
-  createdAt: Scalars['AWSTimestamp'];
-  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
-};
-
-export type WeeklyRecordMastInput = {
-  weeklyRecordID: Scalars['String'];
-  cleanPlaceID?: Maybe<Scalars['String']>;
-  placeName?: Maybe<Scalars['String']>;
-  roomID: Scalars['String'];
-  headCount?: Maybe<Scalars['Int']>;
-  limitTime?: Maybe<Scalars['AWSDateTime']>;
-  createdAt: Scalars['AWSTimestamp'];
-  updatedAt?: Maybe<Scalars['AWSTimestamp']>;
 };

@@ -1,0 +1,67 @@
+###くじ、Userのオブジェクトそれぞれのマッピングテーブルを一つのスキーマに最適化しています。
+
+type RaffleObject {
+	raffleID: ID!
+	tasks: [RaffleTaskMast!]!
+	groupID: ID!
+	activeMembers: [RaffleJoinUser!]
+	limitTime: AWSTimestamp!
+	remindSlackWeek: String!
+	remindSlackTime: AWSTimestamp!
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+	deletedAt: AWSTimestamp
+}
+
+type RaffleTaskMast {
+	taskID: ID!
+	taskName: String!
+	headCount: Int
+	userID: ID
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+	deletedAt: AWSTimestamp
+}
+
+type RaffleJoinUser {
+	userID: ID!
+	joinAt: AWSTimestamp!
+}
+
+##################################################################################
+#
+# input
+#
+##################################################################################
+
+type RaffleObjectInput {
+	raffleID: ID!
+	tasks: [RaffleTaskMast!]!
+	groupID: ID!
+	activeMembers: [RaffleJoinUser!]
+	limitTime: AWSTimestamp!
+	remindSlackWeek: String!
+	remindSlackTime: AWSTimestamp!
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+	deletedAt: AWSTimestamp
+}
+
+type RaffleTaskMastInput {
+	taskID: ID!
+	taskName: String!
+	headCount: Int
+	userID: ID
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+	deletedAt: AWSTimestamp
+}
+
+type RaffleJoinUserInput {
+	userID: ID!
+	joinAt: AWSTimestamp!
+}

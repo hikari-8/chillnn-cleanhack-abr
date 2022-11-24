@@ -1,0 +1,51 @@
+###タスク、Userのオブジェクトそれぞれのマッピングテーブルを一つのスキーマに最適化しています。
+
+type TaskMasterObject {
+	tasks: [TaskMast!]!
+	groupID: ID!
+	limitTime: AWSTimestamp
+	remindSlackWeek: String
+	remindSlackTime: AWSTimestamp
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+	deletedAt: AWSTimestamp
+}
+
+type TaskMast {
+	taskID: ID!
+	placeName: String!
+	headCount: Int
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+	deletedAt: AWSTimestamp
+}
+
+##################################################################################
+#
+# input
+#
+##################################################################################
+
+type TaskMasterObjectInput {
+	tasks: [TaskMast!]!
+	groupID: ID!
+	limitTime: AWSTimestamp
+	remindSlackWeek: String
+	remindSlackTime: AWSTimestamp
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+	deletedAt: AWSTimestamp
+}
+
+type TaskMastInput {
+	taskID: ID!
+	placeName: String!
+	headCount: Int
+	# status
+	createdAt: AWSTimestamp!
+	updatedAt: AWSTimestamp!
+	deletedAt: AWSTimestamp
+}

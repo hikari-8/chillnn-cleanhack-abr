@@ -16,28 +16,6 @@ scalar AWSTimestamp
 
 scalar AWSURL
 
-type CleanPlaceMast {
-  cleanPlaceID: ID!
-  placeName: String!
-  groupID: String!
-  headCount: Int
-  limitTime: AWSTimestamp
-  createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp
-  deletedAt: AWSTimestamp
-}
-
-type CleanPlaceMastInput {
-  cleanPlaceID: ID!
-  placeName: String!
-  groupID: String!
-  headCount: Int
-  limitTime: AWSTimestamp
-  createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp
-  deletedAt: AWSTimestamp
-}
-
 enum ErrorCode {
   chillnnTraining_401_notSignIn
   chillnnTraining_404_resourceNotFound
@@ -48,7 +26,7 @@ type GroupMast {
   groupID: String!
   groupName: String!
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp
+  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
 }
 
@@ -56,50 +34,131 @@ type GroupMastInput {
   groupID: String!
   groupName: String!
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type RaffleJoinUser {
+  userID: ID!
+  joinAt: AWSTimestamp!
+}
+
+type RaffleJoinUserInput {
+  userID: ID!
+  joinAt: AWSTimestamp!
+}
+
+type RaffleObject {
+  raffleID: ID!
+  tasks: [RaffleTaskMast!]!
+  groupID: ID!
+  activeMembers: [RaffleJoinUser!]
+  limitTime: AWSTimestamp!
+  remindSlackWeek: String!
+  remindSlackTime: AWSTimestamp!
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type RaffleObjectInput {
+  raffleID: ID!
+  tasks: [RaffleTaskMast!]!
+  groupID: ID!
+  activeMembers: [RaffleJoinUser!]
+  limitTime: AWSTimestamp!
+  remindSlackWeek: String!
+  remindSlackTime: AWSTimestamp!
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type RaffleTaskMast {
+  taskID: ID!
+  taskName: String!
+  headCount: Int
+  userID: ID
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type RaffleTaskMastInput {
+  taskID: ID!
+  taskName: String!
+  headCount: Int
+  userID: ID
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}
+
+type TaskMast {
+  taskID: ID!
+  placeName: String!
+  headCount: Int
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type TaskMastInput {
+  taskID: ID!
+  placeName: String!
+  headCount: Int
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type TaskMasterObject {
+  tasks: [TaskMast!]!
+  groupID: ID!
+  limitTime: AWSTimestamp
+  remindSlackWeek: String
+  remindSlackTime: AWSTimestamp
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type TaskMasterObjectInput {
+  tasks: [TaskMast!]!
+  groupID: ID!
+  limitTime: AWSTimestamp
+  remindSlackWeek: String
+  remindSlackTime: AWSTimestamp
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
 }
 
 type UserMast {
   userID: ID!
   name: String!
+  groupID: String!
   role: String!
-  status: String!
-  records: [String]
+  status: Status!
+  records: [String!]
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp
+  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
 }
 
 input UserMastInput {
   userID: ID!
   name: String!
+  groupID: String!
   role: String!
-  status: String!
-  records: [String]
+  status: Status!
+  records: [String!]
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp
+  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
-}
-
-type WeeklyRecordMast {
-  weeklyRecordID: String!
-  cleanPlaceID: String
-  placeName: String
-  roomID: String!
-  headCount: Int
-  limitTime: AWSDateTime
-  createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp
-}
-
-input WeeklyRecordMastInput {
-  weeklyRecordID: String!
-  cleanPlaceID: String
-  placeName: String
-  roomID: String!
-  headCount: Int
-  limitTime: AWSDateTime
-  createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp
 }
