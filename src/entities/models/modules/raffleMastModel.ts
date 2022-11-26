@@ -4,7 +4,7 @@ import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { UserModel } from "./userModel";
 
-export class TaskMastModel extends BaseModel<RaffleMast> {
+export class RaffleMastModel extends BaseModel<RaffleMast> {
 	static getBlanc(
 		groupID: Scalars["ID"],
 		taskName: Scalars["String"]
