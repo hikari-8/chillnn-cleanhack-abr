@@ -4,6 +4,7 @@ import { UserMast } from "../../type";
 import { UserModel } from "./userModel";
 import { Scalars } from "../..";
 import { generateUUID } from "../../..";
+import { TaskMastModel } from "./taskMastModel";
 
 export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	static getBlanc(
@@ -35,26 +36,6 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		return this.mast.deletedAt;
 	}
 
-	// ============================================
-	// getter / setter
-	// ============================================
-	// get placeName() {
-	// 	return this.mast.placeName;
-	// }
-	// set placeName(input: string) {
-	// 	this.mast.placeName = input;
-	// }
-	// get headCount() {
-	// 	return this.mast.headCount || 0;
-	// }
-	// set headCount(input: number) {
-	// 	if (input) {
-	// 		this.mast.headCount = input;
-	// 	} else {
-	// 		this.mast.headCount = null;
-	// 	}
-	// }
-
 	get limitTime() {
 		return this.mast.limitTime || 0;
 	}
@@ -66,6 +47,31 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.mast.limitTime = null;
 		}
 	}
+
+	get remindSlackWeek() {
+		return this.mast.remindSlackWeek || "blanc";
+	}
+
+	set remindSlackWeek(input: string) {
+		if (input) {
+			this.mast.remindSlackWeek = input;
+		} else {
+			this.mast.remindSlackWeek = null;
+		}
+	}
+
+	get remindSlackTime() {
+		return this.mast.remindSlackWeek || "blanc";
+	}
+
+	set remindSlackTime(input: string) {
+		if (input) {
+			this.mast.remindSlackWeek = input;
+		} else {
+			this.mast.remindSlackWeek = null;
+		}
+	}
+
 	get tasks() {
 		return (this.mast.tasks = []);
 	}
@@ -112,30 +118,20 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	}
 
 	// /**
-	//  * ルームの全てのデータを取得する
+	//  * グループIDから、ルームの個々のデータを取得する
 	//  * @returns
 	//  */
-	// async fetchAllTaskMasterObjectsDataBygroupID(
-	// 	input: string
-	// ): Promise<TaskMasterObjectModel[]> {
-	// 	const res =
-	// 		await this.repositoryContainer.TaskMasterObjectMastRepository.fetchTaskMasterObjectsByRoomID(
-	// 			this.groupID
-	// 		);
-	// 	return res.map((item) => this.modelFactory.TaskMasterObjectModel(item));
-	// }
+	async fetchTasks(): Promise<TaskMastModel[]> {
+		const res =
+			await this.repositoryContainer.taskMasterObjectRepository.fetchTasksByGroupID(
+				this.groupID
+			);
+		return res.map((item) => this.modelFactory.TaskMastModel(item));
+	}
 
-	// /**
-	//  * ルームの個々のデータを取得する
-	//  * @returns
-	//  */
-	// async fetchTaskMasterObjectDataByTaskMasterObjectID(
-	// 	input: string
-	// ): Promise<TaskMasterObjectModel> {
-	// 	const res =
-	// 		await this.repositoryContainer.TaskMasterObjectMastRepository.fetchTaskMasterObjectByTaskMasterObjectID(
-	// 			this.TaskMasterObjectID
-	// 		);
-	// 	return this.modelFactory.TaskMasterObjectModel(res);
-	// }
+	// taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
+	getTaskMastModel(groupID: string) {
+		const blank = TaskMastModel.getBlanc(this.groupID, "blanc");
+		return this.modelFactory.TaskMastModel(blank, { isNew: true });
+	}
 }

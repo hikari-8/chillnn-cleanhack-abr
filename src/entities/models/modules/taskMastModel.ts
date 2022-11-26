@@ -58,12 +58,6 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 	// ============================================
 	// validation
 	// ============================================
-	get isRegisterable() {
-		return true;
-	}
-	get isAdmin() {
-		return true;
-	}
 
 	// ============================================
 	// functions

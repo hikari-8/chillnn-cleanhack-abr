@@ -1,4 +1,4 @@
-import { GroupMast, UserMast } from "../type";
+import { GroupMast, UserMast, TaskMast, TaskMasterObject } from "../type";
 import { RepositoryContainer } from "../repositories";
 import { UserModel } from "./modules/userModel";
 import { TaskMasterObjectModel } from "./modules/taskMasterObjectModel";
@@ -34,10 +34,7 @@ export class ModelFactory {
 			option || BaseModel.baseModelOption()
 		);
 	}
-	public TaskMasterObjectModel(
-		mast: TaskMasterObjectModel,
-		option?: ModelOption
-	) {
+	public TaskMasterObjectModel(mast: TaskMasterObject, option?: ModelOption) {
 		return new TaskMasterObjectModel(
 			mast, //
 			this.repositoryContainer,
@@ -45,7 +42,7 @@ export class ModelFactory {
 			option || BaseModel.baseModelOption()
 		);
 	}
-	public TaskMastModel(mast: TaskMastModel, option?: ModelOption) {
+	public TaskMastModel(mast: TaskMast, option?: ModelOption) {
 		return new TaskMastModel(
 			mast, //
 			this.repositoryContainer,
