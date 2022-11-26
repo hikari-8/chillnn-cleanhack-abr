@@ -16,7 +16,7 @@ export class UserUsecase {
 
 	async fetchMyUserModel() {
 		const me =
-			await this.repositoryContainer.userMastRepository.fetchUserMast();
+			await this.repositoryContainer.userMastRepository.fetchMyUserMast();
 		if (!me) {
 			// 存在しない場合
 			throw new ChillnnTrainingError(
