@@ -1,28 +1,25 @@
-import { CleanPlaceMast } from "../../type";
+import { TaskMasterObject, TaskMast } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { UserMast } from "../../type";
 import { UserModel } from "./userModel";
 import { Scalars } from "../..";
 import { generateUUID } from "../../..";
 
-export class TaskMasterObjectModel extends BaseModel<CleanPlaceMast> {
+export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	static getBlanc(
 		groupID: Scalars["String"],
-		placeName: Scalars["String"]
-	): CleanPlaceMast {
+		tasks: Array<TaskMast>
+	): TaskMasterObject {
 		return {
-			cleanPlaceID: generateUUID(),
-			placeName,
+			tasks,
 			groupID,
 			createdAt: new Date().getTime(),
+			updatedAt: new Date().getTime(),
 		};
 	}
 	// ============================================
 	// getters
 	// ============================================
-	get cleanPlaceID() {
-		return this.mast.cleanPlaceID;
-	}
 
 	get groupID() {
 		return this.mast.groupID;
@@ -41,22 +38,22 @@ export class TaskMasterObjectModel extends BaseModel<CleanPlaceMast> {
 	// ============================================
 	// getter / setter
 	// ============================================
-	get placeName() {
-		return this.mast.placeName;
-	}
-	set placeName(input: string) {
-		this.mast.placeName = input;
-	}
-	get headCount() {
-		return this.mast.headCount || 0;
-	}
-	set headCount(input: number) {
-		if (input) {
-			this.mast.headCount = input;
-		} else {
-			this.mast.headCount = null;
-		}
-	}
+	// get placeName() {
+	// 	return this.mast.placeName;
+	// }
+	// set placeName(input: string) {
+	// 	this.mast.placeName = input;
+	// }
+	// get headCount() {
+	// 	return this.mast.headCount || 0;
+	// }
+	// set headCount(input: number) {
+	// 	if (input) {
+	// 		this.mast.headCount = input;
+	// 	} else {
+	// 		this.mast.headCount = null;
+	// 	}
+	// }
 
 	get limitTime() {
 		return this.mast.limitTime || 0;
@@ -68,6 +65,13 @@ export class TaskMasterObjectModel extends BaseModel<CleanPlaceMast> {
 		} else {
 			this.mast.limitTime = null;
 		}
+	}
+	get tasks() {
+		return (this.mast.tasks = []);
+	}
+
+	set tasks(input: TaskMast[]) {
+		this.mast.tasks = input;
 	}
 
 	// ============================================
@@ -94,12 +98,12 @@ export class TaskMasterObjectModel extends BaseModel<CleanPlaceMast> {
 			if (this.isNew) {
 				this.mast.createdAt = now;
 				this.mast.updatedAt = now;
-				await this.repositoryContainer.cleanPlaceMastRepository.addCleanPlace(
+				await this.repositoryContainer.taskMasterObjectRepository.addTaskMasterObject(
 					this.mast
 				);
 			} else {
 				this.mast.updatedAt = now;
-				await this.repositoryContainer.cleanPlaceMastRepository.updateCleanPlace(
+				await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
 					this.mast
 				);
 			}
@@ -111,27 +115,27 @@ export class TaskMasterObjectModel extends BaseModel<CleanPlaceMast> {
 	//  * ルームの全てのデータを取得する
 	//  * @returns
 	//  */
-	async fetchAllCleanPlacesDataBygroupID(
-		input: string
-	): Promise<CleanPlaceModel[]> {
-		const res =
-			await this.repositoryContainer.cleanPlaceMastRepository.fetchCleanPlacesByRoomID(
-				this.groupID
-			);
-		return res.map((item) => this.modelFactory.CleanPlaceModel(item));
-	}
+	// async fetchAllTaskMasterObjectsDataBygroupID(
+	// 	input: string
+	// ): Promise<TaskMasterObjectModel[]> {
+	// 	const res =
+	// 		await this.repositoryContainer.TaskMasterObjectMastRepository.fetchTaskMasterObjectsByRoomID(
+	// 			this.groupID
+	// 		);
+	// 	return res.map((item) => this.modelFactory.TaskMasterObjectModel(item));
+	// }
 
 	// /**
 	//  * ルームの個々のデータを取得する
 	//  * @returns
 	//  */
-	async fetchCleanPlaceDataBycleanPlaceID(
-		input: string
-	): Promise<CleanPlaceModel> {
-		const res =
-			await this.repositoryContainer.cleanPlaceMastRepository.fetchCleanPlaceByCleanPlaceID(
-				this.cleanPlaceID
-			);
-		return this.modelFactory.CleanPlaceModel(res);
-	}
+	// async fetchTaskMasterObjectDataByTaskMasterObjectID(
+	// 	input: string
+	// ): Promise<TaskMasterObjectModel> {
+	// 	const res =
+	// 		await this.repositoryContainer.TaskMasterObjectMastRepository.fetchTaskMasterObjectByTaskMasterObjectID(
+	// 			this.TaskMasterObjectID
+	// 		);
+	// 	return this.modelFactory.TaskMasterObjectModel(res);
+	// }
 }

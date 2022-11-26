@@ -15,7 +15,7 @@ type TaskMasterObject {
 type TaskMast {
 	taskID: ID!
 	groupID: ID!
-	placeName: String!
+	taskName: String!
 	headCount: Int
 	# status
 	createdAt: AWSTimestamp!
@@ -44,7 +44,7 @@ type TaskMasterObjectInput {
 type TaskMastInput {
 	taskID: ID!
 	groupID: ID!
-	placeName: String!
+	taskName: String!
 	headCount: Int
 	# status
 	createdAt: AWSTimestamp!

@@ -123,7 +123,7 @@ export enum RaffleStatus {
 export type TaskMast = {
   taskID: Scalars['ID'];
   groupID: Scalars['ID'];
-  placeName: Scalars['String'];
+  taskName: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];
@@ -133,7 +133,7 @@ export type TaskMast = {
 export type TaskMastInput = {
   taskID: Scalars['ID'];
   groupID: Scalars['ID'];
-  placeName: Scalars['String'];
+  taskName: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];
