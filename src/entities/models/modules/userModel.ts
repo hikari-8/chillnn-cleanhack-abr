@@ -36,12 +36,6 @@ export class UserModel extends BaseModel<UserMast> {
 	set role(input: string) {
 		this.mast.role = input;
 	}
-	get status() {
-		return this.mast.status;
-	}
-	set status(input: string) {
-		this.mast.status = input;
-	}
 	// ============================================
 	// getter / setter -not mandatory
 	// ============================================
