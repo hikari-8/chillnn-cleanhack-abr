@@ -104,6 +104,7 @@ type RaffleTaskMastInput {
 
 type TaskMast {
   taskID: ID!
+  groupID: ID!
   placeName: String!
   headCount: Int
   createdAt: AWSTimestamp!
@@ -113,6 +114,7 @@ type TaskMast {
 
 type TaskMastInput {
   taskID: ID!
+  groupID: ID!
   placeName: String!
   headCount: Int
   createdAt: AWSTimestamp!

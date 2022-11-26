@@ -118,6 +118,7 @@ export type RaffleTaskMastInput = {
 
 export type TaskMast = {
   taskID: Scalars['ID'];
+  groupID: Scalars['ID'];
   placeName: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   createdAt: Scalars['AWSTimestamp'];
@@ -127,6 +128,7 @@ export type TaskMast = {
 
 export type TaskMastInput = {
   taskID: Scalars['ID'];
+  groupID: Scalars['ID'];
   placeName: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   createdAt: Scalars['AWSTimestamp'];
