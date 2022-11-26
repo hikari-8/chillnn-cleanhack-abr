@@ -1,17 +1,15 @@
-import { GroupMast, TaskMasterObject } from "../../type";
+import { GroupMast, TaskMast } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { generateUUID } from "../../../util";
 
 export class GroupModel extends BaseModel<GroupMast> {
-	static getBlanc(
-    groupName: Scalars['String'];
-	): GroupMast {
+	static getBlanc(groupName: Scalars["String"]): GroupMast {
 		return {
 			groupID: generateUUID(),
 			groupName,
 			createdAt: new Date().getTime(),
-      updatedAt: new Date().getTime(),
+			updatedAt: new Date().getTime(),
 		};
 	}
 	// ============================================
@@ -50,16 +48,16 @@ export class GroupModel extends BaseModel<GroupMast> {
 		return true;
 	}
 
-
 	/**
 	 * このグループのマスターデータを取得する
 	 * @returns
 	 */
-	async fetchTaskMasterObject(input: string): Promise<TaskMasterObject> {
+	async fetchTaskMasterObject(input: string): Promise<TaskMast[]> {
 		const res =
 			await this.repositoryContainer.taskMasterObjectRepository.fetchTasksByGroupID(
 				this.groupID
 			);
-		return res.map((item) => this.modelFactory.TaskMasterObjectModel(item));
+		return res;
+		// mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
 	}
 }
