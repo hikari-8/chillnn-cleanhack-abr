@@ -14,7 +14,7 @@ type RaffleMastGroupCache = {
 			createdAt: number;
 		};
 
-		//Userのキャッシュよゆうがあれば実装する
+		//Userのキャッシュ余裕があれば実装する
 		// [userID: string]: {
 		// 	mast: RaffleJoinUser;
 		// 	createdAt: number;
