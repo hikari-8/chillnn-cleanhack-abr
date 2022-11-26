@@ -1,8 +1,9 @@
 import { throws } from "assert";
 import { UserMast } from "../../type";
-import { CleanPlaceModel } from "./cleanPlaceModel";
+import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { Scalars } from "../..";
 import { BaseModel } from "./_baseModel";
+import { GroupModel } from "./groupModel";
 
 export class UserModel extends BaseModel<UserMast> {
 	// ============================================
@@ -54,12 +55,12 @@ export class UserModel extends BaseModel<UserMast> {
 	get isRegisterable() {
 		return true;
 	}
-	get isAdmin() {
-		return true;
-	}
 	// ============================================
 	// functions
 	// ============================================
+	public isAdmin() {
+		this.mast.role === "admin" ? true : false;
+	}
 
 	/**
 	 * ユーザー情報を新規登録、または更新する
@@ -67,9 +68,16 @@ export class UserModel extends BaseModel<UserMast> {
 	async register() {
 		if (this.isRegisterable) {
 			const now = new Date().getTime();
-			if (this.isNew) {
+			if (this.isNew && !this.isAdmin) {
 				this.mast.createdAt = now;
 				this.mast.updatedAt = now;
+				await this.repositoryContainer.userMastRepository.addUserMast(
+					this.mast
+				);
+			} else if (this.isNew && this.isAdmin) {
+				this.mast.createdAt = now;
+				this.mast.updatedAt = now;
+				this.mast.role = "admin";
 				await this.repositoryContainer.userMastRepository.addUserMast(
 					this.mast
 				);
@@ -81,5 +89,33 @@ export class UserModel extends BaseModel<UserMast> {
 			}
 			this.isNew = false;
 		}
+	}
+
+	/**
+	 * Adminならグループを登録、更新できる
+	 */
+	async groupRegister() {
+		if (this.isRegisterable) {
+			const now = new Date().getTime();
+			if (this.isNew && this.role !== "admin") {
+				return window.alert(
+					"管理者権限がありません。管理者に言って、Admin権限を付与してもらってください。"
+				);
+			} else if (this.isNew && this.role === "admin") {
+				this.mast.createdAt = now;
+				this.mast.updatedAt = now;
+				await this.createGroupModel();
+			} else {
+				this.mast.updatedAt = now;
+				await this.createGroupModel();
+			}
+			this.isNew = false;
+		}
+	}
+
+	createGroupModel(): GroupModel {
+		return this.modelFactory.GroupModel(GroupModel.getBlanc(this.userID), {
+			isNew: true,
+		});
 	}
 }

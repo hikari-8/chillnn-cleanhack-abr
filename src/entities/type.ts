@@ -37,7 +37,7 @@ export enum ErrorCode {
 }
 
 export type GroupMast = {
-  groupID: Scalars['String'];
+  groupID: Scalars['ID'];
   groupName: Scalars['String'];
   createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];
@@ -45,7 +45,7 @@ export type GroupMast = {
 };
 
 export type GroupMastInput = {
-  groupID: Scalars['String'];
+  groupID: Scalars['ID'];
   groupName: Scalars['String'];
   createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];

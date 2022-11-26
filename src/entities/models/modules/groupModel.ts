@@ -1,12 +1,24 @@
-import { RoomMast } from "../../type";
+import { GroupMast, TaskMasterObject } from "../../type";
 import { BaseModel } from "./_baseModel";
+import { Scalars } from "../../type";
+import { generateUUID } from "../../../util";
 
-export class RoomModel extends BaseModel<RoomMast> {
+export class GroupModel extends BaseModel<GroupMast> {
+	static getBlanc(
+    groupName: Scalars['String'];
+	): GroupMast {
+		return {
+			groupID: generateUUID(),
+			groupName,
+			createdAt: new Date().getTime(),
+      updatedAt: new Date().getTime(),
+		};
+	}
 	// ============================================
 	// getters
 	// ============================================
-	get roomID() {
-		return this.mast.roomID;
+	get groupID() {
+		return this.mast.groupID;
 	}
 	get createdAt() {
 		return this.mast.createdAt;
@@ -21,11 +33,11 @@ export class RoomModel extends BaseModel<RoomMast> {
 	// ============================================
 	// getter / setter
 	// ============================================
-	get roomName() {
-		return this.mast.roomName;
+	get groupName() {
+		return this.mast.groupName;
 	}
-	set roomName(input: string) {
-		this.mast.roomName = input;
+	set groupName(input: string) {
+		this.mast.groupName = input;
 	}
 
 	// ============================================
@@ -38,25 +50,16 @@ export class RoomModel extends BaseModel<RoomMast> {
 		return true;
 	}
 
+
 	/**
-	 * Admin権限があれば、Roomを追加、編集できる
+	 * このグループのマスターデータを取得する
+	 * @returns
 	 */
-	async register() {
-		if (this.isRegisterable && this.isAdmin) {
-			const now = new Date().getTime();
-			if (this.isNew) {
-				this.mast.createdAt = now;
-				this.mast.updatedAt = now;
-				await this.repositoryContainer.roomMastRepository.addRoom(
-					this.mast
-				);
-			} else {
-				this.mast.updatedAt = now;
-				await this.repositoryContainer.roomMastRepository.updateRoom(
-					this.mast
-				);
-			}
-			this.isNew = false;
-		}
+	async fetchTaskMasterObject(input: string): Promise<TaskMasterObject> {
+		const res =
+			await this.repositoryContainer.taskMasterObjectRepository.fetchTasksByGroupID(
+				this.groupID
+			);
+		return res.map((item) => this.modelFactory.TaskMasterObjectModel(item));
 	}
 }
