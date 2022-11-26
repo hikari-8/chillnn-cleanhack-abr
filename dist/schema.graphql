@@ -58,6 +58,7 @@ type RaffleMast {
   taskName: String!
   headCount: Int
   userID: [ID!]
+  createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
 }

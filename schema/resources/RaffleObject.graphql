@@ -28,6 +28,7 @@ type RaffleMast {
 	userID: [ID!]
 	# status
 	###くじは、人数のみ変更可能にする
+	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
 	deletedAt: AWSTimestamp
 }

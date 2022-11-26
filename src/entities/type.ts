@@ -72,6 +72,7 @@ export type RaffleMast = {
   taskName: Scalars['String'];
   headCount?: Maybe<Scalars['Int']>;
   userID?: Maybe<Array<Scalars['ID']>>;
+  createdAt: Scalars['AWSTimestamp'];
   updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
