@@ -54,19 +54,41 @@ export type GroupMastInput = {
 
 export type RaffleJoinUser = {
   userID: Scalars['ID'];
+  groupID: Scalars['ID'];
   joinAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type RaffleJoinUserInput = {
   userID: Scalars['ID'];
+  groupID: Scalars['ID'];
   joinAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type RaffleMast = {
+  taskID: Scalars['ID'];
+  groupID: Scalars['ID'];
+  taskName: Scalars['String'];
+  headCount?: Maybe<Scalars['Int']>;
+  userID?: Maybe<Array<Scalars['ID']>>;
+  updatedAt: Scalars['AWSTimestamp'];
+  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+};
+
+export type RaffleMastInput = {
+  taskID: Scalars['ID'];
+  groupID: Scalars['ID'];
+  taskName: Scalars['String'];
+  userID?: Maybe<Array<Scalars['ID']>>;
+  createdAt: Scalars['AWSTimestamp'];
+  updatedAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 
 export type RaffleObject = {
   raffleID: Scalars['ID'];
-  tasks: Array<RaffleTaskMast>;
+  tasks: Array<RaffleMast>;
   groupID: Scalars['ID'];
   activeMembers?: Maybe<Array<RaffleJoinUser>>;
   limitTime: Scalars['AWSTimestamp'];
@@ -80,7 +102,7 @@ export type RaffleObject = {
 
 export type RaffleObjectInput = {
   raffleID: Scalars['ID'];
-  tasks: Array<RaffleTaskMast>;
+  tasks: Array<RaffleMast>;
   groupID: Scalars['ID'];
   activeMembers?: Maybe<Array<RaffleJoinUser>>;
   limitTime: Scalars['AWSTimestamp'];
@@ -97,24 +119,6 @@ export enum RaffleStatus {
   EFFECTIVE_AND_FIXED = 'EFFECTIVE_AND_FIXED',
   DONE = 'DONE'
 }
-
-export type RaffleTaskMast = {
-  taskID: Scalars['ID'];
-  taskName: Scalars['String'];
-  headCount?: Maybe<Scalars['Int']>;
-  userID?: Maybe<Array<Scalars['ID']>>;
-  updatedAt: Scalars['AWSTimestamp'];
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
-};
-
-export type RaffleTaskMastInput = {
-  taskID: Scalars['ID'];
-  taskName: Scalars['String'];
-  userID?: Maybe<Array<Scalars['ID']>>;
-  createdAt: Scalars['AWSTimestamp'];
-  updatedAt: Scalars['AWSTimestamp'];
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
-};
 
 export type TaskMast = {
   taskID: Scalars['ID'];

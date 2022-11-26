@@ -40,19 +40,41 @@ type GroupMastInput {
 
 type RaffleJoinUser {
   userID: ID!
+  groupID: ID!
   joinAt: AWSTimestamp!
   deletedAt: AWSTimestamp
 }
 
 type RaffleJoinUserInput {
   userID: ID!
+  groupID: ID!
   joinAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type RaffleMast {
+  taskID: ID!
+  groupID: ID!
+  taskName: String!
+  headCount: Int
+  userID: [ID!]
+  updatedAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+}
+
+type RaffleMastInput {
+  taskID: ID!
+  groupID: ID!
+  taskName: String!
+  userID: [ID!]
+  createdAt: AWSTimestamp!
+  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
 }
 
 type RaffleObject {
   raffleID: ID!
-  tasks: [RaffleTaskMast!]!
+  tasks: [RaffleMast!]!
   groupID: ID!
   activeMembers: [RaffleJoinUser!]
   limitTime: AWSTimestamp!
@@ -66,7 +88,7 @@ type RaffleObject {
 
 type RaffleObjectInput {
   raffleID: ID!
-  tasks: [RaffleTaskMast!]!
+  tasks: [RaffleMast!]!
   groupID: ID!
   activeMembers: [RaffleJoinUser!]
   limitTime: AWSTimestamp!
@@ -82,24 +104,6 @@ enum RaffleStatus {
   EFFECTIVE
   EFFECTIVE_AND_FIXED
   DONE
-}
-
-type RaffleTaskMast {
-  taskID: ID!
-  taskName: String!
-  headCount: Int
-  userID: [ID!]
-  updatedAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
-}
-
-type RaffleTaskMastInput {
-  taskID: ID!
-  taskName: String!
-  userID: [ID!]
-  createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
 }
 
 type TaskMast {
