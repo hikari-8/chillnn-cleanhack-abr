@@ -1,28 +1,39 @@
-import { WeeklyRecordMast } from "../../type";
+import { RaffleObject, RaffleMast, RaffleStatus } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
 import { generateUUID } from "../../..";
+import { RaffleMastModel } from "./raffleMastModel";
 
-export class RaffleModel extends BaseModel<WeeklyRecordMast> {
-	static getBlanc(roomID: Scalars["String"]): WeeklyRecordMast {
+export class RaffleObjectModel extends BaseModel<RaffleObject> {
+	static getBlanc(
+		tasks: Array<RaffleMast>,
+		groupID: Scalars["String"],
+		limitTime: Scalars["AWSTimestamp"],
+		raffleStatus: RaffleStatus,
+		remindSlackWeek: Scalars["String"],
+		remindSlackTime: Scalars["AWSTimestamp"]
+	): RaffleObject {
 		return {
-			weeklyRecordID: generateUUID(),
-			roomID,
+			raffleID: generateUUID(),
+			tasks,
+			groupID,
+			limitTime,
+			raffleStatus,
+			remindSlackWeek,
+			remindSlackTime,
 			createdAt: new Date().getTime(),
+			updatedAt: new Date().getTime(),
 		};
 	}
 
 	// ============================================
 	// getters
 	// ============================================
-	get weeklyRecordID() {
-		return this.mast.cleanPlaceID;
+	get raffleID() {
+		return this.mast.raffleID;
 	}
-	get cleanPlaceID() {
-		return this.mast.cleanPlaceID;
-	}
-	get roomID() {
-		return this.mast.roomID;
+	get groupID() {
+		return this.mast.groupID;
 	}
 	get createdAt() {
 		return this.mast.createdAt;
@@ -30,37 +41,70 @@ export class RaffleModel extends BaseModel<WeeklyRecordMast> {
 	get updatedAt() {
 		return this.mast.updatedAt;
 	}
+	get deletedAt() {
+		return this.mast.deletedAt;
+	}
 
 	// ============================================
 	// getter / setter
 	// ============================================
-	get placeName() {
-		return this.mast.placeName || "";
-	}
-	set placeName(input: string) {
-		this.mast.placeName = input;
-	}
-	get headCount() {
-		return this.mast.headCount || 0;
-	}
-	set headCount(input: number) {
-		if (input) {
-			this.mast.headCount = input;
-		} else {
-			this.mast.headCount = null;
-		}
-	}
-
 	get limitTime() {
-		return this.mast.limitTime || "";
+		return this.mast.limitTime || 0;
 	}
 
-	set limitTime(input: string) {
+	set limitTime(input: number) {
 		if (input) {
 			this.mast.limitTime = input;
 		} else {
-			this.mast.limitTime = null;
+			this.mast.limitTime = 0;
 		}
+	}
+
+	get raffleStatus() {
+		return this.mast.raffleStatus;
+	}
+
+	// 引数見直した方がいいかも
+	set raffleStatus(input: string) {
+		if (this.isNew) {
+			this.mast.raffleStatus === "EFFECTIVE";
+		} else if (this.isDone) {
+			this.mast.raffleStatus === "DONE";
+		} else {
+			this.mast.raffleStatus === "EFFECTIVE_AND_FIXED";
+		}
+	}
+
+	get remindSlackWeek() {
+		return this.mast.remindSlackWeek || "blanc";
+	}
+
+	set remindSlackWeek(input: string) {
+		if (input) {
+			this.mast.remindSlackWeek = input;
+		} else {
+			this.mast.remindSlackWeek = "blanc";
+		}
+	}
+
+	get remindSlackTime() {
+		return this.mast.remindSlackWeek || "blanc";
+	}
+
+	set remindSlackTime(input: string) {
+		if (input) {
+			this.mast.remindSlackWeek = input;
+		} else {
+			this.mast.remindSlackWeek = "blanc";
+		}
+	}
+
+	get tasks() {
+		return (this.mast.tasks = []);
+	}
+
+	set tasks(input: RaffleMast[]) {
+		this.mast.tasks = input;
 	}
 
 	// ============================================
@@ -74,6 +118,10 @@ export class RaffleModel extends BaseModel<WeeklyRecordMast> {
 		return true;
 	}
 
+	get isDone() {
+		return true;
+	}
+
 	/**
 	 * ルームのそれぞれのくじのデータを一括で登録・編集する
 	 */
@@ -83,12 +131,12 @@ export class RaffleModel extends BaseModel<WeeklyRecordMast> {
 			if (this.isNew) {
 				this.mast.createdAt = now;
 				this.mast.updatedAt = now;
-				await this.repositoryContainer.weeklyRecordMastRepository.addWeeklyRecord(
+				await this.repositoryContainer.raffleObjectRepository.addRaffleObject(
 					this.mast
 				);
 			} else {
 				this.mast.updatedAt = now;
-				await this.repositoryContainer.weeklyRecordMastRepository.updateWeeklyRecord(
+				await this.repositoryContainer.raffleObjectRepository.updateRaffleObject(
 					this.mast
 				);
 			}
@@ -97,26 +145,20 @@ export class RaffleModel extends BaseModel<WeeklyRecordMast> {
 	}
 
 	// /**
-	//  * 今週のくじのデータを取得する
+	//  * グループIDから、ルームの個々のデータを取得する
 	//  * @returns
 	//  */
-	async fetchEachWeeklyRecordDataBygroupID(): Promise<WeeklyRecordModel[]> {
+	async fetchTasks(): Promise<RaffleMastModel[]> {
 		const res =
-			await this.repositoryContainer.weeklyRecordMastRepository.fetchWeeklyRecordsByWeeklyRecordID(
-				this.weeklyRecordID
+			await this.repositoryContainer.raffleObjectRepository.fetchRaffleTasksByGroupID(
+				this.groupID
 			);
-		return res.map((item) => this.modelFactory.WeeklyRecordModel(item));
+		return res.map((item) => this.modelFactory.RaffleMastModel(item));
 	}
 
-	// /**
-	//  * 隔週のくじのデータを全て取得する
-	//  * @returns
-	//  */
-	async fetchAllWeeklyRecordByRoomID(): Promise<WeeklyRecordModel> {
-		const res =
-			await this.repositoryContainer.weeklyRecordMastRepository.fetchWeeklyRecordsByRoomID(
-				this.roomID
-			);
-		return res.map((item) => this.modelFactory.WeeklyRecordModel(item));
+	// raffleObjectがraffleMastを保持していることを明示する(別のクラスが別のクラスを保持している)
+	getRaffleMastModel(groupID: string) {
+		const blank = RaffleMastModel.getBlanc(this.groupID, "blanc");
+		return this.modelFactory.RaffleMastModel(blank, { isNew: true });
 	}
 }
