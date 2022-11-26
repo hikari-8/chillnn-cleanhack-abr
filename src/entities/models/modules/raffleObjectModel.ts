@@ -3,6 +3,7 @@ import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
 import { generateUUID } from "../../..";
 import { RaffleMastModel } from "./raffleMastModel";
+import { RaffleJoinUserModel } from "./raffleJoinUserModel";
 
 export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	static getBlanc(
@@ -160,5 +161,11 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	getRaffleMastModel(groupID: string) {
 		const blank = RaffleMastModel.getBlanc(this.groupID, "blanc");
 		return this.modelFactory.RaffleMastModel(blank, { isNew: true });
+	}
+
+	// raffleObjectがraffleJoinUserを保持していることを明示する(別のクラスが別のクラスを保持している)
+	getRaffleJoinUserModel(groupID: string) {
+		const blank = RaffleJoinUserModel.getBlanc(this.groupID, "blanc");
+		return this.modelFactory.RaffleJoinUserModel(blank, { isNew: true });
 	}
 }

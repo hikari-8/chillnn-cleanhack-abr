@@ -5,6 +5,7 @@ import {
 	TaskMasterObject,
 	RaffleObject,
 	RaffleMast,
+	RaffleJoinUser,
 } from "../type";
 import { RepositoryContainer } from "../repositories";
 import { UserModel } from "./modules/userModel";
@@ -12,6 +13,7 @@ import { TaskMasterObjectModel } from "./modules/taskMasterObjectModel";
 import { TaskMastModel } from "./modules/taskMastModel";
 import { RaffleObjectModel } from "./modules/raffleObjectModel";
 import { RaffleMastModel } from "./modules/raffleMastModel";
+import { RaffleJoinUserModel } from "./modules/raffleJoinUserModel";
 import { GroupModel } from "./modules/groupModel";
 import { BaseModel, ModelOption } from "./modules/_baseModel";
 
@@ -20,6 +22,7 @@ export * from "./modules/taskMasterObjectModel";
 export * from "./modules/taskMastModel";
 export * from "./modules/raffleObjectModel";
 export * from "./modules/raffleMastModel";
+export * from "./modules/raffleJoinUserModel";
 export * from "./modules/groupModel";
 
 export class ModelFactory {
@@ -70,6 +73,14 @@ export class ModelFactory {
 	}
 	public RaffleMastModel(mast: RaffleMast, option?: ModelOption) {
 		return new RaffleMastModel(
+			mast, //
+			this.repositoryContainer,
+			this,
+			option || BaseModel.baseModelOption()
+		);
+	}
+	public RaffleJoinUserModel(mast: RaffleJoinUser, option?: ModelOption) {
+		return new RaffleJoinUserModel(
 			mast, //
 			this.repositoryContainer,
 			this,
