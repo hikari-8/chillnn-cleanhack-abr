@@ -121,6 +121,20 @@ export enum RaffleStatus {
   DONE = 'DONE'
 }
 
+export type S3Object = {
+  url: Scalars['AWSURL'];
+  bucket: Scalars['String'];
+  key: Scalars['String'];
+  region: Scalars['String'];
+};
+
+export type S3ObjectInput = {
+  url: Scalars['AWSURL'];
+  bucket: Scalars['String'];
+  key: Scalars['String'];
+  region: Scalars['String'];
+};
+
 export type TaskMast = {
   taskID: Scalars['ID'];
   groupID: Scalars['ID'];
