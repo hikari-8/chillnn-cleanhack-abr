@@ -1,8 +1,6 @@
 import { RaffleObject, RaffleMast, RaffleStatus } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
-import { RaffleMastModel } from "./raffleMastModel";
-import { RaffleJoinUserModel } from "./raffleJoinUserModel";
 export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
     static getBlanc(tasks: Array<RaffleMast>, groupID: Scalars["String"], limitTime: Scalars["AWSTimestamp"], raffleStatus: RaffleStatus, remindSlackWeek: Scalars["String"], remindSlackTime: Scalars["AWSTimestamp"]): RaffleObject;
     get raffleID(): string;
@@ -28,6 +26,4 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      */
     register(): Promise<void>;
     fetchRaffle(groupID: string): Promise<void>;
-    getRaffleMastModel(groupID: string): RaffleMastModel;
-    getRaffleJoinUserModel(groupID: string): RaffleJoinUserModel;
 }

@@ -3,8 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RaffleObjectModel = void 0;
 const _baseModel_1 = require("./_baseModel");
 const __1 = require("../../..");
-const raffleMastModel_1 = require("./raffleMastModel");
-const raffleJoinUserModel_1 = require("./raffleJoinUserModel");
 class RaffleObjectModel extends _baseModel_1.BaseModel {
     static getBlanc(tasks, groupID, limitTime, raffleStatus, remindSlackWeek, remindSlackTime) {
         return {
@@ -131,16 +129,6 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     async fetchRaffle(groupID) {
         const res = await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(this.groupID);
         // return res.map((item) => this.modelFactory.RaffleMastModel(item));
-    }
-    // raffleObjectがraffleMastを保持していることを明示する(別のクラスが別のクラスを保持している)
-    getRaffleMastModel(groupID) {
-        const blank = raffleMastModel_1.RaffleMastModel.getBlanc(this.groupID, "blanc");
-        return this.modelFactory.RaffleMastModel(blank, { isNew: true });
-    }
-    // raffleObjectがraffleJoinUserを保持していることを明示する(別のクラスが別のクラスを保持している)
-    getRaffleJoinUserModel(groupID) {
-        const blank = raffleJoinUserModel_1.RaffleJoinUserModel.getBlanc(this.groupID, "blanc");
-        return this.modelFactory.RaffleJoinUserModel(blank, { isNew: true });
     }
 }
 exports.RaffleObjectModel = RaffleObjectModel;

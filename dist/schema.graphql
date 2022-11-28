@@ -53,6 +53,7 @@ type RaffleJoinUserInput {
 }
 
 type RaffleMast {
+  raffleID: ID!
   taskID: ID!
   groupID: ID!
   taskName: String!
@@ -64,6 +65,7 @@ type RaffleMast {
 }
 
 type RaffleMastInput {
+  raffleID: ID!
   taskID: ID!
   groupID: ID!
   taskName: String!

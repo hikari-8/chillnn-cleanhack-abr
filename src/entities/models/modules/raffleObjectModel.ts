@@ -158,14 +158,14 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	// raffleObjectがraffleMastを保持していることを明示する(別のクラスが別のクラスを保持している)
-	getRaffleMastModel(groupID: string) {
-		const blank = RaffleMastModel.getBlanc(this.groupID, "blanc");
-		return this.modelFactory.RaffleMastModel(blank, { isNew: true });
-	}
+	// getRaffleMastModel(raffleID: string) {
+	// 	const blank = RaffleMastModel.getBlanc(this.raffleID, "blanc");
+	// 	return this.modelFactory.RaffleMastModel(blank, { isNew: true });
+	// }
 
 	// raffleObjectがraffleJoinUserを保持していることを明示する(別のクラスが別のクラスを保持している)
-	getRaffleJoinUserModel(groupID: string) {
-		const blank = RaffleJoinUserModel.getBlanc(this.groupID, "blanc");
-		return this.modelFactory.RaffleJoinUserModel(blank, { isNew: true });
-	}
+	// getRaffleJoinUserModel(groupID: string) {
+	// 	const blank = RaffleJoinUserModel.getBlanc(this.groupID, "blanc");
+	// 	return this.modelFactory.RaffleJoinUserModel(blank, { isNew: true });
+	// }
 }

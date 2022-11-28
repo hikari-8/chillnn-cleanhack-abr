@@ -20,16 +20,16 @@ class RaffleObjectRepositoryCacheAdaptor {
         this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
         return res;
     }
-    async fetchRaffleObject(groupID) {
-        const cache = this.fetchCacheRaffleObject(groupID);
+    async fetchRaffleObject(raffleID) {
+        const cache = this.fetchCacheRaffleObject(raffleID);
         if (cache) {
             return null;
         }
         else if (cache) {
             return cache;
         }
-        const res = await this.repository.fetchRaffleObject(groupID);
-        this.updateRaffleCacheByGroupID(groupID);
+        const res = await this.repository.fetchRaffleObject(raffleID);
+        this.updateRaffleCacheByGroupID(raffleID);
         return res;
     }
     // async fetchRaffleTasksByGroupID(groupID: string): Promise<RaffleMast[]> {
@@ -59,8 +59,8 @@ class RaffleObjectRepositoryCacheAdaptor {
         });
     }
     //とりま簡易的に設置しているけど、後で見返した方が良さそう
-    updateRaffleCacheByGroupID(groupID) {
-        this.groupCache[groupID] = {};
+    updateRaffleCacheByGroupID(raffleID) {
+        this.groupCache[raffleID] = {};
         if (!this.groupCache)
             return;
     }

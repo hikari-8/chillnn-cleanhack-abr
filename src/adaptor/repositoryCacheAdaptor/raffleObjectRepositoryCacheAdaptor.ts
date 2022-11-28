@@ -32,6 +32,7 @@ type RaffleMastRaffleCache = {
 export class RaffleObjectRepositoryCacheAdaptor
 	implements IRaffleObjectRepository
 {
+	//後で名前raffleCacheに変える
 	private groupCache: RaffleMastGroupCache;
 	private taskCache: RaffleMastRaffleCache;
 
@@ -60,15 +61,15 @@ export class RaffleObjectRepositoryCacheAdaptor
 		this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
 		return res;
 	}
-	async fetchRaffleObject(groupID: string): Promise<RaffleObject | null> {
-		const cache = this.fetchCacheRaffleObject(groupID);
+	async fetchRaffleObject(raffleID: string): Promise<RaffleObject | null> {
+		const cache = this.fetchCacheRaffleObject(raffleID);
 		if (cache) {
 			return null;
 		} else if (cache) {
 			return cache;
 		}
-		const res = await this.repository.fetchRaffleObject(groupID);
-		this.updateRaffleCacheByGroupID(groupID);
+		const res = await this.repository.fetchRaffleObject(raffleID);
+		this.updateRaffleCacheByGroupID(raffleID);
 		return res;
 	}
 
@@ -107,8 +108,8 @@ export class RaffleObjectRepositoryCacheAdaptor
 	}
 
 	//とりま簡易的に設置しているけど、後で見返した方が良さそう
-	private updateRaffleCacheByGroupID(groupID: Scalars["ID"]) {
-		this.groupCache[groupID] = {};
+	private updateRaffleCacheByGroupID(raffleID: Scalars["ID"]) {
+		this.groupCache[raffleID] = {};
 		if (!this.groupCache) return;
 	}
 

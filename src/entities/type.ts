@@ -67,6 +67,7 @@ export type RaffleJoinUserInput = {
 };
 
 export type RaffleMast = {
+  raffleID: Scalars['ID'];
   taskID: Scalars['ID'];
   groupID: Scalars['ID'];
   taskName: Scalars['String'];
@@ -78,6 +79,7 @@ export type RaffleMast = {
 };
 
 export type RaffleMastInput = {
+  raffleID: Scalars['ID'];
   taskID: Scalars['ID'];
   groupID: Scalars['ID'];
   taskName: Scalars['String'];

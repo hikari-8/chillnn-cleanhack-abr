@@ -23,7 +23,7 @@ export declare class RaffleObjectRepositoryCacheAdaptor implements IRaffleObject
     });
     addRaffleObject(input: RaffleObject): Promise<RaffleObject>;
     updateRaffleObject(input: RaffleObject): Promise<RaffleObject>;
-    fetchRaffleObject(groupID: string): Promise<RaffleObject | null>;
+    fetchRaffleObject(raffleID: string): Promise<RaffleObject | null>;
     private updateGroupCache;
     private updateRaffleCacheByGroupID;
     private fetchCacheRaffleObject;

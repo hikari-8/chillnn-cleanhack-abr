@@ -6,10 +6,12 @@ import { UserModel } from "./userModel";
 
 export class RaffleMastModel extends BaseModel<RaffleMast> {
 	static getBlanc(
+		raffleID: Scalars["ID"],
 		groupID: Scalars["ID"],
 		taskName: Scalars["String"]
 	): RaffleMast {
 		return {
+			raffleID,
 			taskID: generateUUID(),
 			taskName,
 			groupID,
@@ -20,6 +22,10 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 	// ============================================
 	// getters
 	// ============================================
+
+	get raffleID() {
+		return this.mast.groupID;
+	}
 
 	get groupID() {
 		return this.mast.groupID;
