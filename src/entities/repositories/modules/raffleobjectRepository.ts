@@ -4,7 +4,8 @@ export interface IRaffleObjectRepository {
 	//くじの新規作成・更新
 	addRaffleObject(input: RaffleObject): Promise<RaffleObject>;
 	updateRaffleObject(input: RaffleObject): Promise<RaffleObject>;
+	fetchRaffleObject(groupID: Scalars["ID"]): Promise<RaffleObject | null>;
 
 	// グループIDから全てのくじのデータを取得する
-	fetchRaffleTasksByGroupID(groupID: Scalars["ID"]): Promise<RaffleMast[]>;
+	// fetchRaffleTasksByGroupID(groupID: Scalars["ID"]): Promise<RaffleMast[]>;
 }

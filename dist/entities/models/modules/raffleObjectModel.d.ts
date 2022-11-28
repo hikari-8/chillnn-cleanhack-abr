@@ -27,7 +27,7 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      * ルームのそれぞれのくじのデータを一括で登録・編集する
      */
     register(): Promise<void>;
-    fetchTasks(): Promise<RaffleMastModel[]>;
+    fetchRaffle(groupID: string): Promise<void>;
     getRaffleMastModel(groupID: string): RaffleMastModel;
     getRaffleJoinUserModel(groupID: string): RaffleJoinUserModel;
 }

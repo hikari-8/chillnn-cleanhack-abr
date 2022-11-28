@@ -1,6 +1,6 @@
-import { Scalars, RaffleObject, RaffleMast } from "../../type";
+import { Scalars, RaffleObject } from "../../type";
 export interface IRaffleObjectRepository {
     addRaffleObject(input: RaffleObject): Promise<RaffleObject>;
     updateRaffleObject(input: RaffleObject): Promise<RaffleObject>;
-    fetchRaffleTasksByGroupID(groupID: Scalars["ID"]): Promise<RaffleMast[]>;
+    fetchRaffleObject(groupID: Scalars["ID"]): Promise<RaffleObject | null>;
 }

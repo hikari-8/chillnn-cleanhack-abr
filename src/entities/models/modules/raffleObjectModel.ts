@@ -149,12 +149,12 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	//  * グループIDから、ルームの個々のデータを取得する
 	//  * @returns
 	//  */
-	async fetchTasks(): Promise<RaffleMastModel[]> {
+	async fetchRaffle(groupID: string) {
 		const res =
-			await this.repositoryContainer.raffleObjectRepository.fetchRaffleTasksByGroupID(
+			await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
 				this.groupID
 			);
-		return res.map((item) => this.modelFactory.RaffleMastModel(item));
+		// return res.map((item) => this.modelFactory.RaffleMastModel(item));
 	}
 
 	// raffleObjectがraffleMastを保持していることを明示する(別のクラスが別のクラスを保持している)

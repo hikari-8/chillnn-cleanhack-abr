@@ -60,18 +60,29 @@ export class RaffleObjectRepositoryCacheAdaptor
 		this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
 		return res;
 	}
-
-	async fetchRaffleTasksByGroupID(groupID: string): Promise<RaffleMast[]> {
-		const GroupCache = this.groupCache[groupID];
-		if (GroupCache)
-			return (Object.keys(GroupCache) || [])
-				.map((key) => this.groupCache[groupID][key].mast)
-				.sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
-
-		return (Object.keys(GroupCache) || [])
-			.map((key) => this.groupCache[groupID][key].mast)
-			.sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
+	async fetchRaffleObject(groupID: string): Promise<RaffleObject | null> {
+		const cache = this.fetchCacheRaffleObject(groupID);
+		if (cache) {
+			return null;
+		} else if (cache) {
+			return cache;
+		}
+		const res = await this.repository.fetchRaffleObject(groupID);
+		this.updateRaffleCacheByGroupID(groupID);
+		return res;
 	}
+
+	// async fetchRaffleTasksByGroupID(groupID: string): Promise<RaffleMast[]> {
+	// 	const GroupCache = this.groupCache[groupID];
+	// 	if (GroupCache)
+	// 		return (Object.keys(GroupCache) || [])
+	// 			.map((key) => this.groupCache[groupID][key].mast)
+	// 			.sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
+
+	// 	return (Object.keys(GroupCache) || [])
+	// 		.map((key) => this.groupCache[groupID][key].mast)
+	// 		.sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
+	// }
 
 	// ===============================================================
 	//
@@ -93,5 +104,15 @@ export class RaffleObjectRepositoryCacheAdaptor
 			};
 			this.taskCache[task.taskID] = { mast: task, createdAt };
 		});
+	}
+
+	//とりま簡易的に設置しているけど、後で見返した方が良さそう
+	private updateRaffleCacheByGroupID(groupID: Scalars["ID"]) {
+		this.groupCache[groupID] = {};
+		if (!this.groupCache) return;
+	}
+
+	private fetchCacheRaffleObject(groupID: Scalars["ID"]) {
+		return this.groupCache[groupID];
 	}
 }
