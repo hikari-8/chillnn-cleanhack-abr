@@ -25,7 +25,9 @@ class UserUsecase {
     }
     async fetchAllUser() {
         const users = await this.repositoryContainer.userMastRepository.fetchAllUser();
-        return users.map((user) => this.modelFactory.UserModel(user)).sort((a, b) => __1.compareNumDesc(a.createdAt, b.createdAt));
+        return users
+            .map((user) => this.modelFactory.UserModel(user))
+            .sort((a, b) => __1.compareNumDesc(a.createdAt, b.createdAt));
     }
 }
 exports.UserUsecase = UserUsecase;

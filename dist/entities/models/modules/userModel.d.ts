@@ -1,25 +1,26 @@
 import { UserMast } from "../../type";
-import { CleanPlaceModel } from "./cleanPlaceModel";
 import { BaseModel } from "./_baseModel";
+import { GroupModel } from "./groupModel";
 export declare class UserModel extends BaseModel<UserMast> {
     get userID(): string;
     get createdAt(): number;
     get updatedAt(): number;
+    get deletedAt(): import("../..").Maybe<number> | undefined;
     get name(): string;
     set name(input: string);
     get role(): string;
     set role(input: string);
-    get isRegisterble(): boolean;
-    /**
-     * アイコン画像をセットする
-    //  * @param file
-     */
+    get records(): string[];
+    set records(input: string[]);
+    get isRegisterable(): boolean;
+    isAdmin(): void;
     /**
      * ユーザー情報を新規登録、または更新する
      */
     register(): Promise<void>;
     /**
-     * 掃除場所をAdminが新規登録・変更できる
+     * Adminならグループを登録、更新できる
      */
-    setUpCleanPlace(): CleanPlaceModel;
+    groupRegister(): Promise<void>;
+    createGroupModel(): GroupModel;
 }

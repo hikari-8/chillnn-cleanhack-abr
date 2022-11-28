@@ -12,8 +12,20 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ModelFactory = void 0;
 const userModel_1 = require("./modules/userModel");
+const taskMasterObjectModel_1 = require("./modules/taskMasterObjectModel");
+const taskMastModel_1 = require("./modules/taskMastModel");
+const raffleObjectModel_1 = require("./modules/raffleObjectModel");
+const raffleMastModel_1 = require("./modules/raffleMastModel");
+const raffleJoinUserModel_1 = require("./modules/raffleJoinUserModel");
+const groupModel_1 = require("./modules/groupModel");
 const _baseModel_1 = require("./modules/_baseModel");
 __exportStar(require("./modules/userModel"), exports);
+__exportStar(require("./modules/taskMasterObjectModel"), exports);
+__exportStar(require("./modules/taskMastModel"), exports);
+__exportStar(require("./modules/raffleObjectModel"), exports);
+__exportStar(require("./modules/raffleMastModel"), exports);
+__exportStar(require("./modules/raffleJoinUserModel"), exports);
+__exportStar(require("./modules/groupModel"), exports);
 class ModelFactory {
     constructor(repositoryContainer //
     ) {
@@ -23,8 +35,28 @@ class ModelFactory {
         return new userModel_1.UserModel(mast, //
         this.repositoryContainer, this, option || _baseModel_1.BaseModel.baseModelOption());
     }
-    CleanPlaceModel(mast, option) {
-        return new userModel_1.UserModel(mast, //
+    GroupModel(mast, option) {
+        return new groupModel_1.GroupModel(mast, //
+        this.repositoryContainer, this, option || _baseModel_1.BaseModel.baseModelOption());
+    }
+    TaskMasterObjectModel(mast, option) {
+        return new taskMasterObjectModel_1.TaskMasterObjectModel(mast, //
+        this.repositoryContainer, this, option || _baseModel_1.BaseModel.baseModelOption());
+    }
+    TaskMastModel(mast, option) {
+        return new taskMastModel_1.TaskMastModel(mast, //
+        this.repositoryContainer, this, option || _baseModel_1.BaseModel.baseModelOption());
+    }
+    RaffleObjectModel(mast, option) {
+        return new raffleObjectModel_1.RaffleObjectModel(mast, //
+        this.repositoryContainer, this, option || _baseModel_1.BaseModel.baseModelOption());
+    }
+    RaffleMastModel(mast, option) {
+        return new raffleMastModel_1.RaffleMastModel(mast, //
+        this.repositoryContainer, this, option || _baseModel_1.BaseModel.baseModelOption());
+    }
+    RaffleJoinUserModel(mast, option) {
+        return new raffleJoinUserModel_1.RaffleJoinUserModel(mast, //
         this.repositoryContainer, this, option || _baseModel_1.BaseModel.baseModelOption());
     }
 }

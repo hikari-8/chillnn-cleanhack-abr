@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserModel = void 0;
-const cleanPlaceModel_1 = require("./cleanPlaceModel");
 const _baseModel_1 = require("./_baseModel");
+const groupModel_1 = require("./groupModel");
 class UserModel extends _baseModel_1.BaseModel {
     // ============================================
     // getters
@@ -15,6 +15,9 @@ class UserModel extends _baseModel_1.BaseModel {
     }
     get updatedAt() {
         return this.mast.updatedAt;
+    }
+    get deletedAt() {
+        return this.mast.deletedAt;
     }
     // ============================================
     // getter / setter
@@ -32,32 +35,42 @@ class UserModel extends _baseModel_1.BaseModel {
         this.mast.role = input;
     }
     // ============================================
+    // getter / setter -not mandatory
+    // ============================================
+    //配列データを取ってくるだけ(ポインタを取得するだけ)
+    get records() {
+        return (this.mast.records = []);
+    }
+    set records(input) {
+        this.mast.records = input;
+    }
+    // ============================================
     // validation
     // ============================================
-    get isRegisterble() {
+    get isRegisterable() {
         return true;
     }
     // ============================================
     // functions
     // ============================================
-    /**
-     * アイコン画像をセットする
-    //  * @param file
-     */
-    // async setIcon(file: File) {
-    // 	const path = `user/${this.userID}/iconImage/${new Date().getTime()}`;
-    // 	this.mast.userIcon =
-    // 		await this.repositoryContainer.s3Repository.addFile(path, file);
-    // }
+    isAdmin() {
+        this.mast.role === "admin" ? true : false;
+    }
     /**
      * ユーザー情報を新規登録、または更新する
      */
     async register() {
-        if (this.isRegisterble) {
+        if (this.isRegisterable) {
             const now = new Date().getTime();
-            if (this.isNew) {
+            if (this.isNew && !this.isAdmin) {
                 this.mast.createdAt = now;
                 this.mast.updatedAt = now;
+                await this.repositoryContainer.userMastRepository.addUserMast(this.mast);
+            }
+            else if (this.isNew && this.isAdmin) {
+                this.mast.createdAt = now;
+                this.mast.updatedAt = now;
+                this.mast.role = "admin";
                 await this.repositoryContainer.userMastRepository.addUserMast(this.mast);
             }
             else {
@@ -68,15 +81,30 @@ class UserModel extends _baseModel_1.BaseModel {
         }
     }
     /**
-     * 掃除場所をAdminが新規登録・変更できる
+     * Adminならグループを登録、更新できる
      */
-    setUpCleanPlace() {
-        if (this.role === "admin") {
-            return this.modelFactory.CleanPlaceModel(cleanPlaceModel_1.CleanPlaceModel.getBlanc(this.cleanPlaceID));
+    async groupRegister() {
+        if (this.isRegisterable) {
+            const now = new Date().getTime();
+            if (this.isNew && this.role !== "admin") {
+                return window.alert("管理者権限がありません。管理者に言って、Admin権限を付与してもらってください。");
+            }
+            else if (this.isNew && this.role === "admin") {
+                this.mast.createdAt = now;
+                this.mast.updatedAt = now;
+                await this.createGroupModel();
+            }
+            else {
+                this.mast.updatedAt = now;
+                await this.createGroupModel();
+            }
+            this.isNew = false;
         }
-        else {
-            console.error("Admin権限がありません");
-        }
+    }
+    createGroupModel() {
+        return this.modelFactory.GroupModel(groupModel_1.GroupModel.getBlanc(this.userID), {
+            isNew: true,
+        });
     }
 }
 exports.UserModel = UserModel;

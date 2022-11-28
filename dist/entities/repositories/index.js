@@ -11,14 +11,22 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RepositoryContainer = void 0;
+__exportStar(require("./modules/S3Repository"), exports);
 __exportStar(require("./modules/userMastRepository"), exports);
-__exportStar(require("./modules/cleanPlaceMastRepository"), exports);
+__exportStar(require("./modules/taskMasterObjectRepository"), exports);
+__exportStar(require("./modules/raffleobjectRepository"), exports);
+__exportStar(require("./modules/groupMastRepository"), exports);
 class RepositoryContainer {
     constructor(
+    // object
+    s3Repository, //
     // entity
-    userMastRepository, cleanPlaceMastRepository) {
+    userMastRepository, taskMasterObjectRepository, raffleObjectRepository, groupMastRepository) {
+        this.s3Repository = s3Repository;
         this.userMastRepository = userMastRepository;
-        this.cleanPlaceMastRepository = cleanPlaceMastRepository;
+        this.taskMasterObjectRepository = taskMasterObjectRepository;
+        this.raffleObjectRepository = raffleObjectRepository;
+        this.groupMastRepository = groupMastRepository;
     }
 }
 exports.RepositoryContainer = RepositoryContainer;
