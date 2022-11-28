@@ -21,6 +21,18 @@ class TaskMasterObjectRepositoryCacheAdaptor {
         this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
         return res;
     }
+    async fetchTaskMasterObject(groupID) {
+        const cache = this.fetchCacheTaskMasterObject(groupID);
+        if (cache) {
+            return null;
+        }
+        else if (cache) {
+            return cache;
+        }
+        const res = await this.repository.fetchTaskMasterObject(groupID);
+        this.updateGroupCacheByGroupID(groupID);
+        return res;
+    }
     async fetchTasksByGroupID(groupID) {
         const GroupCache = this.groupCache[groupID];
         if (GroupCache)
@@ -46,6 +58,15 @@ class TaskMasterObjectRepositoryCacheAdaptor {
             };
             this.taskCache[task.taskID] = { mast: task, createdAt };
         });
+    }
+    //とりま簡易的に設置しているけど、後で見返した方が良さそう
+    updateGroupCacheByGroupID(groupID) {
+        this.groupCache[groupID] = {};
+        if (!this.groupCache)
+            return;
+    }
+    fetchCacheTaskMasterObject(groupID) {
+        return this.groupCache[groupID];
     }
 }
 exports.TaskMasterObjectRepositoryCacheAdaptor = TaskMasterObjectRepositoryCacheAdaptor;

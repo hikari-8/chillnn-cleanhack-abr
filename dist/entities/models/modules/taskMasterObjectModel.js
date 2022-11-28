@@ -101,10 +101,13 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     //  * グループIDから、ルームの個々のデータを取得する
     //  * @returns
     //  */
-    async fetchTasks() {
-        const res = await this.repositoryContainer.taskMasterObjectRepository.fetchTasksByGroupID(this.groupID);
-        return res.map((item) => this.modelFactory.TaskMastModel(item));
-    }
+    // async fetchTasks(): Promise<TaskMastModel[]> {
+    // 	const res =
+    // 		await this.repositoryContainer.taskMasterObjectRepository.fetchTasksByGroupID(
+    // 			this.groupID
+    // 		);
+    // 	return res.map((item) => this.modelFactory.TaskMastModel(item));
+    // }
     // taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
     getTaskMastModel(groupID) {
         const blank = taskMastModel_1.TaskMastModel.getBlanc(this.groupID, "blanc");

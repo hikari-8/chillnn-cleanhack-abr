@@ -5,8 +5,12 @@ export interface ITaskMasterObjectRepository {
 	addTaskMasterObject(input: TaskMasterObject): Promise<TaskMasterObject>;
 	updateTaskMasterObject(input: TaskMasterObject): Promise<TaskMasterObject>;
 
+	fetchTaskMasterObject(
+		groupID: Scalars["ID"]
+	): Promise<TaskMasterObject | null>;
+
 	// グループIDからタスクのマスターデータを取得する
-	fetchTasksByGroupID(groupID: Scalars["ID"]): Promise<TaskMast[]>;
+	// fetchTasksByGroupID(groupID: Scalars["ID"]): Promise<TaskMast[]>;
 
 	// addTaskMast(input: TaskMast): Promise<TaskMast>;
 	// updateTaskMast(input: TaskMast): Promise<TaskMast>;

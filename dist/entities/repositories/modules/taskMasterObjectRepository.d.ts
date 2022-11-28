@@ -1,6 +1,6 @@
-import { Scalars, TaskMasterObject, TaskMast } from "../../type";
+import { Scalars, TaskMasterObject } from "../../type";
 export interface ITaskMasterObjectRepository {
     addTaskMasterObject(input: TaskMasterObject): Promise<TaskMasterObject>;
     updateTaskMasterObject(input: TaskMasterObject): Promise<TaskMasterObject>;
-    fetchTasksByGroupID(groupID: Scalars["ID"]): Promise<TaskMast[]>;
+    fetchTaskMasterObject(groupID: Scalars["ID"]): Promise<TaskMasterObject | null>;
 }

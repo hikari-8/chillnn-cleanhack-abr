@@ -1,4 +1,4 @@
-import { GroupMast, TaskMast } from "../../type";
+import { GroupMast, TaskMast, TaskMasterObject } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { generateUUID } from "../../../util";
@@ -52,9 +52,11 @@ export class GroupModel extends BaseModel<GroupMast> {
 	 * このグループのマスターデータを取得する
 	 * @returns
 	 */
-	async fetchTaskMasterObject(input: string): Promise<TaskMast[]> {
+	async fetchTaskMasterObject(
+		input: string
+	): Promise<TaskMasterObject | null> {
 		const res =
-			await this.repositoryContainer.taskMasterObjectRepository.fetchTasksByGroupID(
+			await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
 				this.groupID
 			);
 		return res;

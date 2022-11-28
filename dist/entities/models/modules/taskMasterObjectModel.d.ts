@@ -23,6 +23,5 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      *
      */
     register(): Promise<void>;
-    fetchTasks(): Promise<TaskMastModel[]>;
     getTaskMastModel(groupID: string): TaskMastModel;
 }

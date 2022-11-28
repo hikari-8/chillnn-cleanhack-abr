@@ -1,4 +1,4 @@
-import { GroupMast, TaskMast } from "../../type";
+import { GroupMast, TaskMasterObject } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 export declare class GroupModel extends BaseModel<GroupMast> {
@@ -15,5 +15,5 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      * このグループのマスターデータを取得する
      * @returns
      */
-    fetchTaskMasterObject(input: string): Promise<TaskMast[]>;
+    fetchTaskMasterObject(input: string): Promise<TaskMasterObject | null>;
 }

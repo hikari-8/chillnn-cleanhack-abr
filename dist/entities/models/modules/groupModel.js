@@ -50,7 +50,7 @@ class GroupModel extends _baseModel_1.BaseModel {
      * @returns
      */
     async fetchTaskMasterObject(input) {
-        const res = await this.repositoryContainer.taskMasterObjectRepository.fetchTasksByGroupID(this.groupID);
+        const res = await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(this.groupID);
         return res;
         // mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
     }
