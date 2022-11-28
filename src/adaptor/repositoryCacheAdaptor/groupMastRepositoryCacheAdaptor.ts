@@ -18,10 +18,10 @@ export class GroupMastRepositoryCacheAdaptor implements IGroupMastRepository {
 		return res;
 	}
 
-	async deleteGroup(groupID: string): Promise<GroupMast> {
-		const res = await this.repository.deleteGroup(groupID);
+	async deleteGroup(input: GroupMast): Promise<GroupMast> {
+		const res = await this.repository.deleteGroup(input);
 		res.deletedAt = new Date().getDate();
-		this.addCacheEach(groupID, res);
+		this.addCacheEach(input.groupID, res);
 		return res;
 	}
 

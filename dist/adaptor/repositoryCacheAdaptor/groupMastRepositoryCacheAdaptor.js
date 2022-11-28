@@ -15,10 +15,10 @@ class GroupMastRepositoryCacheAdaptor {
         this.mygroupID = input.groupID;
         return res;
     }
-    async deleteGroup(groupID) {
-        const res = await this.repository.deleteGroup(groupID);
+    async deleteGroup(input) {
+        const res = await this.repository.deleteGroup(input);
         res.deletedAt = new Date().getDate();
-        this.addCacheEach(groupID, res);
+        this.addCacheEach(input.groupID, res);
         return res;
     }
     async updateGroup(input) {
