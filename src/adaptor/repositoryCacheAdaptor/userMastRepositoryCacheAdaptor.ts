@@ -21,8 +21,8 @@ export class UserMastRepositoryCacheAdaptor implements IUserMastRepository {
 		return res;
 	}
 
-	async deleteUserMast(userID: string): Promise<UserMast> {
-		const res = await this.repository.deleteUserMast(userID);
+	async deleteUserMast(input: UserMast): Promise<UserMast> {
+		const res = await this.repository.deleteUserMast(input);
 		res.deletedAt = new Date().getTime();
 		this.updateCacheEach(res.userID, res);
 		return res;
