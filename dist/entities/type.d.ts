@@ -1,4 +1,5 @@
 export declare type Maybe<T> = T | null;
+export declare type InputMaybe<T> = Maybe<T>;
 export declare type Exact<T extends {
     [key: string]: unknown;
 }> = {
@@ -33,150 +34,150 @@ export declare enum ErrorCode {
     chillnnTraining_500_systemError = "chillnnTraining_500_systemError"
 }
 export declare type GroupMast = {
+    createdAt: Scalars['AWSTimestamp'];
+    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     groupName: Scalars['String'];
-    createdAt: Scalars['AWSTimestamp'];
     updatedAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 export declare type GroupMastInput = {
+    createdAt: Scalars['AWSTimestamp'];
+    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     groupName: Scalars['String'];
-    createdAt: Scalars['AWSTimestamp'];
     updatedAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 export declare type RaffleJoinUser = {
-    userID: Scalars['ID'];
+    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     joinAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    userID: Scalars['ID'];
 };
 export declare type RaffleJoinUserInput = {
-    userID: Scalars['ID'];
+    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     joinAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    userID: Scalars['ID'];
 };
 export declare type RaffleMast = {
+    createdAt: Scalars['AWSTimestamp'];
+    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    groupID: Scalars['ID'];
+    headCount?: Maybe<Scalars['Int']>;
     raffleID: Scalars['ID'];
     taskID: Scalars['ID'];
-    groupID: Scalars['ID'];
     taskName: Scalars['String'];
-    headCount?: Maybe<Scalars['Int']>;
-    userID?: Maybe<Array<Scalars['ID']>>;
-    createdAt: Scalars['AWSTimestamp'];
     updatedAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    userID?: Maybe<Array<Scalars['ID']>>;
 };
 export declare type RaffleMastInput = {
+    createdAt: Scalars['AWSTimestamp'];
+    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    groupID: Scalars['ID'];
     raffleID: Scalars['ID'];
     taskID: Scalars['ID'];
-    groupID: Scalars['ID'];
     taskName: Scalars['String'];
-    userID?: Maybe<Array<Scalars['ID']>>;
-    createdAt: Scalars['AWSTimestamp'];
     updatedAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    userID?: Maybe<Array<Scalars['ID']>>;
 };
 export declare type RaffleObject = {
-    raffleID: Scalars['ID'];
-    tasks: Array<RaffleMast>;
-    groupID: Scalars['ID'];
     activeMembers?: Maybe<Array<RaffleJoinUser>>;
-    limitTime: Scalars['AWSTimestamp'];
-    raffleStatus: RaffleStatus;
-    remindSlackWeek: Scalars['String'];
-    remindSlackTime: Scalars['AWSTimestamp'];
     createdAt: Scalars['AWSTimestamp'];
-    updatedAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    groupID: Scalars['ID'];
+    limitTime: Scalars['AWSTimestamp'];
+    raffleID: Scalars['ID'];
+    raffleStatus: RaffleStatus;
+    remindSlackTime: Scalars['AWSTimestamp'];
+    remindSlackWeek: Scalars['String'];
+    tasks: Array<RaffleMast>;
+    updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type RaffleObjectInput = {
-    raffleID: Scalars['ID'];
-    tasks: Array<RaffleMast>;
-    groupID: Scalars['ID'];
     activeMembers?: Maybe<Array<RaffleJoinUser>>;
-    limitTime: Scalars['AWSTimestamp'];
-    raffleStatus: RaffleStatus;
-    remindSlackWeek: Scalars['String'];
-    remindSlackTime: Scalars['AWSTimestamp'];
     createdAt: Scalars['AWSTimestamp'];
-    updatedAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    groupID: Scalars['ID'];
+    limitTime: Scalars['AWSTimestamp'];
+    raffleID: Scalars['ID'];
+    raffleStatus: RaffleStatus;
+    remindSlackTime: Scalars['AWSTimestamp'];
+    remindSlackWeek: Scalars['String'];
+    tasks: Array<RaffleMast>;
+    updatedAt: Scalars['AWSTimestamp'];
 };
 export declare enum RaffleStatus {
+    DONE = "DONE",
     EFFECTIVE = "EFFECTIVE",
-    EFFECTIVE_AND_FIXED = "EFFECTIVE_AND_FIXED",
-    DONE = "DONE"
+    EFFECTIVE_AND_FIXED = "EFFECTIVE_AND_FIXED"
 }
 export declare type S3Object = {
-    url: Scalars['AWSURL'];
     bucket: Scalars['String'];
     key: Scalars['String'];
     region: Scalars['String'];
+    url: Scalars['AWSURL'];
 };
 export declare type S3ObjectInput = {
-    url: Scalars['AWSURL'];
     bucket: Scalars['String'];
     key: Scalars['String'];
     region: Scalars['String'];
+    url: Scalars['AWSURL'];
 };
 export declare type TaskMast = {
-    taskID: Scalars['ID'];
-    groupID: Scalars['ID'];
-    taskName: Scalars['String'];
-    headCount?: Maybe<Scalars['Int']>;
     createdAt: Scalars['AWSTimestamp'];
-    updatedAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    groupID: Scalars['ID'];
+    headCount?: Maybe<Scalars['Int']>;
+    taskID: Scalars['ID'];
+    taskName: Scalars['String'];
+    updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type TaskMastInput = {
-    taskID: Scalars['ID'];
-    groupID: Scalars['ID'];
-    taskName: Scalars['String'];
-    headCount?: Maybe<Scalars['Int']>;
     createdAt: Scalars['AWSTimestamp'];
-    updatedAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    groupID: Scalars['ID'];
+    headCount?: Maybe<Scalars['Int']>;
+    taskID: Scalars['ID'];
+    taskName: Scalars['String'];
+    updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type TaskMasterObject = {
-    tasks: Array<TaskMast>;
+    createdAt: Scalars['AWSTimestamp'];
+    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     limitTime?: Maybe<Scalars['AWSTimestamp']>;
-    remindSlackWeek?: Maybe<Scalars['String']>;
     remindSlackTime?: Maybe<Scalars['AWSTimestamp']>;
-    createdAt: Scalars['AWSTimestamp'];
+    remindSlackWeek?: Maybe<Scalars['String']>;
+    tasks: Array<TaskMast>;
     updatedAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 export declare type TaskMasterObjectInput = {
-    tasks: Array<TaskMast>;
+    createdAt: Scalars['AWSTimestamp'];
+    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     limitTime?: Maybe<Scalars['AWSTimestamp']>;
-    remindSlackWeek?: Maybe<Scalars['String']>;
     remindSlackTime?: Maybe<Scalars['AWSTimestamp']>;
-    createdAt: Scalars['AWSTimestamp'];
+    remindSlackWeek?: Maybe<Scalars['String']>;
+    tasks: Array<TaskMast>;
     updatedAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
 };
 export declare type UserMast = {
-    userID: Scalars['ID'];
-    name: Scalars['String'];
-    groupID: Scalars['String'];
-    role: Scalars['String'];
-    records?: Maybe<Array<Scalars['String']>>;
     createdAt: Scalars['AWSTimestamp'];
-    updatedAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    groupID: Scalars['String'];
+    name: Scalars['String'];
+    records?: Maybe<Array<Scalars['String']>>;
+    role: Scalars['String'];
+    updatedAt: Scalars['AWSTimestamp'];
+    userID: Scalars['ID'];
 };
 export declare type UserMastInput = {
-    userID: Scalars['ID'];
-    name: Scalars['String'];
-    groupID: Scalars['String'];
-    role: Scalars['String'];
-    records?: Maybe<Array<Scalars['String']>>;
     createdAt: Scalars['AWSTimestamp'];
+    deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
+    groupID: Scalars['String'];
+    name: Scalars['String'];
+    records?: InputMaybe<Array<Scalars['String']>>;
+    role: Scalars['String'];
     updatedAt: Scalars['AWSTimestamp'];
-    deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+    userID: Scalars['ID'];
 };

@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserUsecase = void 0;
 const __1 = require("../..");
 class UserUsecase {
+    repositoryContainer;
+    modelFactory;
     constructor(repositoryContainer, //
     modelFactory) {
         this.repositoryContainer = repositoryContainer;
@@ -27,7 +29,7 @@ class UserUsecase {
         const users = await this.repositoryContainer.userMastRepository.fetchAllUser();
         return users
             .map((user) => this.modelFactory.UserModel(user))
-            .sort((a, b) => __1.compareNumDesc(a.createdAt, b.createdAt));
+            .sort((a, b) => (0, __1.compareNumDesc)(a.createdAt, b.createdAt));
     }
 }
 exports.UserUsecase = UserUsecase;

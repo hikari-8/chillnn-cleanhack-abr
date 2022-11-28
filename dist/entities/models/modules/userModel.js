@@ -54,7 +54,9 @@ class UserModel extends _baseModel_1.BaseModel {
     // functions
     // ============================================
     isAdmin() {
-        this.mast.role === "admin" ? true : false;
+        if (this.mast.role === "admin") {
+            return true;
+        }
     }
     /**
      * ユーザー情報を新規登録、または更新する
@@ -67,7 +69,7 @@ class UserModel extends _baseModel_1.BaseModel {
                 this.mast.updatedAt = now;
                 await this.repositoryContainer.userMastRepository.addUserMast(this.mast);
             }
-            else if (this.isNew && this.isAdmin) {
+            else if (this.isNew) {
                 this.mast.createdAt = now;
                 this.mast.updatedAt = now;
                 this.mast.role = "admin";

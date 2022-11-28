@@ -2,6 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RaffleObjectRepositoryCacheAdaptor = void 0;
 class RaffleObjectRepositoryCacheAdaptor {
+    repository;
+    //後で名前raffleCacheに変える
+    groupCache;
+    taskCache;
     constructor(repository, optional) {
         this.repository = repository;
         this.groupCache = optional?.companyCache || {};

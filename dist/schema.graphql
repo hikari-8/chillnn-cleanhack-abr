@@ -23,166 +23,166 @@ enum ErrorCode {
 }
 
 type GroupMast {
+  createdAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
   groupID: ID!
   groupName: String!
-  createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
 }
 
 type GroupMastInput {
+  createdAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
   groupID: ID!
   groupName: String!
-  createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
 }
 
 type RaffleJoinUser {
-  userID: ID!
+  deletedAt: AWSTimestamp
   groupID: ID!
   joinAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
+  userID: ID!
 }
 
 type RaffleJoinUserInput {
-  userID: ID!
+  deletedAt: AWSTimestamp
   groupID: ID!
   joinAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
+  userID: ID!
 }
 
 type RaffleMast {
+  createdAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+  groupID: ID!
+  headCount: Int
   raffleID: ID!
   taskID: ID!
-  groupID: ID!
   taskName: String!
-  headCount: Int
-  userID: [ID!]
-  createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
+  userID: [ID!]
 }
 
 type RaffleMastInput {
+  createdAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
+  groupID: ID!
   raffleID: ID!
   taskID: ID!
-  groupID: ID!
   taskName: String!
-  userID: [ID!]
-  createdAt: AWSTimestamp!
   updatedAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
+  userID: [ID!]
 }
 
 type RaffleObject {
-  raffleID: ID!
-  tasks: [RaffleMast!]!
-  groupID: ID!
   activeMembers: [RaffleJoinUser!]
-  limitTime: AWSTimestamp!
-  raffleStatus: RaffleStatus!
-  remindSlackWeek: String!
-  remindSlackTime: AWSTimestamp!
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
+  groupID: ID!
+  limitTime: AWSTimestamp!
+  raffleID: ID!
+  raffleStatus: RaffleStatus!
+  remindSlackTime: AWSTimestamp!
+  remindSlackWeek: String!
+  tasks: [RaffleMast!]!
+  updatedAt: AWSTimestamp!
 }
 
 type RaffleObjectInput {
-  raffleID: ID!
-  tasks: [RaffleMast!]!
-  groupID: ID!
   activeMembers: [RaffleJoinUser!]
-  limitTime: AWSTimestamp!
-  raffleStatus: RaffleStatus!
-  remindSlackWeek: String!
-  remindSlackTime: AWSTimestamp!
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
+  groupID: ID!
+  limitTime: AWSTimestamp!
+  raffleID: ID!
+  raffleStatus: RaffleStatus!
+  remindSlackTime: AWSTimestamp!
+  remindSlackWeek: String!
+  tasks: [RaffleMast!]!
+  updatedAt: AWSTimestamp!
 }
 
 enum RaffleStatus {
+  DONE
   EFFECTIVE
   EFFECTIVE_AND_FIXED
-  DONE
 }
 
 type S3Object {
-  url: AWSURL!
   bucket: String!
   key: String!
   region: String!
+  url: AWSURL!
 }
 
 input S3ObjectInput {
-  url: AWSURL!
   bucket: String!
   key: String!
   region: String!
+  url: AWSURL!
 }
 
 type TaskMast {
-  taskID: ID!
-  groupID: ID!
-  taskName: String!
-  headCount: Int
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
+  groupID: ID!
+  headCount: Int
+  taskID: ID!
+  taskName: String!
+  updatedAt: AWSTimestamp!
 }
 
 type TaskMastInput {
-  taskID: ID!
-  groupID: ID!
-  taskName: String!
-  headCount: Int
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
+  groupID: ID!
+  headCount: Int
+  taskID: ID!
+  taskName: String!
+  updatedAt: AWSTimestamp!
 }
 
 type TaskMasterObject {
-  tasks: [TaskMast!]!
+  createdAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
   groupID: ID!
   limitTime: AWSTimestamp
-  remindSlackWeek: String
   remindSlackTime: AWSTimestamp
-  createdAt: AWSTimestamp!
+  remindSlackWeek: String
+  tasks: [TaskMast!]!
   updatedAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
 }
 
 type TaskMasterObjectInput {
-  tasks: [TaskMast!]!
+  createdAt: AWSTimestamp!
+  deletedAt: AWSTimestamp
   groupID: ID!
   limitTime: AWSTimestamp
-  remindSlackWeek: String
   remindSlackTime: AWSTimestamp
-  createdAt: AWSTimestamp!
+  remindSlackWeek: String
+  tasks: [TaskMast!]!
   updatedAt: AWSTimestamp!
-  deletedAt: AWSTimestamp
 }
 
 type UserMast {
-  userID: ID!
-  name: String!
-  groupID: String!
-  role: String!
-  records: [String!]
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
+  groupID: String!
+  name: String!
+  records: [String!]
+  role: String!
+  updatedAt: AWSTimestamp!
+  userID: ID!
 }
 
 input UserMastInput {
-  userID: ID!
-  name: String!
-  groupID: String!
-  role: String!
-  records: [String!]
   createdAt: AWSTimestamp!
-  updatedAt: AWSTimestamp!
   deletedAt: AWSTimestamp
+  groupID: String!
+  name: String!
+  records: [String!]
+  role: String!
+  updatedAt: AWSTimestamp!
+  userID: ID!
 }

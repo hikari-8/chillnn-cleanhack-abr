@@ -3,6 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskMasterObjectRepositoryCacheAdaptor = void 0;
 const util_1 = require("../../util");
 class TaskMasterObjectRepositoryCacheAdaptor {
+    repository;
+    groupCache;
+    taskCache;
     constructor(repository, optional) {
         this.repository = repository;
         this.groupCache = optional?.companyCache || {};
@@ -38,10 +41,10 @@ class TaskMasterObjectRepositoryCacheAdaptor {
         if (GroupCache)
             return (Object.keys(GroupCache) || [])
                 .map((key) => this.groupCache[groupID][key].mast)
-                .sort((a, b) => util_1.compareNumDesc(a.updatedAt, b.updatedAt));
+                .sort((a, b) => (0, util_1.compareNumDesc)(a.updatedAt, b.updatedAt));
         return (Object.keys(GroupCache) || [])
             .map((key) => this.groupCache[groupID][key].mast)
-            .sort((a, b) => util_1.compareNumDesc(a.updatedAt, b.updatedAt));
+            .sort((a, b) => (0, util_1.compareNumDesc)(a.updatedAt, b.updatedAt));
     }
     // ===============================================================
     //

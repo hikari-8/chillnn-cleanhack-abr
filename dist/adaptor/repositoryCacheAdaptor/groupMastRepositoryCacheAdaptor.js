@@ -2,11 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GroupMastRepositoryCacheAdaptor = void 0;
 class GroupMastRepositoryCacheAdaptor {
+    repository;
+    GroupEachCache = {};
+    GroupAllCache = null;
+    mygroupID = null;
     constructor(repository) {
         this.repository = repository;
-        this.GroupEachCache = {};
-        this.GroupAllCache = null;
-        this.mygroupID = null;
     }
     async addGroup(input) {
         const res = await this.repository.addGroup(input);

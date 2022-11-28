@@ -13,7 +13,7 @@ export declare class UserModel extends BaseModel<UserMast> {
     get records(): string[];
     set records(input: string[]);
     get isRegisterable(): boolean;
-    isAdmin(): void;
+    isAdmin(): true | undefined;
     /**
      * ユーザー情報を新規登録、または更新する
      */

@@ -6,7 +6,7 @@ const _baseModel_1 = require("./_baseModel");
 class TaskMastModel extends _baseModel_1.BaseModel {
     static getBlanc(groupID, taskName) {
         return {
-            taskID: util_1.generateUUID(),
+            taskID: (0, util_1.generateUUID)(),
             taskName,
             groupID,
             createdAt: new Date().getTime(),

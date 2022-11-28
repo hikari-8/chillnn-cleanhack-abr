@@ -7,7 +7,7 @@ class RaffleMastModel extends _baseModel_1.BaseModel {
     static getBlanc(raffleID, groupID, taskName) {
         return {
             raffleID,
-            taskID: util_1.generateUUID(),
+            taskID: (0, util_1.generateUUID)(),
             taskName,
             groupID,
             createdAt: new Date().getTime(),

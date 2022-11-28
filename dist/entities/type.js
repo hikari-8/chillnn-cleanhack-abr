@@ -9,7 +9,7 @@ var ErrorCode;
 })(ErrorCode = exports.ErrorCode || (exports.ErrorCode = {}));
 var RaffleStatus;
 (function (RaffleStatus) {
+    RaffleStatus["DONE"] = "DONE";
     RaffleStatus["EFFECTIVE"] = "EFFECTIVE";
     RaffleStatus["EFFECTIVE_AND_FIXED"] = "EFFECTIVE_AND_FIXED";
-    RaffleStatus["DONE"] = "DONE";
 })(RaffleStatus = exports.RaffleStatus || (exports.RaffleStatus = {}));

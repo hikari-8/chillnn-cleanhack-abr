@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.S3ObjectDto = void 0;
 class S3ObjectDto {
+    s3Object;
     constructor(s3Object) {
         this.s3Object = s3Object;
     }

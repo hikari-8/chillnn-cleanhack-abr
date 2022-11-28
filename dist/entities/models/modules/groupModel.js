@@ -6,7 +6,7 @@ const util_1 = require("../../../util");
 class GroupModel extends _baseModel_1.BaseModel {
     static getBlanc(groupName) {
         return {
-            groupID: util_1.generateUUID(),
+            groupID: (0, util_1.generateUUID)(),
             groupName,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),

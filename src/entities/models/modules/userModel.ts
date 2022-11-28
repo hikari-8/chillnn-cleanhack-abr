@@ -59,7 +59,9 @@ export class UserModel extends BaseModel<UserMast> {
 	// functions
 	// ============================================
 	public isAdmin() {
-		this.mast.role === "admin" ? true : false;
+		if (this.mast.role === "admin") {
+			return true;
+		}
 	}
 
 	/**
@@ -74,7 +76,7 @@ export class UserModel extends BaseModel<UserMast> {
 				await this.repositoryContainer.userMastRepository.addUserMast(
 					this.mast
 				);
-			} else if (this.isNew && this.isAdmin) {
+			} else if (this.isNew) {
 				this.mast.createdAt = now;
 				this.mast.updatedAt = now;
 				this.mast.role = "admin";

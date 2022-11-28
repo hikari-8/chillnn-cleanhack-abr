@@ -6,7 +6,7 @@ const __1 = require("../../..");
 class RaffleObjectModel extends _baseModel_1.BaseModel {
     static getBlanc(tasks, groupID, limitTime, raffleStatus, remindSlackWeek, remindSlackTime) {
         return {
-            raffleID: __1.generateUUID(),
+            raffleID: (0, __1.generateUUID)(),
             tasks,
             groupID,
             limitTime,
