@@ -7,7 +7,7 @@ type GroupMast {
 	deletedAt: AWSTimestamp
 }
 
-type GroupMastInput {
+input GroupMastInput {
 	groupID: ID!
 	groupName: String!
 	# status

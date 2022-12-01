@@ -29,7 +29,7 @@ type TaskMast {
 #
 ##################################################################################
 
-type TaskMasterObjectInput {
+input TaskMasterObjectInput {
 	tasks: [TaskMast!]!
 	groupID: ID!
 	limitTime: AWSTimestamp
@@ -41,7 +41,7 @@ type TaskMasterObjectInput {
 	deletedAt: AWSTimestamp
 }
 
-type TaskMastInput {
+input TaskMastInput {
 	taskID: ID!
 	groupID: ID!
 	taskName: String!

@@ -46,7 +46,7 @@ type RaffleJoinUser {
 # input
 #
 ##################################################################################
-type RaffleObjectInput {
+input RaffleObjectInput {
 	raffleID: ID!
 	tasks: [RaffleMast!]!
 	groupID: ID!
@@ -61,7 +61,7 @@ type RaffleObjectInput {
 	deletedAt: AWSTimestamp
 }
 
-type RaffleMastInput {
+input RaffleMastInput {
 	raffleID: ID!
 	taskID: ID!
 	groupID: ID!
@@ -73,7 +73,7 @@ type RaffleMastInput {
 	deletedAt: AWSTimestamp
 }
 
-type RaffleJoinUserInput {
+input RaffleJoinUserInput {
 	userID: ID!
 	groupID: ID!
 	joinAt: AWSTimestamp!
