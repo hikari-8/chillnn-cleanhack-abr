@@ -135,12 +135,13 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 				await this.repositoryContainer.raffleObjectRepository.addRaffleObject(
 					this.mast
 				);
-			} else {
-				this.mast.updatedAt = now;
-				await this.repositoryContainer.raffleObjectRepository.updateRaffleObject(
-					this.mast
-				);
 			}
+			// else {
+			// 	this.mast.updatedAt = now;
+			// 	await this.repositoryContainer.raffleObjectRepository.updateRaffleObject(
+			// 		this.mast
+			// 	);
+			// }
 			this.isNew = false;
 		}
 	}
