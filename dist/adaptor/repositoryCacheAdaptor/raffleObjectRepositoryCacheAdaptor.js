@@ -18,12 +18,12 @@ class RaffleObjectRepositoryCacheAdaptor {
         this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
         return res;
     }
-    async updateRaffleObject(input) {
-        const res = await this.repository.updateRaffleObject(input);
-        res.updatedAt = new Date().getDate();
-        this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
-        return res;
-    }
+    // async updateRaffleObject(input: RaffleObject): Promise<RaffleObject> {
+    // 	const res = await this.repository.updateRaffleObject(input);
+    // 	res.updatedAt = new Date().getDate();
+    // 	this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
+    // 	return res;
+    // }
     async fetchRaffleObject(raffleID) {
         const cache = this.fetchCacheRaffleObject(raffleID);
         if (cache) {

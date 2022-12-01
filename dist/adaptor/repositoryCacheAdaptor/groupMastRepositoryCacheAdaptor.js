@@ -16,19 +16,19 @@ class GroupMastRepositoryCacheAdaptor {
         this.mygroupID = input.groupID;
         return res;
     }
-    async deleteGroup(input) {
-        const res = await this.repository.deleteGroup(input);
-        res.deletedAt = new Date().getDate();
-        this.addCacheEach(input.groupID, res);
-        return res;
-    }
-    async updateGroup(input) {
-        const res = await this.repository.updateGroup(input);
-        res.updatedAt = new Date().getDate();
-        this.addCacheEach(input.groupID, res);
-        this.mygroupID = input.groupID;
-        return res;
-    }
+    // async deleteGroup(input: GroupMast): Promise<GroupMast> {
+    // 	const res = await this.repository.deleteGroup(input);
+    // 	res.deletedAt = new Date().getDate();
+    // 	this.addCacheEach(input.groupID, res);
+    // 	return res;
+    // }
+    // async updateGroup(input: GroupMast): Promise<GroupMast> {
+    // 	const res = await this.repository.updateGroup(input);
+    // 	res.updatedAt = new Date().getDate();
+    // 	this.addCacheEach(input.groupID, res);
+    // 	this.mygroupID = input.groupID;
+    // 	return res;
+    // }
     async fetchGroupByGroupID(groupID) {
         const cache = this.fetchGroup(groupID);
         if (cache && cache === "blanc") {

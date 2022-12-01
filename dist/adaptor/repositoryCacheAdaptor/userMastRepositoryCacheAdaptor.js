@@ -16,12 +16,12 @@ class UserMastRepositoryCacheAdaptor {
         this.myUserID = res.userID;
         return res;
     }
-    async deleteUserMast(input) {
-        const res = await this.repository.deleteUserMast(input);
-        res.deletedAt = new Date().getTime();
-        this.updateCacheEach(res.userID, res);
-        return res;
-    }
+    // async deleteUserMast(input: UserMast): Promise<UserMast> {
+    // 	const res = await this.repository.deleteUserMast(input);
+    // 	res.deletedAt = new Date().getTime();
+    // 	this.updateCacheEach(res.userID, res);
+    // 	return res;
+    // }
     async updateUserMast(input) {
         const res = await this.repository.updateUserMast(input);
         this.updateCacheEach(res.userID, res);

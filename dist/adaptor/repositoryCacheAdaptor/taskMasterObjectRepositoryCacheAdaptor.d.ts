@@ -23,7 +23,6 @@ export declare class TaskMasterObjectRepositoryCacheAdaptor implements ITaskMast
         taskCache: TaskMastTaskCache;
     });
     addTaskMasterObject(input: TaskMasterObject): Promise<TaskMasterObject>;
-    updateTaskMasterObject(input: TaskMasterObject): Promise<TaskMasterObject>;
     fetchTaskMasterObject(groupID: string): Promise<TaskMasterObject | null>;
     fetchTasksByGroupID(groupID: string): Promise<TaskMast[]>;
     private updateGroupCache;

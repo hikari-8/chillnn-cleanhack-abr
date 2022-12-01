@@ -18,12 +18,14 @@ class TaskMasterObjectRepositoryCacheAdaptor {
         this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
         return res;
     }
-    async updateTaskMasterObject(input) {
-        const res = await this.repository.updateTaskMasterObject(input);
-        res.updatedAt = new Date().getDate();
-        this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
-        return res;
-    }
+    // async updateTaskMasterObject(
+    // 	input: TaskMasterObject
+    // ): Promise<TaskMasterObject> {
+    // 	const res = await this.repository.updateTaskMasterObject(input);
+    // 	res.updatedAt = new Date().getDate();
+    // 	this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
+    // 	return res;
+    // }
     async fetchTaskMasterObject(groupID) {
         const cache = this.fetchCacheTaskMasterObject(groupID);
         if (cache) {

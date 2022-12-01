@@ -6,8 +6,6 @@ export declare class GroupMastRepositoryCacheAdaptor implements IGroupMastReposi
     private mygroupID;
     constructor(repository: IGroupMastRepository);
     addGroup(input: GroupMast): Promise<GroupMast>;
-    deleteGroup(input: GroupMast): Promise<GroupMast>;
-    updateGroup(input: GroupMast): Promise<GroupMast>;
     fetchGroupByGroupID(groupID: string): Promise<GroupMast | null>;
     private addCacheEach;
     private fetchGroup;

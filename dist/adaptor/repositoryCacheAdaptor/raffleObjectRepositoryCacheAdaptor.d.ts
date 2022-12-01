@@ -22,7 +22,6 @@ export declare class RaffleObjectRepositoryCacheAdaptor implements IRaffleObject
         taskCache: RaffleMastRaffleCache;
     });
     addRaffleObject(input: RaffleObject): Promise<RaffleObject>;
-    updateRaffleObject(input: RaffleObject): Promise<RaffleObject>;
     fetchRaffleObject(raffleID: string): Promise<RaffleObject | null>;
     private updateGroupCache;
     private updateRaffleCacheByGroupID;
