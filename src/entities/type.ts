@@ -38,7 +38,7 @@ export type GroupMast = {
 
 export type GroupMastInput = {
   createdAt: Scalars['AWSTimestamp'];
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   groupName: Scalars['String'];
   updatedAt: Scalars['AWSTimestamp'];
@@ -52,7 +52,7 @@ export type RaffleJoinUser = {
 };
 
 export type RaffleJoinUserInput = {
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   joinAt: Scalars['AWSTimestamp'];
   userID: Scalars['ID'];
@@ -72,13 +72,13 @@ export type RaffleMast = {
 
 export type RaffleMastInput = {
   createdAt: Scalars['AWSTimestamp'];
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   raffleID: Scalars['ID'];
   taskID: Scalars['ID'];
   taskName: Scalars['String'];
   updatedAt: Scalars['AWSTimestamp'];
-  userID?: Maybe<Array<Scalars['ID']>>;
+  userID?: InputMaybe<Array<Scalars['ID']>>;
 };
 
 export type RaffleObject = {
@@ -96,16 +96,16 @@ export type RaffleObject = {
 };
 
 export type RaffleObjectInput = {
-  activeMembers?: Maybe<Array<RaffleJoinUser>>;
+  activeMembers?: InputMaybe<Array<RaffleJoinUserInput>>;
   createdAt: Scalars['AWSTimestamp'];
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   limitTime: Scalars['AWSTimestamp'];
   raffleID: Scalars['ID'];
   raffleStatus: RaffleStatus;
   remindSlackTime: Scalars['AWSTimestamp'];
   remindSlackWeek: Scalars['String'];
-  tasks: Array<RaffleMast>;
+  tasks: Array<RaffleMastInput>;
   updatedAt: Scalars['AWSTimestamp'];
 };
 
@@ -141,9 +141,9 @@ export type TaskMast = {
 
 export type TaskMastInput = {
   createdAt: Scalars['AWSTimestamp'];
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
-  headCount?: Maybe<Scalars['Int']>;
+  headCount?: InputMaybe<Scalars['Int']>;
   taskID: Scalars['ID'];
   taskName: Scalars['String'];
   updatedAt: Scalars['AWSTimestamp'];
@@ -162,12 +162,12 @@ export type TaskMasterObject = {
 
 export type TaskMasterObjectInput = {
   createdAt: Scalars['AWSTimestamp'];
-  deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
-  limitTime?: Maybe<Scalars['AWSTimestamp']>;
-  remindSlackTime?: Maybe<Scalars['AWSTimestamp']>;
-  remindSlackWeek?: Maybe<Scalars['String']>;
-  tasks: Array<TaskMast>;
+  limitTime?: InputMaybe<Scalars['AWSTimestamp']>;
+  remindSlackTime?: InputMaybe<Scalars['AWSTimestamp']>;
+  remindSlackWeek?: InputMaybe<Scalars['String']>;
+  tasks: Array<TaskMastInput>;
   updatedAt: Scalars['AWSTimestamp'];
 };
 

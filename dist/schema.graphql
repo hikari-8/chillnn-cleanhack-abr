@@ -30,7 +30,7 @@ type GroupMast {
   updatedAt: AWSTimestamp!
 }
 
-type GroupMastInput {
+input GroupMastInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
@@ -45,7 +45,7 @@ type RaffleJoinUser {
   userID: ID!
 }
 
-type RaffleJoinUserInput {
+input RaffleJoinUserInput {
   deletedAt: AWSTimestamp
   groupID: ID!
   joinAt: AWSTimestamp!
@@ -64,7 +64,7 @@ type RaffleMast {
   userID: [ID!]
 }
 
-type RaffleMastInput {
+input RaffleMastInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
@@ -89,8 +89,8 @@ type RaffleObject {
   updatedAt: AWSTimestamp!
 }
 
-type RaffleObjectInput {
-  activeMembers: [RaffleJoinUser!]
+input RaffleObjectInput {
+  activeMembers: [RaffleJoinUserInput!]
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
@@ -99,7 +99,7 @@ type RaffleObjectInput {
   raffleStatus: RaffleStatus!
   remindSlackTime: AWSTimestamp!
   remindSlackWeek: String!
-  tasks: [RaffleMast!]!
+  tasks: [RaffleMastInput!]!
   updatedAt: AWSTimestamp!
 }
 
@@ -133,7 +133,7 @@ type TaskMast {
   updatedAt: AWSTimestamp!
 }
 
-type TaskMastInput {
+input TaskMastInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
@@ -154,14 +154,14 @@ type TaskMasterObject {
   updatedAt: AWSTimestamp!
 }
 
-type TaskMasterObjectInput {
+input TaskMasterObjectInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
   limitTime: AWSTimestamp
   remindSlackTime: AWSTimestamp
   remindSlackWeek: String
-  tasks: [TaskMast!]!
+  tasks: [TaskMastInput!]!
   updatedAt: AWSTimestamp!
 }
 
