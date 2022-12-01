@@ -30,7 +30,7 @@ type TaskMast {
 ##################################################################################
 
 input TaskMasterObjectInput {
-	tasks: [TaskMast!]!
+	tasks: [TaskMastInput!]!
 	groupID: ID!
 	limitTime: AWSTimestamp
 	remindSlackWeek: String

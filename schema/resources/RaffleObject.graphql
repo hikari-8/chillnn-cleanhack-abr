@@ -48,9 +48,9 @@ type RaffleJoinUser {
 ##################################################################################
 input RaffleObjectInput {
 	raffleID: ID!
-	tasks: [RaffleMast!]!
+	tasks: [RaffleMastInput!]!
 	groupID: ID!
-	activeMembers: [RaffleJoinUser!]
+	activeMembers: [RaffleJoinUserInput!]
 	limitTime: AWSTimestamp!
 	raffleStatus: RaffleStatus!
 	remindSlackWeek: String!
