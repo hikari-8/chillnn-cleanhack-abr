@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.GroupModel = void 0;
-const _baseModel_1 = require("./_baseModel");
-const util_1 = require("../../../util");
-class GroupModel extends _baseModel_1.BaseModel {
+import { BaseModel } from "./_baseModel";
+import { generateUUID } from "../../../util";
+export class GroupModel extends BaseModel {
     static getBlanc(groupName) {
         return {
-            groupID: (0, util_1.generateUUID)(),
+            groupID: generateUUID(),
             groupName,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
@@ -55,4 +52,3 @@ class GroupModel extends _baseModel_1.BaseModel {
         // mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
     }
 }
-exports.GroupModel = GroupModel;

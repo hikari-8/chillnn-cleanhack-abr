@@ -1,8 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.S3ObjectDto = void 0;
-class S3ObjectDto {
-    s3Object;
+export class S3ObjectDto {
     constructor(s3Object) {
         this.s3Object = s3Object;
     }
@@ -13,4 +9,3 @@ class S3ObjectDto {
         this.s3Object = s3Object;
     }
 }
-exports.S3ObjectDto = S3ObjectDto;

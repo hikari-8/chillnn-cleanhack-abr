@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RaffleObjectModel = void 0;
-const _baseModel_1 = require("./_baseModel");
-const __1 = require("../../..");
-class RaffleObjectModel extends _baseModel_1.BaseModel {
+import { BaseModel } from "./_baseModel";
+import { generateUUID } from "../../..";
+export class RaffleObjectModel extends BaseModel {
     static getBlanc(tasks, groupID, limitTime, raffleStatus, remindSlackWeek, remindSlackTime) {
         return {
-            raffleID: (0, __1.generateUUID)(),
+            raffleID: generateUUID(),
             tasks,
             groupID,
             limitTime,
@@ -133,4 +130,3 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         // return res.map((item) => this.modelFactory.RaffleMastModel(item));
     }
 }
-exports.RaffleObjectModel = RaffleObjectModel;

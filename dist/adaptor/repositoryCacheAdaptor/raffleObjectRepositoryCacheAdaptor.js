@@ -1,15 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RaffleObjectRepositoryCacheAdaptor = void 0;
-class RaffleObjectRepositoryCacheAdaptor {
-    repository;
-    //後で名前raffleCacheに変える
-    groupCache;
-    taskCache;
+export class RaffleObjectRepositoryCacheAdaptor {
     constructor(repository, optional) {
         this.repository = repository;
-        this.groupCache = optional?.companyCache || {};
-        this.taskCache = optional?.taskCache || {};
+        this.groupCache = (optional === null || optional === void 0 ? void 0 : optional.companyCache) || {};
+        this.taskCache = (optional === null || optional === void 0 ? void 0 : optional.taskCache) || {};
     }
     async addRaffleObject(input) {
         const res = await this.repository.addRaffleObject(input);
@@ -72,4 +65,3 @@ class RaffleObjectRepositoryCacheAdaptor {
         return this.groupCache[groupID];
     }
 }
-exports.RaffleObjectRepositoryCacheAdaptor = RaffleObjectRepositoryCacheAdaptor;

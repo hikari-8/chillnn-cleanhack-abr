@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RaffleMastModel = void 0;
-const util_1 = require("../../../util");
-const _baseModel_1 = require("./_baseModel");
-class RaffleMastModel extends _baseModel_1.BaseModel {
+import { generateUUID } from "../../../util";
+import { BaseModel } from "./_baseModel";
+export class RaffleMastModel extends BaseModel {
     static getBlanc(raffleID, groupID, taskName) {
         return {
             raffleID,
-            taskID: (0, util_1.generateUUID)(),
+            taskID: generateUUID(),
             taskName,
             groupID,
             createdAt: new Date().getTime(),
@@ -53,4 +50,3 @@ class RaffleMastModel extends _baseModel_1.BaseModel {
         }
     }
 }
-exports.RaffleMastModel = RaffleMastModel;

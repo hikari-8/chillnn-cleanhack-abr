@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserModel = void 0;
-const _baseModel_1 = require("./_baseModel");
-const groupModel_1 = require("./groupModel");
-class UserModel extends _baseModel_1.BaseModel {
+import { BaseModel } from "./_baseModel";
+import { GroupModel } from "./groupModel";
+export class UserModel extends BaseModel {
     // ============================================
     // getters
     // ============================================
@@ -104,9 +101,8 @@ class UserModel extends _baseModel_1.BaseModel {
         }
     }
     createGroupModel() {
-        return this.modelFactory.GroupModel(groupModel_1.GroupModel.getBlanc(this.userID), {
+        return this.modelFactory.GroupModel(GroupModel.getBlanc(this.userID), {
             isNew: true,
         });
     }
 }
-exports.UserModel = UserModel;

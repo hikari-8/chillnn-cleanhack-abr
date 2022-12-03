@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RaffleJoinUserModel = void 0;
-const _baseModel_1 = require("./_baseModel");
-class RaffleJoinUserModel extends _baseModel_1.BaseModel {
+import { BaseModel } from "./_baseModel";
+export class RaffleJoinUserModel extends BaseModel {
     static getBlanc(userID, groupID) {
         return {
             userID,
@@ -26,4 +23,3 @@ class RaffleJoinUserModel extends _baseModel_1.BaseModel {
         return this.mast.deletedAt;
     }
 }
-exports.RaffleJoinUserModel = RaffleJoinUserModel;

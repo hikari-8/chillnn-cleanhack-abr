@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.TaskMastModel = void 0;
-const util_1 = require("../../../util");
-const _baseModel_1 = require("./_baseModel");
-class TaskMastModel extends _baseModel_1.BaseModel {
+import { generateUUID } from "../../../util";
+import { BaseModel } from "./_baseModel";
+export class TaskMastModel extends BaseModel {
     static getBlanc(groupID, taskName) {
         return {
-            taskID: (0, util_1.generateUUID)(),
+            taskID: generateUUID(),
             taskName,
             groupID,
             createdAt: new Date().getTime(),
@@ -49,4 +46,3 @@ class TaskMastModel extends _baseModel_1.BaseModel {
         }
     }
 }
-exports.TaskMastModel = TaskMastModel;
