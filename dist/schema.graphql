@@ -168,6 +168,7 @@ input TaskMasterObjectInput {
 type UserMast {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
+  email: String!
   groupID: String!
   name: String!
   records: [String!]
@@ -179,6 +180,7 @@ type UserMast {
 input UserMastInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
+  email: String!
   groupID: String!
   name: String!
   records: [String!]

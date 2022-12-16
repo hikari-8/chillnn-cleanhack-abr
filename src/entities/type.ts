@@ -174,6 +174,7 @@ export type TaskMasterObjectInput = {
 export type UserMast = {
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
+  email: Scalars['String'];
   groupID: Scalars['String'];
   name: Scalars['String'];
   records?: Maybe<Array<Scalars['String']>>;
@@ -185,6 +186,7 @@ export type UserMast = {
 export type UserMastInput = {
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
+  email: Scalars['String'];
   groupID: Scalars['String'];
   name: Scalars['String'];
   records?: InputMaybe<Array<Scalars['String']>>;
