@@ -1,22 +1,29 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RaffleObjectRepositoryCacheAdaptor = void 0;
 class RaffleObjectRepositoryCacheAdaptor {
-    repository;
-    //後で名前raffleCacheに変える
-    groupCache;
-    taskCache;
     constructor(repository, optional) {
         this.repository = repository;
-        this.groupCache = optional?.companyCache || {};
-        this.taskCache = optional?.taskCache || {};
+        this.groupCache = (optional === null || optional === void 0 ? void 0 : optional.companyCache) || {};
+        this.taskCache = (optional === null || optional === void 0 ? void 0 : optional.taskCache) || {};
     }
-    async addRaffleObject(input) {
-        const res = await this.repository.addRaffleObject(input);
-        res.createdAt = new Date().getDate();
-        res.updatedAt = new Date().getDate();
-        this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
-        return res;
+    addRaffleObject(input) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield this.repository.addRaffleObject(input);
+            res.createdAt = new Date().getDate();
+            res.updatedAt = new Date().getDate();
+            this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
+            return res;
+        });
     }
     // async updateRaffleObject(input: RaffleObject): Promise<RaffleObject> {
     // 	const res = await this.repository.updateRaffleObject(input);
@@ -24,17 +31,19 @@ class RaffleObjectRepositoryCacheAdaptor {
     // 	this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
     // 	return res;
     // }
-    async fetchRaffleObject(raffleID) {
-        const cache = this.fetchCacheRaffleObject(raffleID);
-        if (cache) {
-            return null;
-        }
-        else if (cache) {
-            return cache;
-        }
-        const res = await this.repository.fetchRaffleObject(raffleID);
-        this.updateRaffleCacheByGroupID(raffleID);
-        return res;
+    fetchRaffleObject(raffleID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const cache = this.fetchCacheRaffleObject(raffleID);
+            if (cache) {
+                return null;
+            }
+            else if (cache) {
+                return cache;
+            }
+            const res = yield this.repository.fetchRaffleObject(raffleID);
+            this.updateRaffleCacheByGroupID(raffleID);
+            return res;
+        });
     }
     // async fetchRaffleTasksByGroupID(groupID: string): Promise<RaffleMast[]> {
     // 	const GroupCache = this.groupCache[groupID];

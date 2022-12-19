@@ -31,7 +31,6 @@ __exportStar(require("./modules/raffleMastModel"), exports);
 __exportStar(require("./modules/raffleJoinUserModel"), exports);
 __exportStar(require("./modules/groupModel"), exports);
 class ModelFactory {
-    repositoryContainer;
     constructor(repositoryContainer //
     ) {
         this.repositoryContainer = repositoryContainer;

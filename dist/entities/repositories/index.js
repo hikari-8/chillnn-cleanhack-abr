@@ -21,11 +21,6 @@ __exportStar(require("./modules/taskMasterObjectRepository"), exports);
 __exportStar(require("./modules/raffleobjectRepository"), exports);
 __exportStar(require("./modules/groupMastRepository"), exports);
 class RepositoryContainer {
-    s3Repository;
-    userMastRepository;
-    taskMasterObjectRepository;
-    raffleObjectRepository;
-    groupMastRepository;
     constructor(
     // object
     s3Repository, //
