@@ -8,6 +8,8 @@ export declare class UserModel extends BaseModel<UserMast> {
     get deletedAt(): import("../..").Maybe<number> | undefined;
     get name(): string;
     set name(input: string);
+    get email(): string;
+    set email(input: string);
     get role(): string;
     set role(input: string);
     get records(): string[];

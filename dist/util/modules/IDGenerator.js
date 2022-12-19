@@ -1,4 +1,7 @@
-export function generateUUID() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateUUID = void 0;
+function generateUUID() {
     const chars = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.split('');
     for (let i = 0, len = chars.length; i < len; i++) {
         switch (chars[i]) {
@@ -12,3 +15,4 @@ export function generateUUID() {
     }
     return chars.join('');
 }
+exports.generateUUID = generateUUID;

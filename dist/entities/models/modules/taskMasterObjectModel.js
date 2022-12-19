@@ -1,6 +1,9 @@
-import { BaseModel } from "./_baseModel";
-import { TaskMastModel } from "./taskMastModel";
-export class TaskMasterObjectModel extends BaseModel {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TaskMasterObjectModel = void 0;
+const _baseModel_1 = require("./_baseModel");
+const taskMastModel_1 = require("./taskMastModel");
+class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     static getBlanc(groupID, tasks) {
         return {
             tasks,
@@ -109,7 +112,8 @@ export class TaskMasterObjectModel extends BaseModel {
     // }
     // taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
     getTaskMastModel(groupID) {
-        const blank = TaskMastModel.getBlanc(this.groupID, "blanc");
+        const blank = taskMastModel_1.TaskMastModel.getBlanc(this.groupID, "blanc");
         return this.modelFactory.TaskMastModel(blank, { isNew: true });
     }
 }
+exports.TaskMasterObjectModel = TaskMasterObjectModel;

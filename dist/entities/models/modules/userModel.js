@@ -1,6 +1,9 @@
-import { BaseModel } from "./_baseModel";
-import { GroupModel } from "./groupModel";
-export class UserModel extends BaseModel {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserModel = void 0;
+const _baseModel_1 = require("./_baseModel");
+const groupModel_1 = require("./groupModel");
+class UserModel extends _baseModel_1.BaseModel {
     // ============================================
     // getters
     // ============================================
@@ -24,6 +27,12 @@ export class UserModel extends BaseModel {
     }
     set name(input) {
         this.mast.name = input;
+    }
+    get email() {
+        return this.mast.email;
+    }
+    set email(input) {
+        this.mast.email = input;
     }
     get role() {
         return this.mast.role || "";
@@ -101,8 +110,9 @@ export class UserModel extends BaseModel {
         }
     }
     createGroupModel() {
-        return this.modelFactory.GroupModel(GroupModel.getBlanc(this.userID), {
+        return this.modelFactory.GroupModel(groupModel_1.GroupModel.getBlanc(this.userID), {
             isNew: true,
         });
     }
 }
+exports.UserModel = UserModel;

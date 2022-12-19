@@ -1,5 +1,10 @@
-import { ChillnnTrainingError, compareNumDesc, ErrorCode, } from "../..";
-export class UserUsecase {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserUsecase = void 0;
+const __1 = require("../..");
+class UserUsecase {
+    repositoryContainer;
+    modelFactory;
     constructor(repositoryContainer, //
     modelFactory) {
         this.repositoryContainer = repositoryContainer;
@@ -9,14 +14,14 @@ export class UserUsecase {
         const me = await this.repositoryContainer.userMastRepository.fetchMyUserMast();
         if (!me) {
             // 存在しない場合
-            throw new ChillnnTrainingError(ErrorCode.chillnnTraining_404_resourceNotFound);
+            throw new __1.ChillnnTrainingError(__1.ErrorCode.chillnnTraining_404_resourceNotFound);
         }
         return this.modelFactory.UserModel(me);
     }
     async fetchUserModelByUserID(userID) {
         const user = await this.repositoryContainer.userMastRepository.fetchUserMastByUserID(userID);
         if (!user) {
-            throw new ChillnnTrainingError(ErrorCode.chillnnTraining_404_resourceNotFound);
+            throw new __1.ChillnnTrainingError(__1.ErrorCode.chillnnTraining_404_resourceNotFound);
         }
         return this.modelFactory.UserModel(user);
     }
@@ -24,6 +29,7 @@ export class UserUsecase {
         const users = await this.repositoryContainer.userMastRepository.fetchAllUser();
         return users
             .map((user) => this.modelFactory.UserModel(user))
-            .sort((a, b) => compareNumDesc(a.createdAt, b.createdAt));
+            .sort((a, b) => (0, __1.compareNumDesc)(a.createdAt, b.createdAt));
     }
 }
+exports.UserUsecase = UserUsecase;

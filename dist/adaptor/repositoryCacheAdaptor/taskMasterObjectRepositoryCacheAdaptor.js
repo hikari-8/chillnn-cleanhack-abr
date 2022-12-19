@@ -1,9 +1,15 @@
-import { compareNumDesc } from "../../util";
-export class TaskMasterObjectRepositoryCacheAdaptor {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TaskMasterObjectRepositoryCacheAdaptor = void 0;
+const util_1 = require("../../util");
+class TaskMasterObjectRepositoryCacheAdaptor {
+    repository;
+    groupCache;
+    taskCache;
     constructor(repository, optional) {
         this.repository = repository;
-        this.groupCache = (optional === null || optional === void 0 ? void 0 : optional.companyCache) || {};
-        this.taskCache = (optional === null || optional === void 0 ? void 0 : optional.taskCache) || {};
+        this.groupCache = optional?.companyCache || {};
+        this.taskCache = optional?.taskCache || {};
     }
     async addTaskMasterObject(input) {
         const res = await this.repository.addTaskMasterObject(input);
@@ -37,10 +43,10 @@ export class TaskMasterObjectRepositoryCacheAdaptor {
         if (GroupCache)
             return (Object.keys(GroupCache) || [])
                 .map((key) => this.groupCache[groupID][key].mast)
-                .sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
+                .sort((a, b) => (0, util_1.compareNumDesc)(a.updatedAt, b.updatedAt));
         return (Object.keys(GroupCache) || [])
             .map((key) => this.groupCache[groupID][key].mast)
-            .sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
+            .sort((a, b) => (0, util_1.compareNumDesc)(a.updatedAt, b.updatedAt));
     }
     // ===============================================================
     //
@@ -68,3 +74,4 @@ export class TaskMasterObjectRepositoryCacheAdaptor {
         return this.groupCache[groupID];
     }
 }
+exports.TaskMasterObjectRepositoryCacheAdaptor = TaskMasterObjectRepositoryCacheAdaptor;
