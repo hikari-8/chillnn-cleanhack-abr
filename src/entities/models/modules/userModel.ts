@@ -121,8 +121,9 @@ export class UserModel extends BaseModel<UserMast> {
 	// 	}
 	// }
 
-	createGroupModel(groupName: string): GroupModel {
-		const blank = GroupModel.getBlanc(groupName);
+	//userがcreate→admin権限付与できる
+	createGroupModel(userID: string): GroupModel {
+		const blank = GroupModel.getBlanc(userID);
 		return this.modelFactory.GroupModel(blank, {
 			isNew: true,
 		});

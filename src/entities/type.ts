@@ -30,17 +30,19 @@ export enum ErrorCode {
 
 export type GroupMast = {
   createdAt: Scalars['AWSTimestamp'];
+  createdUserID: Scalars['ID'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
-  groupName: Scalars['String'];
+  groupName?: Maybe<Scalars['String']>;
   updatedAt: Scalars['AWSTimestamp'];
 };
 
 export type GroupMastInput = {
   createdAt: Scalars['AWSTimestamp'];
+  createdUserID: Scalars['ID'];
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
-  groupName: Scalars['String'];
+  groupName?: InputMaybe<Scalars['String']>;
   updatedAt: Scalars['AWSTimestamp'];
 };
 

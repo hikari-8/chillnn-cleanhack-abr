@@ -4,10 +4,10 @@ import { Scalars } from "../../type";
 import { generateUUID } from "../../../util";
 
 export class GroupModel extends BaseModel<GroupMast> {
-	static getBlanc(groupName: Scalars["String"]): GroupMast {
+	static getBlanc(createdUserID: Scalars["String"]): GroupMast {
 		return {
+			createdUserID,
 			groupID: generateUUID(),
-			groupName,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
 		};
@@ -17,6 +17,9 @@ export class GroupModel extends BaseModel<GroupMast> {
 	// ============================================
 	get groupID() {
 		return this.mast.groupID;
+	}
+	get createdUserID() {
+		return this.mast.createdUserID;
 	}
 	get createdAt() {
 		return this.mast.createdAt;
@@ -32,7 +35,7 @@ export class GroupModel extends BaseModel<GroupMast> {
 	// getter / setter
 	// ============================================
 	get groupName() {
-		return this.mast.groupName;
+		return this.mast.groupName || "";
 	}
 	set groupName(input: string) {
 		this.mast.groupName = input;

@@ -1,6 +1,7 @@
 type GroupMast {
 	groupID: ID!
-	groupName: String!
+	groupName: String
+	createdUserID: ID!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -9,7 +10,8 @@ type GroupMast {
 
 input GroupMastInput {
 	groupID: ID!
-	groupName: String!
+	groupName: String
+	createdUserID: ID!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!

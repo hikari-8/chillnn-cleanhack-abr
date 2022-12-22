@@ -24,17 +24,19 @@ enum ErrorCode {
 
 type GroupMast {
   createdAt: AWSTimestamp!
+  createdUserID: ID!
   deletedAt: AWSTimestamp
   groupID: ID!
-  groupName: String!
+  groupName: String
   updatedAt: AWSTimestamp!
 }
 
 input GroupMastInput {
   createdAt: AWSTimestamp!
+  createdUserID: ID!
   deletedAt: AWSTimestamp
   groupID: ID!
-  groupName: String!
+  groupName: String
   updatedAt: AWSTimestamp!
 }
 
