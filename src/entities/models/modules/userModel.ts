@@ -12,6 +12,9 @@ export class UserModel extends BaseModel<UserMast> {
 	get userID() {
 		return this.mast.userID;
 	}
+	get groupID() {
+		return this.mast.groupID;
+	}
 
 	get createdAt() {
 		return this.mast.createdAt;
@@ -37,12 +40,6 @@ export class UserModel extends BaseModel<UserMast> {
 	}
 	set email(input: string) {
 		this.mast.email = input;
-	}
-	get groupID() {
-		return this.mast.groupID || "";
-	}
-	set groupID(input: string) {
-		this.mast.groupID = input;
 	}
 
 	get role() {
