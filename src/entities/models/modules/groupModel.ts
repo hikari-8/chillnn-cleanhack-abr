@@ -49,6 +49,24 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
+	 * roleがAdminなら、掃除場所情報を新規登録、または更新できる
+	 *
+	 */
+	async register() {
+		if (this.isRegisterable && this.isAdmin) {
+			const now = new Date().getTime();
+			if (this.isNew) {
+				this.mast.createdAt = now;
+				this.mast.updatedAt = now;
+				await this.repositoryContainer.groupMastRepository.addGroup(
+					this.mast
+				);
+			}
+			this.isNew = false;
+		}
+	}
+
+	/**
 	 * このグループのマスターデータを取得する
 	 * @returns
 	 */

@@ -12,6 +12,11 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**
+     * roleがAdminなら、掃除場所情報を新規登録、または更新できる
+     *
+     */
+    register(): Promise<void>;
+    /**
      * このグループのマスターデータを取得する
      * @returns
      */
