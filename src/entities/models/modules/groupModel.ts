@@ -70,6 +70,19 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
+	 * このグループのグループデータを取得する
+	 * @returns
+	 */
+	async fetchGroupData(input: string): Promise<GroupMast | null> {
+		const res =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.groupID
+			);
+		return res;
+		// mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
+	}
+
+	/**
 	 * このグループのマスターデータを取得する
 	 * @returns
 	 */

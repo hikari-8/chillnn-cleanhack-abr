@@ -18,6 +18,11 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      */
     register(): Promise<void>;
     /**
+     * このグループのグループデータを取得する
+     * @returns
+     */
+    fetchGroupData(input: string): Promise<GroupMast | null>;
+    /**
      * このグループのマスターデータを取得する
      * @returns
      */

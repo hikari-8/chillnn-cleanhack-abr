@@ -75,6 +75,17 @@ class GroupModel extends _baseModel_1.BaseModel {
         });
     }
     /**
+     * このグループのグループデータを取得する
+     * @returns
+     */
+    fetchGroupData(input) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
+            return res;
+            // mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
+        });
+    }
+    /**
      * このグループのマスターデータを取得する
      * @returns
      */
