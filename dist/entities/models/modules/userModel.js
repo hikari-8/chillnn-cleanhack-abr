@@ -19,9 +19,6 @@ class UserModel extends _baseModel_1.BaseModel {
     get userID() {
         return this.mast.userID;
     }
-    get groupID() {
-        return this.mast.groupID || "";
-    }
     get createdAt() {
         return this.mast.createdAt;
     }
@@ -45,6 +42,12 @@ class UserModel extends _baseModel_1.BaseModel {
     }
     set email(input) {
         this.mast.email = input;
+    }
+    get groupID() {
+        return this.mast.groupID || "";
+    }
+    set groupID(input) {
+        this.mast.groupID = input;
     }
     get role() {
         return this.mast.role || "";
