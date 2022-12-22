@@ -12,6 +12,9 @@ export class UserModel extends BaseModel<UserMast> {
 	get userID() {
 		return this.mast.userID;
 	}
+	get groupID() {
+		return this.mast.groupID || "";
+	}
 	get createdAt() {
 		return this.mast.createdAt;
 	}

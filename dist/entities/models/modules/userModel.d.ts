@@ -3,6 +3,7 @@ import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
 export declare class UserModel extends BaseModel<UserMast> {
     get userID(): string;
+    get groupID(): string;
     get createdAt(): number;
     get updatedAt(): number;
     get deletedAt(): import("../..").Maybe<number> | undefined;

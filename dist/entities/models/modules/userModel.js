@@ -19,6 +19,9 @@ class UserModel extends _baseModel_1.BaseModel {
     get userID() {
         return this.mast.userID;
     }
+    get groupID() {
+        return this.mast.groupID || "";
+    }
     get createdAt() {
         return this.mast.createdAt;
     }
