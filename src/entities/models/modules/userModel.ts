@@ -102,27 +102,28 @@ export class UserModel extends BaseModel<UserMast> {
 	/**
 	 * Adminならグループを登録、更新できる
 	 */
-	async groupRegister() {
-		if (this.isRegisterable) {
-			const now = new Date().getTime();
-			if (this.isNew && this.role !== "admin") {
-				return window.alert(
-					"管理者権限がありません。管理者に言って、Admin権限を付与してもらってください。"
-				);
-			} else if (this.isNew && this.role === "admin") {
-				this.mast.createdAt = now;
-				this.mast.updatedAt = now;
-				await this.createGroupModel();
-			} else {
-				this.mast.updatedAt = now;
-				await this.createGroupModel();
-			}
-			this.isNew = false;
-		}
-	}
+	// async groupRegister() {
+	// 	if (this.isRegisterable) {
+	// 		const now = new Date().getTime();
+	// 		if (this.isNew && this.role !== "admin") {
+	// 			return window.alert(
+	// 				"管理者権限がありません。管理者に言って、Admin権限を付与してもらってください。"
+	// 			);
+	// 		} else if (this.isNew && this.role === "admin") {
+	// 			this.mast.createdAt = now;
+	// 			this.mast.updatedAt = now;
+	// 			await this.createGroupModel();
+	// 		} else {
+	// 			this.mast.updatedAt = now;
+	// 			await this.createGroupModel();
+	// 		}
+	// 		this.isNew = false;
+	// 	}
+	// }
 
-	createGroupModel(): GroupModel {
-		return this.modelFactory.GroupModel(GroupModel.getBlanc(this.userID), {
+	createGroupModel(groupName: string): GroupModel {
+		const blank = GroupModel.getBlanc(groupName);
+		return this.modelFactory.GroupModel(blank, {
 			isNew: true,
 		});
 	}
