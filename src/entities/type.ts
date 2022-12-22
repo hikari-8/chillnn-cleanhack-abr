@@ -177,7 +177,7 @@ export type UserMast = {
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   email: Scalars['String'];
-  groupID: Scalars['String'];
+  groupID?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   records?: Maybe<Array<Scalars['String']>>;
   role: Scalars['String'];
@@ -189,7 +189,7 @@ export type UserMastInput = {
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   email: Scalars['String'];
-  groupID: Scalars['String'];
+  groupID?: InputMaybe<Scalars['String']>;
   name: Scalars['String'];
   records?: InputMaybe<Array<Scalars['String']>>;
   role: Scalars['String'];

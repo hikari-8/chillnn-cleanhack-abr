@@ -171,7 +171,7 @@ type UserMast {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   email: String!
-  groupID: String!
+  groupID: String
   name: String!
   records: [String!]
   role: String!
@@ -183,7 +183,7 @@ input UserMastInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   email: String!
-  groupID: String!
+  groupID: String
   name: String!
   records: [String!]
   role: String!

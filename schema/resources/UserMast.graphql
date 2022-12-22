@@ -2,7 +2,7 @@ type UserMast {
 	userID: ID!
 	name: String!
 	email: String!
-	groupID: String!
+	groupID: String
 	role: String!
 	records: [String!]
 	# status
@@ -15,7 +15,7 @@ input UserMastInput {
 	userID: ID!
 	name: String!
 	email: String!
-	groupID: String!
+	groupID: String
 	role: String!
 	records: [String!]
 	# status
