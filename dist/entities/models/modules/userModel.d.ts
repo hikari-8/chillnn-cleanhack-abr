@@ -20,8 +20,5 @@ export declare class UserModel extends BaseModel<UserMast> {
      * ユーザー情報を新規登録、または更新する
      */
     register(): Promise<void>;
-    /**
-     * Adminならグループを登録、更新できる
-     */
-    createGroupModel(userID: string): GroupModel;
+    createGroupModel(userID: string): Promise<GroupModel>;
 }

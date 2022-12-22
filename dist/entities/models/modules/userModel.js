@@ -99,32 +99,13 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
-    /**
-     * Adminならグループを登録、更新できる
-     */
-    // async groupRegister() {
-    // 	if (this.isRegisterable) {
-    // 		const now = new Date().getTime();
-    // 		if (this.isNew && this.role !== "admin") {
-    // 			return window.alert(
-    // 				"管理者権限がありません。管理者に言って、Admin権限を付与してもらってください。"
-    // 			);
-    // 		} else if (this.isNew && this.role === "admin") {
-    // 			this.mast.createdAt = now;
-    // 			this.mast.updatedAt = now;
-    // 			await this.createGroupModel();
-    // 		} else {
-    // 			this.mast.updatedAt = now;
-    // 			await this.createGroupModel();
-    // 		}
-    // 		this.isNew = false;
-    // 	}
-    // }
     //userがcreate→admin権限付与できる
     createGroupModel(userID) {
-        const blank = groupModel_1.GroupModel.getBlanc(userID);
-        return this.modelFactory.GroupModel(blank, {
-            isNew: true,
+        return __awaiter(this, void 0, void 0, function* () {
+            const blank = groupModel_1.GroupModel.getBlanc(userID);
+            return this.modelFactory.GroupModel(blank, {
+                isNew: true,
+            });
         });
     }
 }

@@ -99,6 +99,14 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 
+	//userがcreate→admin権限付与できる
+	async createGroupModel(userID: string): Promise<GroupModel> {
+		const blank = GroupModel.getBlanc(userID);
+		return this.modelFactory.GroupModel(blank, {
+			isNew: true,
+		});
+	}
+
 	/**
 	 * Adminならグループを登録、更新できる
 	 */
@@ -120,12 +128,4 @@ export class UserModel extends BaseModel<UserMast> {
 	// 		this.isNew = false;
 	// 	}
 	// }
-
-	//userがcreate→admin権限付与できる
-	createGroupModel(userID: string): GroupModel {
-		const blank = GroupModel.getBlanc(userID);
-		return this.modelFactory.GroupModel(blank, {
-			isNew: true,
-		});
-	}
 }
