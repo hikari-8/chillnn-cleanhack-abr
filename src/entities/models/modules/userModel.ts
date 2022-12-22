@@ -1,5 +1,5 @@
 import { throws } from "assert";
-import { UserMast } from "../../type";
+import { UserMast, GroupMast } from "../../type";
 import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { Scalars } from "../..";
 import { BaseModel } from "./_baseModel";
@@ -113,6 +113,18 @@ export class UserModel extends BaseModel<UserMast> {
 		return this.modelFactory.GroupModel(blank, {
 			isNew: true,
 		});
+	}
+
+	/**
+	 * このグループのグループデータを取得する
+	 * @returns
+	 */
+	async fetchGroupData(input: string): Promise<GroupMast | null> {
+		const res =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.groupID
+			);
+		return res;
 	}
 
 	/**

@@ -114,5 +114,15 @@ class UserModel extends _baseModel_1.BaseModel {
             });
         });
     }
+    /**
+     * このグループのグループデータを取得する
+     * @returns
+     */
+    fetchGroupData(input) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
+            return res;
+        });
+    }
 }
 exports.UserModel = UserModel;

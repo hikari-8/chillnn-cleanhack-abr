@@ -1,4 +1,4 @@
-import { UserMast } from "../../type";
+import { UserMast, GroupMast } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
 export declare class UserModel extends BaseModel<UserMast> {
@@ -23,4 +23,9 @@ export declare class UserModel extends BaseModel<UserMast> {
      */
     register(): Promise<void>;
     createGroupModel(userID: string): Promise<GroupModel>;
+    /**
+     * このグループのグループデータを取得する
+     * @returns
+     */
+    fetchGroupData(input: string): Promise<GroupMast | null>;
 }
