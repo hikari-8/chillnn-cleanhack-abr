@@ -64,6 +64,11 @@ export class GroupModel extends BaseModel<GroupMast> {
 				await this.repositoryContainer.groupMastRepository.addGroup(
 					this.mast
 				);
+			} else {
+				this.mast.updatedAt = now;
+				await this.repositoryContainer.groupMastRepository.updateGroup(
+					this.mast
+				);
 			}
 			this.isNew = false;
 		}

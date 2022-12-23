@@ -25,13 +25,13 @@ export class GroupMastRepositoryCacheAdaptor implements IGroupMastRepository {
 	// 	return res;
 	// }
 
-	// async updateGroup(input: GroupMast): Promise<GroupMast> {
-	// 	const res = await this.repository.updateGroup(input);
-	// 	res.updatedAt = new Date().getDate();
-	// 	this.addCacheEach(input.groupID, res);
-	// 	this.mygroupID = input.groupID;
-	// 	return res;
-	// }
+	async updateGroup(input: GroupMast): Promise<GroupMast> {
+		const res = await this.repository.updateGroup(input);
+		res.updatedAt = new Date().getDate();
+		this.addCacheEach(input.groupID, res);
+		this.mygroupID = input.groupID;
+		return res;
+	}
 
 	async fetchGroupByGroupID(groupID: string): Promise<GroupMast | null> {
 		const cache = this.fetchGroup(groupID);

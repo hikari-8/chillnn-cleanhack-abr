@@ -32,13 +32,15 @@ class GroupMastRepositoryCacheAdaptor {
     // 	this.addCacheEach(input.groupID, res);
     // 	return res;
     // }
-    // async updateGroup(input: GroupMast): Promise<GroupMast> {
-    // 	const res = await this.repository.updateGroup(input);
-    // 	res.updatedAt = new Date().getDate();
-    // 	this.addCacheEach(input.groupID, res);
-    // 	this.mygroupID = input.groupID;
-    // 	return res;
-    // }
+    updateGroup(input) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield this.repository.updateGroup(input);
+            res.updatedAt = new Date().getDate();
+            this.addCacheEach(input.groupID, res);
+            this.mygroupID = input.groupID;
+            return res;
+        });
+    }
     fetchGroupByGroupID(groupID) {
         return __awaiter(this, void 0, void 0, function* () {
             const cache = this.fetchGroup(groupID);
