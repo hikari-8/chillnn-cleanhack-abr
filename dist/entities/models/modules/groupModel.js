@@ -68,10 +68,6 @@ class GroupModel extends _baseModel_1.BaseModel {
                 if (this.isNew) {
                     this.mast.createdAt = now;
                     this.mast.updatedAt = now;
-                    yield this.repositoryContainer.groupMastRepository.addGroup(this.mast);
-                }
-                else {
-                    this.mast.updatedAt = now;
                     yield this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
                 }
                 this.isNew = false;
