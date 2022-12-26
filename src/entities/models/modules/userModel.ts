@@ -132,22 +132,17 @@ export class UserModel extends BaseModel<UserMast> {
 	/**
 	 * Adminならグループを登録、更新できる
 	 */
-	// async groupRegister() {
-	// 	if (this.isRegisterable) {
-	// 		const now = new Date().getTime();
-	// 		if (this.isNew && this.role !== "admin") {
-	// 			return window.alert(
-	// 				"管理者権限がありません。管理者に言って、Admin権限を付与してもらってください。"
-	// 			);
-	// 		} else if (this.isNew && this.role === "admin") {
-	// 			this.mast.createdAt = now;
-	// 			this.mast.updatedAt = now;
-	// 			await this.createGroupModel();
-	// 		} else {
-	// 			this.mast.updatedAt = now;
-	// 			await this.createGroupModel();
-	// 		}
-	// 		this.isNew = false;
-	// 	}
-	// }
+	async updateGroupMast(input: GroupMast) {
+		const now = new Date().getTime();
+		if (!this.groupID && this.role === null) {
+			return null;
+		} else {
+			input.updatedAt = now;
+			const updateGrouopData =
+				await this.repositoryContainer.groupMastRepository.updateGroup(
+					input
+				);
+			return updateGrouopData;
+		}
+	}
 }
