@@ -1,4 +1,4 @@
-import { UserMast } from "../../type";
+import { UserMast, GroupMast } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
 export declare class UserModel extends BaseModel<UserMast> {
@@ -21,7 +21,11 @@ export declare class UserModel extends BaseModel<UserMast> {
      * ユーザー情報を新規登録、または更新する
      */
     register(): Promise<void>;
-    createGroupModel(userID: string): Promise<GroupModel>;
+    /**
+     * グループを登録、更新できる(後でroleで分岐作る)
+     *
+     */
+    updateGroupMast(): Promise<GroupMast | null>;
     /**
      * このグループのグループデータを取得する
      * @returns

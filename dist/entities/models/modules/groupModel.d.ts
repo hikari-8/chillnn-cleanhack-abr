@@ -13,13 +13,8 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**
-     * グループを登録、更新できる(後でroleで分岐作る)
-     *
-     */
-    updateGroupMast(): Promise<GroupMast | null>;
-    /**
      * このグループのマスターデータを取得する
      * @returns
      */
-    fetchTaskMasterObject(input: string): Promise<TaskMasterObject | null>;
+    fetchTaskMasterObject(): Promise<TaskMasterObject | null>;
 }

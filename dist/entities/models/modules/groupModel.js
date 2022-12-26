@@ -58,27 +58,10 @@ class GroupModel extends _baseModel_1.BaseModel {
         return true;
     }
     /**
-     * グループを登録、更新できる(後でroleで分岐作る)
-     *
-     */
-    updateGroupMast() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const now = new Date().getTime();
-            if (!this.groupID) {
-                return null;
-            }
-            else {
-                // input.createdAt = now;
-                const updateGrouopData = yield this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
-                return updateGrouopData;
-            }
-        });
-    }
-    /**
      * このグループのマスターデータを取得する
      * @returns
      */
-    fetchTaskMasterObject(input) {
+    fetchTaskMasterObject() {
         return __awaiter(this, void 0, void 0, function* () {
             const res = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(this.groupID);
             return res;

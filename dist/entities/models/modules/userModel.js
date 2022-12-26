@@ -11,7 +11,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserModel = void 0;
 const _baseModel_1 = require("./_baseModel");
-const groupModel_1 = require("./groupModel");
 class UserModel extends _baseModel_1.BaseModel {
     // ============================================
     // getters
@@ -102,13 +101,21 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
-    //userがcreate→admin権限付与できる
-    createGroupModel(userID) {
+    /**
+     * グループを登録、更新できる(後でroleで分岐作る)
+     *
+     */
+    updateGroupMast() {
         return __awaiter(this, void 0, void 0, function* () {
-            const blank = groupModel_1.GroupModel.getBlanc(userID);
-            return this.modelFactory.GroupModel(blank, {
-                isNew: true,
-            });
+            const now = new Date().getTime();
+            const groupModel = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
+            if (!this.groupID) {
+                return null;
+            }
+            else {
+                const updateGroupData = yield this.repositoryContainer.groupMastRepository.updateGroup(groupModel);
+                return updateGroupData;
+            }
         });
     }
     /**
