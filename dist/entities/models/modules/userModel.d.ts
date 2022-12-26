@@ -30,5 +30,5 @@ export declare class UserModel extends BaseModel<UserMast> {
     /**
      * Adminならグループを登録、更新できる
      */
-    updateGroupMast(input: GroupMast): Promise<GroupMast | null>;
+    updateGroupMast(input: GroupModel): Promise<GroupMast | null>;
 }

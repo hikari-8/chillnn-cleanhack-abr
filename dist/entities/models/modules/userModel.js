@@ -137,7 +137,7 @@ class UserModel extends _baseModel_1.BaseModel {
                 return null;
             }
             else {
-                input.updatedAt = now;
+                // input.createdAt = now;
                 const updateGrouopData = yield this.repositoryContainer.groupMastRepository.updateGroup(input);
                 return updateGrouopData;
             }

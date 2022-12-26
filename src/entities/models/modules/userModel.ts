@@ -132,12 +132,12 @@ export class UserModel extends BaseModel<UserMast> {
 	/**
 	 * Adminならグループを登録、更新できる
 	 */
-	async updateGroupMast(input: GroupMast) {
+	async updateGroupMast(input: GroupModel) {
 		const now = new Date().getTime();
 		if (!this.groupID && this.role === null) {
 			return null;
 		} else {
-			input.updatedAt = now;
+			// input.createdAt = now;
 			const updateGrouopData =
 				await this.repositoryContainer.groupMastRepository.updateGroup(
 					input
