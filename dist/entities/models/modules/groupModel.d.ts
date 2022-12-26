@@ -13,10 +13,10 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**
-     * roleがAdminなら、掃除場所情報を新規登録、または更新できる
+     * グループを登録、更新できる(後でroleで分岐作る)
      *
      */
-    register(): Promise<void>;
+    updateGroupMast(): Promise<GroupMast | null>;
     /**
      * このグループのマスターデータを取得する
      * @returns

@@ -58,23 +58,19 @@ class GroupModel extends _baseModel_1.BaseModel {
         return true;
     }
     /**
-     * roleがAdminなら、掃除場所情報を新規登録、または更新できる
+     * グループを登録、更新できる(後でroleで分岐作る)
      *
      */
-    register() {
+    updateGroupMast() {
         return __awaiter(this, void 0, void 0, function* () {
-            if (this.isRegisterable && this.isAdmin) {
-                const now = new Date().getTime();
-                if (this.isNew) {
-                    this.mast.createdAt = now;
-                    this.mast.updatedAt = now;
-                    yield this.repositoryContainer.groupMastRepository.addGroup(this.mast);
-                }
-                else {
-                    this.mast.updatedAt = now;
-                    yield this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
-                    this.isNew = false;
-                }
+            const now = new Date().getTime();
+            if (!this.groupID) {
+                return null;
+            }
+            else {
+                // input.createdAt = now;
+                const updateGrouopData = yield this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
+                return updateGrouopData;
             }
         });
     }

@@ -127,21 +127,5 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
-    /**
-     * Adminならグループを登録、更新できる
-     */
-    updateGroupMast(input) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const now = new Date().getTime();
-            if (!this.groupID && this.role === null) {
-                return null;
-            }
-            else {
-                // input.createdAt = now;
-                const updateGrouopData = yield this.repositoryContainer.groupMastRepository.updateGroup(input);
-                return updateGrouopData;
-            }
-        });
-    }
 }
 exports.UserModel = UserModel;

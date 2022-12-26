@@ -104,12 +104,25 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 
-	//userがcreate→admin権限付与できる
-	async createGroupModel(userID: string): Promise<GroupModel> {
-		const blank = GroupModel.getBlanc(userID);
-		return this.modelFactory.GroupModel(blank, {
-			isNew: true,
-		});
+	/**
+	 * グループを登録、更新できる(後でroleで分岐作る)
+	 *
+	 */
+	async updateGroupMast() {
+		const now = new Date().getTime();
+		const groupModel =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.groupID!
+			);
+		if (!this.groupID) {
+			return null;
+		} else {
+			const updateGroupData =
+				await this.repositoryContainer.groupMastRepository.updateGroup(
+					groupModel!
+				);
+			return updateGroupData;
+		}
 	}
 
 	/**
@@ -126,23 +139,6 @@ export class UserModel extends BaseModel<UserMast> {
 				);
 			const res = await this.modelFactory.GroupModel(groupData!);
 			return res;
-		}
-	}
-
-	/**
-	 * Adminならグループを登録、更新できる
-	 */
-	async updateGroupMast(input: GroupModel) {
-		const now = new Date().getTime();
-		if (!this.groupID && this.role === null) {
-			return null;
-		} else {
-			// input.createdAt = now;
-			const updateGrouopData =
-				await this.repositoryContainer.groupMastRepository.updateGroup(
-					input
-				);
-			return updateGrouopData;
 		}
 	}
 }
