@@ -102,18 +102,21 @@ class UserModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * グループを登録、更新できる(後でroleで分岐作る)
+     * グループを更新できる(後でroleで分岐作る)
      *
      */
-    updateGroupMast() {
+    updateGroupMast(input) {
         return __awaiter(this, void 0, void 0, function* () {
             const now = new Date().getTime();
-            const groupModel = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
-            if (!this.groupID) {
+            // const groupModel =
+            // 	await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+            // 		this.groupID!
+            // 	);
+            if (!input) {
                 return null;
             }
             else {
-                const updateGroupData = yield this.repositoryContainer.groupMastRepository.updateGroup(groupModel);
+                const updateGroupData = yield this.repositoryContainer.groupMastRepository.updateGroup(input);
                 return updateGroupData;
             }
         });

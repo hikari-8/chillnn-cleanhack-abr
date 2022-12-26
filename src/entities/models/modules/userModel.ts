@@ -105,21 +105,21 @@ export class UserModel extends BaseModel<UserMast> {
 	}
 
 	/**
-	 * グループを登録、更新できる(後でroleで分岐作る)
+	 * グループを更新できる(後でroleで分岐作る)
 	 *
 	 */
-	async updateGroupMast() {
+	async updateGroupMast(input: GroupModel) {
 		const now = new Date().getTime();
-		const groupModel =
-			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
-				this.groupID!
-			);
-		if (!this.groupID) {
+		// const groupModel =
+		// 	await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+		// 		this.groupID!
+		// 	);
+		if (!input) {
 			return null;
 		} else {
 			const updateGroupData =
 				await this.repositoryContainer.groupMastRepository.updateGroup(
-					groupModel!
+					input
 				);
 			return updateGroupData;
 		}

@@ -22,10 +22,10 @@ export declare class UserModel extends BaseModel<UserMast> {
      */
     register(): Promise<void>;
     /**
-     * グループを登録、更新できる(後でroleで分岐作る)
+     * グループを更新できる(後でroleで分岐作る)
      *
      */
-    updateGroupMast(): Promise<GroupMast | null>;
+    updateGroupMast(input: GroupModel): Promise<GroupMast | null>;
     /**
      * このグループのグループデータを取得する
      * @returns
