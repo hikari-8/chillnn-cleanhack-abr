@@ -108,20 +108,19 @@ export class UserModel extends BaseModel<UserMast> {
 	 * グループを更新できる(後でroleで分岐作る)
 	 *
 	 */
-	async updateGroupMast(input: GroupModel) {
-		const now = new Date().getTime();
-		// const groupModel =
-		// 	await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
-		// 		this.groupID!
-		// 	);
-		if (!input) {
+	async updateGroupMast() {
+		const groupModel =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.groupID!
+			);
+		if (!groupModel) {
 			return null;
 		} else {
-			const updateGroupData =
-				await this.repositoryContainer.groupMastRepository.updateGroup(
-					input
-				);
-			return updateGroupData;
+			// const updateGroupData =
+			await this.repositoryContainer.groupMastRepository.updateGroup(
+				groupModel
+			);
+			// return updateGroupData;
 		}
 	}
 
