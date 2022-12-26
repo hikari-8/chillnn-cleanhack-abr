@@ -25,7 +25,7 @@ export declare class UserModel extends BaseModel<UserMast> {
      * グループを更新できる(後でroleで分岐作る)
      *
      */
-    updateGroupMast(): Promise<null | undefined>;
+    updateGroupMast(): Promise<void>;
     /**
      * このグループのグループデータを取得する
      * @returns

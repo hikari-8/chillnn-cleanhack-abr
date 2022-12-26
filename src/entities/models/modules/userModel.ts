@@ -113,15 +113,10 @@ export class UserModel extends BaseModel<UserMast> {
 			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
 				this.groupID!
 			);
-		if (!groupModel) {
-			return null;
-		} else {
-			// const updateGroupData =
-			await this.repositoryContainer.groupMastRepository.updateGroup(
-				groupModel
-			);
-			// return updateGroupData;
-		}
+
+		await this.repositoryContainer.groupMastRepository.updateGroup(
+			groupModel!
+		);
 	}
 
 	/**

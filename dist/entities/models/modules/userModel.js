@@ -108,14 +108,7 @@ class UserModel extends _baseModel_1.BaseModel {
     updateGroupMast() {
         return __awaiter(this, void 0, void 0, function* () {
             const groupModel = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
-            if (!groupModel) {
-                return null;
-            }
-            else {
-                // const updateGroupData =
-                yield this.repositoryContainer.groupMastRepository.updateGroup(groupModel);
-                // return updateGroupData;
-            }
+            yield this.repositoryContainer.groupMastRepository.updateGroup(groupModel);
         });
     }
     /**
