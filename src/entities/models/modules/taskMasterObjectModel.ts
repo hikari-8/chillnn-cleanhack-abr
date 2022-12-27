@@ -1,7 +1,5 @@
 import { TaskMasterObject, TaskMast } from "../../type";
 import { BaseModel } from "./_baseModel";
-import { UserMast } from "../../type";
-import { UserModel } from "./userModel";
 import { Scalars } from "../..";
 import { generateUUID } from "../../..";
 import { TaskMastModel } from "./taskMastModel";

@@ -10,7 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserModel = void 0;
+const taskMasterObjectModel_1 = require("./taskMasterObjectModel");
 const _baseModel_1 = require("./_baseModel");
+const taskMastModel_1 = require("./taskMastModel");
 class UserModel extends _baseModel_1.BaseModel {
     // ============================================
     // getters
@@ -128,10 +130,27 @@ class UserModel extends _baseModel_1.BaseModel {
         });
     }
     /**
+     * このグループのtaskMastデータを初期化する
+     * @returns
+     */
+    createTaskMast() {
+        const res = this.modelFactory.TaskMastModel(taskMastModel_1.TaskMastModel.getBlanc(this.groupID, ""));
+        return res;
+    }
+    /**
+     * このグループのtaskMastObjectデータを配列で初期化する
+     * @returns
+     */
+    createNewTaskMasterObj() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.modelFactory.TaskMasterObjectModel(taskMasterObjectModel_1.TaskMasterObjectModel.getBlanc(this.groupID, []));
+        });
+    }
+    /**
      * このグループのtaskMasterデータを取得する
      * @returns
      */
-    fetchTaskMasterDataByGroupID(input) {
+    fetchTaskMasterDataObjByGroupID(input) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!this.groupID) {
                 return null;

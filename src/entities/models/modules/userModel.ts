@@ -1,10 +1,11 @@
 import { throws } from "assert";
-import { UserMast, GroupMast } from "../../type";
+import { UserMast, TaskMast } from "../../type";
 import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { Scalars } from "../..";
 import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
 import { TaskMastModel } from "./taskMastModel";
+import { generateUUID } from "../../../util";
 
 export class UserModel extends BaseModel<UserMast> {
 	// ============================================
@@ -137,12 +138,23 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 	/**
-	 * このグループのtaskMasterデータを作成する
+	 * このグループのtaskMastデータを初期化する
 	 * @returns
 	 */
-	createNewTaskMasterData(): TaskMastModel {
-		return this.modelFactory.TaskMastModel(
+	createTaskMast(): TaskMastModel {
+		const res = this.modelFactory.TaskMastModel(
 			TaskMastModel.getBlanc(this.groupID!, "")
+		);
+		return res;
+	}
+
+	/**
+	 * このグループのtaskMastObjectデータを配列で初期化する
+	 * @returns
+	 */
+	async createNewTaskMasterObj(): Promise<TaskMasterObjectModel> {
+		return this.modelFactory.TaskMasterObjectModel(
+			TaskMasterObjectModel.getBlanc(this.groupID!, [])
 		);
 	}
 

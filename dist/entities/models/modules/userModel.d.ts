@@ -2,6 +2,7 @@ import { UserMast } from "../../type";
 import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
+import { TaskMastModel } from "./taskMastModel";
 export declare class UserModel extends BaseModel<UserMast> {
     get userID(): string;
     get groupID(): import("../..").Maybe<string> | undefined;
@@ -33,8 +34,18 @@ export declare class UserModel extends BaseModel<UserMast> {
      */
     fetchGroupDataByGroupID(input: string): Promise<GroupModel | null>;
     /**
+     * このグループのtaskMastデータを初期化する
+     * @returns
+     */
+    createTaskMast(): TaskMastModel;
+    /**
+     * このグループのtaskMastObjectデータを配列で初期化する
+     * @returns
+     */
+    createNewTaskMasterObj(): Promise<TaskMasterObjectModel>;
+    /**
      * このグループのtaskMasterデータを取得する
      * @returns
      */
-    fetchTaskMasterDataByGroupID(input: string): Promise<TaskMasterObjectModel | null>;
+    fetchTaskMasterDataObjByGroupID(input: string): Promise<TaskMasterObjectModel | null>;
 }
