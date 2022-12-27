@@ -1,4 +1,5 @@
 import { UserMast } from "../../type";
+import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
 export declare class UserModel extends BaseModel<UserMast> {
@@ -31,4 +32,9 @@ export declare class UserModel extends BaseModel<UserMast> {
      * @returns
      */
     fetchGroupDataByGroupID(input: string): Promise<GroupModel | null>;
+    /**
+     * このグループのtaskMasterデータを取得する
+     * @returns
+     */
+    fetchTaskMasterDataByGroupID(input: string): Promise<TaskMasterObjectModel | null>;
 }

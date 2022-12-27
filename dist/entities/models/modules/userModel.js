@@ -127,5 +127,21 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    /**
+     * このグループのtaskMasterデータを取得する
+     * @returns
+     */
+    fetchTaskMasterDataByGroupID(input) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!this.groupID) {
+                return null;
+            }
+            else {
+                const taskMasterObjectData = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(this.groupID);
+                const res = yield this.modelFactory.TaskMasterObjectModel(taskMasterObjectData);
+                return res;
+            }
+        });
+    }
 }
 exports.UserModel = UserModel;

@@ -4,6 +4,7 @@ import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { Scalars } from "../..";
 import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
+import { TaskMastModel } from "./taskMastModel";
 
 export class UserModel extends BaseModel<UserMast> {
 	// ============================================
@@ -132,6 +133,36 @@ export class UserModel extends BaseModel<UserMast> {
 					this.groupID
 				);
 			const res = await this.modelFactory.GroupModel(groupData!);
+			return res;
+		}
+	}
+	/**
+	 * このグループのtaskMasterデータを作成する
+	 * @returns
+	 */
+	createNewTaskMasterData(): TaskMastModel {
+		return this.modelFactory.TaskMastModel(
+			TaskMastModel.getBlanc(this.groupID!, "")
+		);
+	}
+
+	/**
+	 * このグループのtaskMasterデータを取得する
+	 * @returns
+	 */
+	async fetchTaskMasterDataObjByGroupID(
+		input: string
+	): Promise<TaskMasterObjectModel | null> {
+		if (!this.groupID) {
+			return null;
+		} else {
+			const taskMasterObjectData =
+				await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
+					this.groupID
+				);
+			const res = await this.modelFactory.TaskMasterObjectModel(
+				taskMasterObjectData!
+			);
 			return res;
 		}
 	}
