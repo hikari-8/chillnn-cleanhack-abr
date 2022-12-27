@@ -13,6 +13,7 @@ exports.UserModel = void 0;
 const taskMasterObjectModel_1 = require("./taskMasterObjectModel");
 const _baseModel_1 = require("./_baseModel");
 const taskMastModel_1 = require("./taskMastModel");
+const util_1 = require("../../../util");
 class UserModel extends _baseModel_1.BaseModel {
     // ============================================
     // getters
@@ -143,7 +144,15 @@ class UserModel extends _baseModel_1.BaseModel {
      */
     createNewTaskMasterObj() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.modelFactory.TaskMasterObjectModel(taskMasterObjectModel_1.TaskMasterObjectModel.getBlanc(this.groupID, []));
+            return this.modelFactory.TaskMasterObjectModel(taskMasterObjectModel_1.TaskMasterObjectModel.getBlanc(this.groupID, [
+                {
+                    groupID: this.groupID,
+                    createdAt: new Date().getTime(),
+                    updatedAt: new Date().getTime(),
+                    taskID: (0, util_1.generateUUID)(),
+                    taskName: "",
+                },
+            ]));
         });
     }
     /**
