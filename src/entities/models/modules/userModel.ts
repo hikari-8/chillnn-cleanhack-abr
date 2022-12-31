@@ -156,10 +156,11 @@ export class UserModel extends BaseModel<UserMast> {
 	 */
 	async createNewTaskMasterObj(): Promise<TaskMasterObjectModel> {
 		const taskID = generateUUID();
+		const groupID = this.groupID;
 		return this.modelFactory.TaskMasterObjectModel(
 			TaskMasterObjectModel.getBlanc(this.groupID!, [
 				{
-					groupID: this.groupID!,
+					groupID: groupID!,
 					createdAt: new Date().getTime(),
 					updatedAt: new Date().getTime(),
 					taskID: taskID,

@@ -148,9 +148,10 @@ class UserModel extends _baseModel_1.BaseModel {
     createNewTaskMasterObj() {
         return __awaiter(this, void 0, void 0, function* () {
             const taskID = (0, util_1.generateUUID)();
+            const groupID = this.groupID;
             return this.modelFactory.TaskMasterObjectModel(taskMasterObjectModel_1.TaskMasterObjectModel.getBlanc(this.groupID, [
                 {
-                    groupID: this.groupID,
+                    groupID: groupID,
                     createdAt: new Date().getTime(),
                     updatedAt: new Date().getTime(),
                     taskID: taskID,
