@@ -19,6 +19,9 @@ class TaskMastModel extends _baseModel_1.BaseModel {
     get groupID() {
         return this.mast.groupID;
     }
+    get taskID() {
+        return this.mast.taskID;
+    }
     get createdAt() {
         return this.mast.createdAt;
     }

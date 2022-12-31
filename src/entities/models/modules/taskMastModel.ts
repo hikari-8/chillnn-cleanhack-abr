@@ -24,6 +24,9 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 	get groupID() {
 		return this.mast.groupID;
 	}
+	get taskID() {
+		return this.mast.taskID;
+	}
 
 	get createdAt() {
 		return this.mast.createdAt;
