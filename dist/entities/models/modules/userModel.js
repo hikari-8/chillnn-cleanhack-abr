@@ -111,6 +111,8 @@ class UserModel extends _baseModel_1.BaseModel {
     updateGroupMast() {
         return __awaiter(this, void 0, void 0, function* () {
             const groupModel = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
+            const now = new Date().getTime();
+            groupModel.updatedAt = now;
             yield this.repositoryContainer.groupMastRepository.updateGroup(groupModel);
         });
     }
@@ -131,7 +133,8 @@ class UserModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * このグループのtaskMastデータを初期化する
+     * このグループのtaskMastObjectデータを配列で初期化する,
+     * いらんかもこのメソッド
      * @returns
      */
     createTaskMast() {
@@ -165,6 +168,7 @@ class UserModel extends _baseModel_1.BaseModel {
                 return null;
             }
             else {
+                const now = new Date().getTime();
                 const taskMasterObjectData = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(this.groupID);
                 const res = yield this.modelFactory.TaskMasterObjectModel(taskMasterObjectData);
                 return res;

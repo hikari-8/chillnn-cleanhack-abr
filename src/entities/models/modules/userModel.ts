@@ -115,7 +115,8 @@ export class UserModel extends BaseModel<UserMast> {
 			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
 				this.groupID!
 			);
-
+		const now = new Date().getTime();
+		groupModel!.updatedAt = now;
 		await this.repositoryContainer.groupMastRepository.updateGroup(
 			groupModel!
 		);
@@ -138,7 +139,8 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 	/**
-	 * このグループのtaskMastデータを初期化する
+	 * このグループのtaskMastObjectデータを配列で初期化する,
+	 * いらんかもこのメソッド
 	 * @returns
 	 */
 	createTaskMast(): TaskMastModel {
@@ -176,6 +178,7 @@ export class UserModel extends BaseModel<UserMast> {
 		if (!this.groupID) {
 			return null;
 		} else {
+			const now = new Date().getTime();
 			const taskMasterObjectData =
 				await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
 					this.groupID
