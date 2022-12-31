@@ -170,6 +170,22 @@ export class UserModel extends BaseModel<UserMast> {
 	}
 
 	/**
+	 * マスターデータを更新できる(後でroleで分岐作る)
+	 *
+	 */
+	async updateTaskMasterObj() {
+		const taskMasterObjModel =
+			await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
+				this.groupID!
+			);
+		const now = new Date().getTime();
+		taskMasterObjModel!.updatedAt = now;
+		await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
+			taskMasterObjModel!
+		);
+	}
+
+	/**
 	 * このグループのtaskMasterデータを取得する
 	 * @returns
 	 */
