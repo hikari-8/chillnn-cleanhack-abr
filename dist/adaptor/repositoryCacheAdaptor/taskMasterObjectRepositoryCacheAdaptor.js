@@ -26,14 +26,14 @@ class TaskMasterObjectRepositoryCacheAdaptor {
             return res;
         });
     }
-    // async updateTaskMasterObject(
-    // 	input: TaskMasterObject
-    // ): Promise<TaskMasterObject> {
-    // 	const res = await this.repository.updateTaskMasterObject(input);
-    // 	res.updatedAt = new Date().getDate();
-    // 	this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
-    // 	return res;
-    // }
+    updateTaskMasterObject(input) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield this.repository.updateTaskMasterObject(input);
+            res.updatedAt = new Date().getDate();
+            this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
+            return res;
+        });
+    }
     fetchTaskMasterObject(groupID) {
         return __awaiter(this, void 0, void 0, function* () {
             const cache = this.fetchCacheTaskMasterObject(groupID);
