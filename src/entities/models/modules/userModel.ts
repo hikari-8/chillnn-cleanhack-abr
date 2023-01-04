@@ -175,9 +175,12 @@ export class UserModel extends BaseModel<UserMast> {
 	 *
 	 */
 	async updateTaskMasterObj() {
+		if (this.groupID == null) {
+			return console.error("groupIDがnullです");
+		}
 		const taskMasterObjModel =
 			await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
-				this.groupID!
+				this.groupID
 			);
 		const now = new Date().getTime();
 		taskMasterObjModel!.updatedAt = now;
