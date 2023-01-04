@@ -48,7 +48,6 @@ export declare class UserModel extends BaseModel<UserMast> {
      * マスターデータを更新できる(後でroleで分岐作る)
      *
      */
-    updateTaskMasterObj(): Promise<void>;
     /**
      * このグループのtaskMasterデータを取得する
      * @returns

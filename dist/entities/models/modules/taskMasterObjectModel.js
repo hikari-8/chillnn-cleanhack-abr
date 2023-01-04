@@ -100,12 +100,10 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
                     this.mast.updatedAt = now;
                     yield this.repositoryContainer.taskMasterObjectRepository.addTaskMasterObject(this.mast);
                 }
-                // else {
-                // 	this.mast.updatedAt = now;
-                // 	await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
-                // 		this.mast
-                // 	);
-                // }
+                else {
+                    this.mast.updatedAt = now;
+                    yield this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(this.mast);
+                }
                 this.isNew = false;
             }
         });
