@@ -24,9 +24,12 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      */
     register(): Promise<void>;
     /**
+     * TaskMasterObjectのtaskspropertyに入れるmastを作成するために、TaskMastModelをmastに解く関数
+     *
+     */
+    /**
      * roleがAdminなら、掃除場所情報を新規登録、または更新できる
      *
      */
-    updateTaskMasterObj(input: TaskMasterObject): Promise<void>;
     getTaskMastModel(groupID: string): TaskMastModel;
 }

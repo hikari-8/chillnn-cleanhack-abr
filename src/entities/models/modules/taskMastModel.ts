@@ -65,4 +65,11 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 	// ============================================
 	// functions
 	// ============================================
+	/**
+	 * TaskMasterObjectのtaskspropertyに入れるmastを作成するために、TaskMastModelをmastに解く関数
+	 *
+	 */
+	async taskMastModelToTaskMast() {
+		return this.mast;
+	}
 }

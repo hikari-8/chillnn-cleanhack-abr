@@ -109,14 +109,24 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         });
     }
     /**
+     * TaskMasterObjectのtaskspropertyに入れるmastを作成するために、TaskMastModelをmastに解く関数
+     *
+     */
+    // async taskMastModelToTaskMast(
+    // 	input: TaskMastModel
+    // ): Promise<TaskMast | null> {
+    // 	let res = input.mast;
+    // 	return res;
+    // }
+    /**
      * roleがAdminなら、掃除場所情報を新規登録、または更新できる
      *
      */
-    updateTaskMasterObj(input) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(input);
-        });
-    }
+    // async updateTaskMasterObj(input: TaskMasterObjectModel) {
+    // 	await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
+    // 		input
+    // 	);
+    // }
     // /**
     //  * グループIDから、ルームの個々のデータを取得する
     //  * @returns

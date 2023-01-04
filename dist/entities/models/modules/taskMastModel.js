@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskMastModel = void 0;
 const util_1 = require("../../../util");
@@ -50,6 +59,21 @@ class TaskMastModel extends _baseModel_1.BaseModel {
         else {
             this.mast.headCount = null;
         }
+    }
+    // ============================================
+    // validation
+    // ============================================
+    // ============================================
+    // functions
+    // ============================================
+    /**
+     * TaskMasterObjectのtaskspropertyに入れるmastを作成するために、TaskMastModelをmastに解く関数
+     *
+     */
+    taskMastModelToTaskMast() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.mast;
+        });
     }
 }
 exports.TaskMastModel = TaskMastModel;

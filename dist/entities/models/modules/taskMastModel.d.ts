@@ -12,4 +12,9 @@ export declare class TaskMastModel extends BaseModel<TaskMast> {
     set taskName(input: string);
     get headCount(): number;
     set headCount(input: number);
+    /**
+     * TaskMasterObjectのtaskspropertyに入れるmastを作成するために、TaskMastModelをmastに解く関数
+     *
+     */
+    taskMastModelToTaskMast(): Promise<TaskMast>;
 }

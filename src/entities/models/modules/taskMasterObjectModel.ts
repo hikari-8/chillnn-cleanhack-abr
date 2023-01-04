@@ -116,14 +116,25 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	}
 
 	/**
+	 * TaskMasterObjectのtaskspropertyに入れるmastを作成するために、TaskMastModelをmastに解く関数
+	 *
+	 */
+	// async taskMastModelToTaskMast(
+	// 	input: TaskMastModel
+	// ): Promise<TaskMast | null> {
+	// 	let res = input.mast;
+	// 	return res;
+	// }
+
+	/**
 	 * roleがAdminなら、掃除場所情報を新規登録、または更新できる
 	 *
 	 */
-	async updateTaskMasterObj(input: TaskMasterObject) {
-		await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
-			input
-		);
-	}
+	// async updateTaskMasterObj(input: TaskMasterObjectModel) {
+	// 	await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
+	// 		input
+	// 	);
+	// }
 
 	// /**
 	//  * グループIDから、ルームの個々のデータを取得する
