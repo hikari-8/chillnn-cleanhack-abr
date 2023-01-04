@@ -166,6 +166,9 @@ class UserModel extends _baseModel_1.BaseModel {
      */
     updateTaskMasterObj() {
         return __awaiter(this, void 0, void 0, function* () {
+            if (this.groupID == null) {
+                return console.error("groupIDがnullです");
+            }
             const taskMasterObjModel = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(this.groupID);
             const now = new Date().getTime();
             taskMasterObjModel.updatedAt = now;
