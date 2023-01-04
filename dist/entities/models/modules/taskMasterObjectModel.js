@@ -112,9 +112,9 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
      * roleがAdminなら、掃除場所情報を新規登録、または更新できる
      *
      */
-    updateTaskMasterObj() {
+    updateTaskMasterObj(input) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(this.mast);
+            yield this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(input);
         });
     }
     // /**

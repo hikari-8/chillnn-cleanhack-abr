@@ -119,9 +119,9 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	 * roleがAdminなら、掃除場所情報を新規登録、または更新できる
 	 *
 	 */
-	async updateTaskMasterObj() {
+	async updateTaskMasterObj(input: TaskMasterObject) {
 		await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
-			this.mast
+			input
 		);
 	}
 

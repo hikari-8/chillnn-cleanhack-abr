@@ -27,6 +27,6 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      * roleがAdminなら、掃除場所情報を新規登録、または更新できる
      *
      */
-    updateTaskMasterObj(): Promise<void>;
+    updateTaskMasterObj(input: TaskMasterObject): Promise<void>;
     getTaskMastModel(groupID: string): TaskMastModel;
 }
