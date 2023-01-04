@@ -71,7 +71,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	}
 
 	get tasks() {
-		return (this.mast.tasks = []);
+		return this.mast.tasks;
 	}
 
 	set tasks(input: TaskMast[]) {

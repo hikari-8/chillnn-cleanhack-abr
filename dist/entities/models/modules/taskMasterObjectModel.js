@@ -70,7 +70,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         }
     }
     get tasks() {
-        return (this.mast.tasks = []);
+        return this.mast.tasks;
     }
     set tasks(input) {
         this.mast.tasks = input;
