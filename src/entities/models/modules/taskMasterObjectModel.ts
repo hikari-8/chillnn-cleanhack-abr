@@ -115,6 +115,16 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		}
 	}
 
+	/**
+	 * roleがAdminなら、掃除場所情報を新規登録、または更新できる
+	 *
+	 */
+	async updateTaskMasterObj() {
+		await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
+			this.mast
+		);
+	}
+
 	// /**
 	//  * グループIDから、ルームの個々のデータを取得する
 	//  * @returns

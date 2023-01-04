@@ -108,6 +108,15 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    /**
+     * roleがAdminなら、掃除場所情報を新規登録、または更新できる
+     *
+     */
+    updateTaskMasterObj() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(this.mast);
+        });
+    }
     // /**
     //  * グループIDから、ルームの個々のデータを取得する
     //  * @returns
