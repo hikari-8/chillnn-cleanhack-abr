@@ -152,6 +152,7 @@ type TaskMasterObject {
   limitTime: AWSTimestamp
   remindSlackTime: AWSTimestamp
   remindSlackWeek: String
+  taskMasterObjectID: ID!
   tasks: [TaskMast!]!
   updatedAt: AWSTimestamp!
 }
@@ -163,6 +164,7 @@ input TaskMasterObjectInput {
   limitTime: AWSTimestamp
   remindSlackTime: AWSTimestamp
   remindSlackWeek: String
+  taskMasterObjectID: ID!
   tasks: [TaskMastInput!]!
   updatedAt: AWSTimestamp!
 }

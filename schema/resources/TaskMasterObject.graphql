@@ -6,6 +6,7 @@ type TaskMasterObject {
 	limitTime: AWSTimestamp
 	remindSlackWeek: String
 	remindSlackTime: AWSTimestamp
+	taskMasterObjectID: ID!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -35,6 +36,7 @@ input TaskMasterObjectInput {
 	limitTime: AWSTimestamp
 	remindSlackWeek: String
 	remindSlackTime: AWSTimestamp
+	taskMasterObjectID: ID!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!

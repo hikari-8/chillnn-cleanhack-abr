@@ -5,6 +5,7 @@ import { TaskMastModel } from "./taskMastModel";
 export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     static getBlanc(groupID: Scalars["String"], tasks: Array<TaskMast>): TaskMasterObject;
     get groupID(): string;
+    get taskMasterObjectID(): string;
     get createdAt(): number;
     get updatedAt(): number;
     get deletedAt(): import("../..").Maybe<number> | undefined;

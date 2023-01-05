@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskMasterObjectModel = void 0;
 const _baseModel_1 = require("./_baseModel");
+const __1 = require("../../..");
 const taskMastModel_1 = require("./taskMastModel");
 class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     static getBlanc(groupID, tasks) {
@@ -19,6 +20,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             groupID,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
+            taskMasterObjectID: (0, __1.generateUUID)(),
         };
     }
     // ============================================
@@ -26,6 +28,9 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     // ============================================
     get groupID() {
         return this.mast.groupID;
+    }
+    get taskMasterObjectID() {
+        return this.mast.taskMasterObjectID;
     }
     get createdAt() {
         return this.mast.createdAt;

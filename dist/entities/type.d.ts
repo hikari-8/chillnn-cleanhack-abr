@@ -150,6 +150,7 @@ export declare type TaskMasterObject = {
     limitTime?: Maybe<Scalars['AWSTimestamp']>;
     remindSlackTime?: Maybe<Scalars['AWSTimestamp']>;
     remindSlackWeek?: Maybe<Scalars['String']>;
+    taskMasterObjectID: Scalars['ID'];
     tasks: Array<TaskMast>;
     updatedAt: Scalars['AWSTimestamp'];
 };
@@ -160,6 +161,7 @@ export declare type TaskMasterObjectInput = {
     limitTime?: InputMaybe<Scalars['AWSTimestamp']>;
     remindSlackTime?: InputMaybe<Scalars['AWSTimestamp']>;
     remindSlackWeek?: InputMaybe<Scalars['String']>;
+    taskMasterObjectID: Scalars['ID'];
     tasks: Array<TaskMastInput>;
     updatedAt: Scalars['AWSTimestamp'];
 };

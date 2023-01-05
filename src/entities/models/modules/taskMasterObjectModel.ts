@@ -14,6 +14,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			groupID,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
+			taskMasterObjectID: generateUUID(),
 		};
 	}
 	// ============================================
@@ -23,7 +24,9 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	get groupID() {
 		return this.mast.groupID;
 	}
-
+	get taskMasterObjectID() {
+		return this.mast.taskMasterObjectID;
+	}
 	get createdAt() {
 		return this.mast.createdAt;
 	}
