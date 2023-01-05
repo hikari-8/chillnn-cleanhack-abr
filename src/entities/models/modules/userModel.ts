@@ -118,18 +118,18 @@ export class UserModel extends BaseModel<UserMast> {
 	 * このグループのグループデータを取得する
 	 * @returns
 	 */
-	async fetchGroupDataByGroupID(groupID: string): Promise<GroupModel | null> {
-		if (!groupID) {
+	async fetchGroupDataByGroupID(): Promise<GroupModel | null> {
+		if (!this.mast.groupID) {
 			return null;
 		} else {
 			const groupData =
 				await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
-					groupID
+					this.mast.groupID
 				);
 			if (groupData == null) {
 				return null;
 			}
-			const res = await this.modelFactory.GroupModel(groupData);
+			const res = this.modelFactory.GroupModel(groupData);
 			return res;
 		}
 	}

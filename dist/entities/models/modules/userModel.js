@@ -115,17 +115,17 @@ class UserModel extends _baseModel_1.BaseModel {
      * このグループのグループデータを取得する
      * @returns
      */
-    fetchGroupDataByGroupID(groupID) {
+    fetchGroupDataByGroupID() {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!groupID) {
+            if (!this.mast.groupID) {
                 return null;
             }
             else {
-                const groupData = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(groupID);
+                const groupData = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.mast.groupID);
                 if (groupData == null) {
                     return null;
                 }
-                const res = yield this.modelFactory.GroupModel(groupData);
+                const res = this.modelFactory.GroupModel(groupData);
                 return res;
             }
         });
