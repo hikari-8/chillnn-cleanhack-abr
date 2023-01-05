@@ -32,7 +32,7 @@ export declare class UserModel extends BaseModel<UserMast> {
      * このグループのグループデータを取得する
      * @returns
      */
-    fetchGroupDataByGroupID(input: string): Promise<GroupModel | null>;
+    fetchGroupDataByGroupID(groupID: string): Promise<GroupModel | null>;
     /**
      * このグループのtaskMastObjectデータを配列で初期化する,
      * いらんかもこのメソッド

@@ -120,13 +120,16 @@ class UserModel extends _baseModel_1.BaseModel {
      * このグループのグループデータを取得する
      * @returns
      */
-    fetchGroupDataByGroupID(input) {
+    fetchGroupDataByGroupID(groupID) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!this.groupID) {
+            if (!groupID) {
                 return null;
             }
             else {
-                const groupData = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
+                const groupData = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(groupID);
+                if (groupData == null) {
+                    return null;
+                }
                 const res = yield this.modelFactory.GroupModel(groupData);
                 return res;
             }
@@ -149,11 +152,12 @@ class UserModel extends _baseModel_1.BaseModel {
         return __awaiter(this, void 0, void 0, function* () {
             const taskID = (0, util_1.generateUUID)();
             const groupID = this.groupID;
+            const now = new Date().getTime();
             return this.modelFactory.TaskMasterObjectModel(taskMasterObjectModel_1.TaskMasterObjectModel.getBlanc(this.groupID, [
                 {
                     groupID: groupID,
-                    createdAt: new Date().getTime(),
-                    updatedAt: new Date().getTime(),
+                    createdAt: now,
+                    updatedAt: now,
                     taskID: taskID,
                     taskName: "",
                 },

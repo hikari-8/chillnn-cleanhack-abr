@@ -126,15 +126,18 @@ export class UserModel extends BaseModel<UserMast> {
 	 * このグループのグループデータを取得する
 	 * @returns
 	 */
-	async fetchGroupDataByGroupID(input: string): Promise<GroupModel | null> {
-		if (!this.groupID) {
+	async fetchGroupDataByGroupID(groupID: string): Promise<GroupModel | null> {
+		if (!groupID) {
 			return null;
 		} else {
 			const groupData =
 				await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
-					this.groupID
+					groupID
 				);
-			const res = await this.modelFactory.GroupModel(groupData!);
+			if (groupData == null) {
+				return null;
+			}
+			const res = await this.modelFactory.GroupModel(groupData);
 			return res;
 		}
 	}
@@ -157,12 +160,13 @@ export class UserModel extends BaseModel<UserMast> {
 	async createNewTaskMasterObj(): Promise<TaskMasterObjectModel> {
 		const taskID = generateUUID();
 		const groupID = this.groupID;
+		const now = new Date().getTime();
 		return this.modelFactory.TaskMasterObjectModel(
 			TaskMasterObjectModel.getBlanc(this.groupID!, [
 				{
 					groupID: groupID!,
-					createdAt: new Date().getTime(),
-					updatedAt: new Date().getTime(),
+					createdAt: now,
+					updatedAt: now,
 					taskID: taskID,
 					taskName: "",
 				},
