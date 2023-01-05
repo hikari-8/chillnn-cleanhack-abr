@@ -200,9 +200,14 @@ export class UserModel extends BaseModel<UserMast> {
 				await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
 					groupID
 				);
+			console.log(
+				"fetchTaskMasterDataObjByGroupID内のtaskmasterObjectData",
+				taskMasterObjectData
+			);
 			const res = this.modelFactory.TaskMasterObjectModel(
 				taskMasterObjectData!
 			);
+			console.log("fetchTaskMasterDataObjByGroupID内のres", res);
 			return res;
 		}
 	}

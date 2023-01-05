@@ -189,7 +189,9 @@ class UserModel extends _baseModel_1.BaseModel {
             }
             else {
                 const taskMasterObjectData = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(groupID);
+                console.log("fetchTaskMasterDataObjByGroupID内のtaskmasterObjectData", taskMasterObjectData);
                 const res = this.modelFactory.TaskMasterObjectModel(taskMasterObjectData);
+                console.log("fetchTaskMasterDataObjByGroupID内のres", res);
                 return res;
             }
         });
