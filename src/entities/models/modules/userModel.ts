@@ -1,5 +1,5 @@
 import { throws } from "assert";
-import { UserMast, TaskMast } from "../../type";
+import { UserMast, TaskMast, GroupMast } from "../../type";
 import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { Scalars } from "../..";
 import { BaseModel } from "./_baseModel";
@@ -106,21 +106,13 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 
-	/**
-	 * グループを更新できる(後でroleで分岐作る)
-	 *
-	 */
-	async updateGroupMast() {
-		const groupModel =
-			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
-				this.groupID!
-			);
-		const now = new Date().getTime();
-		groupModel!.updatedAt = now;
-		await this.repositoryContainer.groupMastRepository.updateGroup(
-			groupModel!
-		);
-	}
+	// /**
+	//  * グループを更新できる(後でroleで分岐作る)
+	//  *
+	//  */
+	// async updateGroupMast(input: GroupMast) {
+	// 	await this.repositoryContainer.groupMastRepository.updateGroup(input);
+	// }
 
 	/**
 	 * このグループのグループデータを取得する

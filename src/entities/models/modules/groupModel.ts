@@ -52,6 +52,16 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
+	 * グループを更新できる(後でフロントでroleの分岐作る)
+	 *
+	 */
+	async updateGroupMast() {
+		await this.repositoryContainer.groupMastRepository.updateGroup(
+			this.mast
+		);
+	}
+
+	/**
 	 * このグループのマスターデータを取得する
 	 * @returns
 	 */

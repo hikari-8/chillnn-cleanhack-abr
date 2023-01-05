@@ -58,6 +58,15 @@ class GroupModel extends _baseModel_1.BaseModel {
         return true;
     }
     /**
+     * グループを更新できる(後でフロントでroleの分岐作る)
+     *
+     */
+    updateGroupMast() {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
+        });
+    }
+    /**
      * このグループのマスターデータを取得する
      * @returns
      */

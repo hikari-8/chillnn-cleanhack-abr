@@ -104,18 +104,13 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
-    /**
-     * グループを更新できる(後でroleで分岐作る)
-     *
-     */
-    updateGroupMast() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const groupModel = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
-            const now = new Date().getTime();
-            groupModel.updatedAt = now;
-            yield this.repositoryContainer.groupMastRepository.updateGroup(groupModel);
-        });
-    }
+    // /**
+    //  * グループを更新できる(後でroleで分岐作る)
+    //  *
+    //  */
+    // async updateGroupMast(input: GroupMast) {
+    // 	await this.repositoryContainer.groupMastRepository.updateGroup(input);
+    // }
     /**
      * このグループのグループデータを取得する
      * @returns

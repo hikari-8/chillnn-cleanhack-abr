@@ -13,6 +13,11 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**
+     * グループを更新できる(後でフロントでroleの分岐作る)
+     *
+     */
+    updateGroupMast(): Promise<void>;
+    /**
      * このグループのマスターデータを取得する
      * @returns
      */
