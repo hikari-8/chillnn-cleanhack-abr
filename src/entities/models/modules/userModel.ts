@@ -199,17 +199,16 @@ export class UserModel extends BaseModel<UserMast> {
 	 * @returns
 	 */
 	async fetchTaskMasterDataObjByGroupID(
-		input: string
+		groupID: string
 	): Promise<TaskMasterObjectModel | null> {
-		if (!this.groupID) {
+		if (!groupID) {
 			return null;
 		} else {
-			const now = new Date().getTime();
 			const taskMasterObjectData =
 				await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
-					this.groupID
+					groupID
 				);
-			const res = await this.modelFactory.TaskMasterObjectModel(
+			const res = this.modelFactory.TaskMasterObjectModel(
 				taskMasterObjectData!
 			);
 			return res;

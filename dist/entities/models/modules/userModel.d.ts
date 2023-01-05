@@ -52,5 +52,5 @@ export declare class UserModel extends BaseModel<UserMast> {
      * このグループのtaskMasterデータを取得する
      * @returns
      */
-    fetchTaskMasterDataObjByGroupID(input: string): Promise<TaskMasterObjectModel | null>;
+    fetchTaskMasterDataObjByGroupID(groupID: string): Promise<TaskMasterObjectModel | null>;
 }

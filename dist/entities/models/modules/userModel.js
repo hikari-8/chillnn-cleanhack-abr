@@ -187,15 +187,14 @@ class UserModel extends _baseModel_1.BaseModel {
      * このグループのtaskMasterデータを取得する
      * @returns
      */
-    fetchTaskMasterDataObjByGroupID(input) {
+    fetchTaskMasterDataObjByGroupID(groupID) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!this.groupID) {
+            if (!groupID) {
                 return null;
             }
             else {
-                const now = new Date().getTime();
-                const taskMasterObjectData = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(this.groupID);
-                const res = yield this.modelFactory.TaskMasterObjectModel(taskMasterObjectData);
+                const taskMasterObjectData = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(groupID);
+                const res = this.modelFactory.TaskMasterObjectModel(taskMasterObjectData);
                 return res;
             }
         });
