@@ -94,30 +94,6 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	// ============================================
 	// functions
 	// ============================================
-
-	/**
-	 * roleがAdminなら、掃除場所情報を新規登録、または更新できる
-	 *
-	 */
-	async register() {
-		if (this.isRegisterable && this.isAdmin) {
-			const now = new Date().getTime();
-			if (this.isNew) {
-				this.mast.createdAt = now;
-				this.mast.updatedAt = now;
-				await this.repositoryContainer.taskMasterObjectRepository.addTaskMasterObject(
-					this.mast
-				);
-			} else {
-				this.mast.updatedAt = now;
-				await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
-					this.mast
-				);
-			}
-			this.isNew = false;
-		}
-	}
-
 	/**
 	 * 掃除場所情報を新規登録、または更新できる/ !roleがAdminかどうか後で分岐を作るべき
 	 *
@@ -128,18 +104,6 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.mast
 		);
 	}
-
-	// /**
-	//  * グループIDから、ルームの個々のデータを取得する
-	//  * @returns
-	//  */
-	// async fetchTasks(): Promise<TaskMastModel[]> {
-	// 	const res =
-	// 		await this.repositoryContainer.taskMasterObjectRepository.fetchTasksByGroupID(
-	// 			this.groupID
-	// 		);
-	// 	return res.map((item) => this.modelFactory.TaskMastModel(item));
-	// }
 
 	// taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
 	getTaskMastModel(groupID: string) {

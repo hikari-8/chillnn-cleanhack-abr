@@ -77,6 +77,9 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 
+	// ============================================
+	// functions -User
+	// ============================================
 	/**
 	 * ユーザー情報を新規登録、または更新する
 	 */
@@ -106,6 +109,10 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 
+	// ============================================
+	// functions -Group
+	// ============================================
+
 	// /**
 	//  * グループを更新できる(後でroleで分岐作る)
 	//  *
@@ -133,9 +140,12 @@ export class UserModel extends BaseModel<UserMast> {
 			return res;
 		}
 	}
+
+	// ============================================
+	// functions -TaskMasterObject
+	// ============================================
 	/**
-	 * このグループのtaskMastObjectデータを配列で初期化する,
-	 * いらんかもこのメソッド
+	 * このグループのtaskMastObjectデータを配列で初期化する
 	 * @returns
 	 */
 	createTaskMast(): TaskMastModel {
@@ -167,26 +177,6 @@ export class UserModel extends BaseModel<UserMast> {
 	}
 
 	/**
-	 * マスターデータを更新できる(後でroleで分岐作る)
-	 *
-	 */
-	// async updateTaskMasterObj() {
-	// updateしてないので,nullが入ってそう
-	// if (this.groupID == null) {
-	// 	return console.error("groupIDがnullです");
-	// }
-	// const taskMasterObjModel =
-	// 	await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
-	// 		this.groupID
-	// 	);
-	// const now = new Date().getTime();
-	// taskMasterObjModel!.updatedAt = now;
-	// await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
-	// 	taskMasterObjModel!
-	// );
-	// }
-
-	/**
 	 * このグループのtaskMasterデータを取得する
 	 * @returns
 	 */
@@ -200,24 +190,12 @@ export class UserModel extends BaseModel<UserMast> {
 				await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
 					groupID
 				);
-
-			console.log(
-				"マスターデータfetch()内/ mastのdeta",
-				taskMasterObjectData
-			);
-
 			if (!taskMasterObjectData) {
 				return null;
 			}
 			//modelFactoryに入れて、modelを作る
 			const res =
 				this.modelFactory.TaskMasterObjectModel(taskMasterObjectData);
-
-			console.log(
-				"マスターデータfetch()内/ モデファクに入れたmodel/ res:",
-				res
-			);
-
 			return res;
 		}
 	}

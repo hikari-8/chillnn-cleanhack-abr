@@ -124,10 +124,10 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	/**
-	 * ルームのそれぞれのくじのデータを一括で登録・編集する
+	 * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
 	 */
 	async register() {
-		if (this.isRegisterable && this.isAdmin) {
+		if (this.isRegisterable) {
 			const now = new Date().getTime();
 			if (this.isNew) {
 				this.mast.createdAt = now;
