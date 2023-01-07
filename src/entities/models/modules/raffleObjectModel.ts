@@ -12,7 +12,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		limitTime: Scalars["AWSTimestamp"],
 		raffleStatus: RaffleStatus,
 		remindSlackWeek: Scalars["String"],
-		remindSlackTime: Scalars["AWSTimestamp"]
+		remindSlackTime: Scalars["String"]
 	): RaffleObject {
 		return {
 			raffleID: generateUUID(),

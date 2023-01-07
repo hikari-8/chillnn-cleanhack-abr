@@ -85,7 +85,7 @@ type RaffleObject {
   limitTime: AWSTimestamp!
   raffleID: ID!
   raffleStatus: RaffleStatus!
-  remindSlackTime: AWSTimestamp!
+  remindSlackTime: String!
   remindSlackWeek: String!
   tasks: [RaffleMast!]!
   updatedAt: AWSTimestamp!
@@ -99,7 +99,7 @@ input RaffleObjectInput {
   limitTime: AWSTimestamp!
   raffleID: ID!
   raffleStatus: RaffleStatus!
-  remindSlackTime: AWSTimestamp!
+  remindSlackTime: String!
   remindSlackWeek: String!
   tasks: [RaffleMastInput!]!
   updatedAt: AWSTimestamp!

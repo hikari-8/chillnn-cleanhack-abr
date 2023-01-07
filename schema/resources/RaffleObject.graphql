@@ -13,7 +13,7 @@ type RaffleObject {
 	limitTime: AWSTimestamp!
 	raffleStatus: RaffleStatus!
 	remindSlackWeek: String!
-	remindSlackTime: AWSTimestamp!
+	remindSlackTime: String!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -54,7 +54,7 @@ input RaffleObjectInput {
 	limitTime: AWSTimestamp!
 	raffleStatus: RaffleStatus!
 	remindSlackWeek: String!
-	remindSlackTime: AWSTimestamp!
+	remindSlackTime: String!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
