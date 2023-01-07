@@ -150,7 +150,7 @@ type TaskMasterObject {
   deletedAt: AWSTimestamp
   groupID: ID!
   limitTime: AWSTimestamp
-  remindSlackTime: AWSTimestamp
+  remindSlackTime: String
   remindSlackWeek: String
   taskMasterObjectID: ID!
   tasks: [TaskMast!]!
@@ -162,7 +162,7 @@ input TaskMasterObjectInput {
   deletedAt: AWSTimestamp
   groupID: ID!
   limitTime: AWSTimestamp
-  remindSlackTime: AWSTimestamp
+  remindSlackTime: String
   remindSlackWeek: String
   taskMasterObjectID: ID!
   tasks: [TaskMastInput!]!

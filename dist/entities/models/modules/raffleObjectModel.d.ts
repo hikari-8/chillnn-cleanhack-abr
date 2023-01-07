@@ -22,7 +22,7 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
     get isAdmin(): boolean;
     get isDone(): boolean;
     /**
-     * ルームのそれぞれのくじのデータを一括で登録・編集する
+     * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
      */
     register(): Promise<void>;
     fetchRaffle(groupID: string): Promise<void>;

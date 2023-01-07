@@ -29,8 +29,7 @@ export declare class UserModel extends BaseModel<UserMast> {
      */
     fetchGroupDataByGroupID(): Promise<GroupModel | null>;
     /**
-     * このグループのtaskMastObjectデータを配列で初期化する,
-     * いらんかもこのメソッド
+     * このグループのtaskMastObjectデータを配列で初期化する
      * @returns
      */
     createTaskMast(): TaskMastModel;
@@ -39,10 +38,6 @@ export declare class UserModel extends BaseModel<UserMast> {
      * @returns
      */
     createNewTaskMasterObj(): Promise<TaskMasterObjectModel>;
-    /**
-     * マスターデータを更新できる(後でroleで分岐作る)
-     *
-     */
     /**
      * このグループのtaskMasterデータを取得する
      * @returns

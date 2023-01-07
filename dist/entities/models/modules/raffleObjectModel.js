@@ -114,11 +114,11 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         return true;
     }
     /**
-     * ルームのそれぞれのくじのデータを一括で登録・編集する
+     * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
      */
     register() {
         return __awaiter(this, void 0, void 0, function* () {
-            if (this.isRegisterable && this.isAdmin) {
+            if (this.isRegisterable) {
                 const now = new Date().getTime();
                 if (this.isNew) {
                     this.mast.createdAt = now;

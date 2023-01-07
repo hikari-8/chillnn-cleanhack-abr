@@ -156,7 +156,7 @@ export type TaskMasterObject = {
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   limitTime?: Maybe<Scalars['AWSTimestamp']>;
-  remindSlackTime?: Maybe<Scalars['AWSTimestamp']>;
+  remindSlackTime?: Maybe<Scalars['String']>;
   remindSlackWeek?: Maybe<Scalars['String']>;
   taskMasterObjectID: Scalars['ID'];
   tasks: Array<TaskMast>;
@@ -168,7 +168,7 @@ export type TaskMasterObjectInput = {
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   limitTime?: InputMaybe<Scalars['AWSTimestamp']>;
-  remindSlackTime?: InputMaybe<Scalars['AWSTimestamp']>;
+  remindSlackTime?: InputMaybe<Scalars['String']>;
   remindSlackWeek?: InputMaybe<Scalars['String']>;
   taskMasterObjectID: Scalars['ID'];
   tasks: Array<TaskMastInput>;

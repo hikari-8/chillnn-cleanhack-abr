@@ -78,6 +78,9 @@ class UserModel extends _baseModel_1.BaseModel {
             return true;
         }
     }
+    // ============================================
+    // functions -User
+    // ============================================
     /**
      * ユーザー情報を新規登録、または更新する
      */
@@ -104,6 +107,9 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    // ============================================
+    // functions -Group
+    // ============================================
     // /**
     //  * グループを更新できる(後でroleで分岐作る)
     //  *
@@ -130,9 +136,11 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    // ============================================
+    // functions -TaskMasterObject
+    // ============================================
     /**
-     * このグループのtaskMastObjectデータを配列で初期化する,
-     * いらんかもこのメソッド
+     * このグループのtaskMastObjectデータを配列で初期化する
      * @returns
      */
     createTaskMast() {
@@ -160,25 +168,6 @@ class UserModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * マスターデータを更新できる(後でroleで分岐作る)
-     *
-     */
-    // async updateTaskMasterObj() {
-    // updateしてないので,nullが入ってそう
-    // if (this.groupID == null) {
-    // 	return console.error("groupIDがnullです");
-    // }
-    // const taskMasterObjModel =
-    // 	await this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(
-    // 		this.groupID
-    // 	);
-    // const now = new Date().getTime();
-    // taskMasterObjModel!.updatedAt = now;
-    // await this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(
-    // 	taskMasterObjModel!
-    // );
-    // }
-    /**
      * このグループのtaskMasterデータを取得する
      * @returns
      */
@@ -189,13 +178,11 @@ class UserModel extends _baseModel_1.BaseModel {
             }
             else {
                 const taskMasterObjectData = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(groupID);
-                console.log("マスターデータfetch()内/ mastのdeta", taskMasterObjectData);
                 if (!taskMasterObjectData) {
                     return null;
                 }
                 //modelFactoryに入れて、modelを作る
                 const res = this.modelFactory.TaskMasterObjectModel(taskMasterObjectData);
-                console.log("マスターデータfetch()内/ モデファクに入れたmodel/ res:", res);
                 return res;
             }
         });

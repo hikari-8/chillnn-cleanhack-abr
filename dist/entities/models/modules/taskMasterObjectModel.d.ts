@@ -20,11 +20,6 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**
-     * roleがAdminなら、掃除場所情報を新規登録、または更新できる
-     *
-     */
-    register(): Promise<void>;
-    /**
      * 掃除場所情報を新規登録、または更新できる/ !roleがAdminかどうか後で分岐を作るべき
      *
      */
