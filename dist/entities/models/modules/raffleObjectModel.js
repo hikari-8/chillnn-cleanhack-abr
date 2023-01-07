@@ -125,12 +125,10 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
                     this.mast.updatedAt = now;
                     yield this.repositoryContainer.raffleObjectRepository.addRaffleObject(this.mast);
                 }
-                // else {
-                // 	this.mast.updatedAt = now;
-                // 	await this.repositoryContainer.raffleObjectRepository.updateRaffleObject(
-                // 		this.mast
-                // 	);
-                // }
+                else {
+                    this.mast.updatedAt = now;
+                    yield this.repositoryContainer.raffleObjectRepository.updateRaffleObject(this.mast);
+                }
                 this.isNew = false;
             }
         });

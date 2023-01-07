@@ -55,12 +55,13 @@ export class RaffleObjectRepositoryCacheAdaptor
 		return res;
 	}
 
-	// async updateRaffleObject(input: RaffleObject): Promise<RaffleObject> {
-	// 	const res = await this.repository.updateRaffleObject(input);
-	// 	res.updatedAt = new Date().getDate();
-	// 	this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
-	// 	return res;
-	// }
+	async updateRaffleObject(input: RaffleObject): Promise<RaffleObject> {
+		const res = await this.repository.updateRaffleObject(input);
+		res.updatedAt = new Date().getDate();
+		this.updateGroupCache(res.groupID, res.tasks, res.createdAt);
+		return res;
+	}
+
 	async fetchRaffleObject(raffleID: string): Promise<RaffleObject | null> {
 		const cache = this.fetchCacheRaffleObject(raffleID);
 		if (cache) {
