@@ -121,13 +121,14 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		//taskが持ってる配列を一つづつ取り出して、raffleMに入れる
 		const taskArray = this.tasks;
 		console.log("taskArray: ", taskArray);
+		// 新しいMastを作成する
 		const newTaskArray = taskArray.map((task) =>
 			RaffleMastModel.getBlanc(task.taskName, task.groupID)
 		);
-		//モデルの中身をマストに変換する(すでにMast[])
-		// const taskArrayMast = newTaskArray.raffleMastModelToTaskMast();
 		console.log("newTaskArray: ", newTaskArray);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
+		//くじたちのMastを作成する
+		console.log("マスターデータのmastです: ", this.mast);
 		const blankRaffle = RaffleObjectModel.getBlanc(
 			newTaskArray,
 			this.groupID,

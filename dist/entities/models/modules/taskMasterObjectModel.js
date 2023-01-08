@@ -118,11 +118,12 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         //taskが持ってる配列を一つづつ取り出して、raffleMに入れる
         const taskArray = this.tasks;
         console.log("taskArray: ", taskArray);
+        // 新しいMastを作成する
         const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskName, task.groupID));
-        //モデルの中身をマストに変換する(すでにMast[])
-        // const taskArrayMast = newTaskArray.raffleMastModelToTaskMast();
         console.log("newTaskArray: ", newTaskArray);
         const status = type_1.RaffleStatus.EFFECTIVE;
+        //くじたちのMastを作成する
+        console.log("マスターデータのmastです: ", this.mast);
         const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime);
         console.log("blancRaffle: ", blankRaffle);
         return this.modelFactory.RaffleObjectModel(blankRaffle, {
