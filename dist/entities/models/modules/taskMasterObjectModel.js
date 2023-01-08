@@ -10,9 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskMasterObjectModel = void 0;
+const type_1 = require("../../type");
 const _baseModel_1 = require("./_baseModel");
 const __1 = require("../../..");
 const taskMastModel_1 = require("./taskMastModel");
+const raffleObjectModel_1 = require("./raffleObjectModel");
+const raffleMastModel_1 = require("./raffleMastModel");
 class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     static getBlanc(groupID, tasks) {
         return {
@@ -106,6 +109,20 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     getTaskMastModel(groupID) {
         const blank = taskMastModel_1.TaskMastModel.getBlanc(this.groupID, "blanc");
         return this.modelFactory.TaskMastModel(blank, { isNew: true });
+    }
+    /**
+     * くじの初期化オブジェクトを作成する
+     *
+     */
+    getRaffleModel() {
+        //taskが持ってる配列を一つづつ取り出して、raffleModelに入れる
+        const taskArray = this.tasks;
+        const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskName, task.groupID));
+        const status = type_1.RaffleStatus.EFFECTIVE;
+        const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime);
+        return this.modelFactory.RaffleObjectModel(blankRaffle, {
+            isNew: true,
+        });
     }
 }
 exports.TaskMasterObjectModel = TaskMasterObjectModel;

@@ -21,7 +21,8 @@ type RaffleObject {
 }
 
 type RaffleMast {
-	raffleID: ID!
+	raffleID: ID
+	raffleItemID: ID!
 	taskID: ID!
 	groupID: ID!
 	taskName: String!
@@ -62,7 +63,8 @@ input RaffleObjectInput {
 }
 
 input RaffleMastInput {
-	raffleID: ID!
+	raffleID: ID
+	raffleItemID: ID!
 	taskID: ID!
 	groupID: ID!
 	taskName: String!

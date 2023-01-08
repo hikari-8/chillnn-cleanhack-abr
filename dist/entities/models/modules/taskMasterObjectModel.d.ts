@@ -2,6 +2,7 @@ import { TaskMasterObject, TaskMast } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
 import { TaskMastModel } from "./taskMastModel";
+import { RaffleObjectModel } from "./raffleObjectModel";
 export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     static getBlanc(groupID: Scalars["String"], tasks: Array<TaskMast>): TaskMasterObject;
     get groupID(): string;
@@ -25,4 +26,9 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      */
     updateTaskMasterObj(): Promise<void>;
     getTaskMastModel(groupID: string): TaskMastModel;
+    /**
+     * くじの初期化オブジェクトを作成する
+     *
+     */
+    getRaffleModel(): RaffleObjectModel;
 }

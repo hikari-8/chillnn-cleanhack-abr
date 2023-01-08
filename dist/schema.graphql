@@ -59,7 +59,8 @@ type RaffleMast {
   deletedAt: AWSTimestamp
   groupID: ID!
   headCount: Int
-  raffleID: ID!
+  raffleID: ID
+  raffleItemID: ID!
   taskID: ID!
   taskName: String!
   updatedAt: AWSTimestamp!
@@ -70,7 +71,8 @@ input RaffleMastInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  raffleID: ID!
+  raffleID: ID
+  raffleItemID: ID!
   taskID: ID!
   taskName: String!
   updatedAt: AWSTimestamp!

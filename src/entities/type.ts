@@ -65,7 +65,8 @@ export type RaffleMast = {
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   headCount?: Maybe<Scalars['Int']>;
-  raffleID: Scalars['ID'];
+  raffleID?: Maybe<Scalars['ID']>;
+  raffleItemID: Scalars['ID'];
   taskID: Scalars['ID'];
   taskName: Scalars['String'];
   updatedAt: Scalars['AWSTimestamp'];
@@ -76,7 +77,8 @@ export type RaffleMastInput = {
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
-  raffleID: Scalars['ID'];
+  raffleID?: InputMaybe<Scalars['ID']>;
+  raffleItemID: Scalars['ID'];
   taskID: Scalars['ID'];
   taskName: Scalars['String'];
   updatedAt: Scalars['AWSTimestamp'];

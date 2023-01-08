@@ -4,9 +4,9 @@ exports.RaffleMastModel = void 0;
 const util_1 = require("../../../util");
 const _baseModel_1 = require("./_baseModel");
 class RaffleMastModel extends _baseModel_1.BaseModel {
-    static getBlanc(raffleID, groupID, taskName) {
+    static getBlanc(groupID, taskName) {
         return {
-            raffleID,
+            raffleItemID: (0, util_1.generateUUID)(),
             taskID: (0, util_1.generateUUID)(),
             taskName,
             groupID,
