@@ -158,7 +158,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	 *
 	 */
 	getRaffleModelTest() {
-		//taskが持ってる配列を一つづつ取り出して、raffleMに入れる
+		//taskが持ってる配列を一つづつ取り出して、raffleに入れる
 		const taskArray = this.tasks.map((task) =>
 			RaffleMastModel.getBlanc(task.taskName, task.groupID)
 		);
@@ -173,14 +173,16 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.remindSlackWeek,
 			this.remindSlackTime
 		);
-		console.log("blancRaffle: ", blankRaffle);
 
 		const blankMasterData = TaskMasterObjectModel.getBlanc(
 			this.groupID,
 			this.tasks
 		);
-		console.log("マスターデータのmastです: ", blankMasterData);
-		return this.modelFactory.RaffleObjectModel(blankRaffle, {
+		const jsonBlancRaffle = JSON.parse(JSON.stringify(blankRaffle));
+		console.log("マスターデータのmast: ", blankMasterData);
+		console.log("blancRaffle: ", blankRaffle);
+		console.log("JSONに変換したblankRaffle ここ: ", jsonBlancRaffle);
+		return this.modelFactory.RaffleObjectModel(jsonBlancRaffle, {
 			isNew: true,
 		});
 	}
