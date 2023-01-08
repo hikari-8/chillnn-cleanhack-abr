@@ -127,6 +127,10 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         console.log("blancRaffle: ", blankRaffle);
         const blankMasterData = TaskMasterObjectModel.getBlanc(this.groupID, taskArray);
         console.log("マスターデータのmastです: ", blankMasterData);
+        const test = this.modelFactory.TaskMasterObjectModel(blankMasterData, {
+            isNew: true,
+        });
+        console.log("testの返却値です", test);
         return this.modelFactory.RaffleObjectModel(blankRaffle, {
             isNew: true,
         });
