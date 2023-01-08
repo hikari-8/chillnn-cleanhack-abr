@@ -131,5 +131,23 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             isNew: true,
         });
     }
+    /**
+     * くじの初期化オブジェクトを作成する(test)
+     *
+     */
+    getRaffleModelTest() {
+        //taskが持ってる配列を一つづつ取り出して、raffleMに入れる
+        const taskArray = this.tasks.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskName, task.groupID));
+        console.log("newTaskArray: ", taskArray);
+        const status = type_1.RaffleStatus.EFFECTIVE;
+        //くじたちのMastを作成する
+        const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(taskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime);
+        console.log("blancRaffle: ", blankRaffle);
+        const blankMasterData = TaskMasterObjectModel.getBlanc(this.groupID, this.tasks);
+        console.log("マスターデータのmastです: ", blankMasterData);
+        return this.modelFactory.RaffleObjectModel(blankRaffle, {
+            isNew: true,
+        });
+    }
 }
 exports.TaskMasterObjectModel = TaskMasterObjectModel;

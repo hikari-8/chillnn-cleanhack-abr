@@ -1,4 +1,9 @@
-import { TaskMasterObject, TaskMast, RaffleStatus } from "../../type";
+import {
+	TaskMasterObject,
+	TaskMast,
+	RaffleStatus,
+	RaffleMast,
+} from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
 import { generateUUID } from "../../..";
@@ -122,7 +127,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		const taskArray = this.tasks;
 		console.log("taskArray: ", taskArray);
 		// 新しいMastを作成する
-		const newTaskArray = taskArray.map((task) =>
+		const newTaskArray: RaffleMast[] = taskArray.map((task) =>
 			RaffleMastModel.getBlanc(task.taskName, task.groupID)
 		);
 		console.log("newTaskArray: ", newTaskArray);
@@ -141,6 +146,38 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		const blankMasterData = TaskMasterObjectModel.getBlanc(
 			this.groupID,
 			taskArray
+		);
+		console.log("マスターデータのmastです: ", blankMasterData);
+		return this.modelFactory.RaffleObjectModel(blankRaffle, {
+			isNew: true,
+		});
+	}
+
+	/**
+	 * くじの初期化オブジェクトを作成する(test)
+	 *
+	 */
+	getRaffleModelTest() {
+		//taskが持ってる配列を一つづつ取り出して、raffleMに入れる
+		const taskArray = this.tasks.map((task) =>
+			RaffleMastModel.getBlanc(task.taskName, task.groupID)
+		);
+		console.log("newTaskArray: ", taskArray);
+		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
+		//くじたちのMastを作成する
+		const blankRaffle = RaffleObjectModel.getBlanc(
+			taskArray,
+			this.groupID,
+			this.limitTime,
+			status,
+			this.remindSlackWeek,
+			this.remindSlackTime
+		);
+		console.log("blancRaffle: ", blankRaffle);
+
+		const blankMasterData = TaskMasterObjectModel.getBlanc(
+			this.groupID,
+			this.tasks
 		);
 		console.log("マスターデータのmastです: ", blankMasterData);
 		return this.modelFactory.RaffleObjectModel(blankRaffle, {
