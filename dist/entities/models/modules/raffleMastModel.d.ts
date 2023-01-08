@@ -12,4 +12,9 @@ export declare class RaffleMastModel extends BaseModel<RaffleMast> {
     set taskName(input: string);
     get headCount(): number;
     set headCount(input: number);
+    /**
+     * RaffleMastModelをmastに解く関数
+     *
+     */
+    raffleMastModelToTaskMast(): Promise<RaffleMast>;
 }

@@ -118,11 +118,15 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	 *
 	 */
 	getRaffleModel() {
-		//taskが持ってる配列を一つづつ取り出して、raffleModelに入れる
+		//taskが持ってる配列を一つづつ取り出して、raffleMに入れる
 		const taskArray = this.tasks;
+		console.log("taskArray: ", taskArray);
 		const newTaskArray = taskArray.map((task) =>
 			RaffleMastModel.getBlanc(task.taskName, task.groupID)
 		);
+		//モデルの中身をマストに変換する(すでにMast[])
+		// const taskArrayMast = newTaskArray.raffleMastModelToTaskMast();
+		console.log("newTaskArray: ", newTaskArray);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
 		const blankRaffle = RaffleObjectModel.getBlanc(
 			newTaskArray,
@@ -132,6 +136,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.remindSlackWeek,
 			this.remindSlackTime
 		);
+		console.log("blancRaffle: ", blankRaffle);
 		return this.modelFactory.RaffleObjectModel(blankRaffle, {
 			isNew: true,
 		});

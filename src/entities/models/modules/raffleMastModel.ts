@@ -67,4 +67,11 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 	// ============================================
 	// functions
 	// ============================================
+	/**
+	 * RaffleMastModelをmastに解く関数
+	 *
+	 */
+	async raffleMastModelToTaskMast() {
+		return this.mast;
+	}
 }
