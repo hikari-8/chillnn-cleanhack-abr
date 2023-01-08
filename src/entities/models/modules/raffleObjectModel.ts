@@ -101,7 +101,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	get tasks() {
-		return (this.mast.tasks = []);
+		return this.mast.tasks;
 	}
 
 	set tasks(input: RaffleMast[]) {
