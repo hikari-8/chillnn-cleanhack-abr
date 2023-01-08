@@ -13,11 +13,12 @@ exports.RaffleMastModel = void 0;
 const util_1 = require("../../../util");
 const _baseModel_1 = require("./_baseModel");
 class RaffleMastModel extends _baseModel_1.BaseModel {
-    static getBlanc(taskID, taskName, groupID) {
+    static getBlanc(taskID, taskName, groupID, headCount) {
         return {
             taskID,
             taskName,
             groupID,
+            headCount,
             raffleItemID: (0, util_1.generateUUID)(),
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
@@ -58,7 +59,7 @@ class RaffleMastModel extends _baseModel_1.BaseModel {
             this.mast.headCount = input;
         }
         else {
-            this.mast.headCount = null;
+            this.mast.headCount = 0;
         }
     }
     // ============================================

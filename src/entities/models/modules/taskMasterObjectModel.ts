@@ -114,7 +114,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	// taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
 	getTaskMastModel(groupID: string) {
-		const blank = TaskMastModel.getBlanc(this.groupID, "blanc");
+		const blank = TaskMastModel.getBlanc(this.groupID, "blanc", 0);
 		return this.modelFactory.TaskMastModel(blank, { isNew: true });
 	}
 
@@ -125,12 +125,15 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	getRaffleModel() {
 		//taskが持ってる配列を一つづつ取り出して、raffleMに入れる
 		const taskArray = this.tasks;
-		console.log("taskArray: ", taskArray);
 		// 新しいMastを作成する
 		const newTaskArray: RaffleMast[] = taskArray.map((task) =>
-			RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID)
+			RaffleMastModel.getBlanc(
+				task.taskID,
+				task.taskName,
+				task.groupID,
+				task.headCount
+			)
 		);
-		console.log("newTaskArray: ", newTaskArray);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
 		//くじたちのMastを作成する
 		const blankRaffle = RaffleObjectModel.getBlanc(
@@ -142,54 +145,8 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.remindSlackTime
 		);
 		console.log("blancRaffle: ", blankRaffle);
-
-		const blankMasterData = TaskMasterObjectModel.getBlanc(
-			this.groupID,
-			taskArray
-		);
-		console.log("マスターデータのmastです: ", blankMasterData);
-		const test = this.modelFactory.TaskMasterObjectModel(blankMasterData, {
-			isNew: true,
-		});
-		console.log("testの返却値です", test);
 		return this.modelFactory.RaffleObjectModel(blankRaffle, {
 			isNew: true,
 		});
-	}
-
-	/**
-	 * くじの初期化オブジェクトを作成する(test)
-	 *
-	 */
-	getRaffleModelTest() {
-		//taskが持ってる配列を一つづつ取り出して、raffleに入れる
-		const taskArray = this.tasks.map((task) =>
-			RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID)
-		);
-		console.log("newTaskArray: ", taskArray);
-		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
-		//くじたちのMastを作成する
-		const newRaffle = RaffleObjectModel.getBlanc(
-			taskArray,
-			this.groupID,
-			this.limitTime,
-			status,
-			this.remindSlackWeek,
-			this.remindSlackTime
-		);
-
-		const blankMasterData = TaskMasterObjectModel.getBlanc(
-			this.groupID,
-			this.tasks
-		);
-		console.log("マスターデータのmast: ", blankMasterData);
-		console.log("newRaffle: ", newRaffle);
-		const newRaffleModel = this.modelFactory.RaffleObjectModel(newRaffle, {
-			isNew: true,
-		});
-
-		const res = JSON.parse(JSON.stringify(newRaffleModel));
-		console.log("JSONに変換したblankRaffle/ res: ", res);
-		return res;
 	}
 }

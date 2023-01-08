@@ -8,12 +8,14 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 	static getBlanc(
 		taskID: Scalars["ID"],
 		taskName: Scalars["String"],
-		groupID: Scalars["ID"]
+		groupID: Scalars["ID"],
+		headCount: Scalars["Int"]
 	): RaffleMast {
 		return {
 			taskID,
 			taskName,
 			groupID,
+			headCount,
 			raffleItemID: generateUUID(),
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
@@ -57,7 +59,7 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		if (input) {
 			this.mast.headCount = input;
 		} else {
-			this.mast.headCount = null;
+			this.mast.headCount = 0;
 		}
 	}
 

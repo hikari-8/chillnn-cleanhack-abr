@@ -150,7 +150,7 @@ export class UserModel extends BaseModel<UserMast> {
 	 */
 	createTaskMast(): TaskMastModel {
 		const res = this.modelFactory.TaskMastModel(
-			TaskMastModel.getBlanc(this.groupID!, "")
+			TaskMastModel.getBlanc(this.groupID!, "", 0)
 		);
 		return res;
 	}
@@ -171,6 +171,7 @@ export class UserModel extends BaseModel<UserMast> {
 					updatedAt: now,
 					taskID: taskID,
 					taskName: "",
+					headCount: 0,
 				},
 			])
 		);

@@ -2,7 +2,7 @@ import { RaffleMast } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 export declare class RaffleMastModel extends BaseModel<RaffleMast> {
-    static getBlanc(taskID: Scalars["ID"], taskName: Scalars["String"], groupID: Scalars["ID"]): RaffleMast;
+    static getBlanc(taskID: Scalars["ID"], taskName: Scalars["String"], groupID: Scalars["ID"], headCount: Scalars["Int"]): RaffleMast;
     get raffleID(): string;
     get groupID(): string;
     get createdAt(): number;

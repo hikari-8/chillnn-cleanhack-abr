@@ -17,7 +17,7 @@ type TaskMast {
 	taskID: ID!
 	groupID: ID!
 	taskName: String!
-	headCount: Int
+	headCount: Int!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -47,7 +47,7 @@ input TaskMastInput {
 	taskID: ID!
 	groupID: ID!
 	taskName: String!
-	headCount: Int
+	headCount: Int!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!

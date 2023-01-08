@@ -7,12 +7,14 @@ import { UserModel } from "./userModel";
 export class TaskMastModel extends BaseModel<TaskMast> {
 	static getBlanc(
 		groupID: Scalars["ID"],
-		taskName: Scalars["String"]
+		taskName: Scalars["String"],
+		headCount: Scalars["Int"]
 	): TaskMast {
 		return {
 			taskID: generateUUID(),
 			taskName,
 			groupID,
+			headCount,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
 		};
@@ -54,7 +56,7 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 		if (input) {
 			this.mast.headCount = input;
 		} else {
-			this.mast.headCount = null;
+			this.mast.headCount = 0;
 		}
 	}
 

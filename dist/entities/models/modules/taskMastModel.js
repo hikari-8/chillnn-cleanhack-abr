@@ -13,11 +13,12 @@ exports.TaskMastModel = void 0;
 const util_1 = require("../../../util");
 const _baseModel_1 = require("./_baseModel");
 class TaskMastModel extends _baseModel_1.BaseModel {
-    static getBlanc(groupID, taskName) {
+    static getBlanc(groupID, taskName, headCount) {
         return {
             taskID: (0, util_1.generateUUID)(),
             taskName,
             groupID,
+            headCount,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
         };
@@ -57,7 +58,7 @@ class TaskMastModel extends _baseModel_1.BaseModel {
             this.mast.headCount = input;
         }
         else {
-            this.mast.headCount = null;
+            this.mast.headCount = 0;
         }
     }
     // ============================================
