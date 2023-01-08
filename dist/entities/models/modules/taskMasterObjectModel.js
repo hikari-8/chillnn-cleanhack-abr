@@ -127,5 +127,25 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             isNew: true,
         });
     }
+    /**
+     * このグループのくじデータをくじのuuidで取得する
+     * @returns
+     */
+    fetchRaffleItemByRaffleID(raffleID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!raffleID) {
+                return null;
+            }
+            else {
+                const raffleItem = yield this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(raffleID);
+                if (!raffleItem) {
+                    return null;
+                }
+                //modelFactoryに入れて、modelを作る
+                const res = this.modelFactory.RaffleObjectModel(raffleItem);
+                return res;
+            }
+        });
+    }
 }
 exports.TaskMasterObjectModel = TaskMasterObjectModel;

@@ -149,4 +149,26 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			isNew: true,
 		});
 	}
+	/**
+	 * このグループのくじデータをくじのuuidで取得する
+	 * @returns
+	 */
+	async fetchRaffleItemByRaffleID(
+		raffleID: string
+	): Promise<RaffleObjectModel | null> {
+		if (!raffleID) {
+			return null;
+		} else {
+			const raffleItem =
+				await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
+					raffleID
+				);
+			if (!raffleItem) {
+				return null;
+			}
+			//modelFactoryに入れて、modelを作る
+			const res = this.modelFactory.RaffleObjectModel(raffleItem);
+			return res;
+		}
+	}
 }

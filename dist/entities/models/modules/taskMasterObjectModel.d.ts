@@ -31,4 +31,9 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      *
      */
     getRaffleModel(): RaffleObjectModel;
+    /**
+     * このグループのくじデータをくじのuuidで取得する
+     * @returns
+     */
+    fetchRaffleItemByRaffleID(raffleID: string): Promise<RaffleObjectModel | null>;
 }
