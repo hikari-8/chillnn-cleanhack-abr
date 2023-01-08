@@ -128,7 +128,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		console.log("taskArray: ", taskArray);
 		// 新しいMastを作成する
 		const newTaskArray: RaffleMast[] = taskArray.map((task) =>
-			RaffleMastModel.getBlanc(task.taskName, task.groupID)
+			RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID)
 		);
 		console.log("newTaskArray: ", newTaskArray);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
@@ -164,7 +164,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	getRaffleModelTest() {
 		//taskが持ってる配列を一つづつ取り出して、raffleに入れる
 		const taskArray = this.tasks.map((task) =>
-			RaffleMastModel.getBlanc(task.taskName, task.groupID)
+			RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID)
 		);
 		console.log("newTaskArray: ", taskArray);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;

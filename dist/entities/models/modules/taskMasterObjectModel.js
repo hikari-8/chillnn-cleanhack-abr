@@ -119,7 +119,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         const taskArray = this.tasks;
         console.log("taskArray: ", taskArray);
         // 新しいMastを作成する
-        const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskName, task.groupID));
+        const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID));
         console.log("newTaskArray: ", newTaskArray);
         const status = type_1.RaffleStatus.EFFECTIVE;
         //くじたちのMastを作成する
@@ -141,7 +141,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
      */
     getRaffleModelTest() {
         //taskが持ってる配列を一つづつ取り出して、raffleに入れる
-        const taskArray = this.tasks.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskName, task.groupID));
+        const taskArray = this.tasks.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID));
         console.log("newTaskArray: ", taskArray);
         const status = type_1.RaffleStatus.EFFECTIVE;
         //くじたちのMastを作成する
