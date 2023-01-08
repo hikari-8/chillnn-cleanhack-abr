@@ -141,15 +141,16 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         console.log("newTaskArray: ", taskArray);
         const status = type_1.RaffleStatus.EFFECTIVE;
         //くじたちのMastを作成する
-        const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(taskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime);
+        const newRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(taskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime);
         const blankMasterData = TaskMasterObjectModel.getBlanc(this.groupID, this.tasks);
-        const jsonBlancRaffle = JSON.parse(JSON.stringify(blankRaffle));
         console.log("マスターデータのmast: ", blankMasterData);
-        console.log("blancRaffle: ", blankRaffle);
-        console.log("JSONに変換したblankRaffle ここ: ", jsonBlancRaffle);
-        return this.modelFactory.RaffleObjectModel(jsonBlancRaffle, {
+        console.log("newRaffle: ", newRaffle);
+        const newRaffleModel = this.modelFactory.RaffleObjectModel(newRaffle, {
             isNew: true,
         });
+        const res = JSON.parse(JSON.stringify(newRaffleModel));
+        console.log("JSONに変換したblankRaffle/ res: ", res);
+        return res;
     }
 }
 exports.TaskMasterObjectModel = TaskMasterObjectModel;

@@ -165,7 +165,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		console.log("newTaskArray: ", taskArray);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
 		//くじたちのMastを作成する
-		const blankRaffle = RaffleObjectModel.getBlanc(
+		const newRaffle = RaffleObjectModel.getBlanc(
 			taskArray,
 			this.groupID,
 			this.limitTime,
@@ -178,12 +178,14 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.groupID,
 			this.tasks
 		);
-		const jsonBlancRaffle = JSON.parse(JSON.stringify(blankRaffle));
 		console.log("マスターデータのmast: ", blankMasterData);
-		console.log("blancRaffle: ", blankRaffle);
-		console.log("JSONに変換したblankRaffle ここ: ", jsonBlancRaffle);
-		return this.modelFactory.RaffleObjectModel(jsonBlancRaffle, {
+		console.log("newRaffle: ", newRaffle);
+		const newRaffleModel = this.modelFactory.RaffleObjectModel(newRaffle, {
 			isNew: true,
 		});
+
+		const res = JSON.parse(JSON.stringify(newRaffleModel));
+		console.log("JSONに変換したblankRaffle/ res: ", res);
+		return res;
 	}
 }

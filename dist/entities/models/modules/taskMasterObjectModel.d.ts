@@ -35,5 +35,5 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      * くじの初期化オブジェクトを作成する(test)
      *
      */
-    getRaffleModelTest(): RaffleObjectModel;
+    getRaffleModelTest(): any;
 }
