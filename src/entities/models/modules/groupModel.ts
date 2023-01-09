@@ -8,6 +8,7 @@ import {
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { generateUUID } from "../../../util";
+import { RaffleObjectModel } from "./raffleObjectModel";
 
 export class GroupModel extends BaseModel<GroupMast> {
 	static getBlanc(createdUserID: Scalars["String"]): GroupMast {
@@ -92,6 +93,27 @@ export class GroupModel extends BaseModel<GroupMast> {
 			return null;
 		} else {
 			const res = this.modelFactory.GroupModel(groupMast);
+			return res;
+		}
+	}
+
+	/**
+	 * raffleオブジェクトをgroupからfetchできる(後でフロントでroleの分岐作る)
+	 *
+	 */
+	async fetchRaffleObjectModel(
+		raffleID: string
+	): Promise<RaffleObjectModel | null> {
+		const raffleObjectModel =
+			await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
+				raffleID
+			);
+		if (!raffleObjectModel) {
+			console.error("RaffleObjectModel not found at RaffleObjectModel");
+			return null;
+		} else {
+			const res = this.modelFactory.RaffleObjectModel(raffleObjectModel);
+			console.log("res at fetchRaffleObjectModel", res);
 			return res;
 		}
 	}

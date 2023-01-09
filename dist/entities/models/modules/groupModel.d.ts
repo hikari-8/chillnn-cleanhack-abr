@@ -1,6 +1,7 @@
 import { GroupMast, RaffleObject, TaskMasterObject } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
+import { RaffleObjectModel } from "./raffleObjectModel";
 export declare class GroupModel extends BaseModel<GroupMast> {
     static getBlanc(createdUserID: Scalars["String"]): GroupMast;
     get groupID(): string;
@@ -24,6 +25,11 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      *
      */
     fetchGroupMast(): Promise<GroupModel | null>;
+    /**
+     * raffleオブジェクトをgroupからfetchできる(後でフロントでroleの分岐作る)
+     *
+     */
+    fetchRaffleObjectModel(raffleID: string): Promise<RaffleObjectModel | null>;
     /**
      * raffleDataを追加後のgroupDataにpushの処理
      *
