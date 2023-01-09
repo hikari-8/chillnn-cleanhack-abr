@@ -145,7 +145,8 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             if (!groupData)
                 return console.error("No group found");
             const lastItemStatus = (_a = groupData.records) === null || _a === void 0 ? void 0 : _a.slice(-1)[0].raffleStatus;
-            if (groupData.records || lastItemStatus !== type_1.RaffleStatus.DONE) {
+            if (groupData.records == null || lastItemStatus !== type_1.RaffleStatus.DONE) {
+                console.log("records:", groupData.records, "lastItemStatus:", lastItemStatus);
                 return alert("すでにくじが実行中です。実行中のくじを削除したい場合は、グループ欄からくじを削除してください");
             }
             else {
