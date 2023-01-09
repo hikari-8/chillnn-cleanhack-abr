@@ -153,7 +153,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             }
             else {
                 //くじを新規作成
-                this.register();
+                return this.register();
             }
         });
     }

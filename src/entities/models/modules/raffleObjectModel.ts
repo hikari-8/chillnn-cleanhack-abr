@@ -178,7 +178,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			);
 		} else {
 			//くじを新規作成
-			this.register();
+			return this.register();
 		}
 		// fetchする
 		// const newRaffle =
