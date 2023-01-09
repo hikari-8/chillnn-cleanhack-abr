@@ -10,7 +10,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	static getBlanc(
 		tasks: Array<RaffleMast>,
 		groupID: Scalars["String"],
-		limitTime: Scalars["AWSTimestamp"],
+		limitTime: Scalars["String"],
 		raffleStatus: RaffleStatus,
 		remindSlackWeek: Scalars["String"],
 		remindSlackTime: Scalars["String"]
@@ -51,14 +51,14 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	// getter / setter
 	// ============================================
 	get limitTime() {
-		return this.mast.limitTime || 0;
+		return this.mast.limitTime || "";
 	}
 
-	set limitTime(input: number) {
+	set limitTime(input: string) {
 		if (input) {
 			this.mast.limitTime = input;
 		} else {
-			this.mast.limitTime = 0;
+			this.mast.limitTime = "";
 		}
 	}
 

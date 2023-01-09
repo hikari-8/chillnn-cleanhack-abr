@@ -3,7 +3,7 @@
 type TaskMasterObject {
 	tasks: [TaskMast!]!
 	groupID: ID!
-	limitTime: AWSTimestamp
+	limitTime: String
 	remindSlackWeek: String
 	remindSlackTime: String
 	taskMasterObjectID: ID!
@@ -33,7 +33,7 @@ type TaskMast {
 input TaskMasterObjectInput {
 	tasks: [TaskMastInput!]!
 	groupID: ID!
-	limitTime: AWSTimestamp
+	limitTime: String
 	remindSlackWeek: String
 	remindSlackTime: String
 	taskMasterObjectID: ID!

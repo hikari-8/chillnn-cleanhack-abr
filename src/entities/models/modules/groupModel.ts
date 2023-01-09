@@ -1,5 +1,6 @@
 import {
 	GroupMast,
+	RaffleJoinUser,
 	RaffleMast,
 	RaffleObject,
 	TaskMast,
@@ -11,10 +12,14 @@ import { generateUUID } from "../../../util";
 import { RaffleObjectModel } from "./raffleObjectModel";
 
 export class GroupModel extends BaseModel<GroupMast> {
-	static getBlanc(createdUserID: Scalars["String"]): GroupMast {
+	static getBlanc(
+		createdUserID: Scalars["String"],
+		records: Array<RaffleObject>
+	): GroupMast {
 		return {
 			createdUserID,
 			groupID: generateUUID(),
+			records,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
 		};
@@ -49,7 +54,7 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	get records() {
-		return this.mast.records || [];
+		return this.mast.records;
 	}
 
 	set records(input: RaffleObject[]) {

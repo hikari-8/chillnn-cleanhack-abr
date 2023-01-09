@@ -10,8 +10,8 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     get createdAt(): number;
     get updatedAt(): number;
     get deletedAt(): import("../..").Maybe<number> | undefined;
-    get limitTime(): number;
-    set limitTime(input: number);
+    get limitTime(): string;
+    set limitTime(input: string);
     get remindSlackWeek(): string;
     set remindSlackWeek(input: string);
     get remindSlackTime(): string;

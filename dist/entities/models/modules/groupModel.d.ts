@@ -3,7 +3,7 @@ import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { RaffleObjectModel } from "./raffleObjectModel";
 export declare class GroupModel extends BaseModel<GroupMast> {
-    static getBlanc(createdUserID: Scalars["String"]): GroupMast;
+    static getBlanc(createdUserID: Scalars["String"], records: Array<RaffleObject>): GroupMast;
     get groupID(): string;
     get createdUserID(): string;
     get createdAt(): number;

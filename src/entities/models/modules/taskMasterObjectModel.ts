@@ -45,14 +45,14 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	}
 
 	get limitTime() {
-		return this.mast.limitTime || 0;
+		return this.mast.limitTime || "";
 	}
 
-	set limitTime(input: number) {
+	set limitTime(input: string) {
 		if (input) {
 			this.mast.limitTime = input;
 		} else {
-			this.mast.limitTime = null;
+			this.mast.limitTime = "";
 		}
 	}
 

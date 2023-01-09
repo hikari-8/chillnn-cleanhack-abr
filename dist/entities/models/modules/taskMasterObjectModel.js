@@ -45,14 +45,14 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         return this.mast.deletedAt;
     }
     get limitTime() {
-        return this.mast.limitTime || 0;
+        return this.mast.limitTime || "";
     }
     set limitTime(input) {
         if (input) {
             this.mast.limitTime = input;
         }
         else {
-            this.mast.limitTime = null;
+            this.mast.limitTime = "";
         }
     }
     get remindSlackWeek() {

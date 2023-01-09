@@ -49,14 +49,14 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     // getter / setter
     // ============================================
     get limitTime() {
-        return this.mast.limitTime || 0;
+        return this.mast.limitTime || "";
     }
     set limitTime(input) {
         if (input) {
             this.mast.limitTime = input;
         }
         else {
-            this.mast.limitTime = 0;
+            this.mast.limitTime = "";
         }
     }
     get raffleStatus() {

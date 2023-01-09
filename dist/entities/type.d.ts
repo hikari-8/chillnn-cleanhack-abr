@@ -39,7 +39,7 @@ export declare type GroupMast = {
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     groupName?: Maybe<Scalars['String']>;
-    records?: Maybe<Array<RaffleObject>>;
+    records: Array<RaffleObject>;
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type GroupMastInput = {
@@ -48,7 +48,7 @@ export declare type GroupMastInput = {
     deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     groupName?: InputMaybe<Scalars['String']>;
-    records?: InputMaybe<Array<RaffleObjectInput>>;
+    records: Array<RaffleObjectInput>;
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type RaffleJoinUser = {
@@ -92,7 +92,7 @@ export declare type RaffleObject = {
     createdAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
-    limitTime: Scalars['AWSTimestamp'];
+    limitTime: Scalars['String'];
     raffleID: Scalars['ID'];
     raffleStatus: RaffleStatus;
     remindSlackTime: Scalars['String'];
@@ -105,7 +105,7 @@ export declare type RaffleObjectInput = {
     createdAt: Scalars['AWSTimestamp'];
     deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
-    limitTime: Scalars['AWSTimestamp'];
+    limitTime: Scalars['String'];
     raffleID: Scalars['ID'];
     raffleStatus: RaffleStatus;
     remindSlackTime: Scalars['String'];
@@ -152,7 +152,7 @@ export declare type TaskMasterObject = {
     createdAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
-    limitTime?: Maybe<Scalars['AWSTimestamp']>;
+    limitTime?: Maybe<Scalars['String']>;
     remindSlackTime?: Maybe<Scalars['String']>;
     remindSlackWeek?: Maybe<Scalars['String']>;
     taskMasterObjectID: Scalars['ID'];
@@ -163,7 +163,7 @@ export declare type TaskMasterObjectInput = {
     createdAt: Scalars['AWSTimestamp'];
     deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
-    limitTime?: InputMaybe<Scalars['AWSTimestamp']>;
+    limitTime?: InputMaybe<Scalars['String']>;
     remindSlackTime?: InputMaybe<Scalars['String']>;
     remindSlackWeek?: InputMaybe<Scalars['String']>;
     taskMasterObjectID: Scalars['ID'];

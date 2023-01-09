@@ -13,10 +13,11 @@ exports.GroupModel = void 0;
 const _baseModel_1 = require("./_baseModel");
 const util_1 = require("../../../util");
 class GroupModel extends _baseModel_1.BaseModel {
-    static getBlanc(createdUserID) {
+    static getBlanc(createdUserID, records) {
         return {
             createdUserID,
             groupID: (0, util_1.generateUUID)(),
+            records,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
         };
@@ -49,7 +50,7 @@ class GroupModel extends _baseModel_1.BaseModel {
         this.mast.groupName = input;
     }
     get records() {
-        return this.mast.records || [];
+        return this.mast.records;
     }
     set records(input) {
         this.mast.records = input;

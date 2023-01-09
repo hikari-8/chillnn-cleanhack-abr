@@ -28,7 +28,7 @@ type GroupMast {
   deletedAt: AWSTimestamp
   groupID: ID!
   groupName: String
-  records: [RaffleObject!]
+  records: [RaffleObject!]!
   updatedAt: AWSTimestamp!
 }
 
@@ -38,7 +38,7 @@ input GroupMastInput {
   deletedAt: AWSTimestamp
   groupID: ID!
   groupName: String
-  records: [RaffleObjectInput!]
+  records: [RaffleObjectInput!]!
   updatedAt: AWSTimestamp!
 }
 
@@ -87,7 +87,7 @@ type RaffleObject {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  limitTime: AWSTimestamp!
+  limitTime: String!
   raffleID: ID!
   raffleStatus: RaffleStatus!
   remindSlackTime: String!
@@ -101,7 +101,7 @@ input RaffleObjectInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  limitTime: AWSTimestamp!
+  limitTime: String!
   raffleID: ID!
   raffleStatus: RaffleStatus!
   remindSlackTime: String!
@@ -154,7 +154,7 @@ type TaskMasterObject {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  limitTime: AWSTimestamp
+  limitTime: String
   remindSlackTime: String
   remindSlackWeek: String
   taskMasterObjectID: ID!
@@ -166,7 +166,7 @@ input TaskMasterObjectInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  limitTime: AWSTimestamp
+  limitTime: String
   remindSlackTime: String
   remindSlackWeek: String
   taskMasterObjectID: ID!
