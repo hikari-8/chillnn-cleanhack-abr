@@ -85,14 +85,14 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         }
     }
     get remindSlackTime() {
-        return this.mast.remindSlackWeek || "blanc";
+        return this.mast.remindSlackTime || "blanc";
     }
     set remindSlackTime(input) {
         if (input) {
-            this.mast.remindSlackWeek = input;
+            this.mast.remindSlackTime = input;
         }
         else {
-            this.mast.remindSlackWeek = "blanc";
+            this.mast.remindSlackTime = "blanc";
         }
     }
     get tasks() {

@@ -89,14 +89,14 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	get remindSlackTime() {
-		return this.mast.remindSlackWeek || "blanc";
+		return this.mast.remindSlackTime || "blanc";
 	}
 
 	set remindSlackTime(input: string) {
 		if (input) {
-			this.mast.remindSlackWeek = input;
+			this.mast.remindSlackTime = input;
 		} else {
-			this.mast.remindSlackWeek = "blanc";
+			this.mast.remindSlackTime = "blanc";
 		}
 	}
 

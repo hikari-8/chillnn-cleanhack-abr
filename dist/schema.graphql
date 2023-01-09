@@ -28,6 +28,7 @@ type GroupMast {
   deletedAt: AWSTimestamp
   groupID: ID!
   groupName: String
+  tasks: [RaffleMast!]
   updatedAt: AWSTimestamp!
 }
 
@@ -37,6 +38,7 @@ input GroupMastInput {
   deletedAt: AWSTimestamp
   groupID: ID!
   groupName: String
+  tasks: [RaffleMast!]
   updatedAt: AWSTimestamp!
 }
 
