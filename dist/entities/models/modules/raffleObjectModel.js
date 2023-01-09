@@ -176,6 +176,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             groupData.records.push(newRaffle);
             //groupMastをupdateする
             yield this.repositoryContainer.groupMastRepository.updateGroup(groupData);
+            console.log("GroupDataにpushしました→", groupData);
         });
     }
     /**

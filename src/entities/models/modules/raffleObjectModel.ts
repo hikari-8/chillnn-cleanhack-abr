@@ -222,6 +222,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		await this.repositoryContainer.groupMastRepository.updateGroup(
 			groupData
 		);
+		console.log("GroupDataにpushしました→", groupData);
 	}
 
 	/**
