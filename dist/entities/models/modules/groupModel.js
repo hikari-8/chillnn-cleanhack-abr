@@ -135,5 +135,14 @@ class GroupModel extends _baseModel_1.BaseModel {
             // mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
         });
     }
+    /**
+     * groupのmodelをmastに解く関数
+     *
+     */
+    GroupModelToGroupMast() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.mast;
+        });
+    }
 }
 exports.GroupModel = GroupModel;

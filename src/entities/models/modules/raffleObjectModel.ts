@@ -248,7 +248,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	 * raffleのmodelをmastに解く関数
 	 *
 	 */
-	async RaffleObjectModelToTaskMast() {
+	async RaffleObjectModelToGroupObject() {
 		return this.mast;
 	}
 

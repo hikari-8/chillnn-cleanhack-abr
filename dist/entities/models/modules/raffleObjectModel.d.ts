@@ -45,6 +45,6 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      * raffleのmodelをmastに解く関数
      *
      */
-    RaffleObjectModelToTaskMast(): Promise<RaffleObject>;
+    RaffleObjectModelToGroupObject(): Promise<RaffleObject>;
     fetchRaffleItem(): Promise<RaffleObjectModel | null>;
 }

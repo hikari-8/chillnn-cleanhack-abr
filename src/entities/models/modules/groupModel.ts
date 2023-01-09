@@ -143,4 +143,12 @@ export class GroupModel extends BaseModel<GroupMast> {
 		return res;
 		// mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
 	}
+
+	/**
+	 * groupのmodelをmastに解く関数
+	 *
+	 */
+	async GroupModelToGroupMast() {
+		return this.mast;
+	}
 }

@@ -40,4 +40,9 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      * @returns
      */
     fetchTaskMasterObject(): Promise<TaskMasterObject | null>;
+    /**
+     * groupのmodelをmastに解く関数
+     *
+     */
+    GroupModelToGroupMast(): Promise<GroupMast>;
 }
