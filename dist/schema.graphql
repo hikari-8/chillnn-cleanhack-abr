@@ -38,7 +38,7 @@ input GroupMastInput {
   deletedAt: AWSTimestamp
   groupID: ID!
   groupName: String
-  records: [RaffleObject!]
+  records: [RaffleObjectInput!]
   updatedAt: AWSTimestamp!
 }
 

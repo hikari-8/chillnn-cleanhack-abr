@@ -48,7 +48,7 @@ export declare type GroupMastInput = {
     deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     groupName?: InputMaybe<Scalars['String']>;
-    records?: InputMaybe<Array<RaffleObject>>;
+    records?: InputMaybe<Array<RaffleObjectInput>>;
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type RaffleJoinUser = {

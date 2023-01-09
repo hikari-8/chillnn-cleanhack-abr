@@ -13,7 +13,7 @@ input GroupMastInput {
 	groupID: ID!
 	groupName: String
 	createdUserID: ID!
-	records: [RaffleObject!]
+	records: [RaffleObjectInput!]
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
