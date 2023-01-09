@@ -32,6 +32,11 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      */
     addNewRaffle(): Promise<void>;
     /**
+     * raffleDataを追加後のgroupDataにpushの処理
+     *
+     */
+    pushGroupRecord(): Promise<void>;
+    /**
      * グループDataをfetchできる(後でフロントでroleの分岐作る)
      *
      */

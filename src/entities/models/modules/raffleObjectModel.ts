@@ -156,10 +156,12 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 				this.groupID
 			);
 		if (!groupData) return console.error("No group found");
-		const lastItemStatus = groupData.records?.slice(-1)[0].raffleStatus;
+		let lastItemStatus = groupData.records?.slice(-1)[0].raffleStatus;
 		console.log(
 			"groupData.records?.slice(-1)[0]:",
-			groupData.records?.slice(-1)[0]
+			groupData.records?.slice(-1)[0],
+			"groupData.records",
+			groupData.records
 		);
 		if (
 			groupData.records !== null &&
@@ -179,12 +181,39 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			this.register();
 		}
 		// fetchする
+		// const newRaffle =
+		// 	await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
+		// 		this.raffleID
+		// 	);
+		// console.log("登録後fetchしたraffle:", newRaffle);
+		//register&fetchしたraffleをgroupのrecords末尾にも追加
+		// if (!newRaffle) {
+		// 	return console.error("raffle is not fetched after register");
+		// }
+		// groupData.records!.push(newRaffle);
+		// //groupMastをupdateする
+		// await this.repositoryContainer.groupMastRepository.updateGroup(
+		// 	groupData
+		// );
+	}
+
+	/**
+	 * raffleDataを追加後のgroupDataにpushの処理
+	 *
+	 */
+	async pushGroupRecord() {
+		// fetchする
 		const newRaffle =
 			await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
 				this.raffleID
 			);
 		console.log("登録後fetchしたraffle:", newRaffle);
 		//register&fetchしたraffleをgroupのrecords末尾にも追加
+		const groupData =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.groupID
+			);
+		if (!groupData) return console.error("No group found");
 		if (!newRaffle) {
 			return console.error("raffle is not fetched after register");
 		}
