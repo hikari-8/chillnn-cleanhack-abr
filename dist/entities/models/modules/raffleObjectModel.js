@@ -139,13 +139,15 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
      * かつ、statusがDONEの時のみgroupのrecordsにもpushする
      */
     addNewRaffle() {
-        var _a;
+        var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
             const groupData = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
             if (!groupData)
                 return console.error("No group found");
             const lastItemStatus = (_a = groupData.records) === null || _a === void 0 ? void 0 : _a.slice(-1)[0].raffleStatus;
-            if (groupData.records == null || lastItemStatus !== type_1.RaffleStatus.DONE) {
+            console.log("groupData.records?.slice(-1)[0]:", (_b = groupData.records) === null || _b === void 0 ? void 0 : _b.slice(-1)[0]);
+            if (groupData.records !== null &&
+                lastItemStatus !== type_1.RaffleStatus.DONE) {
                 console.log("records:", groupData.records, "lastItemStatus:", lastItemStatus);
                 return alert("すでにくじが実行中です。実行中のくじを削除したい場合は、グループ欄からくじを削除してください");
             }

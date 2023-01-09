@@ -157,7 +157,14 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			);
 		if (!groupData) return console.error("No group found");
 		const lastItemStatus = groupData.records?.slice(-1)[0].raffleStatus;
-		if (groupData.records == null || lastItemStatus !== RaffleStatus.DONE) {
+		console.log(
+			"groupData.records?.slice(-1)[0]:",
+			groupData.records?.slice(-1)[0]
+		);
+		if (
+			groupData.records !== null &&
+			lastItemStatus !== RaffleStatus.DONE
+		) {
 			console.log(
 				"records:",
 				groupData.records,
