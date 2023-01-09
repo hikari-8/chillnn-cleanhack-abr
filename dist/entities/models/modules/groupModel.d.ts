@@ -18,7 +18,12 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      */
     updateGroupMast(): Promise<void>;
     /**
-     * このグループのマスターデータを取得する
+     * グループをfetchできる(後でフロントでroleの分岐作る)
+     *
+     */
+    fetchGroupMast(): Promise<GroupModel | null>;
+    /**
+     * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
      * @returns
      */
     fetchTaskMasterObject(): Promise<TaskMasterObject | null>;

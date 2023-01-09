@@ -67,7 +67,23 @@ class GroupModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * このグループのマスターデータを取得する
+     * グループをfetchできる(後でフロントでroleの分岐作る)
+     *
+     */
+    fetchGroupMast() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const groupMast = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
+            if (!groupMast) {
+                return null;
+            }
+            else {
+                const res = this.modelFactory.GroupModel(groupMast);
+                return res;
+            }
+        });
+    }
+    /**
+     * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
      * @returns
      */
     fetchTaskMasterObject() {

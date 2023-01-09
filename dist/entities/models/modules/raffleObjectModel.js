@@ -162,6 +162,24 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    /**
+     * グループDataをfetchできる(後でフロントでroleの分岐作る)
+     *
+     */
+    fetchGroupMast() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const groupMast = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
+            if (!groupMast) {
+                console.error("GroupMast not found at fetchGroupMast");
+                return null;
+            }
+            else {
+                const res = this.modelFactory.GroupModel(groupMast);
+                console.log("res at getchGroupMast", res);
+                return res;
+            }
+        });
+    }
     // /**
     //  * グループIDから、ルームの個々のデータを取得する
     //  * @returns

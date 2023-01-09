@@ -4,6 +4,7 @@ import { Scalars } from "../..";
 import { generateUUID } from "../../..";
 import { RaffleMastModel } from "./raffleMastModel";
 import { RaffleJoinUserModel } from "./raffleJoinUserModel";
+import { GroupModel } from "./groupModel";
 
 export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	static getBlanc(
@@ -176,6 +177,25 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			await this.repositoryContainer.groupMastRepository.updateGroup(
 				groupData
 			);
+		}
+	}
+
+	/**
+	 * グループDataをfetchできる(後でフロントでroleの分岐作る)
+	 *
+	 */
+	async fetchGroupMast(): Promise<GroupModel | null> {
+		const groupMast =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.groupID
+			);
+		if (!groupMast) {
+			console.error("GroupMast not found at fetchGroupMast");
+			return null;
+		} else {
+			const res = this.modelFactory.GroupModel(groupMast);
+			console.log("res at getchGroupMast", res);
+			return res;
 		}
 	}
 

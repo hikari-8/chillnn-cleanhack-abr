@@ -1,6 +1,7 @@
 import { RaffleObject, RaffleMast, RaffleStatus } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
+import { GroupModel } from "./groupModel";
 export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
     static getBlanc(tasks: Array<RaffleMast>, groupID: Scalars["String"], limitTime: Scalars["AWSTimestamp"], raffleStatus: RaffleStatus, remindSlackWeek: Scalars["String"], remindSlackTime: Scalars["String"]): RaffleObject;
     get raffleID(): string;
@@ -30,5 +31,10 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      * かつ、statusがDONEの時のみgroupのrecordsにもpushする
      */
     addNewRaffle(): Promise<void>;
+    /**
+     * グループDataをfetchできる(後でフロントでroleの分岐作る)
+     *
+     */
+    fetchGroupMast(): Promise<GroupModel | null>;
     fetchRaffle(groupID: string): Promise<void>;
 }

@@ -62,7 +62,24 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
-	 * このグループのマスターデータを取得する
+	 * グループをfetchできる(後でフロントでroleの分岐作る)
+	 *
+	 */
+	async fetchGroupMast(): Promise<GroupModel | null> {
+		const groupMast =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.groupID
+			);
+		if (!groupMast) {
+			return null;
+		} else {
+			const res = this.modelFactory.GroupModel(groupMast);
+			return res;
+		}
+	}
+
+	/**
+	 * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
 	 * @returns
 	 */
 	async fetchTaskMasterObject(): Promise<TaskMasterObject | null> {
