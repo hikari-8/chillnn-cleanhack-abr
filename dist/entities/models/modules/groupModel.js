@@ -116,12 +116,10 @@ class GroupModel extends _baseModel_1.BaseModel {
      *
      */
     pushGroupRecord(input) {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.records.push(input);
-            //groupMastをupdateする
-            yield this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
-            console.log("GroupDataにpushしました→");
-        });
+        this.records.push(input);
+        //groupMastをupdateする
+        this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
+        console.log("GroupDataにpushしました→");
     }
     /**
      * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)

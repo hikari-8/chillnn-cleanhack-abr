@@ -34,7 +34,7 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      * raffleDataを追加後のgroupDataにpushの処理
      *
      */
-    pushGroupRecord(input: RaffleObject): Promise<void>;
+    pushGroupRecord(input: RaffleObject): void;
     /**
      * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
      * @returns
