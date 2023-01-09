@@ -49,11 +49,7 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	get records() {
-		if (this.mast.records) {
-			return this.mast.records;
-		} else {
-			return [];
-		}
+		return this.mast.records || [];
 	}
 
 	set records(input: RaffleObject[]) {

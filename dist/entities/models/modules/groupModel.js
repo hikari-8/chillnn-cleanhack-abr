@@ -49,12 +49,7 @@ class GroupModel extends _baseModel_1.BaseModel {
         this.mast.groupName = input;
     }
     get records() {
-        if (this.mast.records) {
-            return this.mast.records;
-        }
-        else {
-            return [];
-        }
+        return this.mast.records || [];
     }
     set records(input) {
         this.mast.records = input;
