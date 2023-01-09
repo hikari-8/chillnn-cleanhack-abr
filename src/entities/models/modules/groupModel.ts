@@ -1,4 +1,10 @@
-import { GroupMast, TaskMast, TaskMasterObject } from "../../type";
+import {
+	GroupMast,
+	RaffleMast,
+	RaffleObject,
+	TaskMast,
+	TaskMasterObject,
+} from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { generateUUID } from "../../../util";
@@ -41,6 +47,18 @@ export class GroupModel extends BaseModel<GroupMast> {
 		this.mast.groupName = input;
 	}
 
+	get records() {
+		if (this.mast.records) {
+			return this.mast.records;
+		} else {
+			return [];
+		}
+	}
+
+	set records(input: RaffleObject[]) {
+		this.mast.records = input;
+	}
+
 	// ============================================
 	// validation
 	// ============================================
@@ -76,6 +94,19 @@ export class GroupModel extends BaseModel<GroupMast> {
 			const res = this.modelFactory.GroupModel(groupMast);
 			return res;
 		}
+	}
+
+	/**
+	 * raffleDataを追加後のgroupDataにpushの処理
+	 *
+	 */
+	async pushGroupRecord(input: RaffleObject) {
+		this.records.push(input);
+		//groupMastをupdateする
+		await this.repositoryContainer.groupMastRepository.updateGroup(
+			this.mast
+		);
+		console.log("GroupDataにpushしました→");
 	}
 
 	/**

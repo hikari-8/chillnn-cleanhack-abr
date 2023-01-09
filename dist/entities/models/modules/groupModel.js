@@ -48,6 +48,17 @@ class GroupModel extends _baseModel_1.BaseModel {
     set groupName(input) {
         this.mast.groupName = input;
     }
+    get records() {
+        if (this.mast.records) {
+            return this.mast.records;
+        }
+        else {
+            return [];
+        }
+    }
+    set records(input) {
+        this.mast.records = input;
+    }
     // ============================================
     // validation
     // ============================================
@@ -80,6 +91,18 @@ class GroupModel extends _baseModel_1.BaseModel {
                 const res = this.modelFactory.GroupModel(groupMast);
                 return res;
             }
+        });
+    }
+    /**
+     * raffleDataを追加後のgroupDataにpushの処理
+     *
+     */
+    pushGroupRecord(input) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.records.push(input);
+            //groupMastをupdateする
+            yield this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
+            console.log("GroupDataにpushしました→");
         });
     }
     /**

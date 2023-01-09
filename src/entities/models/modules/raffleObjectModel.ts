@@ -244,16 +244,29 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		}
 	}
 
+	/**
+	 * raffleのmodelをmastに解く関数
+	 *
+	 */
+	async RaffleObjectModelToTaskMast() {
+		return this.mast;
+	}
+
 	// /**
-	//  * グループIDから、ルームの個々のデータを取得する
+	//  * raffleIDから、ルームの個々のデータを取得する
 	//  * @returns
 	//  */
-	async fetchRaffle(groupID: string) {
-		const res =
+	async fetchRaffleItem(): Promise<RaffleObjectModel | null> {
+		const raffleItem =
 			await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
-				this.groupID
+				this.raffleID
 			);
-		// return res.map((item) => this.modelFactory.RaffleMastModel(item));
+		if (!raffleItem) {
+			return null;
+		} else {
+			const res = this.modelFactory.RaffleObjectModel(raffleItem);
+			return res;
+		}
 	}
 
 	// raffleObjectがraffleMastを保持していることを明示する(別のクラスが別のクラスを保持している)

@@ -197,14 +197,29 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    /**
+     * raffleのmodelをmastに解く関数
+     *
+     */
+    RaffleObjectModelToTaskMast() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.mast;
+        });
+    }
     // /**
-    //  * グループIDから、ルームの個々のデータを取得する
+    //  * raffleIDから、ルームの個々のデータを取得する
     //  * @returns
     //  */
-    fetchRaffle(groupID) {
+    fetchRaffleItem() {
         return __awaiter(this, void 0, void 0, function* () {
-            const res = yield this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(this.groupID);
-            // return res.map((item) => this.modelFactory.RaffleMastModel(item));
+            const raffleItem = yield this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(this.raffleID);
+            if (!raffleItem) {
+                return null;
+            }
+            else {
+                const res = this.modelFactory.RaffleObjectModel(raffleItem);
+                return res;
+            }
         });
     }
 }
