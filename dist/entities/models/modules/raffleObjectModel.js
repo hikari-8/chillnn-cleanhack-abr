@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RaffleObjectModel = void 0;
+const type_1 = require("../../type");
 const _baseModel_1 = require("./_baseModel");
 const __1 = require("../../..");
 class RaffleObjectModel extends _baseModel_1.BaseModel {
@@ -130,6 +131,34 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
                     yield this.repositoryContainer.raffleObjectRepository.updateRaffleObject(this.mast);
                 }
                 this.isNew = false;
+            }
+        });
+    }
+    /**
+     * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
+     * かつ、statusがDONEの時のみgroupのrecordsにもpushする
+     */
+    addNewRaffle() {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            const groupData = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
+            if (!groupData)
+                return console.error("No group found");
+            const lastItemStatus = (_a = groupData.records) === null || _a === void 0 ? void 0 : _a.slice(-1)[0].raffleStatus;
+            if (groupData.records || lastItemStatus !== type_1.RaffleStatus.DONE) {
+                return alert("すでにくじが実行中です。実行中のくじを削除したい場合は、グループ欄からくじを削除してください");
+            }
+            else {
+                //くじを新規作成、更新してfetchする
+                this.register();
+                const newRaffle = yield this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(this.raffleID);
+                //register&fetchしたraffleをgroupのrecords末尾にも追加
+                if (!newRaffle) {
+                    return console.error("raffle is not fetched after register");
+                }
+                groupData.records.push(newRaffle);
+                //groupMastをupdateする
+                yield this.repositoryContainer.groupMastRepository.updateGroup(groupData);
             }
         });
     }

@@ -145,6 +145,40 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		}
 	}
 
+	/**
+	 * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
+	 * かつ、statusがDONEの時のみgroupのrecordsにもpushする
+	 */
+	async addNewRaffle() {
+		const groupData =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.groupID
+			);
+		if (!groupData) return console.error("No group found");
+		const lastItemStatus = groupData.records?.slice(-1)[0].raffleStatus;
+		if (groupData.records || lastItemStatus !== RaffleStatus.DONE) {
+			return alert(
+				"すでにくじが実行中です。実行中のくじを削除したい場合は、グループ欄からくじを削除してください"
+			);
+		} else {
+			//くじを新規作成、更新してfetchする
+			this.register();
+			const newRaffle =
+				await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
+					this.raffleID
+				);
+			//register&fetchしたraffleをgroupのrecords末尾にも追加
+			if (!newRaffle) {
+				return console.error("raffle is not fetched after register");
+			}
+			groupData.records!.push(newRaffle);
+			//groupMastをupdateする
+			await this.repositoryContainer.groupMastRepository.updateGroup(
+				groupData
+			);
+		}
+	}
+
 	// /**
 	//  * グループIDから、ルームの個々のデータを取得する
 	//  * @returns

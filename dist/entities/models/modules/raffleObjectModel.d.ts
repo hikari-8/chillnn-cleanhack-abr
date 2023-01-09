@@ -25,5 +25,10 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
      */
     register(): Promise<void>;
+    /**
+     * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
+     * かつ、statusがDONEの時のみgroupのrecordsにもpushする
+     */
+    addNewRaffle(): Promise<void>;
     fetchRaffle(groupID: string): Promise<void>;
 }

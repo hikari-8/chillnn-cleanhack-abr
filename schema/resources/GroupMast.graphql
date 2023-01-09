@@ -2,7 +2,7 @@ type GroupMast {
 	groupID: ID!
 	groupName: String
 	createdUserID: ID!
-	tasks: [RaffleMast!]
+	records: [RaffleObject!]
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -13,7 +13,7 @@ input GroupMastInput {
 	groupID: ID!
 	groupName: String
 	createdUserID: ID!
-	tasks: [RaffleMast!]
+	records: [RaffleObject!]
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
