@@ -123,10 +123,11 @@ export class GroupModel extends BaseModel<GroupMast> {
 	 *
 	 */
 	public pushGroupRecord(input: RaffleObject) {
-		this.records.push(input);
+		const groupMast = this.mast;
+		groupMast.records?.push(input);
 		//groupMastをupdateする
-		console.log("push直後のupdateされていないgroup:", this.mast);
-		this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
+		console.log("push直後のupdateされていないgroup:", groupMast);
+		this.repositoryContainer.groupMastRepository.updateGroup(groupMast);
 		console.log("GroupDataにpushしました→");
 	}
 

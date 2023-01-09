@@ -116,10 +116,12 @@ class GroupModel extends _baseModel_1.BaseModel {
      *
      */
     pushGroupRecord(input) {
-        this.records.push(input);
+        var _a;
+        const groupMast = this.mast;
+        (_a = groupMast.records) === null || _a === void 0 ? void 0 : _a.push(input);
         //groupMastをupdateする
-        console.log("push直後のupdateされていないgroup:", this.mast);
-        this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
+        console.log("push直後のupdateされていないgroup:", groupMast);
+        this.repositoryContainer.groupMastRepository.updateGroup(groupMast);
         console.log("GroupDataにpushしました→");
     }
     /**
