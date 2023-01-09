@@ -144,5 +144,19 @@ class GroupModel extends _baseModel_1.BaseModel {
             return this.mast;
         });
     }
+    /**
+     * groupのmastをmodelに解く関数
+     *
+     */
+    GroupMastToGroupModel(input) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!input) {
+                return null;
+            }
+            //modelFactoryに入れて、modelを作る
+            const res = this.modelFactory.GroupModel(input);
+            return res;
+        });
+    }
 }
 exports.GroupModel = GroupModel;

@@ -45,4 +45,9 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      *
      */
     GroupModelToGroupMast(): Promise<GroupMast>;
+    /**
+     * groupのmastをmodelに解く関数
+     *
+     */
+    GroupMastToGroupModel(input: GroupMast): Promise<GroupModel | null>;
 }

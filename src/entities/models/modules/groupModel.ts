@@ -151,4 +151,17 @@ export class GroupModel extends BaseModel<GroupMast> {
 	async GroupModelToGroupMast() {
 		return this.mast;
 	}
+
+	/**
+	 * groupのmastをmodelに解く関数
+	 *
+	 */
+	async GroupMastToGroupModel(input: GroupMast) {
+		if (!input) {
+			return null;
+		}
+		//modelFactoryに入れて、modelを作る
+		const res = this.modelFactory.GroupModel(input);
+		return res;
+	}
 }
