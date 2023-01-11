@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserModel = void 0;
 const taskMasterObjectModel_1 = require("./taskMasterObjectModel");
 const _baseModel_1 = require("./_baseModel");
+const groupModel_1 = require("./groupModel");
 const taskMastModel_1 = require("./taskMastModel");
 const util_1 = require("../../../util");
 class UserModel extends _baseModel_1.BaseModel {
@@ -117,6 +118,14 @@ class UserModel extends _baseModel_1.BaseModel {
     // async updateGroupMast(input: GroupMast) {
     // 	await this.repositoryContainer.groupMastRepository.updateGroup(input);
     // }
+    /**
+     * グループの初期化データを作成する
+     * @returns
+     */
+    createGroupMast() {
+        const res = this.modelFactory.GroupModel(groupModel_1.GroupModel.getBlanc(this.userID));
+        return res;
+    }
     /**
      * このグループのグループデータを取得する
      * @returns

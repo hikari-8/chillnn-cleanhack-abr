@@ -24,6 +24,11 @@ export declare class UserModel extends BaseModel<UserMast> {
      */
     register(): Promise<void>;
     /**
+     * グループの初期化データを作成する
+     * @returns
+     */
+    createGroupMast(): GroupModel;
+    /**
      * このグループのグループデータを取得する
      * @returns
      */

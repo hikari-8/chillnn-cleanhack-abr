@@ -12,10 +12,7 @@ import { generateUUID } from "../../../util";
 import { RaffleObjectModel } from "./raffleObjectModel";
 
 export class GroupModel extends BaseModel<GroupMast> {
-	static getBlanc(
-		createdUserID: Scalars["String"],
-		records: Array<RaffleObject>
-	): GroupMast {
+	static getBlanc(createdUserID: Scalars["String"]): GroupMast {
 		return {
 			createdUserID,
 			groupID: generateUUID(),

@@ -1,9 +1,9 @@
-import { GroupMast, RaffleObject, TaskMasterObject } from "../../type";
+import { GroupMast, TaskMasterObject } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { RaffleObjectModel } from "./raffleObjectModel";
 export declare class GroupModel extends BaseModel<GroupMast> {
-    static getBlanc(createdUserID: Scalars["String"], records: Array<RaffleObject>): GroupMast;
+    static getBlanc(createdUserID: Scalars["String"]): GroupMast;
     get groupID(): string;
     get createdUserID(): string;
     get createdAt(): number;

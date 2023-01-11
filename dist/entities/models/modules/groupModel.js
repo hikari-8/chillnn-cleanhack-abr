@@ -13,7 +13,7 @@ exports.GroupModel = void 0;
 const _baseModel_1 = require("./_baseModel");
 const util_1 = require("../../../util");
 class GroupModel extends _baseModel_1.BaseModel {
-    static getBlanc(createdUserID, records) {
+    static getBlanc(createdUserID) {
         return {
             createdUserID,
             groupID: (0, util_1.generateUUID)(),

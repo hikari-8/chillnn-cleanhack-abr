@@ -122,6 +122,17 @@ export class UserModel extends BaseModel<UserMast> {
 	// }
 
 	/**
+	 * グループの初期化データを作成する
+	 * @returns
+	 */
+	createGroupMast(): GroupModel {
+		const res = this.modelFactory.GroupModel(
+			GroupModel.getBlanc(this.userID)
+		);
+		return res;
+	}
+
+	/**
 	 * このグループのグループデータを取得する
 	 * @returns
 	 */
