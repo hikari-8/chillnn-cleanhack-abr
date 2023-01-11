@@ -28,10 +28,11 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      */
     fetchGroupMast(): Promise<GroupModel | null>;
     /**
-     * raffleオブジェクトをgroupからfetchできる(後でフロントでroleの分岐作る)
+     * rafflesをgroupからfetchできる(後でフロントでroleの分岐作る)
+     * @returns
      *
      */
-    fetchRaffleObjectModel(raffleID: string): Promise<RaffleObjectModel | null>;
+    fetchRafflesByGroupID(): Promise<RaffleObjectModel[]>;
     /**
      * raffleDataを追加後のgroupDataにpushの処理
      *

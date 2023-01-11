@@ -112,21 +112,14 @@ class GroupModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * raffleオブジェクトをgroupからfetchできる(後でフロントでroleの分岐作る)
+     * rafflesをgroupからfetchできる(後でフロントでroleの分岐作る)
+     * @returns
      *
      */
-    fetchRaffleObjectModel(raffleID) {
+    fetchRafflesByGroupID() {
         return __awaiter(this, void 0, void 0, function* () {
-            const raffleObjectModel = yield this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(raffleID);
-            if (!raffleObjectModel) {
-                console.error("RaffleObjectModel not found at RaffleObjectModel");
-                return null;
-            }
-            else {
-                const res = this.modelFactory.RaffleObjectModel(raffleObjectModel);
-                console.log("res at fetchRaffleObjectModel", res);
-                return res;
-            }
+            const res = yield this.repositoryContainer.raffleObjectRepository.fetchRafflesByGroupID(this.mast.groupID);
+            return res.map((item) => this.modelFactory.RaffleObjectModel(item));
         });
     }
     /**

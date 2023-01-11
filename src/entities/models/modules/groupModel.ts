@@ -119,24 +119,16 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
-	 * raffleオブジェクトをgroupからfetchできる(後でフロントでroleの分岐作る)
+	 * rafflesをgroupからfetchできる(後でフロントでroleの分岐作る)
+	 * @returns
 	 *
 	 */
-	async fetchRaffleObjectModel(
-		raffleID: string
-	): Promise<RaffleObjectModel | null> {
-		const raffleObjectModel =
-			await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
-				raffleID
+	async fetchRafflesByGroupID(): Promise<RaffleObjectModel[]> {
+		const res =
+			await this.repositoryContainer.raffleObjectRepository.fetchRafflesByGroupID(
+				this.mast.groupID
 			);
-		if (!raffleObjectModel) {
-			console.error("RaffleObjectModel not found at RaffleObjectModel");
-			return null;
-		} else {
-			const res = this.modelFactory.RaffleObjectModel(raffleObjectModel);
-			console.log("res at fetchRaffleObjectModel", res);
-			return res;
-		}
+		return res.map((item) => this.modelFactory.RaffleObjectModel(item));
 	}
 
 	/**

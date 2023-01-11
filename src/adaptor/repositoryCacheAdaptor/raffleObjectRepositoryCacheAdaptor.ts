@@ -74,17 +74,17 @@ export class RaffleObjectRepositoryCacheAdaptor
 		return res;
 	}
 
-	// async fetchRaffleTasksByGroupID(groupID: string): Promise<RaffleMast[]> {
-	// 	const GroupCache = this.groupCache[groupID];
-	// 	if (GroupCache)
-	// 		return (Object.keys(GroupCache) || [])
-	// 			.map((key) => this.groupCache[groupID][key].mast)
-	// 			.sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
+	//超適当キャッシュ
+	async fetchRafflesByGroupID(groupID: string): Promise<RaffleObject[]> {
+		const res = await this.repository.fetchRafflesByGroupID(groupID);
+		return res;
 
-	// 	return (Object.keys(GroupCache) || [])
-	// 		.map((key) => this.groupCache[groupID][key].mast)
-	// 		.sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
-	// }
+		// const cache = this.fetchRaffles(groupID);
+		// if (cache) return cache;
+		// const res = await this.repository.fetchRafflesByGroupID(groupID);
+		// this.addcacheBulk(groupID, res);
+		// return res.sort((a, b) => compareNumDesc(a.createdAt, b.createdAt));
+	}
 
 	// ===============================================================
 	//
@@ -108,6 +108,22 @@ export class RaffleObjectRepositoryCacheAdaptor
 		});
 	}
 
+	// private addCacheEach(raffleID: Scalars["ID"], raffle: RaffleObject | null) {
+	// 	this.taskCache[raffleID] = raffle || "blanc";
+	// 	if (!raffle) return;
+	// 	const groupCache = this.groupCache[raffle.raffleID];
+	// 	if (groupCache) {
+	// 		groupCache[raffleID] = raffle;
+	// 	}
+	// }
+
+	// private addCacheBulk(groupID: Scalars["ID"], raffles: RaffleObject[]) {
+	// 	this.groupCache[groupID] = {};
+	// 	for (const raffle of raffles) {
+	// 		this.addCacheEach(raffle.raffleID, raffle);
+	// 	}
+	// }
+
 	//とりま簡易的に設置しているけど、後で見返した方が良さそう
 	private updateRaffleCacheByGroupID(raffleID: Scalars["ID"]) {
 		this.groupCache[raffleID] = {};
@@ -116,5 +132,18 @@ export class RaffleObjectRepositoryCacheAdaptor
 
 	private fetchCacheRaffleObject(groupID: Scalars["ID"]) {
 		return this.groupCache[groupID];
+	}
+
+	private fetchRaffles(groupID: Scalars["ID"]) {
+		const groupCache = this.groupCache[groupID];
+		if (!groupCache) return null;
+		return (
+			Object.keys(groupCache)
+				.map((key) => {
+					return groupCache[key];
+				})
+				// .filter((item) => !item.deletedAt)
+				.sort((a, b) => compareNumDesc(a.createdAt, b.createdAt))
+		);
 	}
 }

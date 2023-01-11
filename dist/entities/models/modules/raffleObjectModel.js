@@ -134,14 +134,20 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         });
     }
     /**
+     * 全ての登録したくじをgorupIDでfetchできる(後でフロントでroleの分岐作る)
+     *@returns
+     */
+    fetchRafflesByGroupID() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield this.repositoryContainer.raffleObjectRepository.fetchRafflesByGroupID(this.mast.groupID);
+            return res.map((item) => this.modelFactory.RaffleObjectModel(item));
+        });
+    }
+    /**
      * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
-     * かつ、statusがDONEの時のみgroupのrecordsにもpushする
+     *
      */
     // async addNewRaffle() {
-    // 	const groupData =
-    // 		await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
-    // 			this.groupID
-    // 		);
     // 	if (!groupData) return console.error("No group found");
     // 	let lastItemStatus = groupData.records?.slice(-1)[0].raffleStatus;
     // 	console.log(
@@ -173,7 +179,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     // 		this.raffleID
     // 	);
     // console.log("登録後fetchしたraffle:", newRaffle);
-    //register&fetchしたraffleをgroupのrecords末尾にも追加
+    // register&fetchしたraffleをgroupのrecords末尾にも追加
     // if (!newRaffle) {
     // 	return console.error("raffle is not fetched after register");
     // }

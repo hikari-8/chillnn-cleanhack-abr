@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RaffleObjectRepositoryCacheAdaptor = void 0;
+const util_1 = require("../../util");
 class RaffleObjectRepositoryCacheAdaptor {
     constructor(repository, optional) {
         this.repository = repository;
@@ -47,16 +48,18 @@ class RaffleObjectRepositoryCacheAdaptor {
             return res;
         });
     }
-    // async fetchRaffleTasksByGroupID(groupID: string): Promise<RaffleMast[]> {
-    // 	const GroupCache = this.groupCache[groupID];
-    // 	if (GroupCache)
-    // 		return (Object.keys(GroupCache) || [])
-    // 			.map((key) => this.groupCache[groupID][key].mast)
-    // 			.sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
-    // 	return (Object.keys(GroupCache) || [])
-    // 		.map((key) => this.groupCache[groupID][key].mast)
-    // 		.sort((a, b) => compareNumDesc(a.updatedAt, b.updatedAt));
-    // }
+    //超適当キャッシュ
+    fetchRafflesByGroupID(groupID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const res = yield this.repository.fetchRafflesByGroupID(groupID);
+            return res;
+            // const cache = this.fetchRaffles(groupID);
+            // if (cache) return cache;
+            // const res = await this.repository.fetchRafflesByGroupID(groupID);
+            // this.addcacheBulk(groupID, res);
+            // return res.sort((a, b) => compareNumDesc(a.createdAt, b.createdAt));
+        });
+    }
     // ===============================================================
     //
     // private
@@ -73,6 +76,20 @@ class RaffleObjectRepositoryCacheAdaptor {
             this.taskCache[task.taskID] = { mast: task, createdAt };
         });
     }
+    // private addCacheEach(raffleID: Scalars["ID"], raffle: RaffleObject | null) {
+    // 	this.taskCache[raffleID] = raffle || "blanc";
+    // 	if (!raffle) return;
+    // 	const groupCache = this.groupCache[raffle.raffleID];
+    // 	if (groupCache) {
+    // 		groupCache[raffleID] = raffle;
+    // 	}
+    // }
+    // private addCacheBulk(groupID: Scalars["ID"], raffles: RaffleObject[]) {
+    // 	this.groupCache[groupID] = {};
+    // 	for (const raffle of raffles) {
+    // 		this.addCacheEach(raffle.raffleID, raffle);
+    // 	}
+    // }
     //とりま簡易的に設置しているけど、後で見返した方が良さそう
     updateRaffleCacheByGroupID(raffleID) {
         this.groupCache[raffleID] = {};
@@ -81,6 +98,17 @@ class RaffleObjectRepositoryCacheAdaptor {
     }
     fetchCacheRaffleObject(groupID) {
         return this.groupCache[groupID];
+    }
+    fetchRaffles(groupID) {
+        const groupCache = this.groupCache[groupID];
+        if (!groupCache)
+            return null;
+        return (Object.keys(groupCache)
+            .map((key) => {
+            return groupCache[key];
+        })
+            // .filter((item) => !item.deletedAt)
+            .sort((a, b) => (0, util_1.compareNumDesc)(a.createdAt, b.createdAt)));
     }
 }
 exports.RaffleObjectRepositoryCacheAdaptor = RaffleObjectRepositoryCacheAdaptor;
