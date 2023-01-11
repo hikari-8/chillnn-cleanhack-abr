@@ -69,6 +69,30 @@ export class GroupModel extends BaseModel<GroupMast> {
 	get isAdmin() {
 		return true;
 	}
+	// ============================================
+	// functions
+	// ============================================
+	/**
+	 * ユーザー情報を新規登録、または更新する
+	 */
+	async register() {
+		if (this.isRegisterable) {
+			const now = new Date().getTime();
+			if (this.isNew) {
+				this.mast.createdAt = now;
+				this.mast.updatedAt = now;
+				await this.repositoryContainer.groupMastRepository.addGroup(
+					this.mast
+				);
+			} else {
+				this.mast.updatedAt = now;
+				await this.repositoryContainer.groupMastRepository.updateGroup(
+					this.mast
+				);
+			}
+			this.isNew = false;
+		}
+	}
 
 	/**
 	 * グループを更新できる(後でフロントでroleの分岐作る)

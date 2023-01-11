@@ -63,6 +63,29 @@ class GroupModel extends _baseModel_1.BaseModel {
     get isAdmin() {
         return true;
     }
+    // ============================================
+    // functions
+    // ============================================
+    /**
+     * ユーザー情報を新規登録、または更新する
+     */
+    register() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this.isRegisterable) {
+                const now = new Date().getTime();
+                if (this.isNew) {
+                    this.mast.createdAt = now;
+                    this.mast.updatedAt = now;
+                    yield this.repositoryContainer.groupMastRepository.addGroup(this.mast);
+                }
+                else {
+                    this.mast.updatedAt = now;
+                    yield this.repositoryContainer.groupMastRepository.updateGroup(this.mast);
+                }
+                this.isNew = false;
+            }
+        });
+    }
     /**
      * グループを更新できる(後でフロントでroleの分岐作る)
      *
