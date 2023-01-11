@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RaffleObjectModel = void 0;
-const type_1 = require("../../type");
 const _baseModel_1 = require("./_baseModel");
 const __1 = require("../../..");
 class RaffleObjectModel extends _baseModel_1.BaseModel {
@@ -138,47 +137,79 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
      * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
      * かつ、statusがDONEの時のみgroupのrecordsにもpushする
      */
-    addNewRaffle() {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function* () {
-            const groupData = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
-            if (!groupData)
-                return console.error("No group found");
-            let lastItemStatus = (_a = groupData.records) === null || _a === void 0 ? void 0 : _a.slice(-1)[0].raffleStatus;
-            console.log("groupData.records?.slice(-1)[0]:", (_b = groupData.records) === null || _b === void 0 ? void 0 : _b.slice(-1)[0], "groupData.records", groupData.records);
-            if (groupData.records !== null &&
-                lastItemStatus !== type_1.RaffleStatus.DONE) {
-                console.log("records:", groupData.records, "lastItemStatus:", lastItemStatus);
-                return alert("すでにくじが実行中です。実行中のくじを削除したい場合は、グループ欄からくじを削除してください");
-            }
-            else {
-                //くじを新規作成
-                return this.register();
-            }
-        });
-    }
+    // async addNewRaffle() {
+    // 	const groupData =
+    // 		await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+    // 			this.groupID
+    // 		);
+    // 	if (!groupData) return console.error("No group found");
+    // 	let lastItemStatus = groupData.records?.slice(-1)[0].raffleStatus;
+    // 	console.log(
+    // 		"groupData.records?.slice(-1)[0]:",
+    // 		groupData.records?.slice(-1)[0],
+    // 		"groupData.records",
+    // 		groupData.records
+    // 	);
+    // 	if (
+    // 		groupData.records !== null &&
+    // 		lastItemStatus !== RaffleStatus.DONE
+    // 	) {
+    // 		console.log(
+    // 			"records:",
+    // 			groupData.records,
+    // 			"lastItemStatus:",
+    // 			lastItemStatus
+    // 		);
+    // 		return alert(
+    // 			"すでにくじが実行中です。実行中のくじを削除したい場合は、グループ欄からくじを削除してください"
+    // 		);
+    // 	} else {
+    // 		//くじを新規作成
+    // 		return this.register();
+    // 	}
+    // fetchする
+    // const newRaffle =
+    // 	await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
+    // 		this.raffleID
+    // 	);
+    // console.log("登録後fetchしたraffle:", newRaffle);
+    //register&fetchしたraffleをgroupのrecords末尾にも追加
+    // if (!newRaffle) {
+    // 	return console.error("raffle is not fetched after register");
+    // }
+    // groupData.records!.push(newRaffle);
+    // //groupMastをupdateする
+    // await this.repositoryContainer.groupMastRepository.updateGroup(
+    // 	groupData
+    // );
+    // }
     /**
      * raffleDataを追加後のgroupDataにpushの処理
      *
      */
-    pushGroupRecord() {
-        return __awaiter(this, void 0, void 0, function* () {
-            // fetchする
-            const newRaffle = yield this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(this.raffleID);
-            console.log("登録後fetchしたraffle:", newRaffle);
-            //register&fetchしたraffleをgroupのrecords末尾にも追加
-            const groupData = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.groupID);
-            if (!groupData)
-                return console.error("No group found");
-            if (!newRaffle) {
-                return console.error("raffle is not fetched after register");
-            }
-            groupData.records.push(newRaffle);
-            //groupMastをupdateする
-            yield this.repositoryContainer.groupMastRepository.updateGroup(groupData);
-            console.log("GroupDataにpushしました→", groupData);
-        });
-    }
+    // async pushGroupRecord() {
+    // 	// fetchする
+    // 	const newRaffle =
+    // 		await this.repositoryContainer.raffleObjectRepository.fetchRaffleObject(
+    // 			this.raffleID
+    // 		);
+    // 	console.log("登録後fetchしたraffle:", newRaffle);
+    // 	//register&fetchしたraffleをgroupのrecords末尾にも追加
+    // 	const groupData =
+    // 		await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+    // 			this.groupID
+    // 		);
+    // 	if (!groupData) return console.error("No group found");
+    // 	if (!newRaffle) {
+    // 		return console.error("raffle is not fetched after register");
+    // 	}
+    // 	groupData.records!.push(newRaffle);
+    // 	//groupMastをupdateする
+    // 	await this.repositoryContainer.groupMastRepository.updateGroup(
+    // 		groupData
+    // 	);
+    // 	console.log("GroupDataにpushしました→", groupData);
+    // }
     /**
      * グループDataをfetchできる(後でフロントでroleの分岐作る)
      *

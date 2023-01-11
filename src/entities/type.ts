@@ -34,7 +34,6 @@ export type GroupMast = {
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   groupName?: Maybe<Scalars['String']>;
-  records: Array<RaffleObject>;
   updatedAt: Scalars['AWSTimestamp'];
 };
 
@@ -44,7 +43,6 @@ export type GroupMastInput = {
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   groupName?: InputMaybe<Scalars['String']>;
-  records: Array<RaffleObjectInput>;
   updatedAt: Scalars['AWSTimestamp'];
 };
 

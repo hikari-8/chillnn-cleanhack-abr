@@ -17,7 +17,6 @@ class GroupModel extends _baseModel_1.BaseModel {
         return {
             createdUserID,
             groupID: (0, util_1.generateUUID)(),
-            records,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
         };
@@ -49,12 +48,12 @@ class GroupModel extends _baseModel_1.BaseModel {
     set groupName(input) {
         this.mast.groupName = input;
     }
-    get records() {
-        return this.mast.records;
-    }
-    set records(input) {
-        this.mast.records = input;
-    }
+    // get records() {
+    // 	return this.mast.records;
+    // }
+    // set records(input: RaffleObject[]) {
+    // 	this.mast.records = input;
+    // }
     // ============================================
     // validation
     // ============================================
@@ -111,15 +110,14 @@ class GroupModel extends _baseModel_1.BaseModel {
      * raffleDataを追加後のgroupDataにpushの処理
      *
      */
-    pushGroupRecord(input) {
-        var _a;
-        const groupMast = this.mast;
-        (_a = groupMast.records) === null || _a === void 0 ? void 0 : _a.push(input);
-        //groupMastをupdateする
-        console.log("push直後のupdateされていないgroup:", groupMast);
-        this.repositoryContainer.groupMastRepository.updateGroup(groupMast);
-        console.log("GroupDataにpushしました→");
-    }
+    // public pushGroupRecord(input: RaffleObject) {
+    // 	const groupMast = this.mast;
+    // 	groupMast.records?.push(input);
+    // 	//groupMastをupdateする
+    // 	console.log("push直後のupdateされていないgroup:", groupMast);
+    // 	this.repositoryContainer.groupMastRepository.updateGroup(groupMast);
+    // 	console.log("GroupDataにpushしました→");
+    // }
     /**
      * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
      * @returns

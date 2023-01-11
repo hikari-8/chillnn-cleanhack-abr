@@ -11,8 +11,6 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     get deletedAt(): import("../../type").Maybe<number> | undefined;
     get groupName(): string;
     set groupName(input: string);
-    get records(): RaffleObject[];
-    set records(input: RaffleObject[]);
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**
@@ -34,7 +32,6 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      * raffleDataを追加後のgroupDataにpushの処理
      *
      */
-    pushGroupRecord(input: RaffleObject): void;
     /**
      * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
      * @returns

@@ -19,7 +19,6 @@ export class GroupModel extends BaseModel<GroupMast> {
 		return {
 			createdUserID,
 			groupID: generateUUID(),
-			records,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
 		};
@@ -53,13 +52,13 @@ export class GroupModel extends BaseModel<GroupMast> {
 		this.mast.groupName = input;
 	}
 
-	get records() {
-		return this.mast.records;
-	}
+	// get records() {
+	// 	return this.mast.records;
+	// }
 
-	set records(input: RaffleObject[]) {
-		this.mast.records = input;
-	}
+	// set records(input: RaffleObject[]) {
+	// 	this.mast.records = input;
+	// }
 
 	// ============================================
 	// validation
@@ -123,14 +122,14 @@ export class GroupModel extends BaseModel<GroupMast> {
 	 * raffleDataを追加後のgroupDataにpushの処理
 	 *
 	 */
-	public pushGroupRecord(input: RaffleObject) {
-		const groupMast = this.mast;
-		groupMast.records?.push(input);
-		//groupMastをupdateする
-		console.log("push直後のupdateされていないgroup:", groupMast);
-		this.repositoryContainer.groupMastRepository.updateGroup(groupMast);
-		console.log("GroupDataにpushしました→");
-	}
+	// public pushGroupRecord(input: RaffleObject) {
+	// 	const groupMast = this.mast;
+	// 	groupMast.records?.push(input);
+	// 	//groupMastをupdateする
+	// 	console.log("push直後のupdateされていないgroup:", groupMast);
+	// 	this.repositoryContainer.groupMastRepository.updateGroup(groupMast);
+	// 	console.log("GroupDataにpushしました→");
+	// }
 
 	/**
 	 * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)

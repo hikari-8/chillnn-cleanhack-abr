@@ -30,12 +30,10 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
      * かつ、statusがDONEの時のみgroupのrecordsにもpushする
      */
-    addNewRaffle(): Promise<void>;
     /**
      * raffleDataを追加後のgroupDataにpushの処理
      *
      */
-    pushGroupRecord(): Promise<void>;
     /**
      * グループDataをfetchできる(後でフロントでroleの分岐作る)
      *
