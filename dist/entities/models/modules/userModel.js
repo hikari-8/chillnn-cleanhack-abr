@@ -122,9 +122,10 @@ class UserModel extends _baseModel_1.BaseModel {
      * グループの初期化データを作成する
      * @returns
      */
-    createGroupMast() {
-        const res = this.modelFactory.GroupModel(groupModel_1.GroupModel.getBlanc(this.userID));
-        return res;
+    createNewGroup() {
+        return this.modelFactory.GroupModel(groupModel_1.GroupModel.getBlanc(this.userID), {
+            isNew: true,
+        });
     }
     /**
      * このグループのグループデータを取得する

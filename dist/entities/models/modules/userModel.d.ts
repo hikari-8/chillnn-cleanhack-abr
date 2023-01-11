@@ -27,7 +27,7 @@ export declare class UserModel extends BaseModel<UserMast> {
      * グループの初期化データを作成する
      * @returns
      */
-    createGroupMast(): GroupModel;
+    createNewGroup(): GroupModel;
     /**
      * このグループのグループデータを取得する
      * @returns
