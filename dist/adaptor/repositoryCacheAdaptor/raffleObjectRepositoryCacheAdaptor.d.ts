@@ -1,33 +1,15 @@
-import { IRaffleObjectRepository, RaffleObject, RaffleMast } from "../../entities";
-declare type RaffleMastGroupCache = {
-    [groupID: string]: {
-        [taskID: string]: {
-            mast: RaffleMast;
-            createdAt: number;
-        };
-    };
-};
-declare type RaffleMastRaffleCache = {
-    [taskID: string]: {
-        mast: RaffleMast;
-        createdAt: number;
-    };
-};
+import { IRaffleObjectRepository, RaffleObject } from "../../entities";
 export declare class RaffleObjectRepositoryCacheAdaptor implements IRaffleObjectRepository {
     private repository;
     private groupCache;
-    private taskCache;
-    constructor(repository: IRaffleObjectRepository, optional?: {
-        companyCache: RaffleMastGroupCache;
-        taskCache: RaffleMastRaffleCache;
-    });
+    private raffleCache;
+    constructor(repository: IRaffleObjectRepository);
     addRaffleObject(input: RaffleObject): Promise<RaffleObject>;
     updateRaffleObject(input: RaffleObject): Promise<RaffleObject>;
     fetchRaffleObject(raffleID: string): Promise<RaffleObject | null>;
     fetchRafflesByGroupID(groupID: string): Promise<RaffleObject[]>;
-    private updateGroupCache;
-    private updateRaffleCacheByGroupID;
+    private addCacheEach;
+    private addCacheBulk;
     private fetchCacheRaffleObject;
     private fetchRaffles;
 }
-export {};
