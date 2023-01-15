@@ -135,6 +135,10 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			)
 		);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
+		const raffleMemberBlanc = [
+			{ userID: "blank", groupID: "blank", joinAt: 11111 },
+		];
+
 		//くじたちのMastを作成する
 		const blankRaffle = RaffleObjectModel.getBlanc(
 			newTaskArray,
@@ -142,7 +146,8 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.limitTime,
 			status,
 			this.remindSlackWeek,
-			this.remindSlackTime
+			this.remindSlackTime,
+			raffleMemberBlanc
 		);
 		console.log("blancRaffle: ", blankRaffle);
 		return this.modelFactory.RaffleObjectModel(blankRaffle, {

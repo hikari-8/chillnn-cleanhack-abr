@@ -3,7 +3,7 @@ import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
 import { GroupModel } from "./groupModel";
 export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
-    static getBlanc(tasks: Array<RaffleMast>, groupID: Scalars["String"], limitTime: Scalars["String"], raffleStatus: RaffleStatus, remindSlackWeek: Scalars["String"], remindSlackTime: Scalars["String"]): RaffleObject;
+    static getBlanc(tasks: Array<RaffleMast>, groupID: Scalars["String"], limitTime: Scalars["String"], raffleStatus: RaffleStatus, remindSlackWeek: Scalars["String"], remindSlackTime: Scalars["String"], activeMembers: Array<RaffleJoinUser>): RaffleObject;
     get raffleID(): string;
     get groupID(): string;
     get createdAt(): number;

@@ -18,7 +18,8 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		limitTime: Scalars["String"],
 		raffleStatus: RaffleStatus,
 		remindSlackWeek: Scalars["String"],
-		remindSlackTime: Scalars["String"]
+		remindSlackTime: Scalars["String"],
+		activeMembers: Array<RaffleJoinUser>
 	): RaffleObject {
 		return {
 			raffleID: generateUUID(),
@@ -28,6 +29,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			raffleStatus,
 			remindSlackWeek,
 			remindSlackTime,
+			activeMembers,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
 		};

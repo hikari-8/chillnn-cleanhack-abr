@@ -14,7 +14,7 @@ const type_1 = require("../../type");
 const _baseModel_1 = require("./_baseModel");
 const __1 = require("../../..");
 class RaffleObjectModel extends _baseModel_1.BaseModel {
-    static getBlanc(tasks, groupID, limitTime, raffleStatus, remindSlackWeek, remindSlackTime) {
+    static getBlanc(tasks, groupID, limitTime, raffleStatus, remindSlackWeek, remindSlackTime, activeMembers) {
         return {
             raffleID: (0, __1.generateUUID)(),
             tasks,
@@ -23,6 +23,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             raffleStatus,
             remindSlackWeek,
             remindSlackTime,
+            activeMembers,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
         };
