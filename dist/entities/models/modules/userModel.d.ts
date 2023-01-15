@@ -5,7 +5,8 @@ import { GroupModel } from "./groupModel";
 import { TaskMastModel } from "./taskMastModel";
 export declare class UserModel extends BaseModel<UserMast> {
     get userID(): string;
-    get groupID(): import("../..").Maybe<string> | undefined;
+    get groupID(): string;
+    set groupID(input: string);
     get createdAt(): number;
     get updatedAt(): number;
     get deletedAt(): import("../..").Maybe<number> | undefined;

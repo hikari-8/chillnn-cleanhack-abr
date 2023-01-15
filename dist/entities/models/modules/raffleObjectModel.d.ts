@@ -11,8 +11,8 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
     get deletedAt(): import("../..").Maybe<number> | undefined;
     get limitTime(): string;
     set limitTime(input: string);
-    get raffleStatus(): string;
-    set raffleStatus(input: string);
+    get raffleStatus(): RaffleStatus;
+    set raffleStatus(input: RaffleStatus);
     get remindSlackWeek(): string;
     set remindSlackWeek(input: string);
     get remindSlackTime(): string;

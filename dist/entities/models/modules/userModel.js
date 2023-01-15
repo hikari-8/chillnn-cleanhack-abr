@@ -23,7 +23,11 @@ class UserModel extends _baseModel_1.BaseModel {
         return this.mast.userID;
     }
     get groupID() {
-        return this.mast.groupID;
+        return this.mast.groupID || "";
+    }
+    //groupIDをフロントでセットする必要があるため書いている
+    set groupID(input) {
+        this.mast.groupID = input;
     }
     get createdAt() {
         return this.mast.createdAt;
@@ -60,7 +64,7 @@ class UserModel extends _baseModel_1.BaseModel {
     // ============================================
     //配列データを取ってくるだけ(ポインタを取得するだけ)
     get records() {
-        return (this.mast.records = []);
+        return this.mast.records || [];
     }
     set records(input) {
         this.mast.records = input;

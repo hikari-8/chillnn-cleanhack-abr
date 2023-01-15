@@ -67,13 +67,11 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	// 引数見直した方がいいかも
-	set raffleStatus(input: string) {
-		if (this.isNew) {
-			this.mast.raffleStatus === "EFFECTIVE";
-		} else if (this.isDone) {
-			this.mast.raffleStatus === "DONE";
+	set raffleStatus(input: RaffleStatus) {
+		if (input) {
+			this.mast.raffleStatus === input;
 		} else {
-			this.mast.raffleStatus === "EFFECTIVE_AND_FIXED";
+			this.mast.raffleStatus === RaffleStatus.EFFECTIVE;
 		}
 	}
 
