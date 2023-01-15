@@ -155,6 +155,23 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			);
 		return res.map((item) => this.modelFactory.RaffleObjectModel(item));
 	}
+
+	/**
+	 * 全ての登録したくじの中で最後のくじをgorupIDでfetchできる
+	 *@returns
+	 */
+	async fetchLastRaffleItemByGroupID(): Promise<RaffleObjectModel | null> {
+		const lastItem =
+			await this.repositoryContainer.raffleObjectRepository.fetchLastRaffleByGroupID(
+				this.mast.groupID
+			);
+		if (!lastItem) {
+			return null;
+		} else {
+			const res = this.modelFactory.RaffleObjectModel(lastItem);
+			return res;
+		}
+	}
 	/**
 	 * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
 	 *

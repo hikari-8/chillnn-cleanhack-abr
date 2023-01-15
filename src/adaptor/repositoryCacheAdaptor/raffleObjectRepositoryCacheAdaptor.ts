@@ -55,6 +55,20 @@ export class RaffleObjectRepositoryCacheAdaptor
 		return res.sort((a, b) => compareNumDesc(a.createdAt, b.createdAt));
 	}
 
+	async fetchLastRaffleByGroupID(
+		groupID: string
+	): Promise<RaffleObject | null> {
+		const cache = this.fetchCacheRaffleObjectByGroupID(groupID);
+		if (cache && cache === "blanc") {
+			return null;
+		} else if (cache) {
+			return cache;
+		}
+		const res = await this.repository.fetchLastRaffleByGroupID(groupID);
+		this.addCacheEach(res!.raffleID, res);
+		return res;
+	}
+
 	// ===============================================================
 	//
 	// private
@@ -79,6 +93,10 @@ export class RaffleObjectRepositoryCacheAdaptor
 
 	private fetchCacheRaffleObject(raffleID: Scalars["ID"]) {
 		return this.raffleCache[raffleID];
+	}
+
+	private fetchCacheRaffleObjectByGroupID(groupID: Scalars["ID"]) {
+		return this.raffleCache[groupID];
 	}
 
 	private fetchRaffles(groupID: Scalars["ID"]) {

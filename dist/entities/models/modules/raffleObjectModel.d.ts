@@ -32,6 +32,11 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      */
     fetchRafflesByGroupID(): Promise<RaffleObjectModel[]>;
     /**
+     * 全ての登録したくじの中で最後のくじをgorupIDでfetchできる
+     *@returns
+     */
+    fetchLastRaffleItemByGroupID(): Promise<RaffleObjectModel | null>;
+    /**
      * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
      *
      */

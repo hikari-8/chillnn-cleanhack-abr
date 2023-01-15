@@ -59,6 +59,20 @@ class RaffleObjectRepositoryCacheAdaptor {
             return res.sort((a, b) => (0, util_1.compareNumDesc)(a.createdAt, b.createdAt));
         });
     }
+    fetchLastRaffleByGroupID(groupID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const cache = this.fetchCacheRaffleObjectByGroupID(groupID);
+            if (cache && cache === "blanc") {
+                return null;
+            }
+            else if (cache) {
+                return cache;
+            }
+            const res = yield this.repository.fetchLastRaffleByGroupID(groupID);
+            this.addCacheEach(res.raffleID, res);
+            return res;
+        });
+    }
     // ===============================================================
     //
     // private
@@ -81,6 +95,9 @@ class RaffleObjectRepositoryCacheAdaptor {
     }
     fetchCacheRaffleObject(raffleID) {
         return this.raffleCache[raffleID];
+    }
+    fetchCacheRaffleObjectByGroupID(groupID) {
+        return this.raffleCache[groupID];
     }
     fetchRaffles(groupID) {
         const groupCache = this.groupCache[groupID];

@@ -6,4 +6,5 @@ export interface IRaffleObjectRepository {
 	updateRaffleObject(input: RaffleObject): Promise<RaffleObject>;
 	fetchRaffleObject(raffleID: Scalars["ID"]): Promise<RaffleObject | null>;
 	fetchRafflesByGroupID(groupID: string): Promise<RaffleObject[]>;
+	fetchLastRaffleByGroupID(groupID: string): Promise<RaffleObject | null>;
 }

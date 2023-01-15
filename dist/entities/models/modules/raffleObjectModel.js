@@ -142,6 +142,22 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         });
     }
     /**
+     * 全ての登録したくじの中で最後のくじをgorupIDでfetchできる
+     *@returns
+     */
+    fetchLastRaffleItemByGroupID() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const lastItem = yield this.repositoryContainer.raffleObjectRepository.fetchLastRaffleByGroupID(this.mast.groupID);
+            if (!lastItem) {
+                return null;
+            }
+            else {
+                const res = this.modelFactory.RaffleObjectModel(lastItem);
+                return res;
+            }
+        });
+    }
+    /**
      * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
      *
      */
