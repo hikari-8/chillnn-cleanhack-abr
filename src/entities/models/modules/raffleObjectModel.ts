@@ -76,9 +76,9 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	// 引数見直した方がいいかも
 	set raffleStatus(input: RaffleStatus) {
 		if (input) {
-			this.mast.raffleStatus === input;
+			this.mast.raffleStatus = input;
 		} else {
-			this.mast.raffleStatus === RaffleStatus.DONE;
+			return;
 		}
 	}
 

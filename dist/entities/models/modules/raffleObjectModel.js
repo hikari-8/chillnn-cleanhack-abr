@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RaffleObjectModel = void 0;
-const type_1 = require("../../type");
 const _baseModel_1 = require("./_baseModel");
 const __1 = require("../../..");
 class RaffleObjectModel extends _baseModel_1.BaseModel {
@@ -66,10 +65,10 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     // 引数見直した方がいいかも
     set raffleStatus(input) {
         if (input) {
-            this.mast.raffleStatus === input;
+            this.mast.raffleStatus = input;
         }
         else {
-            this.mast.raffleStatus === type_1.RaffleStatus.DONE;
+            return;
         }
     }
     get remindSlackWeek() {
