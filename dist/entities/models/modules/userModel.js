@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserModel = void 0;
+const type_1 = require("../../type");
 const taskMasterObjectModel_1 = require("./taskMasterObjectModel");
 const _baseModel_1 = require("./_baseModel");
 const groupModel_1 = require("./groupModel");
@@ -179,6 +180,7 @@ class UserModel extends _baseModel_1.BaseModel {
                     taskID: taskID,
                     taskName: "",
                     headCount: 0,
+                    taskStatus: type_1.TaskStatus.ACTIVE,
                 },
             ]));
         });

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RaffleStatus = exports.ErrorCode = void 0;
+exports.TaskStatus = exports.RaffleStatus = exports.ErrorCode = void 0;
 var ErrorCode;
 (function (ErrorCode) {
     ErrorCode["chillnnTraining_401_notSignIn"] = "chillnnTraining_401_notSignIn";
@@ -13,3 +13,8 @@ var RaffleStatus;
     RaffleStatus["EFFECTIVE"] = "EFFECTIVE";
     RaffleStatus["EFFECTIVE_AND_FIXED"] = "EFFECTIVE_AND_FIXED";
 })(RaffleStatus = exports.RaffleStatus || (exports.RaffleStatus = {}));
+var TaskStatus;
+(function (TaskStatus) {
+    TaskStatus["ACTIVE"] = "ACTIVE";
+    TaskStatus["DELETED"] = "DELETED";
+})(TaskStatus = exports.TaskStatus || (exports.TaskStatus = {}));

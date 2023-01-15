@@ -135,6 +135,7 @@ type TaskMast {
   headCount: Int!
   taskID: ID!
   taskName: String!
+  taskStatus: TaskStatus!
   updatedAt: AWSTimestamp!
 }
 
@@ -145,6 +146,7 @@ input TaskMastInput {
   headCount: Int!
   taskID: ID!
   taskName: String!
+  taskStatus: TaskStatus!
   updatedAt: AWSTimestamp!
 }
 
@@ -170,6 +172,11 @@ input TaskMasterObjectInput {
   taskMasterObjectID: ID!
   tasks: [TaskMastInput!]!
   updatedAt: AWSTimestamp!
+}
+
+enum TaskStatus {
+  ACTIVE
+  DELETED
 }
 
 type UserMast {

@@ -1,5 +1,5 @@
 import { throws } from "assert";
-import { UserMast, TaskMast, GroupMast } from "../../type";
+import { UserMast, TaskMast, GroupMast, TaskStatus } from "../../type";
 import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { Scalars } from "../..";
 import { BaseModel } from "./_baseModel";
@@ -187,6 +187,7 @@ export class UserModel extends BaseModel<UserMast> {
 					taskID: taskID,
 					taskName: "",
 					headCount: 0,
+					taskStatus: TaskStatus.ACTIVE,
 				},
 			])
 		);

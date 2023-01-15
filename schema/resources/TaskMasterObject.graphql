@@ -1,4 +1,8 @@
 ###タスク、Userのオブジェクトそれぞれのマッピングテーブルを一つのスキーマに最適化しています。
+enum TaskStatus {
+	ACTIVE
+	DELETED
+}
 
 type TaskMasterObject {
 	tasks: [TaskMast!]!
@@ -18,6 +22,7 @@ type TaskMast {
 	groupID: ID!
 	taskName: String!
 	headCount: Int!
+	taskStatus: TaskStatus!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -48,6 +53,7 @@ input TaskMastInput {
 	groupID: ID!
 	taskName: String!
 	headCount: Int!
+	taskStatus: TaskStatus!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!

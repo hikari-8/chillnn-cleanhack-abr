@@ -1,5 +1,5 @@
 import { generateUUID } from "../../../util";
-import { TaskMast } from "../../type";
+import { TaskMast, TaskStatus } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { UserModel } from "./userModel";
@@ -15,6 +15,7 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 			taskName,
 			groupID,
 			headCount,
+			taskStatus: TaskStatus.ACTIVE,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
 		};

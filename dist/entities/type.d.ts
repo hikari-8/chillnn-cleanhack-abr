@@ -135,6 +135,7 @@ export declare type TaskMast = {
     headCount: Scalars['Int'];
     taskID: Scalars['ID'];
     taskName: Scalars['String'];
+    taskStatus: TaskStatus;
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type TaskMastInput = {
@@ -144,6 +145,7 @@ export declare type TaskMastInput = {
     headCount: Scalars['Int'];
     taskID: Scalars['ID'];
     taskName: Scalars['String'];
+    taskStatus: TaskStatus;
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type TaskMasterObject = {
@@ -168,6 +170,10 @@ export declare type TaskMasterObjectInput = {
     tasks: Array<TaskMastInput>;
     updatedAt: Scalars['AWSTimestamp'];
 };
+export declare enum TaskStatus {
+    ACTIVE = "ACTIVE",
+    DELETED = "DELETED"
+}
 export declare type UserMast = {
     createdAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;

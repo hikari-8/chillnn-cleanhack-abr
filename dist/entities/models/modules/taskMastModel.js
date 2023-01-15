@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskMastModel = void 0;
 const util_1 = require("../../../util");
+const type_1 = require("../../type");
 const _baseModel_1 = require("./_baseModel");
 class TaskMastModel extends _baseModel_1.BaseModel {
     static getBlanc(groupID, taskName, headCount) {
@@ -19,6 +20,7 @@ class TaskMastModel extends _baseModel_1.BaseModel {
             taskName,
             groupID,
             headCount,
+            taskStatus: type_1.TaskStatus.ACTIVE,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
         };
