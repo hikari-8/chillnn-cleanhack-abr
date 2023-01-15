@@ -135,6 +135,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			)
 		);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
+		//nullにpushできないため、一旦作成して後で削除します
 		const raffleMemberBlanc = [
 			{ userID: "blank", groupID: "blank", joinAt: 11111 },
 		];
