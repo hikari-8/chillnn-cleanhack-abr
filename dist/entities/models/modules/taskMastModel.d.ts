@@ -1,4 +1,4 @@
-import { TaskMast } from "../../type";
+import { TaskMast, TaskStatus } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 export declare class TaskMastModel extends BaseModel<TaskMast> {
@@ -12,6 +12,8 @@ export declare class TaskMastModel extends BaseModel<TaskMast> {
     set taskName(input: string);
     get headCount(): number;
     set headCount(input: number);
+    get taskStatus(): TaskStatus;
+    set raffleStatus(input: TaskStatus);
     /**
      * TaskMasterObjectのtaskspropertyに入れるmastを作成するために、TaskMastModelをmastに解く関数
      *

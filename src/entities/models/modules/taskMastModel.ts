@@ -61,6 +61,19 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 		}
 	}
 
+	get taskStatus() {
+		return this.mast.taskStatus;
+	}
+
+	// 引数見直した方がいいかも
+	set raffleStatus(input: TaskStatus) {
+		if (input) {
+			this.mast.taskStatus = input;
+		} else {
+			return;
+		}
+	}
+
 	// ============================================
 	// validation
 	// ============================================
