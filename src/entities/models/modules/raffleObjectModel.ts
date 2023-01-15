@@ -155,15 +155,6 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			);
 		return res.map((item) => this.modelFactory.RaffleObjectModel(item));
 	}
-
-	/**
-	 * RaffleObjModelをmastに解く関数
-	 *
-	 */
-	async raffleObjectModelToRaffleObject() {
-		return this.mast;
-	}
-
 	/**
 	 * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
 	 *
@@ -263,7 +254,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	 * raffleのmodelをmastに解く関数
 	 *
 	 */
-	async RaffleObjectModelToGroupObject() {
+	async raffleObjectModelToRaffleObject() {
 		return this.mast;
 	}
 

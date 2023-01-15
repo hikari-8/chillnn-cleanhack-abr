@@ -236,7 +236,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
      * raffleのmodelをmastに解く関数
      *
      */
-    RaffleObjectModelToGroupObject() {
+    raffleObjectModelToRaffleObject() {
         return __awaiter(this, void 0, void 0, function* () {
             return this.mast;
         });
