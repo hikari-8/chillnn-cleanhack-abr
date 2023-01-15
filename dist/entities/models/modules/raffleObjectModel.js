@@ -152,7 +152,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             }
             else {
                 const lastItem = yield this.repositoryContainer.raffleObjectRepository.fetchLastRaffleByGroupID(this.mast.groupID);
-                if (!lastItem) {
+                if (lastItem == null) {
                     return null;
                 }
                 else {

@@ -168,7 +168,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 				await this.repositoryContainer.raffleObjectRepository.fetchLastRaffleByGroupID(
 					this.mast.groupID
 				);
-			if (!lastItem) {
+			if (lastItem == null) {
 				return null;
 			} else {
 				const res = this.modelFactory.RaffleObjectModel(lastItem);
