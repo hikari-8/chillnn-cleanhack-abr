@@ -67,7 +67,7 @@ class TaskMastModel extends _baseModel_1.BaseModel {
         return this.mast.taskStatus;
     }
     // 引数見直した方がいいかも
-    set raffleStatus(input) {
+    set taskStatus(input) {
         if (input) {
             this.mast.taskStatus = input;
         }

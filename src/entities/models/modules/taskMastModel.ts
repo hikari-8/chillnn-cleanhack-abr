@@ -66,7 +66,7 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 	}
 
 	// 引数見直した方がいいかも
-	set raffleStatus(input: TaskStatus) {
+	set taskStatus(input: TaskStatus) {
 		if (input) {
 			this.mast.taskStatus = input;
 		} else {
