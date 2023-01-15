@@ -157,6 +157,14 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	/**
+	 * RaffleObjModelをmastに解く関数
+	 *
+	 */
+	async raffleObjectModelToRaffleObject() {
+		return this.mast;
+	}
+
+	/**
 	 * ルームのそれぞれのくじのデータを一括で登録・編集する //後でroleで分岐作る
 	 *
 	 */
