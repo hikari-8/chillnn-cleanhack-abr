@@ -161,15 +161,19 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	 *@returns
 	 */
 	async fetchLastRaffleItemByGroupID(): Promise<RaffleObjectModel | null> {
-		const lastItem =
-			await this.repositoryContainer.raffleObjectRepository.fetchLastRaffleByGroupID(
-				this.mast.groupID
-			);
-		if (!lastItem) {
+		if (!this.mast.groupID) {
 			return null;
 		} else {
-			const res = this.modelFactory.RaffleObjectModel(lastItem);
-			return res;
+			const lastItem =
+				await this.repositoryContainer.raffleObjectRepository.fetchLastRaffleByGroupID(
+					this.mast.groupID
+				);
+			if (!lastItem) {
+				return null;
+			} else {
+				const res = this.modelFactory.RaffleObjectModel(lastItem);
+				return res;
+			}
 		}
 	}
 	/**

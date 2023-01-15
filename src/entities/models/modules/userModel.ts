@@ -59,7 +59,7 @@ export class UserModel extends BaseModel<UserMast> {
 	// ============================================
 	//配列データを取ってくるだけ(ポインタを取得するだけ)
 	get records() {
-		return this.mast.records || [];
+		return (this.mast.records = []);
 	}
 
 	set records(input: string[]) {

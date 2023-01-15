@@ -147,13 +147,18 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
      */
     fetchLastRaffleItemByGroupID() {
         return __awaiter(this, void 0, void 0, function* () {
-            const lastItem = yield this.repositoryContainer.raffleObjectRepository.fetchLastRaffleByGroupID(this.mast.groupID);
-            if (!lastItem) {
+            if (!this.mast.groupID) {
                 return null;
             }
             else {
-                const res = this.modelFactory.RaffleObjectModel(lastItem);
-                return res;
+                const lastItem = yield this.repositoryContainer.raffleObjectRepository.fetchLastRaffleByGroupID(this.mast.groupID);
+                if (!lastItem) {
+                    return null;
+                }
+                else {
+                    const res = this.modelFactory.RaffleObjectModel(lastItem);
+                    return res;
+                }
             }
         });
     }
