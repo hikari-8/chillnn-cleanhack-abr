@@ -65,8 +65,12 @@ export class RaffleObjectRepositoryCacheAdaptor
 			return cache;
 		}
 		const res = await this.repository.fetchLastRaffleByGroupID(groupID);
-		this.addCacheEach(res!.raffleID, res);
-		return res;
+		if (!res) {
+			return null;
+		} else {
+			this.addCacheEach(res!.raffleID, res);
+			return res;
+		}
 	}
 
 	// ===============================================================

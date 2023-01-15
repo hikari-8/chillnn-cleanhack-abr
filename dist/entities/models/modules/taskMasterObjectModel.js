@@ -120,6 +120,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         // 新しいMastを作成する
         const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID, task.headCount));
         const status = type_1.RaffleStatus.EFFECTIVE;
+        //nullにpushできないため、一旦作成して後で削除します
         const raffleMemberBlanc = [
             { userID: "blank", groupID: "blank", joinAt: 11111 },
         ];
