@@ -36,4 +36,9 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      * @returns
      */
     fetchRaffleItemByRaffleID(raffleID: string): Promise<RaffleObjectModel | null>;
+    /**
+     * このグループのtasksから、statusがdeletedを省いて返す
+     * @returns
+     */
+    filterActiveTasks(): Promise<TaskMastModel[]>;
 }

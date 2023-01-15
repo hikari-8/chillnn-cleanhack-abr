@@ -3,6 +3,7 @@ import {
 	TaskMast,
 	RaffleStatus,
 	RaffleMast,
+	TaskStatus,
 } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
@@ -176,5 +177,17 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			const res = this.modelFactory.RaffleObjectModel(raffleItem);
 			return res;
 		}
+	}
+
+	/**
+	 * このグループのtasksから、statusがdeletedを省いて返す
+	 * @returns
+	 */
+	async filterActiveTasks() {
+		const tasks = this.mast.tasks;
+		const res = tasks.filter(function (task) {
+			return task.taskStatus === TaskStatus.ACTIVE;
+		});
+		return res.map((item) => this.modelFactory.TaskMastModel(item));
 	}
 }

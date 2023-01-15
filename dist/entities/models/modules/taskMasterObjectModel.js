@@ -151,5 +151,18 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    /**
+     * このグループのtasksから、statusがdeletedを省いて返す
+     * @returns
+     */
+    filterActiveTasks() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const tasks = this.mast.tasks;
+            const res = tasks.filter(function (task) {
+                return task.taskStatus === type_1.TaskStatus.ACTIVE;
+            });
+            return res.map((item) => this.modelFactory.TaskMastModel(item));
+        });
+    }
 }
 exports.TaskMasterObjectModel = TaskMasterObjectModel;
