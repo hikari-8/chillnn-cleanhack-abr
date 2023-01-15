@@ -3,6 +3,7 @@ import { TaskMasterObjectModel } from "./taskMasterObjectModel";
 import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
 import { TaskMastModel } from "./taskMastModel";
+import { RaffleJoinUserModel } from "./raffleJoinUserModel";
 export declare class UserModel extends BaseModel<UserMast> {
     get userID(): string;
     get groupID(): string;
@@ -49,4 +50,9 @@ export declare class UserModel extends BaseModel<UserMast> {
      * @returns
      */
     fetchTaskMasterDataObjByGroupID(groupID: string): Promise<TaskMasterObjectModel | null>;
+    /**
+     * このグループのrafflejoinuserデータのインスタンス作成
+     * @returns
+     */
+    createRaffleJoinUser(): RaffleJoinUserModel;
 }

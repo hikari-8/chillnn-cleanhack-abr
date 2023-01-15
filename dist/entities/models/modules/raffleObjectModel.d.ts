@@ -1,4 +1,4 @@
-import { RaffleObject, RaffleMast, RaffleStatus } from "../../type";
+import { RaffleObject, RaffleMast, RaffleStatus, RaffleJoinUser } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
 import { GroupModel } from "./groupModel";
@@ -19,6 +19,8 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
     set remindSlackTime(input: string);
     get tasks(): RaffleMast[];
     set tasks(input: RaffleMast[]);
+    get activeMembers(): RaffleJoinUser[];
+    set activeMembers(input: RaffleJoinUser[]);
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     get isDone(): boolean;

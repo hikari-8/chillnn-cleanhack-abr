@@ -7,4 +7,8 @@ export declare class RaffleJoinUserModel extends BaseModel<RaffleJoinUser> {
     get groupID(): string;
     get joinAt(): number;
     get deletedAt(): import("../../type").Maybe<number> | undefined;
+    /**
+     * mastに解く関数
+     */
+    raffleJoinUserModelToMast(): Promise<RaffleJoinUser>;
 }

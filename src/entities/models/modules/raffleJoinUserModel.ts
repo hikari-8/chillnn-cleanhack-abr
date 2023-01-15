@@ -45,4 +45,10 @@ export class RaffleJoinUserModel extends BaseModel<RaffleJoinUser> {
 	// ============================================
 	// functions
 	// ============================================
+	/**
+	 * mastに解く関数
+	 */
+	async raffleJoinUserModelToMast() {
+		return this.mast;
+	}
 }

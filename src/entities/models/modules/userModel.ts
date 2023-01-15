@@ -6,6 +6,7 @@ import { BaseModel } from "./_baseModel";
 import { GroupModel } from "./groupModel";
 import { TaskMastModel } from "./taskMastModel";
 import { generateUUID } from "../../../util";
+import { RaffleJoinUserModel } from "./raffleJoinUserModel";
 
 export class UserModel extends BaseModel<UserMast> {
 	// ============================================
@@ -213,5 +214,16 @@ export class UserModel extends BaseModel<UserMast> {
 				this.modelFactory.TaskMasterObjectModel(taskMasterObjectData);
 			return res;
 		}
+	}
+
+	/**
+	 * このグループのrafflejoinuserデータのインスタンス作成
+	 * @returns
+	 */
+	createRaffleJoinUser(): RaffleJoinUserModel {
+		const res = this.modelFactory.RaffleJoinUserModel(
+			RaffleJoinUserModel.getBlanc(this.mast.userID, this.mast.groupID!)
+		);
+		return res;
 	}
 }

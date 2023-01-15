@@ -15,6 +15,7 @@ const _baseModel_1 = require("./_baseModel");
 const groupModel_1 = require("./groupModel");
 const taskMastModel_1 = require("./taskMastModel");
 const util_1 = require("../../../util");
+const raffleJoinUserModel_1 = require("./raffleJoinUserModel");
 class UserModel extends _baseModel_1.BaseModel {
     // ============================================
     // getters
@@ -201,6 +202,14 @@ class UserModel extends _baseModel_1.BaseModel {
                 return res;
             }
         });
+    }
+    /**
+     * このグループのrafflejoinuserデータのインスタンス作成
+     * @returns
+     */
+    createRaffleJoinUser() {
+        const res = this.modelFactory.RaffleJoinUserModel(raffleJoinUserModel_1.RaffleJoinUserModel.getBlanc(this.mast.userID, this.mast.groupID));
+        return res;
     }
 }
 exports.UserModel = UserModel;

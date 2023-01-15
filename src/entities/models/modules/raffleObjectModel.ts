@@ -1,4 +1,9 @@
-import { RaffleObject, RaffleMast, RaffleStatus } from "../../type";
+import {
+	RaffleObject,
+	RaffleMast,
+	RaffleStatus,
+	RaffleJoinUser,
+} from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../..";
 import { generateUUID } from "../../..";
@@ -105,6 +110,14 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 
 	set tasks(input: RaffleMast[]) {
 		this.mast.tasks = input;
+	}
+
+	get activeMembers() {
+		return this.mast.activeMembers || [];
+	}
+
+	set activeMembers(input: RaffleJoinUser[]) {
+		this.mast.activeMembers = input;
 	}
 
 	// ============================================
