@@ -34,6 +34,11 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      */
     fetchRafflesByGroupID(): Promise<RaffleObjectModel[]>;
     /**
+     * 全ての登録したくじの中で最後のくじをgorupIDでfetchできる
+     *@returns
+     */
+    fetchLastRaffleItemByGroupID(): Promise<RaffleObjectModel | null>;
+    /**
      * raffleDataを追加後のgroupDataにpushの処理
      *
      */
