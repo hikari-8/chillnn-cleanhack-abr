@@ -10,6 +10,7 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		taskName: Scalars["String"],
 		groupID: Scalars["ID"],
 		headCount: Scalars["Int"]
+		// userID: Array<string>
 		// raffleID: Scalars["ID"]
 	): RaffleMast {
 		return {
@@ -17,6 +18,7 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 			taskName,
 			groupID,
 			headCount,
+			// userID,
 			// raffleID,
 			raffleItemID: generateUUID(),
 			createdAt: new Date().getTime(),
@@ -63,6 +65,13 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		} else {
 			this.mast.headCount = 0;
 		}
+	}
+	get userID() {
+		return this.mast.userID || [];
+	}
+
+	set userID(input: string[]) {
+		this.mast.userID = input;
 	}
 
 	// ============================================

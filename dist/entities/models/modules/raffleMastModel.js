@@ -13,7 +13,7 @@ exports.RaffleMastModel = void 0;
 const util_1 = require("../../../util");
 const _baseModel_1 = require("./_baseModel");
 class RaffleMastModel extends _baseModel_1.BaseModel {
-    static getBlanc(taskID, taskName, groupID, headCount
+    static getBlanc(taskID, taskName, groupID, headCount, userID
     // raffleID: Scalars["ID"]
     ) {
         return {
@@ -21,6 +21,7 @@ class RaffleMastModel extends _baseModel_1.BaseModel {
             taskName,
             groupID,
             headCount,
+            userID,
             // raffleID,
             raffleItemID: (0, util_1.generateUUID)(),
             createdAt: new Date().getTime(),
@@ -64,6 +65,12 @@ class RaffleMastModel extends _baseModel_1.BaseModel {
         else {
             this.mast.headCount = 0;
         }
+    }
+    get userID() {
+        return this.mast.userID || [];
+    }
+    set userID(input) {
+        this.mast.userID = input;
     }
     // ============================================
     // validation

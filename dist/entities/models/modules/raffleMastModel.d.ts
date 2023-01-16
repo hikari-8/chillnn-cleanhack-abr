@@ -2,7 +2,7 @@ import { RaffleMast } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 export declare class RaffleMastModel extends BaseModel<RaffleMast> {
-    static getBlanc(taskID: Scalars["ID"], taskName: Scalars["String"], groupID: Scalars["ID"], headCount: Scalars["Int"]): RaffleMast;
+    static getBlanc(taskID: Scalars["ID"], taskName: Scalars["String"], groupID: Scalars["ID"], headCount: Scalars["Int"], userID: Array<string>): RaffleMast;
     get raffleID(): string;
     get groupID(): string;
     get createdAt(): number;
@@ -12,6 +12,8 @@ export declare class RaffleMastModel extends BaseModel<RaffleMast> {
     set taskName(input: string);
     get headCount(): number;
     set headCount(input: number);
+    get userID(): string[];
+    set userID(input: string[]);
     /**
      * RaffleMastModelをmastに解く関数
      *
