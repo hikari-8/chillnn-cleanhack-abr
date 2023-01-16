@@ -114,6 +114,25 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    /**
+     * 別のuserのデータを取得する
+     * @returns
+     */
+    fetchUserDataByUserID(userID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!userID) {
+                return null;
+            }
+            else {
+                const userData = yield this.repositoryContainer.userMastRepository.fetchUserMastByUserID(userID);
+                if (userData == null) {
+                    return null;
+                }
+                const res = this.modelFactory.UserModel(userData);
+                return res;
+            }
+        });
+    }
     // ============================================
     // functions -Group
     // ============================================

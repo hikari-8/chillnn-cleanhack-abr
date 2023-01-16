@@ -26,6 +26,11 @@ export declare class UserModel extends BaseModel<UserMast> {
      */
     register(): Promise<void>;
     /**
+     * 別のuserのデータを取得する
+     * @returns
+     */
+    fetchUserDataByUserID(userID: string): Promise<UserModel | null>;
+    /**
      * グループの初期化データを作成する
      * @returns
      */

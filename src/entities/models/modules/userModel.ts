@@ -114,6 +114,26 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 
+	/**
+	 * 別のuserのデータを取得する
+	 * @returns
+	 */
+	async fetchUserDataByUserID(userID: string): Promise<UserModel | null> {
+		if (!userID) {
+			return null;
+		} else {
+			const userData =
+				await this.repositoryContainer.userMastRepository.fetchUserMastByUserID(
+					userID
+				);
+			if (userData == null) {
+				return null;
+			}
+			const res = this.modelFactory.UserModel(userData);
+			return res;
+		}
+	}
+
 	// ============================================
 	// functions -Group
 	// ============================================
