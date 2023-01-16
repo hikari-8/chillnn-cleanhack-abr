@@ -139,9 +139,9 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
 		//nullにpushできないため、一旦作成して後で削除します
-		const raffleMemberBlanc = [
-			{ userID: "blank", groupID: "blank", joinAt: 11111 },
-		];
+		// const raffleMemberBlanc = [
+		// 	{ userID: "blank", groupID: "blank", joinAt: 11111 },
+		// ];
 
 		//くじたちのMastを作成する
 		const blankRaffle = RaffleObjectModel.getBlanc(
@@ -151,7 +151,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			status,
 			this.remindSlackWeek,
 			this.remindSlackTime,
-			raffleMemberBlanc
+			[]
 		);
 		return this.modelFactory.RaffleObjectModel(blankRaffle, {
 			isNew: true,

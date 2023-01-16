@@ -115,7 +115,10 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	get activeMembers() {
-		return this.mast.activeMembers || [];
+		if (!this.mast.activeMembers) {
+			this.mast.activeMembers = [];
+		}
+		return this.mast.activeMembers;
 	}
 
 	set activeMembers(input: RaffleJoinUser[]) {

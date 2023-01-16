@@ -123,11 +123,11 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID, task.headCount, []));
             const status = type_1.RaffleStatus.EFFECTIVE;
             //nullにpushできないため、一旦作成して後で削除します
-            const raffleMemberBlanc = [
-                { userID: "blank", groupID: "blank", joinAt: 11111 },
-            ];
+            // const raffleMemberBlanc = [
+            // 	{ userID: "blank", groupID: "blank", joinAt: 11111 },
+            // ];
             //くじたちのMastを作成する
-            const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime, raffleMemberBlanc);
+            const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime, []);
             return this.modelFactory.RaffleObjectModel(blankRaffle, {
                 isNew: true,
             });

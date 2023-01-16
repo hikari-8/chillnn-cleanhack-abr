@@ -87,7 +87,7 @@ export type RaffleMastInput = {
 };
 
 export type RaffleObject = {
-  activeMembers?: Maybe<Array<RaffleJoinUser>>;
+  activeMembers: Array<RaffleJoinUser>;
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
@@ -101,7 +101,7 @@ export type RaffleObject = {
 };
 
 export type RaffleObjectInput = {
-  activeMembers?: InputMaybe<Array<RaffleJoinUserInput>>;
+  activeMembers: Array<RaffleJoinUserInput>;
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];

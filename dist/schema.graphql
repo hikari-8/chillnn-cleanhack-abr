@@ -81,7 +81,7 @@ input RaffleMastInput {
 }
 
 type RaffleObject {
-  activeMembers: [RaffleJoinUser!]
+  activeMembers: [RaffleJoinUser!]!
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
@@ -95,7 +95,7 @@ type RaffleObject {
 }
 
 input RaffleObjectInput {
-  activeMembers: [RaffleJoinUserInput!]
+  activeMembers: [RaffleJoinUserInput!]!
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!

@@ -9,7 +9,7 @@ type RaffleObject {
 	raffleID: ID!
 	tasks: [RaffleMast!]!
 	groupID: ID!
-	activeMembers: [RaffleJoinUser!]
+	activeMembers: [RaffleJoinUser!]!
 	limitTime: String!
 	raffleStatus: RaffleStatus!
 	remindSlackWeek: String!
@@ -51,7 +51,7 @@ input RaffleObjectInput {
 	raffleID: ID!
 	tasks: [RaffleMastInput!]!
 	groupID: ID!
-	activeMembers: [RaffleJoinUserInput!]
+	activeMembers: [RaffleJoinUserInput!]!
 	limitTime: String!
 	raffleStatus: RaffleStatus!
 	remindSlackWeek: String!

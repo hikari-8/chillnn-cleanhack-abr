@@ -86,7 +86,7 @@ export declare type RaffleMastInput = {
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type RaffleObject = {
-    activeMembers?: Maybe<Array<RaffleJoinUser>>;
+    activeMembers: Array<RaffleJoinUser>;
     createdAt: Scalars['AWSTimestamp'];
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
@@ -99,7 +99,7 @@ export declare type RaffleObject = {
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type RaffleObjectInput = {
-    activeMembers?: InputMaybe<Array<RaffleJoinUserInput>>;
+    activeMembers: Array<RaffleJoinUserInput>;
     createdAt: Scalars['AWSTimestamp'];
     deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];

@@ -100,7 +100,10 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         this.mast.tasks = input;
     }
     get activeMembers() {
-        return this.mast.activeMembers || [];
+        if (!this.mast.activeMembers) {
+            this.mast.activeMembers = [];
+        }
+        return this.mast.activeMembers;
     }
     set activeMembers(input) {
         this.mast.activeMembers = input;
