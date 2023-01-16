@@ -152,7 +152,6 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.remindSlackTime,
 			raffleMemberBlanc
 		);
-		console.log("blancRaffle: ", blankRaffle);
 		return this.modelFactory.RaffleObjectModel(blankRaffle, {
 			isNew: true,
 		});

@@ -254,7 +254,6 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             }
             else {
                 const res = this.modelFactory.GroupModel(groupMast);
-                console.log("res at getchGroupMast", res);
                 return res;
             }
         });

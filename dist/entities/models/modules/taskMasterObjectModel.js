@@ -128,7 +128,6 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             ];
             //くじたちのMastを作成する
             const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime, raffleMemberBlanc);
-            console.log("blancRaffle: ", blankRaffle);
             return this.modelFactory.RaffleObjectModel(blankRaffle, {
                 isNew: true,
             });

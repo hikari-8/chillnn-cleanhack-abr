@@ -281,7 +281,6 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			return null;
 		} else {
 			const res = this.modelFactory.GroupModel(groupMast);
-			console.log("res at getchGroupMast", res);
 			return res;
 		}
 	}
