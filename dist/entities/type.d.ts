@@ -66,24 +66,24 @@ export declare type RaffleMast = {
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     headCount: Scalars['Int'];
+    joinUserIDArray: Array<Scalars['ID']>;
     raffleID?: Maybe<Scalars['ID']>;
     raffleItemID: Scalars['ID'];
     taskID: Scalars['ID'];
     taskName: Scalars['String'];
     updatedAt: Scalars['AWSTimestamp'];
-    userID?: Maybe<Array<Scalars['ID']>>;
 };
 export declare type RaffleMastInput = {
     createdAt: Scalars['AWSTimestamp'];
     deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     headCount: Scalars['Int'];
+    joinUserIDArray: Array<Scalars['ID']>;
     raffleID?: InputMaybe<Scalars['ID']>;
     raffleItemID: Scalars['ID'];
     taskID: Scalars['ID'];
     taskName: Scalars['String'];
     updatedAt: Scalars['AWSTimestamp'];
-    userID?: InputMaybe<Array<Scalars['ID']>>;
 };
 export declare type RaffleObject = {
     activeMembers?: Maybe<Array<RaffleJoinUser>>;

@@ -9,8 +9,8 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		taskID: Scalars["ID"],
 		taskName: Scalars["String"],
 		groupID: Scalars["ID"],
-		headCount: Scalars["Int"]
-		// userID: Array<string>
+		headCount: Scalars["Int"],
+		joinUserIDArray: Array<string>
 		// raffleID: Scalars["ID"]
 	): RaffleMast {
 		return {
@@ -19,7 +19,7 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 			groupID,
 			headCount,
 			// userID,
-			// raffleID,
+			joinUserIDArray,
 			raffleItemID: generateUUID(),
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
@@ -66,12 +66,15 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 			this.mast.headCount = 0;
 		}
 	}
-	get userID() {
-		return this.mast.userID || [];
+	get joinUserIDArray() {
+		if (!this.mast.joinUserIDArray) {
+			this.mast.joinUserIDArray = [];
+		}
+		return this.mast.joinUserIDArray;
 	}
 
-	set userID(input: string[]) {
-		this.mast.userID = input;
+	set joinUserIDArray(input: string[]) {
+		this.mast.joinUserIDArray = input;
 	}
 
 	// ============================================

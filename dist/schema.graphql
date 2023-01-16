@@ -59,12 +59,12 @@ type RaffleMast {
   deletedAt: AWSTimestamp
   groupID: ID!
   headCount: Int!
+  joinUserIDArray: [ID!]!
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!
   taskName: String!
   updatedAt: AWSTimestamp!
-  userID: [ID!]
 }
 
 input RaffleMastInput {
@@ -72,12 +72,12 @@ input RaffleMastInput {
   deletedAt: AWSTimestamp
   groupID: ID!
   headCount: Int!
+  joinUserIDArray: [ID!]!
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!
   taskName: String!
   updatedAt: AWSTimestamp!
-  userID: [ID!]
 }
 
 type RaffleObject {

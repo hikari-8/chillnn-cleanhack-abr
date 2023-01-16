@@ -133,8 +133,8 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 				task.taskID,
 				task.taskName,
 				task.groupID,
-				task.headCount
-				// ["blanc"]
+				task.headCount,
+				[]
 			)
 		);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;

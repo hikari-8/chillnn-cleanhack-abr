@@ -27,7 +27,7 @@ type RaffleMast {
 	groupID: ID!
 	taskName: String!
 	headCount: Int!
-	userID: [ID!]
+	joinUserIDArray: [ID!]!
 	# status
 	###くじは、人数のみ変更可能にする
 	createdAt: AWSTimestamp!
@@ -69,7 +69,7 @@ input RaffleMastInput {
 	groupID: ID!
 	taskName: String!
 	headCount: Int!
-	userID: [ID!]
+	joinUserIDArray: [ID!]!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
