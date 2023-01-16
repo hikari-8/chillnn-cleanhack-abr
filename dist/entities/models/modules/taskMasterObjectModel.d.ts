@@ -30,7 +30,7 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      * くじの初期化オブジェクトを作成する
      *
      */
-    getRaffleModel(): RaffleObjectModel;
+    getRaffleModel(): Promise<RaffleObjectModel>;
     /**
      * このグループのくじデータをくじのuuidで取得する
      * @returns
@@ -38,7 +38,12 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     fetchRaffleItemByRaffleID(raffleID: string): Promise<RaffleObjectModel | null>;
     /**
      * このグループのtasksから、statusがdeletedを省いて返す
-     * @returns
+     *
      */
     filterActiveTasks(): Promise<TaskMastModel[]>;
+    /**
+     * このグループのtasksから、statusがdeletedを省いて返す(mastで返す版)
+     *
+     */
+    filterActiveTasksMast(): Promise<TaskMast[]>;
 }

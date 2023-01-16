@@ -123,9 +123,10 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	 * くじの初期化オブジェクトを作成する
 	 *
 	 */
-	getRaffleModel() {
+	async getRaffleModel() {
 		//taskが持ってる配列を一つづつ取り出して、raffleMに入れる
-		const taskArray = this.tasks;
+		//mastのfilterかけたものにする
+		const taskArray = await this.filterActiveTasksMast();
 		// 新しいMastを作成する
 		const newTaskArray: RaffleMast[] = taskArray.map((task) =>
 			RaffleMastModel.getBlanc(
@@ -181,7 +182,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	/**
 	 * このグループのtasksから、statusがdeletedを省いて返す
-	 * @returns
+	 *
 	 */
 	async filterActiveTasks() {
 		const tasks = this.mast.tasks;
@@ -189,5 +190,17 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			return task.taskStatus === TaskStatus.ACTIVE;
 		});
 		return res.map((item) => this.modelFactory.TaskMastModel(item));
+	}
+
+	/**
+	 * このグループのtasksから、statusがdeletedを省いて返す(mastで返す版)
+	 *
+	 */
+	async filterActiveTasksMast() {
+		const tasks = this.mast.tasks;
+		const res = tasks.filter(function (task) {
+			return task.taskStatus === TaskStatus.ACTIVE;
+		});
+		return res;
 	}
 }

@@ -115,20 +115,23 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
      *
      */
     getRaffleModel() {
-        //taskが持ってる配列を一つづつ取り出して、raffleMに入れる
-        const taskArray = this.tasks;
-        // 新しいMastを作成する
-        const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID, task.headCount));
-        const status = type_1.RaffleStatus.EFFECTIVE;
-        //nullにpushできないため、一旦作成して後で削除します
-        const raffleMemberBlanc = [
-            { userID: "blank", groupID: "blank", joinAt: 11111 },
-        ];
-        //くじたちのMastを作成する
-        const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime, raffleMemberBlanc);
-        console.log("blancRaffle: ", blankRaffle);
-        return this.modelFactory.RaffleObjectModel(blankRaffle, {
-            isNew: true,
+        return __awaiter(this, void 0, void 0, function* () {
+            //taskが持ってる配列を一つづつ取り出して、raffleMに入れる
+            //mastのfilterかけたものにする
+            const taskArray = yield this.filterActiveTasksMast();
+            // 新しいMastを作成する
+            const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID, task.headCount));
+            const status = type_1.RaffleStatus.EFFECTIVE;
+            //nullにpushできないため、一旦作成して後で削除します
+            const raffleMemberBlanc = [
+                { userID: "blank", groupID: "blank", joinAt: 11111 },
+            ];
+            //くじたちのMastを作成する
+            const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime, raffleMemberBlanc);
+            console.log("blancRaffle: ", blankRaffle);
+            return this.modelFactory.RaffleObjectModel(blankRaffle, {
+                isNew: true,
+            });
         });
     }
     /**
@@ -153,7 +156,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     }
     /**
      * このグループのtasksから、statusがdeletedを省いて返す
-     * @returns
+     *
      */
     filterActiveTasks() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -162,6 +165,19 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
                 return task.taskStatus === type_1.TaskStatus.ACTIVE;
             });
             return res.map((item) => this.modelFactory.TaskMastModel(item));
+        });
+    }
+    /**
+     * このグループのtasksから、statusがdeletedを省いて返す(mastで返す版)
+     *
+     */
+    filterActiveTasksMast() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const tasks = this.mast.tasks;
+            const res = tasks.filter(function (task) {
+                return task.taskStatus === type_1.TaskStatus.ACTIVE;
+            });
+            return res;
         });
     }
 }
