@@ -82,6 +82,9 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	}
 
 	get tasks() {
+		if (!this.mast.tasks) {
+			this.mast.tasks = [];
+		}
 		return this.mast.tasks;
 	}
 
