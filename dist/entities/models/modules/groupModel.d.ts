@@ -11,6 +11,8 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     get deletedAt(): import("../../type").Maybe<number> | undefined;
     get groupName(): string;
     set groupName(input: string);
+    get members(): string[];
+    set joinUserIDArray(input: string[]);
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**

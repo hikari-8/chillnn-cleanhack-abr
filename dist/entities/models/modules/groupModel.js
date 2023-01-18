@@ -17,6 +17,7 @@ class GroupModel extends _baseModel_1.BaseModel {
         return {
             createdUserID,
             groupID: (0, util_1.generateUUID)(),
+            members: [createdUserID],
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
         };
@@ -47,6 +48,15 @@ class GroupModel extends _baseModel_1.BaseModel {
     }
     set groupName(input) {
         this.mast.groupName = input;
+    }
+    get members() {
+        if (!this.mast.members) {
+            this.mast.members = [];
+        }
+        return this.mast.members;
+    }
+    set joinUserIDArray(input) {
+        this.mast.members = input;
     }
     // get records() {
     // 	return this.mast.records;

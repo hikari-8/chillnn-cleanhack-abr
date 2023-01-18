@@ -60,10 +60,10 @@ class GroupMastRepositoryCacheAdaptor {
     // private
     //
     // ===============================================================
-    addCacheEach(groupID, Group) {
-        this.GroupEachCache[groupID] = Group || "blanc";
-        if (this.GroupAllCache && Group) {
-            this.GroupAllCache[groupID] = Group;
+    addCacheEach(groupID, group) {
+        this.GroupEachCache[groupID] = group || "blanc";
+        if (this.GroupAllCache && group) {
+            this.GroupAllCache[groupID] = group;
         }
     }
     fetchGroup(groupID) {

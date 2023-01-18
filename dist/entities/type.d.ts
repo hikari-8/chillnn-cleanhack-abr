@@ -39,6 +39,7 @@ export declare type GroupMast = {
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     groupName?: Maybe<Scalars['String']>;
+    members: Array<Scalars['ID']>;
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type GroupMastInput = {
@@ -47,6 +48,7 @@ export declare type GroupMastInput = {
     deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     groupName?: InputMaybe<Scalars['String']>;
+    members: Array<Scalars['ID']>;
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type RaffleJoinUser = {
