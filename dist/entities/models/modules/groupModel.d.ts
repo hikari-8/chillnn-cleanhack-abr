@@ -20,6 +20,11 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      */
     register(): Promise<void>;
     /**
+     * Admin以外がgroupのparamsで入ってきた時、groupのmembersの配列にpushして、updateする
+     *
+     */
+    pushGroupMembers(userID: string): Promise<void>;
+    /**
      * グループを更新できる(後でフロントでroleの分岐作る)
      *
      */

@@ -97,6 +97,16 @@ class GroupModel extends _baseModel_1.BaseModel {
         });
     }
     /**
+     * Admin以外がgroupのparamsで入ってきた時、groupのmembersの配列にpushして、updateする
+     *
+     */
+    pushGroupMembers(userID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.mast.members.push(userID);
+            yield this.updateGroupMast();
+        });
+    }
+    /**
      * グループを更新できる(後でフロントでroleの分岐作る)
      *
      */

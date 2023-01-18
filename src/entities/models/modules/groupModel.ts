@@ -104,6 +104,15 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
+	 * Admin以外がgroupのparamsで入ってきた時、groupのmembersの配列にpushして、updateする
+	 *
+	 */
+	async pushGroupMembers(userID: string) {
+		this.mast.members.push(userID);
+		await this.updateGroupMast();
+	}
+
+	/**
 	 * グループを更新できる(後でフロントでroleの分岐作る)
 	 *
 	 */
