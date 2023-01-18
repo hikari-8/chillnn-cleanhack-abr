@@ -81,6 +81,17 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		}
 	}
 
+	get slackURL() {
+		if (!this.mast.slackURL) {
+			this.mast.slackURL = "";
+		}
+		return this.mast.slackURL;
+	}
+
+	set slackURL(input: string) {
+		this.mast.slackURL = input;
+	}
+
 	get tasks() {
 		if (!this.mast.tasks) {
 			this.mast.tasks = [];

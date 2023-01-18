@@ -16,6 +16,8 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     set remindSlackWeek(input: string);
     get remindSlackTime(): string;
     set remindSlackTime(input: string);
+    get slackURL(): string;
+    set slackURL(input: string);
     get tasks(): TaskMast[];
     set tasks(input: TaskMast[]);
     get isRegisterable(): boolean;

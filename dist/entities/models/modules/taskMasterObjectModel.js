@@ -77,6 +77,15 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             this.mast.remindSlackTime = null;
         }
     }
+    get slackURL() {
+        if (!this.mast.slackURL) {
+            this.mast.slackURL = "";
+        }
+        return this.mast.slackURL;
+    }
+    set slackURL(input) {
+        this.mast.slackURL = input;
+    }
     get tasks() {
         if (!this.mast.tasks) {
             this.mast.tasks = [];

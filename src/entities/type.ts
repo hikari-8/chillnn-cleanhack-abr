@@ -165,6 +165,7 @@ export type TaskMasterObject = {
   limitTime?: Maybe<Scalars['String']>;
   remindSlackTime?: Maybe<Scalars['String']>;
   remindSlackWeek?: Maybe<Scalars['String']>;
+  slackURL?: Maybe<Scalars['String']>;
   taskMasterObjectID: Scalars['ID'];
   tasks: Array<TaskMast>;
   updatedAt: Scalars['AWSTimestamp'];
@@ -177,6 +178,7 @@ export type TaskMasterObjectInput = {
   limitTime?: InputMaybe<Scalars['String']>;
   remindSlackTime?: InputMaybe<Scalars['String']>;
   remindSlackWeek?: InputMaybe<Scalars['String']>;
+  slackURL?: InputMaybe<Scalars['String']>;
   taskMasterObjectID: Scalars['ID'];
   tasks: Array<TaskMastInput>;
   updatedAt: Scalars['AWSTimestamp'];
