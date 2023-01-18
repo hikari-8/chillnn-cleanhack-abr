@@ -55,7 +55,7 @@ class GroupModel extends _baseModel_1.BaseModel {
         }
         return this.mast.members;
     }
-    set joinUserIDArray(input) {
+    set members(input) {
         this.mast.members = input;
     }
     // get records() {

@@ -57,7 +57,7 @@ export class GroupModel extends BaseModel<GroupMast> {
 		return this.mast.members;
 	}
 
-	set joinUserIDArray(input: string[]) {
+	set members(input: string[]) {
 		this.mast.members = input;
 	}
 

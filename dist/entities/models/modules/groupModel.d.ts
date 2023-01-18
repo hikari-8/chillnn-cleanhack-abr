@@ -12,7 +12,7 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     get groupName(): string;
     set groupName(input: string);
     get members(): string[];
-    set joinUserIDArray(input: string[]);
+    set members(input: string[]);
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**
