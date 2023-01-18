@@ -98,6 +98,7 @@ export type RaffleObject = {
   raffleStatus: RaffleStatus;
   remindSlackTime: Scalars['String'];
   remindSlackWeek: Scalars['String'];
+  slackURL: Scalars['String'];
   tasks: Array<RaffleMast>;
   updatedAt: Scalars['AWSTimestamp'];
 };
@@ -112,6 +113,7 @@ export type RaffleObjectInput = {
   raffleStatus: RaffleStatus;
   remindSlackTime: Scalars['String'];
   remindSlackWeek: Scalars['String'];
+  slackURL: Scalars['String'];
   tasks: Array<RaffleMastInput>;
   updatedAt: Scalars['AWSTimestamp'];
 };

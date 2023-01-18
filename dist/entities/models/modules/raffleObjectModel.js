@@ -13,7 +13,7 @@ exports.RaffleObjectModel = void 0;
 const _baseModel_1 = require("./_baseModel");
 const __1 = require("../../..");
 class RaffleObjectModel extends _baseModel_1.BaseModel {
-    static getBlanc(tasks, groupID, limitTime, raffleStatus, remindSlackWeek, remindSlackTime, activeMembers) {
+    static getBlanc(tasks, groupID, limitTime, raffleStatus, remindSlackWeek, remindSlackTime, slackURL, activeMembers) {
         return {
             raffleID: (0, __1.generateUUID)(),
             tasks,
@@ -22,6 +22,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             raffleStatus,
             remindSlackWeek,
             remindSlackTime,
+            slackURL,
             activeMembers,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
@@ -107,6 +108,15 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     }
     set activeMembers(input) {
         this.mast.activeMembers = input;
+    }
+    get slackURL() {
+        if (!this.mast.slackURL) {
+            this.mast.slackURL = "";
+        }
+        return this.mast.slackURL;
+    }
+    set slackURL(input) {
+        this.mast.slackURL = input;
     }
     // ============================================
     // validation

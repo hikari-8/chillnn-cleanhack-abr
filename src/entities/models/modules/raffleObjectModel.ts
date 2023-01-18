@@ -19,6 +19,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		raffleStatus: RaffleStatus,
 		remindSlackWeek: Scalars["String"],
 		remindSlackTime: Scalars["String"],
+		slackURL: Scalars["String"],
 		activeMembers: Array<RaffleJoinUser>
 	): RaffleObject {
 		return {
@@ -29,6 +30,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			raffleStatus,
 			remindSlackWeek,
 			remindSlackTime,
+			slackURL,
 			activeMembers,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
@@ -123,6 +125,17 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 
 	set activeMembers(input: RaffleJoinUser[]) {
 		this.mast.activeMembers = input;
+	}
+
+	get slackURL() {
+		if (!this.mast.slackURL) {
+			this.mast.slackURL = "";
+		}
+		return this.mast.slackURL;
+	}
+
+	set slackURL(input: string) {
+		this.mast.slackURL = input;
 	}
 
 	// ============================================

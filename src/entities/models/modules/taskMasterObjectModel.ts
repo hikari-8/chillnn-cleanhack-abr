@@ -165,6 +165,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			status,
 			this.remindSlackWeek,
 			this.remindSlackTime,
+			this.slackURL,
 			[]
 		);
 		return this.modelFactory.RaffleObjectModel(blankRaffle, {
