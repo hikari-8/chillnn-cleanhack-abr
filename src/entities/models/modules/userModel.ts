@@ -134,6 +134,28 @@ export class UserModel extends BaseModel<UserMast> {
 		}
 	}
 
+	/**
+	 * AdminならAdmin権限を付与できる
+	 */
+	async addAdminStatus(otherUserModel: UserModel) {
+		const otherUserMast = await this.userModelToUserMast(otherUserModel);
+		if (this.mast.role !== "admin") {
+			return;
+		} else {
+			otherUserMast.role = "admin";
+			await this.repositoryContainer.userMastRepository.updateUserMast(
+				otherUserMast
+			);
+		}
+	}
+
+	/**
+	 * userModelからMastへ変換
+	 */
+	async userModelToUserMast(userModel: UserModel) {
+		return userModel.mast;
+	}
+
 	// ============================================
 	// functions -Group
 	// ============================================

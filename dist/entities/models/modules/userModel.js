@@ -133,6 +133,29 @@ class UserModel extends _baseModel_1.BaseModel {
             }
         });
     }
+    /**
+     * AdminならAdmin権限を付与できる
+     */
+    addAdminStatus(otherUserModel) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const otherUserMast = yield this.userModelToUserMast(otherUserModel);
+            if (this.mast.role !== "admin") {
+                return;
+            }
+            else {
+                otherUserMast.role = "admin";
+                yield this.repositoryContainer.userMastRepository.updateUserMast(otherUserMast);
+            }
+        });
+    }
+    /**
+     * userModelからMastへ変換
+     */
+    userModelToUserMast(userModel) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return userModel.mast;
+        });
+    }
     // ============================================
     // functions -Group
     // ============================================

@@ -31,6 +31,14 @@ export declare class UserModel extends BaseModel<UserMast> {
      */
     fetchUserDataByUserID(userID: string): Promise<UserModel | null>;
     /**
+     * AdminならAdmin権限を付与できる
+     */
+    addAdminStatus(otherUserModel: UserModel): Promise<void>;
+    /**
+     * userModelからMastへ変換
+     */
+    userModelToUserMast(userModel: UserModel): Promise<UserMast>;
+    /**
      * グループの初期化データを作成する
      * @returns
      */
