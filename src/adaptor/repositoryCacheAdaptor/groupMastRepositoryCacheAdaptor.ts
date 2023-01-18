@@ -50,10 +50,10 @@ export class GroupMastRepositoryCacheAdaptor implements IGroupMastRepository {
 	// private
 	//
 	// ===============================================================
-	private addCacheEach(groupID: Scalars["ID"], Group: GroupMast | null) {
-		this.GroupEachCache[groupID] = Group || "blanc";
-		if (this.GroupAllCache && Group) {
-			this.GroupAllCache[groupID] = Group;
+	private addCacheEach(groupID: Scalars["ID"], group: GroupMast | null) {
+		this.GroupEachCache[groupID] = group || "blanc";
+		if (this.GroupAllCache && group) {
+			this.GroupAllCache[groupID] = group;
 		}
 	}
 
