@@ -14,6 +14,8 @@ export declare class RaffleMastModel extends BaseModel<RaffleMast> {
     set headCount(input: number);
     get joinUserIDArray(): string[];
     set joinUserIDArray(input: string[]);
+    get optionItem(): RaffleOption[];
+    set optionItem(input: RaffleOption[]);
     /**
      * RaffleMastModelをmastに解く関数
      *

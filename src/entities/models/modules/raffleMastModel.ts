@@ -79,6 +79,17 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		this.mast.joinUserIDArray = input;
 	}
 
+	get optionItem() {
+		if (!this.mast.optionItem) {
+			this.mast.optionItem = [];
+		}
+		return this.mast.optionItem;
+	}
+
+	set optionItem(input: RaffleOption[]) {
+		this.mast.optionItem = input;
+	}
+
 	// ============================================
 	// validation
 	// ============================================

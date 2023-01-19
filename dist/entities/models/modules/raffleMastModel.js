@@ -76,6 +76,15 @@ class RaffleMastModel extends _baseModel_1.BaseModel {
     set joinUserIDArray(input) {
         this.mast.joinUserIDArray = input;
     }
+    get optionItem() {
+        if (!this.mast.optionItem) {
+            this.mast.optionItem = [];
+        }
+        return this.mast.optionItem;
+    }
+    set optionItem(input) {
+        this.mast.optionItem = input;
+    }
     // ============================================
     // validation
     // ============================================
