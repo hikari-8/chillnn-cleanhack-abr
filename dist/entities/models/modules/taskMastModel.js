@@ -66,6 +66,15 @@ class TaskMastModel extends _baseModel_1.BaseModel {
     get taskStatus() {
         return this.mast.taskStatus;
     }
+    get optionItem() {
+        if (!this.mast.optionItem) {
+            this.mast.optionItem = "";
+        }
+        return this.mast.optionItem;
+    }
+    set optionItem(input) {
+        this.mast.optionItem = input;
+    }
     // 引数見直した方がいいかも
     set taskStatus(input) {
         if (input) {

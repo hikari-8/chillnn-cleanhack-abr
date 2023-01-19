@@ -137,6 +137,7 @@ type TaskMast {
   deletedAt: AWSTimestamp
   groupID: ID!
   headCount: Int!
+  optionItem: String
   taskID: ID!
   taskName: String!
   taskStatus: TaskStatus!
@@ -148,6 +149,7 @@ input TaskMastInput {
   deletedAt: AWSTimestamp
   groupID: ID!
   headCount: Int!
+  optionItem: String
   taskID: ID!
   taskName: String!
   taskStatus: TaskStatus!

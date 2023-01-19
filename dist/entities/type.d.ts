@@ -137,6 +137,7 @@ export declare type TaskMast = {
     deletedAt?: Maybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     headCount: Scalars['Int'];
+    optionItem?: Maybe<Scalars['String']>;
     taskID: Scalars['ID'];
     taskName: Scalars['String'];
     taskStatus: TaskStatus;
@@ -147,6 +148,7 @@ export declare type TaskMastInput = {
     deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
     groupID: Scalars['ID'];
     headCount: Scalars['Int'];
+    optionItem?: InputMaybe<Scalars['String']>;
     taskID: Scalars['ID'];
     taskName: Scalars['String'];
     taskStatus: TaskStatus;
