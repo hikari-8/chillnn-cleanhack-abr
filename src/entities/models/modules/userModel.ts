@@ -207,7 +207,7 @@ export class UserModel extends BaseModel<UserMast> {
 	 */
 	createTaskMast(): TaskMastModel {
 		const res = this.modelFactory.TaskMastModel(
-			TaskMastModel.getBlanc(this.groupID!, "", 0)
+			TaskMastModel.getBlanc(this.groupID!, "", 0, "")
 		);
 		return res;
 	}
@@ -230,6 +230,7 @@ export class UserModel extends BaseModel<UserMast> {
 					taskName: "",
 					headCount: 0,
 					taskStatus: TaskStatus.ACTIVE,
+					optionItem: "",
 				},
 			])
 		);

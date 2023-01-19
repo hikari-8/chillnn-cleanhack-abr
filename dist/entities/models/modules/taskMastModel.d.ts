@@ -2,7 +2,7 @@ import { TaskMast, TaskStatus } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 export declare class TaskMastModel extends BaseModel<TaskMast> {
-    static getBlanc(groupID: Scalars["ID"], taskName: Scalars["String"], headCount: Scalars["Int"]): TaskMast;
+    static getBlanc(groupID: Scalars["ID"], taskName: Scalars["String"], headCount: Scalars["Int"], optionItem: Scalars["String"]): TaskMast;
     get groupID(): string;
     get taskID(): string;
     get createdAt(): number;

@@ -202,7 +202,7 @@ class UserModel extends _baseModel_1.BaseModel {
      * @returns
      */
     createTaskMast() {
-        const res = this.modelFactory.TaskMastModel(taskMastModel_1.TaskMastModel.getBlanc(this.groupID, "", 0));
+        const res = this.modelFactory.TaskMastModel(taskMastModel_1.TaskMastModel.getBlanc(this.groupID, "", 0, ""));
         return res;
     }
     /**
@@ -223,6 +223,7 @@ class UserModel extends _baseModel_1.BaseModel {
                     taskName: "",
                     headCount: 0,
                     taskStatus: type_1.TaskStatus.ACTIVE,
+                    optionItem: "",
                 },
             ]));
         });

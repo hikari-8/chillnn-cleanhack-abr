@@ -62,6 +62,7 @@ type RaffleMast {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
+  optionItem: [RaffleOption!]!
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!
@@ -75,6 +76,7 @@ input RaffleMastInput {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
+  optionItem: [RaffleOption!]!
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!
@@ -112,6 +114,11 @@ input RaffleObjectInput {
   updatedAt: AWSTimestamp!
 }
 
+input RaffleOption {
+  availableUsers: [ID!]
+  optionName: String!
+}
+
 enum RaffleStatus {
   DONE
   EFFECTIVE
@@ -137,7 +144,7 @@ type TaskMast {
   deletedAt: AWSTimestamp
   groupID: ID!
   headCount: Int!
-  optionItem: String
+  optionItem: String!
   taskID: ID!
   taskName: String!
   taskStatus: TaskStatus!
@@ -149,7 +156,7 @@ input TaskMastInput {
   deletedAt: AWSTimestamp
   groupID: ID!
   headCount: Int!
-  optionItem: String
+  optionItem: String!
   taskID: ID!
   taskName: String!
   taskStatus: TaskStatus!

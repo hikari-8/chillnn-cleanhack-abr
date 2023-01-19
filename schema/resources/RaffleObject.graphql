@@ -29,11 +29,17 @@ type RaffleMast {
 	taskName: String!
 	headCount: Int!
 	joinUserIDArray: [ID!]!
+	optionItem: [RaffleOption!]!
 	# status
 	###くじは、人数のみ変更可能にする
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
 	deletedAt: AWSTimestamp
+}
+
+type RaffleOption {
+	optionName: String!
+	availableUsers: [ID!]
 }
 
 type RaffleJoinUser {
@@ -72,10 +78,16 @@ input RaffleMastInput {
 	taskName: String!
 	headCount: Int!
 	joinUserIDArray: [ID!]!
+	optionItem: [RaffleOption!]!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
 	deletedAt: AWSTimestamp
+}
+
+input RaffleOption {
+	optionName: String!
+	availableUsers: [ID!]
 }
 
 input RaffleJoinUserInput {

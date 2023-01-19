@@ -68,6 +68,7 @@ export type RaffleMast = {
   groupID: Scalars['ID'];
   headCount: Scalars['Int'];
   joinUserIDArray: Array<Scalars['ID']>;
+  optionItem: Array<RaffleOption>;
   raffleID?: Maybe<Scalars['ID']>;
   raffleItemID: Scalars['ID'];
   taskID: Scalars['ID'];
@@ -81,6 +82,7 @@ export type RaffleMastInput = {
   groupID: Scalars['ID'];
   headCount: Scalars['Int'];
   joinUserIDArray: Array<Scalars['ID']>;
+  optionItem: Array<RaffleOption>;
   raffleID?: InputMaybe<Scalars['ID']>;
   raffleItemID: Scalars['ID'];
   taskID: Scalars['ID'];
@@ -118,6 +120,11 @@ export type RaffleObjectInput = {
   updatedAt: Scalars['AWSTimestamp'];
 };
 
+export type RaffleOption = {
+  availableUsers?: InputMaybe<Array<Scalars['ID']>>;
+  optionName: Scalars['String'];
+};
+
 export enum RaffleStatus {
   DONE = 'DONE',
   EFFECTIVE = 'EFFECTIVE',
@@ -143,7 +150,7 @@ export type TaskMast = {
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   headCount: Scalars['Int'];
-  optionItem?: Maybe<Scalars['String']>;
+  optionItem: Scalars['String'];
   taskID: Scalars['ID'];
   taskName: Scalars['String'];
   taskStatus: TaskStatus;
@@ -155,7 +162,7 @@ export type TaskMastInput = {
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   headCount: Scalars['Int'];
-  optionItem?: InputMaybe<Scalars['String']>;
+  optionItem: Scalars['String'];
   taskID: Scalars['ID'];
   taskName: Scalars['String'];
   taskStatus: TaskStatus;

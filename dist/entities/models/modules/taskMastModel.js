@@ -14,13 +14,14 @@ const util_1 = require("../../../util");
 const type_1 = require("../../type");
 const _baseModel_1 = require("./_baseModel");
 class TaskMastModel extends _baseModel_1.BaseModel {
-    static getBlanc(groupID, taskName, headCount) {
+    static getBlanc(groupID, taskName, headCount, optionItem) {
         return {
             taskID: (0, util_1.generateUUID)(),
             taskName,
             groupID,
             headCount,
             taskStatus: type_1.TaskStatus.ACTIVE,
+            optionItem,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
         };

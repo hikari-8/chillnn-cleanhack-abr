@@ -8,7 +8,8 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 	static getBlanc(
 		groupID: Scalars["ID"],
 		taskName: Scalars["String"],
-		headCount: Scalars["Int"]
+		headCount: Scalars["Int"],
+		optionItem: Scalars["String"]
 	): TaskMast {
 		return {
 			taskID: generateUUID(),
@@ -16,6 +17,7 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 			groupID,
 			headCount,
 			taskStatus: TaskStatus.ACTIVE,
+			optionItem,
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
 		};

@@ -1,5 +1,5 @@
 import { generateUUID } from "../../../util";
-import { RaffleMast } from "../../type";
+import { RaffleMast, RaffleOption } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { UserModel } from "./userModel";
@@ -10,7 +10,8 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		taskName: Scalars["String"],
 		groupID: Scalars["ID"],
 		headCount: Scalars["Int"],
-		joinUserIDArray: Array<string>
+		joinUserIDArray: Array<string>,
+		optionItem: Array<RaffleOption>
 		// raffleID: Scalars["ID"]
 	): RaffleMast {
 		return {
@@ -20,6 +21,7 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 			headCount,
 			// userID,
 			joinUserIDArray,
+			optionItem,
 			raffleItemID: generateUUID(),
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),

@@ -11,6 +11,7 @@ import { generateUUID } from "../../..";
 import { TaskMastModel } from "./taskMastModel";
 import { RaffleObjectModel } from "./raffleObjectModel";
 import { RaffleMastModel } from "./raffleMastModel";
+import { RaffleOptionModel } from "./raffleOptionMOdel";
 
 export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	static getBlanc(
@@ -129,7 +130,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	// taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
 	getTaskMastModel(groupID: string) {
-		const blank = TaskMastModel.getBlanc(this.groupID, "blanc", 0);
+		const blank = TaskMastModel.getBlanc(this.groupID, "blanc", 0, "");
 		return this.modelFactory.TaskMastModel(blank, { isNew: true });
 	}
 
@@ -141,6 +142,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		//taskが持ってる配列を一つづつ取り出して、raffleMに入れる
 		//mastのfilterかけたものにする
 		const taskArray = await this.filterActiveTasksMast();
+
 		// 新しいMastを作成する
 		const newTaskArray: RaffleMast[] = taskArray.map((task) =>
 			RaffleMastModel.getBlanc(
@@ -148,7 +150,8 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 				task.taskName,
 				task.groupID,
 				task.headCount,
-				[]
+				[],
+				[{ optionName: task.optionItem, availableUsers: [] }]
 			)
 		);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;

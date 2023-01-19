@@ -119,7 +119,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     }
     // taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
     getTaskMastModel(groupID) {
-        const blank = taskMastModel_1.TaskMastModel.getBlanc(this.groupID, "blanc", 0);
+        const blank = taskMastModel_1.TaskMastModel.getBlanc(this.groupID, "blanc", 0, "");
         return this.modelFactory.TaskMastModel(blank, { isNew: true });
     }
     /**
@@ -132,7 +132,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             //mastのfilterかけたものにする
             const taskArray = yield this.filterActiveTasksMast();
             // 新しいMastを作成する
-            const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID, task.headCount, []));
+            const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID, task.headCount, [], [{ optionName: task.optionItem, availableUsers: [] }]));
             const status = type_1.RaffleStatus.EFFECTIVE;
             //nullにpushできないため、一旦作成して後で削除します
             // const raffleMemberBlanc = [

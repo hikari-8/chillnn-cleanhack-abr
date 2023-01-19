@@ -24,7 +24,7 @@ type TaskMast {
 	taskName: String!
 	headCount: Int!
 	taskStatus: TaskStatus!
-	optionItem: String
+	optionItem: String!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -57,7 +57,7 @@ input TaskMastInput {
 	taskName: String!
 	headCount: Int!
 	taskStatus: TaskStatus!
-	optionItem: String
+	optionItem: String!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
