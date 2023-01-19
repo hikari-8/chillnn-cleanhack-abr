@@ -39,7 +39,7 @@ type RaffleMast {
 
 type RaffleOption {
 	optionName: String!
-	availableUsers: [ID!]
+	availableUsers: [ID!]!
 }
 
 type RaffleJoinUser {
@@ -87,7 +87,7 @@ input RaffleMastInput {
 
 input RaffleOption {
 	optionName: String!
-	availableUsers: [ID!]
+	availableUsers: [ID!]!
 }
 
 input RaffleJoinUserInput {

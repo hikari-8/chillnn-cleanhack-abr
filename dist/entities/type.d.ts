@@ -118,7 +118,7 @@ export declare type RaffleObjectInput = {
     updatedAt: Scalars['AWSTimestamp'];
 };
 export declare type RaffleOption = {
-    availableUsers?: InputMaybe<Array<Scalars['ID']>>;
+    availableUsers: Array<Scalars['ID']>;
     optionName: Scalars['String'];
 };
 export declare enum RaffleStatus {

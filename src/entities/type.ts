@@ -121,7 +121,7 @@ export type RaffleObjectInput = {
 };
 
 export type RaffleOption = {
-  availableUsers?: InputMaybe<Array<Scalars['ID']>>;
+  availableUsers: Array<Scalars['ID']>;
   optionName: Scalars['String'];
 };
 

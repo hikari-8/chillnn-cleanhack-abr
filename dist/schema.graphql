@@ -115,7 +115,7 @@ input RaffleObjectInput {
 }
 
 input RaffleOption {
-  availableUsers: [ID!]
+  availableUsers: [ID!]!
   optionName: String!
 }
 
