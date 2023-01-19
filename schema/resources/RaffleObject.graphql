@@ -85,7 +85,7 @@ input RaffleMastInput {
 	deletedAt: AWSTimestamp
 }
 
-input RaffleOption {
+input RaffleOptionInput {
 	optionName: String!
 	availableUsers: [ID!]!
 }
