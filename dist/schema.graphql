@@ -76,7 +76,7 @@ input RaffleMastInput {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
-  optionItem: [RaffleOption!]!
+  optionItem: [RaffleOptionInput!]!
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!

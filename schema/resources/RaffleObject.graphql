@@ -78,7 +78,7 @@ input RaffleMastInput {
 	taskName: String!
 	headCount: Int!
 	joinUserIDArray: [ID!]!
-	optionItem: [RaffleOption!]!
+	optionItem: [RaffleOptionInput!]!
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
