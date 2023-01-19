@@ -67,6 +67,17 @@ export class UserModel extends BaseModel<UserMast> {
 		this.mast.records = input;
 	}
 
+	get selectedOption() {
+		if (!this.mast.selectedOption) {
+			this.mast.selectedOption = [];
+		}
+		return this.mast.selectedOption;
+	}
+
+	set selectedOption(input: string[]) {
+		this.mast.records = input;
+	}
+
 	// ============================================
 	// validation
 	// ============================================

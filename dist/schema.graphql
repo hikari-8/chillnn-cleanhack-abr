@@ -207,6 +207,7 @@ type UserMast {
   name: String!
   records: [String!]
   role: String!
+  selectedOption: [String!]
   updatedAt: AWSTimestamp!
   userID: ID!
 }
@@ -219,6 +220,7 @@ input UserMastInput {
   name: String!
   records: [String!]
   role: String!
+  selectedOption: [String!]
   updatedAt: AWSTimestamp!
   userID: ID!
 }

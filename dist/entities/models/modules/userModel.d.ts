@@ -19,6 +19,8 @@ export declare class UserModel extends BaseModel<UserMast> {
     set role(input: string);
     get records(): string[];
     set records(input: string[]);
+    get selectedOption(): string[];
+    set selectedOption(input: string[]);
     get isRegisterable(): boolean;
     isAdmin(): true | undefined;
     /**

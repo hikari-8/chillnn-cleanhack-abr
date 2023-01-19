@@ -200,6 +200,7 @@ export declare type UserMast = {
     name: Scalars['String'];
     records?: Maybe<Array<Scalars['String']>>;
     role: Scalars['String'];
+    selectedOption?: Maybe<Array<Scalars['String']>>;
     updatedAt: Scalars['AWSTimestamp'];
     userID: Scalars['ID'];
 };
@@ -211,6 +212,7 @@ export declare type UserMastInput = {
     name: Scalars['String'];
     records?: InputMaybe<Array<Scalars['String']>>;
     role: Scalars['String'];
+    selectedOption?: InputMaybe<Array<Scalars['String']>>;
     updatedAt: Scalars['AWSTimestamp'];
     userID: Scalars['ID'];
 };

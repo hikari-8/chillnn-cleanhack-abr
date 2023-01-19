@@ -5,6 +5,7 @@ type UserMast {
 	groupID: String
 	role: String!
 	records: [String!]
+	selectedOption: [String!]
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
@@ -18,6 +19,7 @@ input UserMastInput {
 	groupID: String
 	role: String!
 	records: [String!]
+	selectedOption: [String!]
 	# status
 	createdAt: AWSTimestamp!
 	updatedAt: AWSTimestamp!
