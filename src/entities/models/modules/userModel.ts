@@ -75,7 +75,7 @@ export class UserModel extends BaseModel<UserMast> {
 	}
 
 	set selectedOption(input: string[]) {
-		this.mast.records = input;
+		this.mast.selectedOption = input;
 	}
 
 	// ============================================

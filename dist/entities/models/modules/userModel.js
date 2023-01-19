@@ -78,7 +78,7 @@ class UserModel extends _baseModel_1.BaseModel {
         return this.mast.selectedOption;
     }
     set selectedOption(input) {
-        this.mast.records = input;
+        this.mast.selectedOption = input;
     }
     // ============================================
     // validation
