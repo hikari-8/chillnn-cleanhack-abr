@@ -125,6 +125,11 @@ export type RaffleOption = {
   optionName: Scalars['String'];
 };
 
+export type RaffleOptionInput = {
+  availableUsers: Array<Scalars['ID']>;
+  optionName: Scalars['String'];
+};
+
 export enum RaffleStatus {
   DONE = 'DONE',
   EFFECTIVE = 'EFFECTIVE',

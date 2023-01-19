@@ -114,7 +114,12 @@ input RaffleObjectInput {
   updatedAt: AWSTimestamp!
 }
 
-input RaffleOption {
+type RaffleOption {
+  availableUsers: [ID!]!
+  optionName: String!
+}
+
+input RaffleOptionInput {
   availableUsers: [ID!]!
   optionName: String!
 }
