@@ -11,7 +11,7 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		groupID: Scalars["ID"],
 		headCount: Scalars["Int"],
 		joinUserIDArray: Array<string>,
-		optionItem: Array<RaffleOption>
+		optionItem: RaffleOption
 		// raffleID: Scalars["ID"]
 	): RaffleMast {
 		return {
@@ -80,13 +80,10 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 	}
 
 	get optionItem() {
-		if (!this.mast.optionItem) {
-			this.mast.optionItem = [];
-		}
 		return this.mast.optionItem;
 	}
 
-	set optionItem(input: RaffleOption[]) {
+	set optionItem(input: RaffleOption) {
 		this.mast.optionItem = input;
 	}
 

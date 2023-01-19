@@ -62,7 +62,7 @@ type RaffleMast {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
-  optionItem: [RaffleOption!]!
+  optionItem: RaffleOption!
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!
@@ -76,7 +76,7 @@ input RaffleMastInput {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
-  optionItem: [RaffleOptionInput!]!
+  optionItem: RaffleOptionInput!
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!

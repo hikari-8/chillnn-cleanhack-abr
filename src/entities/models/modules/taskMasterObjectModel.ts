@@ -151,7 +151,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 				task.groupID,
 				task.headCount,
 				[],
-				[{ optionName: task.optionItem, availableUsers: [] }]
+				{ optionName: task.optionItem, availableUsers: [] }
 			)
 		);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;

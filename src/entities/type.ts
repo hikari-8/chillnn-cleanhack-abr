@@ -68,7 +68,7 @@ export type RaffleMast = {
   groupID: Scalars['ID'];
   headCount: Scalars['Int'];
   joinUserIDArray: Array<Scalars['ID']>;
-  optionItem: Array<RaffleOption>;
+  optionItem: RaffleOption;
   raffleID?: Maybe<Scalars['ID']>;
   raffleItemID: Scalars['ID'];
   taskID: Scalars['ID'];
@@ -82,7 +82,7 @@ export type RaffleMastInput = {
   groupID: Scalars['ID'];
   headCount: Scalars['Int'];
   joinUserIDArray: Array<Scalars['ID']>;
-  optionItem: Array<RaffleOptionInput>;
+  optionItem: RaffleOptionInput;
   raffleID?: InputMaybe<Scalars['ID']>;
   raffleItemID: Scalars['ID'];
   taskID: Scalars['ID'];
