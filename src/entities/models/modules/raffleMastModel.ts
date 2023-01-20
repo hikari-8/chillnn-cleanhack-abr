@@ -10,7 +10,9 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		taskName: Scalars["String"],
 		groupID: Scalars["ID"],
 		headCount: Scalars["Int"],
-		joinUserIDArray: Array<string>
+		joinUserIDArray: Array<string>,
+		optionName: Scalars["String"],
+		optionValidUsers: Array<string>
 		// raffleID: Scalars["ID"]
 	): RaffleMast {
 		return {
@@ -20,6 +22,8 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 			headCount,
 			// userID,
 			joinUserIDArray,
+			optionName,
+			optionValidUsers,
 			raffleItemID: generateUUID(),
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),

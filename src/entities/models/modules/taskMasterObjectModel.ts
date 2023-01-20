@@ -149,6 +149,8 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 				task.taskName,
 				task.groupID,
 				task.headCount,
+				[],
+				"",
 				[]
 			)
 		);
