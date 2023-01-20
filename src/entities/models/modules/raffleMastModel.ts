@@ -1,5 +1,5 @@
 import { generateUUID } from "../../../util";
-import { RaffleMast, RaffleOption } from "../../type";
+import { RaffleMast } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { UserModel } from "./userModel";
@@ -10,8 +10,7 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		taskName: Scalars["String"],
 		groupID: Scalars["ID"],
 		headCount: Scalars["Int"],
-		joinUserIDArray: Array<string>,
-		optionItem: RaffleOption
+		joinUserIDArray: Array<string>
 		// raffleID: Scalars["ID"]
 	): RaffleMast {
 		return {
@@ -21,7 +20,6 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 			headCount,
 			// userID,
 			joinUserIDArray,
-			optionItem,
 			raffleItemID: generateUUID(),
 			createdAt: new Date().getTime(),
 			updatedAt: new Date().getTime(),
@@ -79,12 +77,26 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		this.mast.joinUserIDArray = input;
 	}
 
-	get optionItem() {
-		return this.mast.optionItem;
+	get optionName() {
+		if (!this.mast.optionName) {
+			this.mast.optionName = "";
+		}
+		return this.mast.optionName;
 	}
 
-	set optionItem(input: RaffleOption) {
-		this.mast.optionItem = input;
+	set optionName(input: string) {
+		this.mast.optionName = input;
+	}
+
+	get optionValidUsers() {
+		if (!this.mast.optionValidUsers) {
+			this.mast.optionValidUsers = [];
+		}
+		return this.mast.optionValidUsers;
+	}
+
+	set optionValidUsers(input: string[]) {
+		this.mast.optionValidUsers = input;
 	}
 
 	// ============================================

@@ -62,7 +62,8 @@ type RaffleMast {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
-  optionItem: RaffleOption!
+  optionName: String
+  optionValidUsers: [ID!]
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!
@@ -76,7 +77,8 @@ input RaffleMastInput {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
-  optionItem: RaffleOptionInput!
+  optionName: String
+  optionValidUsers: [ID!]
   raffleID: ID
   raffleItemID: ID!
   taskID: ID!
@@ -112,16 +114,6 @@ input RaffleObjectInput {
   slackURL: String!
   tasks: [RaffleMastInput!]!
   updatedAt: AWSTimestamp!
-}
-
-type RaffleOption {
-  availableUsers: [ID!]!
-  optionName: String!
-}
-
-input RaffleOptionInput {
-  availableUsers: [ID!]!
-  optionName: String!
 }
 
 enum RaffleStatus {

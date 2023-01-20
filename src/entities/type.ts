@@ -68,7 +68,8 @@ export type RaffleMast = {
   groupID: Scalars['ID'];
   headCount: Scalars['Int'];
   joinUserIDArray: Array<Scalars['ID']>;
-  optionItem: RaffleOption;
+  optionName?: Maybe<Scalars['String']>;
+  optionValidUsers?: Maybe<Array<Scalars['ID']>>;
   raffleID?: Maybe<Scalars['ID']>;
   raffleItemID: Scalars['ID'];
   taskID: Scalars['ID'];
@@ -82,7 +83,8 @@ export type RaffleMastInput = {
   groupID: Scalars['ID'];
   headCount: Scalars['Int'];
   joinUserIDArray: Array<Scalars['ID']>;
-  optionItem: RaffleOptionInput;
+  optionName?: InputMaybe<Scalars['String']>;
+  optionValidUsers?: InputMaybe<Array<Scalars['ID']>>;
   raffleID?: InputMaybe<Scalars['ID']>;
   raffleItemID: Scalars['ID'];
   taskID: Scalars['ID'];
@@ -118,16 +120,6 @@ export type RaffleObjectInput = {
   slackURL: Scalars['String'];
   tasks: Array<RaffleMastInput>;
   updatedAt: Scalars['AWSTimestamp'];
-};
-
-export type RaffleOption = {
-  availableUsers: Array<Scalars['ID']>;
-  optionName: Scalars['String'];
-};
-
-export type RaffleOptionInput = {
-  availableUsers: Array<Scalars['ID']>;
-  optionName: Scalars['String'];
 };
 
 export enum RaffleStatus {

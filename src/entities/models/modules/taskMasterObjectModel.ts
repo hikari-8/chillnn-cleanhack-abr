@@ -11,7 +11,6 @@ import { generateUUID } from "../../..";
 import { TaskMastModel } from "./taskMastModel";
 import { RaffleObjectModel } from "./raffleObjectModel";
 import { RaffleMastModel } from "./raffleMastModel";
-import { RaffleOptionModel } from "./raffleOptionMOdel";
 
 export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	static getBlanc(
@@ -150,8 +149,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 				task.taskName,
 				task.groupID,
 				task.headCount,
-				[],
-				{ optionName: task.optionItem, availableUsers: [] }
+				[]
 			)
 		);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
