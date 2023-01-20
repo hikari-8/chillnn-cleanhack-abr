@@ -150,7 +150,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 				task.groupID,
 				task.headCount,
 				[],
-				"",
+				task.optionItem,
 				[]
 			)
 		);
