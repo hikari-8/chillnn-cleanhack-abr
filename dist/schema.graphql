@@ -62,7 +62,7 @@ type RaffleMast {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
-  optionName: String!
+  optionName: String
   optionValidUsers: [ID!]!
   raffleID: ID
   raffleItemID: ID!
@@ -77,7 +77,7 @@ input RaffleMastInput {
   groupID: ID!
   headCount: Int!
   joinUserIDArray: [ID!]!
-  optionName: String!
+  optionName: String
   optionValidUsers: [ID!]!
   raffleID: ID
   raffleItemID: ID!
