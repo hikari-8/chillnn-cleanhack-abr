@@ -64,9 +64,6 @@ class TaskMastModel extends _baseModel_1.BaseModel {
             this.mast.headCount = 0;
         }
     }
-    get taskStatus() {
-        return this.mast.taskStatus;
-    }
     get optionItem() {
         if (!this.mast.optionItem) {
             this.mast.optionItem = "";
@@ -75,6 +72,9 @@ class TaskMastModel extends _baseModel_1.BaseModel {
     }
     set optionItem(input) {
         this.mast.optionItem = input;
+    }
+    get taskStatus() {
+        return this.mast.taskStatus;
     }
     // 引数見直した方がいいかも
     set taskStatus(input) {

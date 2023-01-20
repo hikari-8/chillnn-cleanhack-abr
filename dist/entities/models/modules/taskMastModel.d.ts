@@ -12,9 +12,9 @@ export declare class TaskMastModel extends BaseModel<TaskMast> {
     set taskName(input: string);
     get headCount(): number;
     set headCount(input: number);
-    get taskStatus(): TaskStatus;
     get optionItem(): string;
     set optionItem(input: string);
+    get taskStatus(): TaskStatus;
     set taskStatus(input: TaskStatus);
     /**
      * TaskMasterObjectのtaskspropertyに入れるmastを作成するために、TaskMastModelをmastに解く関数

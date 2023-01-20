@@ -63,10 +63,6 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 		}
 	}
 
-	get taskStatus() {
-		return this.mast.taskStatus;
-	}
-
 	get optionItem() {
 		if (!this.mast.optionItem) {
 			this.mast.optionItem = "";
@@ -76,6 +72,10 @@ export class TaskMastModel extends BaseModel<TaskMast> {
 
 	set optionItem(input: string) {
 		this.mast.optionItem = input;
+	}
+
+	get taskStatus() {
+		return this.mast.taskStatus;
 	}
 
 	// 引数見直した方がいいかも
