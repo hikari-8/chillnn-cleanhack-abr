@@ -20,7 +20,6 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 			taskName,
 			groupID,
 			headCount,
-			// userID,
 			joinUserIDArray,
 			optionName,
 			optionValidUsers,

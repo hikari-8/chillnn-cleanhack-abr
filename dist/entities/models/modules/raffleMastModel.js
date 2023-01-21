@@ -21,7 +21,6 @@ class RaffleMastModel extends _baseModel_1.BaseModel {
             taskName,
             groupID,
             headCount,
-            // userID,
             joinUserIDArray,
             optionName,
             optionValidUsers,
