@@ -172,6 +172,7 @@ class UserModel extends _baseModel_1.BaseModel {
         return __awaiter(this, void 0, void 0, function* () {
             if (!this.mast.groupID) {
                 this.mast.groupID = groupID;
+                this.mast.role = "admin";
                 this.mast.updatedAt = new Date().getTime();
                 yield this.repositoryContainer.userMastRepository.updateUserMast(this.mast);
             }
