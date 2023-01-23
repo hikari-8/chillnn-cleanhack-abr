@@ -77,7 +77,7 @@ class GroupModel extends _baseModel_1.BaseModel {
     // functions
     // ============================================
     /**
-     * ユーザー情報を新規登録、または更新する
+     * グループを新規登録、または更新する
      */
     register() {
         return __awaiter(this, void 0, void 0, function* () {

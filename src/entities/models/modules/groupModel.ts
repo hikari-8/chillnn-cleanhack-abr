@@ -82,7 +82,7 @@ export class GroupModel extends BaseModel<GroupMast> {
 	// functions
 	// ============================================
 	/**
-	 * ユーザー情報を新規登録、または更新する
+	 * グループを新規登録、または更新する
 	 */
 	async register() {
 		if (this.isRegisterable) {

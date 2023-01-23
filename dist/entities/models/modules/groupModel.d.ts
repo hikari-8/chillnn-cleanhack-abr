@@ -16,7 +16,7 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     /**
-     * ユーザー情報を新規登録、または更新する
+     * グループを新規登録、または更新する
      */
     register(): Promise<void>;
     /**

@@ -41,6 +41,10 @@ export declare class UserModel extends BaseModel<UserMast> {
      */
     userModelToUserMast(userModel: UserModel): Promise<UserMast>;
     /**
+     * userModelにgroupIDを紐づける
+     */
+    addGroupIDToUserModel(groupID: string): Promise<void>;
+    /**
      * グループの初期化データを作成する
      * @returns
      */

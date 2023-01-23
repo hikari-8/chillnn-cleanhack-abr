@@ -165,6 +165,18 @@ class UserModel extends _baseModel_1.BaseModel {
             return userModel.mast;
         });
     }
+    /**
+     * userModelにgroupIDを紐づける
+     */
+    addGroupIDToUserModel(groupID) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!this.mast.groupID) {
+                this.mast.groupID = groupID;
+                this.mast.updatedAt = new Date().getTime();
+                yield this.repositoryContainer.userMastRepository.updateUserMast(this.mast);
+            }
+        });
+    }
     // ============================================
     // functions -Group
     // ============================================

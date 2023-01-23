@@ -167,6 +167,19 @@ export class UserModel extends BaseModel<UserMast> {
 		return userModel.mast;
 	}
 
+	/**
+	 * userModelにgroupIDを紐づける
+	 */
+	async addGroupIDToUserModel(groupID: string) {
+		if (!this.mast.groupID) {
+			this.mast.groupID = groupID;
+			this.mast.updatedAt = new Date().getTime();
+			await this.repositoryContainer.userMastRepository.updateUserMast(
+				this.mast
+			);
+		}
+	}
+
 	// ============================================
 	// functions -Group
 	// ============================================
