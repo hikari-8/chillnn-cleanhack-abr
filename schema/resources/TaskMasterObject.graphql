@@ -9,9 +9,11 @@ type TaskMasterObject {
 	groupID: ID!
 	limitHour: Int
 	limitMin: Int
+	limitTimeUnix: Int
 	remindSlackHour: Int
 	remindSlackMin: Int
-	slackURL: String
+	remindTimeUnix: Int
+	channelID: String
 	taskMasterObjectID: ID!
 	# status
 	createdAt: AWSTimestamp!
@@ -43,9 +45,11 @@ input TaskMasterObjectInput {
 	groupID: ID!
 	limitHour: Int
 	limitMin: Int
+	limitTimeUnix: Int
 	remindSlackHour: Int
 	remindSlackMin: Int
-	slackURL: String
+	remindTimeUnix: Int
+	channelID: String
 	taskMasterObjectID: ID!
 	# status
 	createdAt: AWSTimestamp!

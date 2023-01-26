@@ -14,11 +14,14 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     set limitHour(input: number);
     get limitMin(): number;
     set limitMin(input: number);
+    get limitTimeUnix(): number;
+    set limitTimeUnix(input: number);
     get remindSlackHour(): number;
     set remindSlackHour(input: number);
     get remindSlackMin(): number;
-    set remindSlackMin(input: number);
-    get slackURL(): string;
+    set remindTimeUnix(input: number);
+    get remindTimeUnix(): number;
+    get channelID(): string;
     set slackURL(input: string);
     get tasks(): TaskMast[];
     set tasks(input: TaskMast[]);

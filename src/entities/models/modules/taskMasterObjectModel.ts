@@ -46,25 +46,36 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 	}
 
 	get limitHour() {
-		if (!this.mast.remindSlackHour) {
-			this.mast.remindSlackHour = 0o0;
+		if (!this.mast.limitHour) {
+			this.mast.limitHour = 0o0;
 		}
-		return this.mast.remindSlackHour;
+		return this.mast.limitHour;
 	}
 
 	set limitHour(input: number) {
-		this.mast.remindSlackHour = input;
+		this.mast.limitHour = input;
 	}
 
 	get limitMin() {
-		if (!this.mast.remindSlackMin) {
-			this.mast.remindSlackMin = 0o0;
+		if (!this.mast.limitMin) {
+			this.mast.limitMin = 0o0;
 		}
-		return this.mast.remindSlackMin;
+		return this.mast.limitMin;
 	}
 
 	set limitMin(input: number) {
-		this.mast.remindSlackMin = input;
+		this.mast.limitMin = input;
+	}
+
+	get limitTimeUnix() {
+		if (!this.mast.limitTimeUnix) {
+			this.mast.limitTimeUnix = 0o0;
+		}
+		return this.mast.limitTimeUnix;
+	}
+
+	set limitTimeUnix(input: number) {
+		this.mast.limitTimeUnix = input;
 	}
 
 	get remindSlackHour() {
@@ -85,19 +96,26 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		return this.mast.remindSlackMin;
 	}
 
-	set remindSlackMin(input: number) {
-		this.mast.remindSlackMin = input;
+	set remindTimeUnix(input: number) {
+		this.mast.remindTimeUnix = input;
 	}
 
-	get slackURL() {
-		if (!this.mast.slackURL) {
-			this.mast.slackURL = "";
+	get remindTimeUnix() {
+		if (!this.mast.remindTimeUnix) {
+			this.mast.remindTimeUnix = 0o0;
 		}
-		return this.mast.slackURL;
+		return this.mast.remindTimeUnix;
+	}
+
+	get channelID() {
+		if (!this.mast.channelID) {
+			this.mast.channelID = "";
+		}
+		return this.mast.channelID;
 	}
 
 	set slackURL(input: string) {
-		this.mast.slackURL = input;
+		this.mast.channelID = input;
 	}
 
 	get tasks() {
@@ -163,10 +181,6 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			)
 		);
 		const status: RaffleStatus = RaffleStatus.EFFECTIVE;
-		//nullにpushできないため、一旦作成して後で削除します
-		// const raffleMemberBlanc = [
-		// 	{ userID: "blank", groupID: "blank", joinAt: 11111 },
-		// ];
 
 		//くじたちのMastを作成する
 		const blankRaffle = RaffleObjectModel.getBlanc(
@@ -174,9 +188,11 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.groupID,
 			this.limitHour,
 			this.limitMin,
+			this.limitTimeUnix,
 			status,
 			this.remindSlackHour,
 			this.remindSlackMin,
+			this.remindTimeUnix,
 			this.slackURL,
 			[]
 		);

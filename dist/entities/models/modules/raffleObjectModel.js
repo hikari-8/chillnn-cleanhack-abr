@@ -13,17 +13,19 @@ exports.RaffleObjectModel = void 0;
 const _baseModel_1 = require("./_baseModel");
 const __1 = require("../../..");
 class RaffleObjectModel extends _baseModel_1.BaseModel {
-    static getBlanc(tasks, groupID, limitHour, limitMin, raffleStatus, remindSlackHour, remindSlackMin, slackURL, activeMembers) {
+    static getBlanc(tasks, groupID, limitHour, limitMin, limitTimeUnix, raffleStatus, remindSlackHour, remindSlackMin, remindTimeUnix, channelID, activeMembers) {
         return {
             raffleID: (0, __1.generateUUID)(),
             tasks,
             groupID,
             limitHour,
             limitMin,
+            limitTimeUnix,
             raffleStatus,
             remindSlackHour,
             remindSlackMin,
-            slackURL,
+            remindTimeUnix,
+            channelID,
             activeMembers,
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
@@ -51,22 +53,31 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     // getter / setter
     // ============================================
     get limitHour() {
-        if (!this.mast.remindSlackHour) {
-            this.mast.remindSlackHour = 0o0;
+        if (!this.mast.limitHour) {
+            this.mast.limitHour = 0o0;
         }
-        return this.mast.remindSlackHour;
+        return this.mast.limitHour;
     }
     set limitHour(input) {
-        this.mast.remindSlackHour = input;
+        this.mast.limitHour = input;
     }
     get limitMin() {
-        if (!this.mast.remindSlackMin) {
-            this.mast.remindSlackMin = 0o0;
+        if (!this.mast.limitMin) {
+            this.mast.limitMin = 0o0;
         }
-        return this.mast.remindSlackMin;
+        return this.mast.limitMin;
     }
     set limitMin(input) {
-        this.mast.remindSlackMin = input;
+        this.mast.limitMin = input;
+    }
+    get limitTimeUnix() {
+        if (!this.mast.limitTimeUnix) {
+            this.mast.limitTimeUnix = 0o0;
+        }
+        return this.mast.limitTimeUnix;
+    }
+    set limitTimeUnix(input) {
+        this.mast.limitTimeUnix = input;
     }
     get remindSlackHour() {
         if (!this.mast.remindSlackHour) {
@@ -82,6 +93,15 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             this.mast.remindSlackMin = 0o0;
         }
         return this.mast.remindSlackMin;
+    }
+    set remindTimeUnix(input) {
+        this.mast.remindTimeUnix = input;
+    }
+    get remindTimeUnix() {
+        if (!this.mast.remindTimeUnix) {
+            this.mast.remindTimeUnix = 0o0;
+        }
+        return this.mast.remindTimeUnix;
     }
     get raffleStatus() {
         return this.mast.raffleStatus;
@@ -110,14 +130,14 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     set activeMembers(input) {
         this.mast.activeMembers = input;
     }
-    get slackURL() {
-        if (!this.mast.slackURL) {
-            this.mast.slackURL = "";
+    get channelID() {
+        if (!this.mast.channelID) {
+            this.mast.channelID = "";
         }
-        return this.mast.slackURL;
+        return this.mast.channelID;
     }
     set slackURL(input) {
-        this.mast.slackURL = input;
+        this.mast.channelID = input;
     }
     // ============================================
     // validation

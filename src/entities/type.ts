@@ -94,32 +94,36 @@ export type RaffleMastInput = {
 
 export type RaffleObject = {
   activeMembers: Array<RaffleJoinUser>;
+  channelID: Scalars['String'];
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   limitHour: Scalars['Int'];
   limitMin: Scalars['Int'];
+  limitTimeUnix: Scalars['Int'];
   raffleID: Scalars['ID'];
   raffleStatus: RaffleStatus;
   remindSlackHour: Scalars['Int'];
   remindSlackMin: Scalars['Int'];
-  slackURL: Scalars['String'];
+  remindTimeUnix: Scalars['Int'];
   tasks: Array<RaffleMast>;
   updatedAt: Scalars['AWSTimestamp'];
 };
 
 export type RaffleObjectInput = {
   activeMembers: Array<RaffleJoinUserInput>;
+  channelID: Scalars['String'];
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   limitHour: Scalars['Int'];
   limitMin: Scalars['Int'];
+  limitTimeUnix: Scalars['Int'];
   raffleID: Scalars['ID'];
   raffleStatus: RaffleStatus;
   remindSlackHour: Scalars['Int'];
   remindSlackMin: Scalars['Int'];
-  slackURL: Scalars['String'];
+  remindTimeUnix: Scalars['Int'];
   tasks: Array<RaffleMastInput>;
   updatedAt: Scalars['AWSTimestamp'];
 };
@@ -169,28 +173,32 @@ export type TaskMastInput = {
 };
 
 export type TaskMasterObject = {
+  channelID?: Maybe<Scalars['String']>;
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: Maybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   limitHour?: Maybe<Scalars['Int']>;
   limitMin?: Maybe<Scalars['Int']>;
+  limitTimeUnix?: Maybe<Scalars['Int']>;
   remindSlackHour?: Maybe<Scalars['Int']>;
   remindSlackMin?: Maybe<Scalars['Int']>;
-  slackURL?: Maybe<Scalars['String']>;
+  remindTimeUnix?: Maybe<Scalars['Int']>;
   taskMasterObjectID: Scalars['ID'];
   tasks: Array<TaskMast>;
   updatedAt: Scalars['AWSTimestamp'];
 };
 
 export type TaskMasterObjectInput = {
+  channelID?: InputMaybe<Scalars['String']>;
   createdAt: Scalars['AWSTimestamp'];
   deletedAt?: InputMaybe<Scalars['AWSTimestamp']>;
   groupID: Scalars['ID'];
   limitHour?: InputMaybe<Scalars['Int']>;
   limitMin?: InputMaybe<Scalars['Int']>;
+  limitTimeUnix?: InputMaybe<Scalars['Int']>;
   remindSlackHour?: InputMaybe<Scalars['Int']>;
   remindSlackMin?: InputMaybe<Scalars['Int']>;
-  slackURL?: InputMaybe<Scalars['String']>;
+  remindTimeUnix?: InputMaybe<Scalars['Int']>;
   taskMasterObjectID: Scalars['ID'];
   tasks: Array<TaskMastInput>;
   updatedAt: Scalars['AWSTimestamp'];

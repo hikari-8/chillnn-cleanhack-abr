@@ -88,32 +88,36 @@ input RaffleMastInput {
 
 type RaffleObject {
   activeMembers: [RaffleJoinUser!]!
+  channelID: String!
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
   limitHour: Int!
   limitMin: Int!
+  limitTimeUnix: Int!
   raffleID: ID!
   raffleStatus: RaffleStatus!
   remindSlackHour: Int!
   remindSlackMin: Int!
-  slackURL: String!
+  remindTimeUnix: Int!
   tasks: [RaffleMast!]!
   updatedAt: AWSTimestamp!
 }
 
 input RaffleObjectInput {
   activeMembers: [RaffleJoinUserInput!]!
+  channelID: String!
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
   limitHour: Int!
   limitMin: Int!
+  limitTimeUnix: Int!
   raffleID: ID!
   raffleStatus: RaffleStatus!
   remindSlackHour: Int!
   remindSlackMin: Int!
-  slackURL: String!
+  remindTimeUnix: Int!
   tasks: [RaffleMastInput!]!
   updatedAt: AWSTimestamp!
 }
@@ -163,28 +167,32 @@ input TaskMastInput {
 }
 
 type TaskMasterObject {
+  channelID: String
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
   limitHour: Int
   limitMin: Int
+  limitTimeUnix: Int
   remindSlackHour: Int
   remindSlackMin: Int
-  slackURL: String
+  remindTimeUnix: Int
   taskMasterObjectID: ID!
   tasks: [TaskMast!]!
   updatedAt: AWSTimestamp!
 }
 
 input TaskMasterObjectInput {
+  channelID: String
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
   limitHour: Int
   limitMin: Int
+  limitTimeUnix: Int
   remindSlackHour: Int
   remindSlackMin: Int
-  slackURL: String
+  remindTimeUnix: Int
   taskMasterObjectID: ID!
   tasks: [TaskMastInput!]!
   updatedAt: AWSTimestamp!
