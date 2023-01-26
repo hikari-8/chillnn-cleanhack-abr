@@ -170,7 +170,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		return this.mast.channelID;
 	}
 
-	set slackURL(input: string) {
+	set channelID(input: string) {
 		this.mast.channelID = input;
 	}
 

@@ -104,7 +104,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         }
         return this.mast.channelID;
     }
-    set slackURL(input) {
+    set channelID(input) {
         this.mast.channelID = input;
     }
     get tasks() {
@@ -156,7 +156,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             const newTaskArray = taskArray.map((task) => raffleMastModel_1.RaffleMastModel.getBlanc(task.taskID, task.taskName, task.groupID, task.headCount, [], task.optionItem, []));
             const status = type_1.RaffleStatus.EFFECTIVE;
             //くじたちのMastを作成する
-            const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitHour, this.limitMin, this.limitTimeUnix, status, this.remindSlackHour, this.remindSlackMin, this.remindTimeUnix, this.slackURL, []);
+            const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitHour, this.limitMin, this.limitTimeUnix, status, this.remindSlackHour, this.remindSlackMin, this.remindTimeUnix, this.channelID, []);
             return this.modelFactory.RaffleObjectModel(blankRaffle, {
                 isNew: true,
             });

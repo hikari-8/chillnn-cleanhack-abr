@@ -23,7 +23,7 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     get remindTimeUnix(): number;
     set remindTimeUnix(input: number);
     get channelID(): string;
-    set slackURL(input: string);
+    set channelID(input: string);
     get tasks(): TaskMast[];
     set tasks(input: TaskMast[]);
     get isRegisterable(): boolean;

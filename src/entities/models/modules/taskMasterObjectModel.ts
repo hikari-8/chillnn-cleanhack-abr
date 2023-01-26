@@ -117,7 +117,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		return this.mast.channelID;
 	}
 
-	set slackURL(input: string) {
+	set channelID(input: string) {
 		this.mast.channelID = input;
 	}
 
@@ -196,7 +196,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.remindSlackHour,
 			this.remindSlackMin,
 			this.remindTimeUnix,
-			this.slackURL,
+			this.channelID,
 			[]
 		);
 		return this.modelFactory.RaffleObjectModel(blankRaffle, {

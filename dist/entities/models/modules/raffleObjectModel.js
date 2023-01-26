@@ -139,7 +139,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         }
         return this.mast.channelID;
     }
-    set slackURL(input) {
+    set channelID(input) {
         this.mast.channelID = input;
     }
     // ============================================

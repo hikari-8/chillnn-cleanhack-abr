@@ -28,7 +28,7 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
     get activeMembers(): RaffleJoinUser[];
     set activeMembers(input: RaffleJoinUser[]);
     get channelID(): string;
-    set slackURL(input: string);
+    set channelID(input: string);
     get isRegisterable(): boolean;
     get isAdmin(): boolean;
     get isDone(): boolean;
