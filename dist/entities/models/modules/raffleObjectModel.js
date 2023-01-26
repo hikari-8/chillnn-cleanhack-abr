@@ -54,7 +54,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     // ============================================
     get limitHour() {
         if (!this.mast.limitHour) {
-            this.mast.limitHour = 0o0;
+            this.mast.limitHour = 0;
         }
         return this.mast.limitHour;
     }
@@ -63,7 +63,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     }
     get limitMin() {
         if (!this.mast.limitMin) {
-            this.mast.limitMin = 0o0;
+            this.mast.limitMin = 0;
         }
         return this.mast.limitMin;
     }
@@ -72,7 +72,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     }
     get limitTimeUnix() {
         if (!this.mast.limitTimeUnix) {
-            this.mast.limitTimeUnix = 0o0;
+            this.mast.limitTimeUnix = 0;
         }
         return this.mast.limitTimeUnix;
     }
@@ -81,7 +81,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     }
     get remindSlackHour() {
         if (!this.mast.remindSlackHour) {
-            this.mast.remindSlackHour = 0o0;
+            this.mast.remindSlackHour = 0;
         }
         return this.mast.remindSlackHour;
     }
@@ -90,7 +90,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     }
     get remindSlackMin() {
         if (!this.mast.remindSlackMin) {
-            this.mast.remindSlackMin = 0o0;
+            this.mast.remindSlackMin = 0;
         }
         return this.mast.remindSlackMin;
     }
@@ -99,7 +99,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     }
     get remindTimeUnix() {
         if (!this.mast.remindTimeUnix) {
-            this.mast.remindTimeUnix = 0o0;
+            this.mast.remindTimeUnix = 0;
         }
         return this.mast.remindTimeUnix;
     }

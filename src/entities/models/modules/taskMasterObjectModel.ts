@@ -47,7 +47,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	get limitHour() {
 		if (!this.mast.limitHour) {
-			this.mast.limitHour = 0o0;
+			this.mast.limitHour = 0;
 		}
 		return this.mast.limitHour;
 	}
@@ -58,7 +58,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	get limitMin() {
 		if (!this.mast.limitMin) {
-			this.mast.limitMin = 0o0;
+			this.mast.limitMin = 0;
 		}
 		return this.mast.limitMin;
 	}
@@ -69,7 +69,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	get limitTimeUnix() {
 		if (!this.mast.limitTimeUnix) {
-			this.mast.limitTimeUnix = 0o0;
+			this.mast.limitTimeUnix = 0;
 		}
 		return this.mast.limitTimeUnix;
 	}
@@ -80,7 +80,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	get remindSlackHour() {
 		if (!this.mast.remindSlackHour) {
-			this.mast.remindSlackHour = 0o0;
+			this.mast.remindSlackHour = 0;
 		}
 		return this.mast.remindSlackHour;
 	}
@@ -91,7 +91,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	get remindSlackMin() {
 		if (!this.mast.remindSlackMin) {
-			this.mast.remindSlackMin = 0o0;
+			this.mast.remindSlackMin = 0;
 		}
 		return this.mast.remindSlackMin;
 	}
@@ -102,7 +102,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 
 	get remindTimeUnix() {
 		if (!this.mast.remindTimeUnix) {
-			this.mast.remindTimeUnix = 0o0;
+			this.mast.remindTimeUnix = 0;
 		}
 		return this.mast.remindTimeUnix;
 	}
