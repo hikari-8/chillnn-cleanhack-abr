@@ -238,8 +238,8 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     fetchUserModelToGetBlanc() {
         return __awaiter(this, void 0, void 0, function* () {
             //1番目のjoinuserのuserIDを借りる
-            const user = this.mast.activeMembers[0];
-            const userID = user.userID;
+            const groupMast = yield this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(this.mast.groupID);
+            const userID = groupMast === null || groupMast === void 0 ? void 0 : groupMast.createdUserID;
             const userData = yield this.repositoryContainer.userMastRepository.fetchUserMastByUserID(userID);
             if (userData == null) {
                 return null;

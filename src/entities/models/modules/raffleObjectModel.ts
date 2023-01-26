@@ -276,11 +276,14 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	 */
 	async fetchUserModelToGetBlanc() {
 		//1番目のjoinuserのuserIDを借りる
-		const user = this.mast.activeMembers[0];
-		const userID = user.userID;
+		const groupMast =
+			await this.repositoryContainer.groupMastRepository.fetchGroupByGroupID(
+				this.mast.groupID
+			);
+		const userID = groupMast?.createdUserID;
 		const userData =
 			await this.repositoryContainer.userMastRepository.fetchUserMastByUserID(
-				userID
+				userID!
 			);
 		if (userData == null) {
 			return null;
