@@ -86,14 +86,17 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
         }
         return this.mast.remindSlackMin;
     }
-    set remindTimeUnix(input) {
-        this.mast.remindTimeUnix = input;
+    set remindSlackMin(input) {
+        this.mast.remindSlackMin = input;
     }
     get remindTimeUnix() {
         if (!this.mast.remindTimeUnix) {
             this.mast.remindTimeUnix = 0;
         }
         return this.mast.remindTimeUnix;
+    }
+    set remindTimeUnix(input) {
+        this.mast.remindTimeUnix = input;
     }
     get channelID() {
         if (!this.mast.channelID) {

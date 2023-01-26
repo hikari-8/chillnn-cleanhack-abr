@@ -18,8 +18,9 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
     get remindSlackHour(): number;
     set remindSlackHour(input: number);
     get remindSlackMin(): number;
-    set remindTimeUnix(input: number);
+    set remindSlackMin(input: number);
     get remindTimeUnix(): number;
+    set remindTimeUnix(input: number);
     get raffleStatus(): RaffleStatus;
     set raffleStatus(input: RaffleStatus);
     get tasks(): RaffleMast[];

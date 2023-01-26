@@ -19,8 +19,9 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
     get remindSlackHour(): number;
     set remindSlackHour(input: number);
     get remindSlackMin(): number;
-    set remindTimeUnix(input: number);
+    set remindSlackMin(input: number);
     get remindTimeUnix(): number;
+    set remindTimeUnix(input: number);
     get channelID(): string;
     set slackURL(input: string);
     get tasks(): TaskMast[];

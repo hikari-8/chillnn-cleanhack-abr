@@ -95,9 +95,8 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		}
 		return this.mast.remindSlackMin;
 	}
-
-	set remindTimeUnix(input: number) {
-		this.mast.remindTimeUnix = input;
+	set remindSlackMin(input: number) {
+		this.mast.remindSlackMin = input;
 	}
 
 	get remindTimeUnix() {
@@ -105,6 +104,10 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			this.mast.remindTimeUnix = 0;
 		}
 		return this.mast.remindTimeUnix;
+	}
+
+	set remindTimeUnix(input: number) {
+		this.mast.remindTimeUnix = input;
 	}
 
 	get channelID() {

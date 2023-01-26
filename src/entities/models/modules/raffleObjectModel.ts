@@ -116,9 +116,8 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		}
 		return this.mast.remindSlackMin;
 	}
-
-	set remindTimeUnix(input: number) {
-		this.mast.remindTimeUnix = input;
+	set remindSlackMin(input: number) {
+		this.mast.remindSlackMin = input;
 	}
 
 	get remindTimeUnix() {
@@ -126,6 +125,10 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			this.mast.remindTimeUnix = 0;
 		}
 		return this.mast.remindTimeUnix;
+	}
+
+	set remindTimeUnix(input: number) {
+		this.mast.remindTimeUnix = input;
 	}
 
 	get raffleStatus() {
