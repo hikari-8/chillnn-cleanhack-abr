@@ -270,6 +270,25 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		return this.mast;
 	}
 
+	/**
+	 * raffleからuserModelをとってくるための関数(serverで使用)
+	 *
+	 */
+	async fetchUserModelToGetBlanc() {
+		//1番目のjoinuserのuserIDを借りる
+		const user = this.mast.activeMembers[0];
+		const userID = user.userID;
+		const userData =
+			await this.repositoryContainer.userMastRepository.fetchUserMastByUserID(
+				userID
+			);
+		if (userData == null) {
+			return null;
+		}
+		const res = this.modelFactory.UserModel(userData);
+		return res;
+	}
+
 	// /**
 	//  * raffleIDから、ルームの個々のデータを取得する
 	//  * @returns

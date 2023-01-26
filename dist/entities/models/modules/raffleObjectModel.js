@@ -231,6 +231,23 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
             return this.mast;
         });
     }
+    /**
+     * raffleからuserModelをとってくるための関数(serverで使用)
+     *
+     */
+    fetchUserModelToGetBlanc() {
+        return __awaiter(this, void 0, void 0, function* () {
+            //1番目のjoinuserのuserIDを借りる
+            const user = this.mast.activeMembers[0];
+            const userID = user.userID;
+            const userData = yield this.repositoryContainer.userMastRepository.fetchUserMastByUserID(userID);
+            if (userData == null) {
+                return null;
+            }
+            const res = this.modelFactory.UserModel(userData);
+            return res;
+        });
+    }
     // /**
     //  * raffleIDから、ルームの個々のデータを取得する
     //  * @returns

@@ -56,5 +56,10 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      *
      */
     raffleObjectModelToRaffleObject(): Promise<RaffleObject>;
+    /**
+     * raffleからuserModelをとってくるための関数(serverで使用)
+     *
+     */
+    fetchUserModelToGetBlanc(): Promise<import("./userModel").UserModel | null>;
     fetchRaffleItem(): Promise<RaffleObjectModel | null>;
 }
