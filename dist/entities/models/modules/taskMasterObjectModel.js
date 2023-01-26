@@ -44,38 +44,41 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
     get deletedAt() {
         return this.mast.deletedAt;
     }
-    get limitTime() {
-        return this.mast.limitTime || "";
+    get limitHour() {
+        if (!this.mast.remindSlackHour) {
+            this.mast.remindSlackHour = 0o0;
+        }
+        return this.mast.remindSlackHour;
     }
-    set limitTime(input) {
-        if (input) {
-            this.mast.limitTime = input;
-        }
-        else {
-            this.mast.limitTime = "";
-        }
+    set limitHour(input) {
+        this.mast.remindSlackHour = input;
     }
-    get remindSlackWeek() {
-        return this.mast.remindSlackWeek || "blanc";
+    get limitMin() {
+        if (!this.mast.remindSlackMin) {
+            this.mast.remindSlackMin = 0o0;
+        }
+        return this.mast.remindSlackMin;
     }
-    set remindSlackWeek(input) {
-        if (input) {
-            this.mast.remindSlackWeek = input;
-        }
-        else {
-            this.mast.remindSlackWeek = null;
-        }
+    set limitMin(input) {
+        this.mast.remindSlackMin = input;
     }
-    get remindSlackTime() {
-        return this.mast.remindSlackTime || "blanc";
+    get remindSlackHour() {
+        if (!this.mast.remindSlackHour) {
+            this.mast.remindSlackHour = 0o0;
+        }
+        return this.mast.remindSlackHour;
     }
-    set remindSlackTime(input) {
-        if (input) {
-            this.mast.remindSlackTime = input;
+    set remindSlackHour(input) {
+        this.mast.remindSlackHour = input;
+    }
+    get remindSlackMin() {
+        if (!this.mast.remindSlackMin) {
+            this.mast.remindSlackMin = 0o0;
         }
-        else {
-            this.mast.remindSlackTime = null;
-        }
+        return this.mast.remindSlackMin;
+    }
+    set remindSlackMin(input) {
+        this.mast.remindSlackMin = input;
     }
     get slackURL() {
         if (!this.mast.slackURL) {
@@ -139,7 +142,7 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             // 	{ userID: "blank", groupID: "blank", joinAt: 11111 },
             // ];
             //くじたちのMastを作成する
-            const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitTime, status, this.remindSlackWeek, this.remindSlackTime, this.slackURL, []);
+            const blankRaffle = raffleObjectModel_1.RaffleObjectModel.getBlanc(newTaskArray, this.groupID, this.limitHour, this.limitMin, status, this.remindSlackHour, this.remindSlackMin, this.slackURL, []);
             return this.modelFactory.RaffleObjectModel(blankRaffle, {
                 isNew: true,
             });

@@ -7,9 +7,10 @@ enum TaskStatus {
 type TaskMasterObject {
 	tasks: [TaskMast!]!
 	groupID: ID!
-	limitTime: String
-	remindSlackWeek: String
-	remindSlackTime: String
+	limitHour: Int
+	limitMin: Int
+	remindSlackHour: Int
+	remindSlackMin: Int
 	slackURL: String
 	taskMasterObjectID: ID!
 	# status
@@ -40,9 +41,10 @@ type TaskMast {
 input TaskMasterObjectInput {
 	tasks: [TaskMastInput!]!
 	groupID: ID!
-	limitTime: String
-	remindSlackWeek: String
-	remindSlackTime: String
+	limitHour: Int
+	limitMin: Int
+	remindSlackHour: Int
+	remindSlackMin: Int
 	slackURL: String
 	taskMasterObjectID: ID!
 	# status

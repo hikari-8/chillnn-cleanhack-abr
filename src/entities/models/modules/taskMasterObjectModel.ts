@@ -45,40 +45,48 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		return this.mast.deletedAt;
 	}
 
-	get limitTime() {
-		return this.mast.limitTime || "";
-	}
-
-	set limitTime(input: string) {
-		if (input) {
-			this.mast.limitTime = input;
-		} else {
-			this.mast.limitTime = "";
+	get limitHour() {
+		if (!this.mast.remindSlackHour) {
+			this.mast.remindSlackHour = 0o0;
 		}
+		return this.mast.remindSlackHour;
 	}
 
-	get remindSlackWeek() {
-		return this.mast.remindSlackWeek || "blanc";
+	set limitHour(input: number) {
+		this.mast.remindSlackHour = input;
 	}
 
-	set remindSlackWeek(input: string) {
-		if (input) {
-			this.mast.remindSlackWeek = input;
-		} else {
-			this.mast.remindSlackWeek = null;
+	get limitMin() {
+		if (!this.mast.remindSlackMin) {
+			this.mast.remindSlackMin = 0o0;
 		}
+		return this.mast.remindSlackMin;
 	}
 
-	get remindSlackTime() {
-		return this.mast.remindSlackTime || "blanc";
+	set limitMin(input: number) {
+		this.mast.remindSlackMin = input;
 	}
 
-	set remindSlackTime(input: string) {
-		if (input) {
-			this.mast.remindSlackTime = input;
-		} else {
-			this.mast.remindSlackTime = null;
+	get remindSlackHour() {
+		if (!this.mast.remindSlackHour) {
+			this.mast.remindSlackHour = 0o0;
 		}
+		return this.mast.remindSlackHour;
+	}
+
+	set remindSlackHour(input: number) {
+		this.mast.remindSlackHour = input;
+	}
+
+	get remindSlackMin() {
+		if (!this.mast.remindSlackMin) {
+			this.mast.remindSlackMin = 0o0;
+		}
+		return this.mast.remindSlackMin;
+	}
+
+	set remindSlackMin(input: number) {
+		this.mast.remindSlackMin = input;
 	}
 
 	get slackURL() {
@@ -164,10 +172,11 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		const blankRaffle = RaffleObjectModel.getBlanc(
 			newTaskArray,
 			this.groupID,
-			this.limitTime,
+			this.limitHour,
+			this.limitMin,
 			status,
-			this.remindSlackWeek,
-			this.remindSlackTime,
+			this.remindSlackHour,
+			this.remindSlackMin,
 			this.slackURL,
 			[]
 		);

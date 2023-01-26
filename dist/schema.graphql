@@ -91,11 +91,12 @@ type RaffleObject {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  limitTime: String!
+  limitHour: Int!
+  limitMin: Int!
   raffleID: ID!
   raffleStatus: RaffleStatus!
-  remindSlackTime: String!
-  remindSlackWeek: String!
+  remindSlackHour: Int!
+  remindSlackMin: Int!
   slackURL: String!
   tasks: [RaffleMast!]!
   updatedAt: AWSTimestamp!
@@ -106,11 +107,12 @@ input RaffleObjectInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  limitTime: String!
+  limitHour: Int!
+  limitMin: Int!
   raffleID: ID!
   raffleStatus: RaffleStatus!
-  remindSlackTime: String!
-  remindSlackWeek: String!
+  remindSlackHour: Int!
+  remindSlackMin: Int!
   slackURL: String!
   tasks: [RaffleMastInput!]!
   updatedAt: AWSTimestamp!
@@ -164,9 +166,10 @@ type TaskMasterObject {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  limitTime: String
-  remindSlackTime: String
-  remindSlackWeek: String
+  limitHour: Int
+  limitMin: Int
+  remindSlackHour: Int
+  remindSlackMin: Int
   slackURL: String
   taskMasterObjectID: ID!
   tasks: [TaskMast!]!
@@ -177,9 +180,10 @@ input TaskMasterObjectInput {
   createdAt: AWSTimestamp!
   deletedAt: AWSTimestamp
   groupID: ID!
-  limitTime: String
-  remindSlackTime: String
-  remindSlackWeek: String
+  limitHour: Int
+  limitMin: Int
+  remindSlackHour: Int
+  remindSlackMin: Int
   slackURL: String
   taskMasterObjectID: ID!
   tasks: [TaskMastInput!]!

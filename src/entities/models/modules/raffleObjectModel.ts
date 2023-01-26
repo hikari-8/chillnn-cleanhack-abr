@@ -15,10 +15,11 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	static getBlanc(
 		tasks: Array<RaffleMast>,
 		groupID: Scalars["String"],
-		limitTime: Scalars["String"],
+		limitHour: Scalars["Int"],
+		limitMin: Scalars["Int"],
 		raffleStatus: RaffleStatus,
-		remindSlackWeek: Scalars["String"],
-		remindSlackTime: Scalars["String"],
+		remindSlackHour: Scalars["Int"],
+		remindSlackMin: Scalars["Int"],
 		slackURL: Scalars["String"],
 		activeMembers: Array<RaffleJoinUser>
 	): RaffleObject {
@@ -26,10 +27,11 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			raffleID: generateUUID(),
 			tasks,
 			groupID,
-			limitTime,
+			limitHour,
+			limitMin,
 			raffleStatus,
-			remindSlackWeek,
-			remindSlackTime,
+			remindSlackHour,
+			remindSlackMin,
 			slackURL,
 			activeMembers,
 			createdAt: new Date().getTime(),
@@ -59,16 +61,45 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	// ============================================
 	// getter / setter
 	// ============================================
-	get limitTime() {
-		return this.mast.limitTime || "";
+
+	get limitHour() {
+		if (!this.mast.remindSlackHour) {
+			this.mast.remindSlackHour = 0o0;
+		}
+		return this.mast.remindSlackHour;
 	}
 
-	set limitTime(input: string) {
-		if (input) {
-			this.mast.limitTime = input;
-		} else {
-			this.mast.limitTime = "";
+	set limitHour(input: number) {
+		this.mast.remindSlackHour = input;
+	}
+
+	get limitMin() {
+		if (!this.mast.remindSlackMin) {
+			this.mast.remindSlackMin = 0o0;
 		}
+		return this.mast.remindSlackMin;
+	}
+
+	set limitMin(input: number) {
+		this.mast.remindSlackMin = input;
+	}
+
+	get remindSlackHour() {
+		if (!this.mast.remindSlackHour) {
+			this.mast.remindSlackHour = 0o0;
+		}
+		return this.mast.remindSlackHour;
+	}
+
+	set remindSlackHour(input: number) {
+		this.mast.remindSlackHour = input;
+	}
+
+	get remindSlackMin() {
+		if (!this.mast.remindSlackMin) {
+			this.mast.remindSlackMin = 0o0;
+		}
+		return this.mast.remindSlackMin;
 	}
 
 	get raffleStatus() {
@@ -81,30 +112,6 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 			this.mast.raffleStatus = input;
 		} else {
 			return;
-		}
-	}
-
-	get remindSlackWeek() {
-		return this.mast.remindSlackWeek || "blanc";
-	}
-
-	set remindSlackWeek(input: string) {
-		if (input) {
-			this.mast.remindSlackWeek = input;
-		} else {
-			this.mast.remindSlackWeek = "blanc";
-		}
-	}
-
-	get remindSlackTime() {
-		return this.mast.remindSlackTime || "blanc";
-	}
-
-	set remindSlackTime(input: string) {
-		if (input) {
-			this.mast.remindSlackTime = input;
-		} else {
-			this.mast.remindSlackTime = "blanc";
 		}
 	}
 

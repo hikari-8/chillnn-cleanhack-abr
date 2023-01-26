@@ -10,10 +10,11 @@ type RaffleObject {
 	tasks: [RaffleMast!]!
 	groupID: ID!
 	activeMembers: [RaffleJoinUser!]!
-	limitTime: String!
+	limitHour: Int!
+	limitMin: Int!
 	raffleStatus: RaffleStatus!
-	remindSlackWeek: String!
-	remindSlackTime: String!
+	remindSlackHour: Int!
+	remindSlackMin: Int!
 	slackURL: String!
 	# status
 	createdAt: AWSTimestamp!
@@ -55,10 +56,11 @@ input RaffleObjectInput {
 	tasks: [RaffleMastInput!]!
 	groupID: ID!
 	activeMembers: [RaffleJoinUserInput!]!
-	limitTime: String!
+	limitHour: Int!
+	limitMin: Int!
 	raffleStatus: RaffleStatus!
-	remindSlackWeek: String!
-	remindSlackTime: String!
+	remindSlackHour: Int!
+	remindSlackMin: Int!
 	slackURL: String!
 	# status
 	createdAt: AWSTimestamp!
