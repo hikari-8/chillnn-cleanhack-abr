@@ -174,6 +174,17 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 		this.mast.channelID = input;
 	}
 
+	get resultMessage() {
+		if (!this.mast.resultMessage) {
+			this.mast.resultMessage = "";
+		}
+		return this.mast.resultMessage;
+	}
+
+	set resultMessage(input: string) {
+		this.mast.resultMessage = input;
+	}
+
 	// ============================================
 	// validation
 	// ============================================

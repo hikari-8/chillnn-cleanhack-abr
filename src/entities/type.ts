@@ -106,6 +106,7 @@ export type RaffleObject = {
   remindSlackHour: Scalars['Int'];
   remindSlackMin: Scalars['Int'];
   remindTimeUnix: Scalars['Int'];
+  resultMessage?: Maybe<Scalars['String']>;
   tasks: Array<RaffleMast>;
   updatedAt: Scalars['AWSTimestamp'];
 };
@@ -124,6 +125,7 @@ export type RaffleObjectInput = {
   remindSlackHour: Scalars['Int'];
   remindSlackMin: Scalars['Int'];
   remindTimeUnix: Scalars['Int'];
+  resultMessage?: InputMaybe<Scalars['String']>;
   tasks: Array<RaffleMastInput>;
   updatedAt: Scalars['AWSTimestamp'];
 };

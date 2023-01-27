@@ -142,6 +142,15 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
     set channelID(input) {
         this.mast.channelID = input;
     }
+    get resultMessage() {
+        if (!this.mast.resultMessage) {
+            this.mast.resultMessage = "";
+        }
+        return this.mast.resultMessage;
+    }
+    set resultMessage(input) {
+        this.mast.resultMessage = input;
+    }
     // ============================================
     // validation
     // ============================================

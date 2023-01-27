@@ -100,6 +100,7 @@ type RaffleObject {
   remindSlackHour: Int!
   remindSlackMin: Int!
   remindTimeUnix: Int!
+  resultMessage: String
   tasks: [RaffleMast!]!
   updatedAt: AWSTimestamp!
 }
@@ -118,6 +119,7 @@ input RaffleObjectInput {
   remindSlackHour: Int!
   remindSlackMin: Int!
   remindTimeUnix: Int!
+  resultMessage: String
   tasks: [RaffleMastInput!]!
   updatedAt: AWSTimestamp!
 }
