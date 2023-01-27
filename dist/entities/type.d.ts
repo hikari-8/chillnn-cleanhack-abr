@@ -71,6 +71,7 @@ export declare type RaffleMast = {
     joinUserIDArray: Array<Scalars['ID']>;
     optionName?: Maybe<Scalars['String']>;
     optionValidUsers: Array<Scalars['ID']>;
+    raffleID?: Maybe<Scalars['ID']>;
     raffleItemID: Scalars['ID'];
     taskID: Scalars['ID'];
     taskName: Scalars['String'];
@@ -84,6 +85,7 @@ export declare type RaffleMastInput = {
     joinUserIDArray: Array<Scalars['ID']>;
     optionName?: InputMaybe<Scalars['String']>;
     optionValidUsers: Array<Scalars['ID']>;
+    raffleID?: InputMaybe<Scalars['ID']>;
     raffleItemID: Scalars['ID'];
     taskID: Scalars['ID'];
     taskName: Scalars['String'];
