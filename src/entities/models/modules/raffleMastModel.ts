@@ -55,15 +55,15 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		this.mast.taskName = input;
 	}
 	get headCount() {
-		return this.mast.headCount || 0;
-	}
-	set headCount(input: number) {
-		if (input) {
-			this.mast.headCount = input;
-		} else {
+		if (!this.mast.headCount) {
 			this.mast.headCount = 0;
 		}
+		return this.mast.headCount;
 	}
+	set headCount(input: number) {
+		this.mast.headCount = input;
+	}
+
 	get joinUserIDArray() {
 		if (!this.mast.joinUserIDArray) {
 			this.mast.joinUserIDArray = [];

@@ -14,9 +14,12 @@ export class UserModel extends BaseModel<UserMast> {
 		return this.mast.userID;
 	}
 	get groupID() {
-		return this.mast.groupID || "";
+		if (!this.mast.groupID) {
+			this.mast.groupID = "";
+		}
+		return this.mast.groupID;
 	}
-	//groupIDをフロントでセットする必要があるため書いている
+
 	set groupID(input: string) {
 		this.mast.groupID = input;
 	}
@@ -48,7 +51,10 @@ export class UserModel extends BaseModel<UserMast> {
 	}
 
 	get role() {
-		return this.mast.role || "";
+		if (!this.mast.role) {
+			this.mast.role = "";
+		}
+		return this.mast.role;
 	}
 	set role(input: string) {
 		this.mast.role = input;
@@ -182,15 +188,6 @@ export class UserModel extends BaseModel<UserMast> {
 	// ============================================
 	// functions -Group
 	// ============================================
-
-	// /**
-	//  * グループを更新できる(後でroleで分岐作る)
-	//  *
-	//  */
-	// async updateGroupMast(input: GroupMast) {
-	// 	await this.repositoryContainer.groupMastRepository.updateGroup(input);
-	// }
-
 	/**
 	 * グループの初期化データを作成する
 	 * @returns
