@@ -223,7 +223,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	/**
-	 * 全ての登録したくじをgorupIDでfetchできる(後でフロントでroleの分岐作る)
+	 * 全ての登録したくじをgorupIDでfetchできる
 	 *@returns
 	 */
 	async fetchRafflesByGroupID(): Promise<RaffleObjectModel[]> {
@@ -256,7 +256,7 @@ export class RaffleObjectModel extends BaseModel<RaffleObject> {
 	}
 
 	/**
-	 * グループDataをfetchできる(後でフロントでroleの分岐作る)
+	 * グループDataをfetchできる
 	 *
 	 */
 	async fetchGroupMast(): Promise<GroupModel | null> {

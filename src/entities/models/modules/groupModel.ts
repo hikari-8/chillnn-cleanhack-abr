@@ -1,11 +1,4 @@
-import {
-	GroupMast,
-	RaffleJoinUser,
-	RaffleMast,
-	RaffleObject,
-	TaskMast,
-	TaskMasterObject,
-} from "../../type";
+import { GroupMast, TaskMasterObject } from "../../type";
 import { BaseModel } from "./_baseModel";
 import { Scalars } from "../../type";
 import { generateUUID } from "../../../util";
@@ -61,14 +54,6 @@ export class GroupModel extends BaseModel<GroupMast> {
 		this.mast.members = input;
 	}
 
-	// get records() {
-	// 	return this.mast.records;
-	// }
-
-	// set records(input: RaffleObject[]) {
-	// 	this.mast.records = input;
-	// }
-
 	// ============================================
 	// validation
 	// ============================================
@@ -105,7 +90,6 @@ export class GroupModel extends BaseModel<GroupMast> {
 
 	/**
 	 * Admin以外がgroupのparamsで入ってきた時、groupのmembersの配列にpushして、updateする
-	 *
 	 */
 	async pushGroupMembers(userID: string) {
 		this.mast.members.push(userID);
@@ -113,7 +97,7 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
-	 * グループを更新できる(後でフロントでroleの分岐作る)
+	 * グループを更新できる
 	 *
 	 */
 	async updateGroupMast() {
@@ -123,7 +107,7 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
-	 * グループをfetchできる(後でフロントでroleの分岐作る)
+	 * グループをfetchできる
 	 *
 	 */
 	async fetchGroupMast(): Promise<GroupModel | null> {
@@ -140,7 +124,7 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
-	 * rafflesをgroupからfetchできる(後でフロントでroleの分岐作る)
+	 * rafflesをgroupからfetchできる
 	 * @returns
 	 *
 	 */
@@ -170,19 +154,6 @@ export class GroupModel extends BaseModel<GroupMast> {
 	}
 
 	/**
-	 * raffleDataを追加後のgroupDataにpushの処理
-	 *
-	 */
-	// public pushGroupRecord(input: RaffleObject) {
-	// 	const groupMast = this.mast;
-	// 	groupMast.records?.push(input);
-	// 	//groupMastをupdateする
-	// 	console.log("push直後のupdateされていないgroup:", groupMast);
-	// 	this.repositoryContainer.groupMastRepository.updateGroup(groupMast);
-	// 	console.log("GroupDataにpushしました→");
-	// }
-
-	/**
 	 * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
 	 * @returns
 	 */
@@ -192,7 +163,6 @@ export class GroupModel extends BaseModel<GroupMast> {
 				this.groupID
 			);
 		return res;
-		// mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
 	}
 
 	/**

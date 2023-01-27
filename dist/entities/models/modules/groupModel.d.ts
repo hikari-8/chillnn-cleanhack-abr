@@ -21,21 +21,20 @@ export declare class GroupModel extends BaseModel<GroupMast> {
     register(): Promise<void>;
     /**
      * Admin以外がgroupのparamsで入ってきた時、groupのmembersの配列にpushして、updateする
-     *
      */
     pushGroupMembers(userID: string): Promise<void>;
     /**
-     * グループを更新できる(後でフロントでroleの分岐作る)
+     * グループを更新できる
      *
      */
     updateGroupMast(): Promise<void>;
     /**
-     * グループをfetchできる(後でフロントでroleの分岐作る)
+     * グループをfetchできる
      *
      */
     fetchGroupMast(): Promise<GroupModel | null>;
     /**
-     * rafflesをgroupからfetchできる(後でフロントでroleの分岐作る)
+     * rafflesをgroupからfetchできる
      * @returns
      *
      */
@@ -45,10 +44,6 @@ export declare class GroupModel extends BaseModel<GroupMast> {
      *@returns
      */
     fetchLastRaffleItemByGroupID(): Promise<RaffleObjectModel | null>;
-    /**
-     * raffleDataを追加後のgroupDataにpushの処理
-     *
-     */
     /**
      * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
      * @returns

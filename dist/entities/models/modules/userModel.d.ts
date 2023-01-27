@@ -10,7 +10,7 @@ export declare class UserModel extends BaseModel<UserMast> {
     set groupID(input: string);
     get createdAt(): number;
     get updatedAt(): number;
-    get deletedAt(): import("../..").Maybe<number> | undefined;
+    get deletedAt(): import("../../type").Maybe<number> | undefined;
     get name(): string;
     set name(input: string);
     get email(): string;

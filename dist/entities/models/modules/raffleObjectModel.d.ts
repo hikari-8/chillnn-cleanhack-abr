@@ -39,7 +39,7 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      */
     register(): Promise<void>;
     /**
-     * 全ての登録したくじをgorupIDでfetchできる(後でフロントでroleの分岐作る)
+     * 全ての登録したくじをgorupIDでfetchできる
      *@returns
      */
     fetchRafflesByGroupID(): Promise<RaffleObjectModel[]>;
@@ -49,7 +49,7 @@ export declare class RaffleObjectModel extends BaseModel<RaffleObject> {
      */
     fetchLastRaffleItemByGroupID(): Promise<RaffleObjectModel | null>;
     /**
-     * グループDataをfetchできる(後でフロントでroleの分岐作る)
+     * グループDataをfetchできる
      *
      */
     fetchGroupMast(): Promise<GroupModel | null>;

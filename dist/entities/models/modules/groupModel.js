@@ -58,12 +58,6 @@ class GroupModel extends _baseModel_1.BaseModel {
     set members(input) {
         this.mast.members = input;
     }
-    // get records() {
-    // 	return this.mast.records;
-    // }
-    // set records(input: RaffleObject[]) {
-    // 	this.mast.records = input;
-    // }
     // ============================================
     // validation
     // ============================================
@@ -98,7 +92,6 @@ class GroupModel extends _baseModel_1.BaseModel {
     }
     /**
      * Admin以外がgroupのparamsで入ってきた時、groupのmembersの配列にpushして、updateする
-     *
      */
     pushGroupMembers(userID) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -107,7 +100,7 @@ class GroupModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * グループを更新できる(後でフロントでroleの分岐作る)
+     * グループを更新できる
      *
      */
     updateGroupMast() {
@@ -116,7 +109,7 @@ class GroupModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * グループをfetchできる(後でフロントでroleの分岐作る)
+     * グループをfetchできる
      *
      */
     fetchGroupMast() {
@@ -132,7 +125,7 @@ class GroupModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * rafflesをgroupからfetchできる(後でフロントでroleの分岐作る)
+     * rafflesをgroupからfetchできる
      * @returns
      *
      */
@@ -159,18 +152,6 @@ class GroupModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * raffleDataを追加後のgroupDataにpushの処理
-     *
-     */
-    // public pushGroupRecord(input: RaffleObject) {
-    // 	const groupMast = this.mast;
-    // 	groupMast.records?.push(input);
-    // 	//groupMastをupdateする
-    // 	console.log("push直後のupdateされていないgroup:", groupMast);
-    // 	this.repositoryContainer.groupMastRepository.updateGroup(groupMast);
-    // 	console.log("GroupDataにpushしました→");
-    // }
-    /**
      * このグループのマスターデータを取得する //多分使えん(モデファク入れとらんけ)
      * @returns
      */
@@ -178,7 +159,6 @@ class GroupModel extends _baseModel_1.BaseModel {
         return __awaiter(this, void 0, void 0, function* () {
             const res = yield this.repositoryContainer.taskMasterObjectRepository.fetchTaskMasterObject(this.groupID);
             return res;
-            // mapメソッドを使おうとしたら、型が違うと怒られる'(TaskMasterObjectにModelFactoryからアクセスして入れることになる??)
         });
     }
     /**

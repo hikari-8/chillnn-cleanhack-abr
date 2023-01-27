@@ -184,7 +184,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * 全ての登録したくじをgorupIDでfetchできる(後でフロントでroleの分岐作る)
+     * 全ての登録したくじをgorupIDでfetchできる
      *@returns
      */
     fetchRafflesByGroupID() {
@@ -215,7 +215,7 @@ class RaffleObjectModel extends _baseModel_1.BaseModel {
         });
     }
     /**
-     * グループDataをfetchできる(後でフロントでroleの分岐作る)
+     * グループDataをfetchできる
      *
      */
     fetchGroupMast() {
