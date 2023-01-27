@@ -156,7 +156,10 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 		);
 	}
 
-	// taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
+	/**
+	 * 個々の掃除場所taskMast新規登録のためのインスタンス作成
+	 *
+	 */
 	getTaskMastModel(groupID: string) {
 		const blank = TaskMastModel.getBlanc(this.groupID, "blanc", 0, "");
 		return this.modelFactory.TaskMastModel(blank, { isNew: true });
@@ -203,6 +206,7 @@ export class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
 			isNew: true,
 		});
 	}
+
 	/**
 	 * このグループのくじデータをくじのuuidで取得する
 	 * @returns

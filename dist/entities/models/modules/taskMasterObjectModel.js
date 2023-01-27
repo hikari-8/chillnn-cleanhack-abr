@@ -138,7 +138,10 @@ class TaskMasterObjectModel extends _baseModel_1.BaseModel {
             yield this.repositoryContainer.taskMasterObjectRepository.updateTaskMasterObject(this.mast);
         });
     }
-    // taskObjectがtaskMastを保持していることを明示する(別のクラスが別のクラスを保持している)
+    /**
+     * 個々の掃除場所taskMast新規登録のためのインスタンス作成
+     *
+     */
     getTaskMastModel(groupID) {
         const blank = taskMastModel_1.TaskMastModel.getBlanc(this.groupID, "blanc", 0, "");
         return this.modelFactory.TaskMastModel(blank, { isNew: true });

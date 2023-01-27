@@ -25,9 +25,11 @@ class UserModel extends _baseModel_1.BaseModel {
         return this.mast.userID;
     }
     get groupID() {
-        return this.mast.groupID || "";
+        if (!this.mast.groupID) {
+            this.mast.groupID = "";
+        }
+        return this.mast.groupID;
     }
-    //groupIDをフロントでセットする必要があるため書いている
     set groupID(input) {
         this.mast.groupID = input;
     }
@@ -56,7 +58,10 @@ class UserModel extends _baseModel_1.BaseModel {
         this.mast.email = input;
     }
     get role() {
-        return this.mast.role || "";
+        if (!this.mast.role) {
+            this.mast.role = "";
+        }
+        return this.mast.role;
     }
     set role(input) {
         this.mast.role = input;
@@ -181,13 +186,6 @@ class UserModel extends _baseModel_1.BaseModel {
     // ============================================
     // functions -Group
     // ============================================
-    // /**
-    //  * グループを更新できる(後でroleで分岐作る)
-    //  *
-    //  */
-    // async updateGroupMast(input: GroupMast) {
-    // 	await this.repositoryContainer.groupMastRepository.updateGroup(input);
-    // }
     /**
      * グループの初期化データを作成する
      * @returns

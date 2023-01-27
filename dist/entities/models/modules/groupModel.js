@@ -44,7 +44,10 @@ class GroupModel extends _baseModel_1.BaseModel {
     // getter / setter
     // ============================================
     get groupName() {
-        return this.mast.groupName || "";
+        if (!this.mast.groupName) {
+            this.mast.groupName = "";
+        }
+        return this.mast.groupName;
     }
     set groupName(input) {
         this.mast.groupName = input;

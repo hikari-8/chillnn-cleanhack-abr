@@ -54,15 +54,13 @@ class TaskMastModel extends _baseModel_1.BaseModel {
         this.mast.taskName = input;
     }
     get headCount() {
-        return this.mast.headCount || 0;
-    }
-    set headCount(input) {
-        if (input) {
-            this.mast.headCount = input;
-        }
-        else {
+        if (!this.mast.headCount) {
             this.mast.headCount = 0;
         }
+        return this.mast.headCount;
+    }
+    set headCount(input) {
+        this.mast.headCount = input;
     }
     get optionItem() {
         if (!this.mast.optionItem) {

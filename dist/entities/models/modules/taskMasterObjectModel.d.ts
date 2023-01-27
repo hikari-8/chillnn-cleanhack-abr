@@ -33,6 +33,10 @@ export declare class TaskMasterObjectModel extends BaseModel<TaskMasterObject> {
      *
      */
     updateTaskMasterObj(): Promise<void>;
+    /**
+     * 個々の掃除場所taskMast新規登録のためのインスタンス作成
+     *
+     */
     getTaskMastModel(groupID: string): TaskMastModel;
     /**
      * くじの初期化オブジェクトを作成する
