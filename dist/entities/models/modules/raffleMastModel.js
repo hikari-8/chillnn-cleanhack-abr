@@ -13,9 +13,7 @@ exports.RaffleMastModel = void 0;
 const util_1 = require("../../../util");
 const _baseModel_1 = require("./_baseModel");
 class RaffleMastModel extends _baseModel_1.BaseModel {
-    static getBlanc(taskID, taskName, groupID, headCount, joinUserIDArray, optionName, optionValidUsers
-    // raffleID: Scalars["ID"]
-    ) {
+    static getBlanc(taskID, taskName, groupID, headCount, joinUserIDArray, optionName, optionValidUsers) {
         return {
             taskID,
             taskName,
@@ -32,9 +30,6 @@ class RaffleMastModel extends _baseModel_1.BaseModel {
     // ============================================
     // getters
     // ============================================
-    get raffleID() {
-        return this.mast.groupID;
-    }
     get groupID() {
         return this.mast.groupID;
     }

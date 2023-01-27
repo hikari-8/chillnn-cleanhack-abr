@@ -13,7 +13,6 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 		joinUserIDArray: Array<string>,
 		optionName: Scalars["String"],
 		optionValidUsers: Array<string>
-		// raffleID: Scalars["ID"]
 	): RaffleMast {
 		return {
 			taskID,
@@ -31,10 +30,6 @@ export class RaffleMastModel extends BaseModel<RaffleMast> {
 	// ============================================
 	// getters
 	// ============================================
-
-	get raffleID() {
-		return this.mast.groupID;
-	}
 
 	get groupID() {
 		return this.mast.groupID;
